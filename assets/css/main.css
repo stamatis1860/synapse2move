@@ -1,5 +1,17 @@
 @import url(fontawesome-all.min.css);
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400';
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+.syncopate-regular {
+  font-family: "Syncopate", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.syncopate-bold {
+  font-family: "Syncopate", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
 
 /*
 	Stellar by HTML5 UP
@@ -193,7 +205,15 @@ input, select, textarea {
 			text-align: justify;
 		}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1 {
+		font-family: "Syncopate", sans-serif;
+		font-weight: 400;
+		line-height: 1.5;
+		margin: 0 0 0.7em 0;
+		letter-spacing: -0.025em;
+	}
+
+	h2, h3, h4, h5, h6 {
 		font-weight: 300;
 		line-height: 1.5;
 		margin: 0 0 0.7em 0;
@@ -233,7 +253,7 @@ input, select, textarea {
 	@media screen and (max-width: 736px) {
 
 		h1 {
-			font-size: 2em;
+			font-size: 6vw;
 		}
 
 	}
@@ -3783,3 +3803,4 @@ input, select, textarea {
 			}
 
 		}
+		

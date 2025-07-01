@@ -1,0 +1,6 @@
+/* assets/css/custom.css */
+@media screen and (max-width: 480px) {
+    #wrapper {
+        max-width: calc(100% - 2rem); /* Add a little breathing room */
+    }
+}
