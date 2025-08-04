@@ -2434,6 +2434,13 @@ input, select, textarea {
 				width: 100%;
 			}
 
+		@media screen and (max-width: 736px) {
+			.image.main img {
+				height: 200px;
+				object-fit: cover;
+			}
+		}
+
 /* List */
 
 	ol {
