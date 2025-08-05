@@ -11,6 +11,167 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Calendar Styles */
+			.calendar-container {
+				max-width: 400px;
+				margin: 20px 0;
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				overflow: hidden;
+				background: #fff;
+			}
+			
+			.calendar-header {
+				background: #2c3e50;
+				color: white;
+				padding: 15px;
+				text-align: center;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			
+			.calendar-nav {
+				background: none;
+				border: none;
+				color: white;
+				font-size: 14px;
+				cursor: pointer;
+				padding: 8px;
+				border-radius: 4px;
+				width: 32px;
+				height: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			.calendar-nav:hover {
+				background: rgba(255,255,255,0.1);
+			}
+
+			/* Mobile adjustments */
+			@media screen and (max-width: 736px) {
+				.calendar-nav {
+					width: 40px;
+					height: 40px;
+					font-size: 16px;
+					padding: 10px;
+				}
+			}
+			
+			.calendar-grid {
+				display: grid;
+				grid-template-columns: repeat(7, 1fr);
+			}
+			
+			.calendar-day-header {
+				background: #34495e;
+				color: white;
+				padding: 10px 5px;
+				text-align: center;
+				font-weight: bold;
+				font-size: 12px;
+			}
+			
+			.calendar-day {
+				aspect-ratio: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid #eee;
+				cursor: pointer;
+				transition: all 0.2s;
+				background: #fff;
+			}
+			
+			.calendar-day:hover {
+				background: #f8f9fa;
+			}
+			
+			.calendar-day.other-month {
+				color: #ccc;
+				background: #f8f9fa;
+			}
+			
+			.calendar-day.unavailable {
+				background: #e9ecef;
+				color: #6c757d;
+				cursor: not-allowed;
+			}
+			
+			.calendar-day.selected {
+				background: #007bff;
+				color: white;
+			}
+			
+			.calendar-day.today {
+				background: #28a745;
+				color: white;
+			}
+			
+			.time-slots {
+				margin-top: 20px;
+				display: none;
+			}
+			
+			.time-slot-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+				gap: 10px;
+				margin-top: 10px;
+			}
+			
+			.time-slot {
+				padding: 8px 12px;
+				border: 2px solid #ddd;
+				background: #fff;
+				cursor: pointer;
+				text-align: center;
+				transition: all 0.2s;
+				border-radius: 4px;
+			}
+			
+			.time-slot:hover {
+				border-color: #007bff;
+			}
+			
+			.time-slot.selected {
+				background: #007bff;
+				color: white;
+				border-color: #007bff;
+			}
+			
+			.time-slot.unavailable {
+				background: #e9ecef;
+				color: #6c757d;
+				cursor: not-allowed;
+				border-color: #e9ecef;
+			}
+			
+			.booking-summary {
+				margin-top: 20px;
+				padding: 15px;
+				background: #f8f9fa;
+				border-radius: 4px;
+				display: none;
+			}
+			
+			.form-section {
+				margin-bottom: 30px;
+				padding: 20px;
+				border: 1px solid #eee;
+				border-radius: 8px;
+			}
+			
+			.section-title {
+				margin-bottom: 15px;
+				color: #2c3e50;
+				border-bottom: 2px solid #eee;
+				padding-bottom: 10px;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -26,56 +187,99 @@
             <!-- Main -->
             <div id="main" style="background: transparent;">
 
-                
-
                 <!-- Form -->
                 <section class="main">
-                    <h2>Form</h2>
-                    <form method="post" action="#">
-                        <div class="row gtr-uniform">
-                            <div class="col-6 col-12-xsmall">
-                                <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+                    <h2>Appointment Booking Form</h2>
+                    <form method="post" action="#" id="bookingForm">
+                        <!-- Personal Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Personal Information</h3>
+                            <div class="row gtr-uniform">
+                                <div class="col-6 col-12-xsmall">
+                                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" required />
+                                </div>
+                                <div class="col-6 col-12-xsmall">
+                                    <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required />
+                                </div>
+                                <div class="col-12">
+                                    <select name="demo-category" id="demo-category">
+                                        <option value="">- Service Category -</option>
+                                        <option value="1">Personal Training</option>
+                                        <option value="2">Group Session</option>
+                                        <option value="3">Consultation</option>
+                                        <option value="4">Assessment</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-6 col-12-xsmall">
-                                <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+                        </div>
+
+                        <!-- Appointment Booking Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Select Date & Time</h3>
+                            <div class="row gtr-uniform">
+                                <div class="col-6 col-12-medium">
+                                    <div class="calendar-container">
+                                        <div class="calendar-header">
+                                            <button type="button" class="calendar-nav" id="prevMonth">‹</button>
+                                            <span id="currentMonth"></span>
+                                            <button type="button" class="calendar-nav" id="nextMonth">›</button>
+                                        </div>
+                                        <div class="calendar-grid" id="calendarGrid">
+                                            <!-- Calendar will be generated here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-12-medium">
+                                    <div class="time-slots" id="timeSlots">
+                                        <h4>Available Times</h4>
+                                        <div class="time-slot-grid" id="timeSlotsGrid">
+                                            <!-- Time slots will be generated here -->
+                                        </div>
+                                    </div>
+                                    <div class="booking-summary" id="bookingSummary">
+                                        <h4>Booking Summary</h4>
+                                        <p><strong>Date:</strong> <span id="selectedDate"></span></p>
+                                        <p><strong>Time:</strong> <span id="selectedTime"></span></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <select name="demo-category" id="demo-category">
-                                    <option value="">- Category -</option>
-                                    <option value="1">Manufacturing</option>
-                                    <option value="2">Shipping</option>
-                                    <option value="3">Administration</option>
-                                    <option value="4">Human Resources</option>
-                                </select>
-                            </div>
-                            <div class="col-4 col-12-small">
-                                <input type="radio" id="demo-priority-low" name="demo-priority" checked>
-                                <label for="demo-priority-low">Low</label>
-                            </div>
-                            <div class="col-4 col-12-small">
-                                <input type="radio" id="demo-priority-normal" name="demo-priority">
-                                <label for="demo-priority-normal">Normal</label>
-                            </div>
-                            <div class="col-4 col-12-small">
-                                <input type="radio" id="demo-priority-high" name="demo-priority">
-                                <label for="demo-priority-high">High</label>
-                            </div>
-                            <div class="col-6 col-12-small">
-                                <input type="checkbox" id="demo-copy" name="demo-copy">
-                                <label for="demo-copy">Email me a copy</label>
-                            </div>
-                            <div class="col-6 col-12-small">
-                                <input type="checkbox" id="demo-human" name="demo-human" checked>
-                                <label for="demo-human">Not a robot</label>
-                            </div>
-                            <div class="col-12">
-                                <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <ul class="actions">
-                                    <li><input type="submit" value="Send Message" class="primary" /></li>
-                                    <li><input type="reset" value="Reset" /></li>
-                                </ul>
+                            <input type="hidden" name="booking-date" id="bookingDate" />
+                            <input type="hidden" name="booking-time" id="bookingTime" />
+                        </div>
+
+                        <!-- Additional Options Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Additional Options</h3>
+                            <div class="row gtr-uniform">
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="demo-priority-low" name="demo-priority" checked>
+                                    <label for="demo-priority-low">Standard</label>
+                                </div>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="demo-priority-normal" name="demo-priority">
+                                    <label for="demo-priority-normal">Priority</label>
+                                </div>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="demo-priority-high" name="demo-priority">
+                                    <label for="demo-priority-high">Urgent</label>
+                                </div>
+                                <div class="col-6 col-12-small">
+                                    <input type="checkbox" id="demo-copy" name="demo-copy">
+                                    <label for="demo-copy">Email me a copy</label>
+                                </div>
+                                <div class="col-6 col-12-small">
+                                    <input type="checkbox" id="demo-human" name="demo-human" checked>
+                                    <label for="demo-human">Not a robot</label>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="demo-message" id="demo-message" placeholder="Enter your message or special requirements" rows="6"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="actions">
+                                        <li><input type="submit" value="Book Appointment" class="primary" /></li>
+                                        <li><input type="reset" value="Reset" /></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -123,6 +327,242 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+
+		<script>
+			// CONFIGURATION: Edit these settings to customize availability
+			const BOOKING_CONFIG = {
+				// Available days of the week (0 = Sunday, 1 = Monday, etc.)
+				availableDays: [1, 2, 3, 4, 5], // Monday to Friday
+				
+				// Available time slots for each day
+				timeSlots: {
+					1: ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Monday
+					2: ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Tuesday
+					3: ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Wednesday
+					4: ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Thursday
+					5: ['09:00', '10:00', '11:00', '14:00', '15:00'], // Friday (shorter day)
+					6: ['10:00', '11:00', '12:00'], // Saturday (limited hours)
+					0: [] // Sunday (closed)
+				},
+				
+				// Blocked dates (format: 'YYYY-MM-DD')
+				blockedDates: [
+					'2025-08-25', // Example blocked date
+					'2025-08-26'  // Example blocked date
+				],
+				
+				// How many days in advance can bookings be made
+				maxAdvanceDays: 60
+			};
+
+			class BookingCalendar {
+				constructor() {
+					this.currentDate = new Date();
+					this.selectedDate = null;
+					this.selectedTime = null;
+					this.init();
+				}
+
+				init() {
+					this.renderCalendar();
+					this.bindEvents();
+				}
+
+				bindEvents() {
+					document.getElementById('prevMonth').addEventListener('click', () => {
+						this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+						this.renderCalendar();
+					});
+
+					document.getElementById('nextMonth').addEventListener('click', () => {
+						this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+						this.renderCalendar();
+					});
+
+					document.getElementById('bookingForm').addEventListener('submit', (e) => {
+						if (!this.selectedDate || !this.selectedTime) {
+							e.preventDefault();
+							alert('Please select both a date and time for your appointment.');
+						}
+					});
+				}
+
+				renderCalendar() {
+					const year = this.currentDate.getFullYear();
+					const month = this.currentDate.getMonth();
+					
+					// Update header
+					const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+						'July', 'August', 'September', 'October', 'November', 'December'];
+					document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
+
+					// Clear calendar
+					const grid = document.getElementById('calendarGrid');
+					grid.innerHTML = '';
+
+					// Add day headers (Monday first)
+					const dayHeaders = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+					dayHeaders.forEach(day => {
+						const dayHeader = document.createElement('div');
+						dayHeader.className = 'calendar-day-header';
+						dayHeader.textContent = day;
+						grid.appendChild(dayHeader);
+					});
+
+					// Get first day of month and number of days
+					let firstDay = new Date(year, month, 1).getDay();
+					// Convert Sunday (0) to be last day (6), and shift others down by 1
+					firstDay = firstDay === 0 ? 6 : firstDay - 1;
+					const daysInMonth = new Date(year, month + 1, 0).getDate();
+					const today = new Date();
+
+					// Add empty cells for days before month starts
+					for (let i = 0; i < firstDay; i++) {
+						const emptyDay = document.createElement('div');
+						emptyDay.className = 'calendar-day other-month';
+						grid.appendChild(emptyDay);
+					}
+
+					// Add days of the month
+					for (let day = 1; day <= daysInMonth; day++) {
+						const dayElement = document.createElement('div');
+						dayElement.className = 'calendar-day';
+						dayElement.textContent = day;
+
+						const currentDay = new Date(year, month, day);
+						const dayOfWeek = currentDay.getDay();
+						const dateString = this.formatDate(currentDay);
+
+						// Check if day is today
+						if (this.isSameDate(currentDay, today)) {
+							dayElement.classList.add('today');
+						}
+
+						// Check if day is available
+						const isAvailable = this.isDayAvailable(currentDay, dayOfWeek, dateString);
+						if (!isAvailable) {
+							dayElement.classList.add('unavailable');
+						} else {
+							dayElement.addEventListener('click', () => this.selectDate(currentDay, dayElement));
+						}
+
+						// Check if day is selected
+						if (this.selectedDate && this.isSameDate(currentDay, this.selectedDate)) {
+							dayElement.classList.add('selected');
+						}
+
+						grid.appendChild(dayElement);
+					}
+				}
+
+				isDayAvailable(date, dayOfWeek, dateString) {
+					// Check if date is in the past
+					const today = new Date();
+					today.setHours(0, 0, 0, 0);
+					if (date < today) return false;
+
+					// Check if date is too far in the future
+					const maxDate = new Date();
+					maxDate.setDate(maxDate.getDate() + BOOKING_CONFIG.maxAdvanceDays);
+					if (date > maxDate) return false;
+
+					// Check if day of week is available
+					if (!BOOKING_CONFIG.availableDays.includes(dayOfWeek)) return false;
+
+					// Check if date is blocked
+					if (BOOKING_CONFIG.blockedDates.includes(dateString)) return false;
+
+					return true;
+				}
+
+				selectDate(date, element) {
+					// Remove previous selection
+					document.querySelectorAll('.calendar-day.selected').forEach(el => {
+						el.classList.remove('selected');
+					});
+
+					// Add selection to clicked element
+					element.classList.add('selected');
+					this.selectedDate = date;
+					this.selectedTime = null; // Reset time selection
+
+					// Update hidden input
+					document.getElementById('bookingDate').value = this.formatDate(date);
+
+					// Show time slots
+					this.renderTimeSlots(date.getDay());
+				}
+
+				renderTimeSlots(dayOfWeek) {
+					const timeSlotsContainer = document.getElementById('timeSlots');
+					const timeSlotsGrid = document.getElementById('timeSlotsGrid');
+					
+					timeSlotsContainer.style.display = 'block';
+					timeSlotsGrid.innerHTML = '';
+
+					const availableTimes = BOOKING_CONFIG.timeSlots[dayOfWeek] || [];
+
+					if (availableTimes.length === 0) {
+						timeSlotsGrid.innerHTML = '<p>No available times for this day.</p>';
+						return;
+					}
+
+					availableTimes.forEach(time => {
+						const timeSlot = document.createElement('div');
+						timeSlot.className = 'time-slot';
+						timeSlot.textContent = time;
+						timeSlot.addEventListener('click', () => this.selectTime(time, timeSlot));
+						timeSlotsGrid.appendChild(timeSlot);
+					});
+				}
+
+				selectTime(time, element) {
+					// Remove previous selection
+					document.querySelectorAll('.time-slot.selected').forEach(el => {
+						el.classList.remove('selected');
+					});
+
+					// Add selection to clicked element
+					element.classList.add('selected');
+					this.selectedTime = time;
+
+					// Update hidden input
+					document.getElementById('bookingTime').value = time;
+
+					// Show booking summary
+					this.showBookingSummary();
+				}
+
+				showBookingSummary() {
+					const summary = document.getElementById('bookingSummary');
+					const selectedDateSpan = document.getElementById('selectedDate');
+					const selectedTimeSpan = document.getElementById('selectedTime');
+
+					selectedDateSpan.textContent = this.formatDateForDisplay(this.selectedDate);
+					selectedTimeSpan.textContent = this.selectedTime;
+
+					summary.style.display = 'block';
+				}
+
+				formatDate(date) {
+					return date.toISOString().split('T')[0];
+				}
+
+				formatDateForDisplay(date) {
+					const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+					return date.toLocaleDateString('en-US', options);
+				}
+
+				isSameDate(date1, date2) {
+					return date1.toDateString() === date2.toDateString();
+				}
+			}
+
+			// Initialize calendar when page loads
+			document.addEventListener('DOMContentLoaded', () => {
+				new BookingCalendar();
+			});
+		</script>
 
 	</body>
 </html>
