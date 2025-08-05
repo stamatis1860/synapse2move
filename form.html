@@ -87,7 +87,7 @@
 			}
 			
 			.calendar-day:hover {
-				background: #f8f9fa;
+				background: #edbf793a;
 			}
 			
 			.calendar-day.other-month {
@@ -102,12 +102,12 @@
 			}
 			
 			.calendar-day.selected {
-				background: #007bff;
+				background: #60bca4;
 				color: white;
 			}
 			
 			.calendar-day.today {
-				background: #28a745;
+				background: #edbf79;
 				color: white;
 			}
 			
@@ -134,13 +134,13 @@
 			}
 			
 			.time-slot:hover {
-				border-color: #007bff;
+				border-color: #edbf79;
 			}
 			
 			.time-slot.selected {
-				background: #007bff;
+				background: #60bca4;
 				color: white;
-				border-color: #007bff;
+				border-color: #60bca4;
 			}
 			
 			.time-slot.unavailable {
@@ -181,7 +181,7 @@
 			<!-- Header -->
 			<header id="header">
 				<h1>Kontaktformular</h1>
-				<p>miau</p>
+				<p></p>
 			</header>
 
             <!-- Main -->
@@ -189,7 +189,7 @@
 
                 <!-- Form -->
                 <section class="main">
-                    <h2>Appointment Booking Form</h2>
+                    <h2></h2>
                     <form method="post" action="#" id="bookingForm">
                         <!-- Personal Information Section -->
                         <div class="form-section">
@@ -347,8 +347,8 @@
 				
 				// Blocked dates (format: 'YYYY-MM-DD')
 				blockedDates: [
-					'2025-08-25', // Example blocked date
-					'2025-08-26'  // Example blocked date
+					'2025-08-15', // Example blocked date
+					'2025-08-18'  // Example blocked date
 				],
 				
 				// How many days in advance can bookings be made
@@ -544,8 +544,12 @@
 					summary.style.display = 'block';
 				}
 
+				// FIXED: Use local timezone instead of UTC
 				formatDate(date) {
-					return date.toISOString().split('T')[0];
+					const year = date.getFullYear();
+					const month = String(date.getMonth() + 1).padStart(2, '0');
+					const day = String(date.getDate()).padStart(2, '0');
+					return `${year}-${month}-${day}`;
 				}
 
 				formatDateForDisplay(date) {
