@@ -23,7 +23,7 @@
 			}
 			
 			.calendar-header {
-				background: #2c3e50;
+				background: #274b41;
 				color: white;
 				padding: 15px;
 				text-align: center;
@@ -67,7 +67,7 @@
 			}
 			
 			.calendar-day-header {
-				background: #34495e;
+				background: #274b41;
 				color: white;
 				padding: 10px 5px;
 				text-align: center;
@@ -185,107 +185,107 @@
 			</header>
 
             <!-- Main -->
-            <div id="main" style="background: transparent;">
+			<div id="main" style="background: transparent; color: white;">
 
-                <!-- Form -->
-                <section class="main">
-                    <h2></h2>
-                    <form method="post" action="#" id="bookingForm">
-                        <!-- Personal Information Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Personal Information</h3>
-                            <div class="row gtr-uniform">
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" required />
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required />
-                                </div>
-                                <div class="col-12">
-                                    <select name="demo-category" id="demo-category">
-                                        <option value="">- Service Category -</option>
-                                        <option value="1">Personal Training</option>
-                                        <option value="2">Group Session</option>
-                                        <option value="3">Consultation</option>
-                                        <option value="4">Assessment</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+				<!-- Form -->
+				<section class="main">
+					<h2></h2>
+					<form method="post" action="#" id="bookingForm" style="color: white;">
+						<!-- Personal Information Section -->
+						<div class="form-section">
+							<h3 class="section-title" style="color: white;">Personal Information</h3>
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name & Surname" required />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required />
+								</div>
+								<div class="col-12">
+									<select name="demo-category" id="demo-category">
+										<option value="">- Service Category -</option>
+										<option value="1">Free 20min Call</option>
+										<option value="2">Neuroassesment</option>
+										<option value="3">Personaltraining</option>
+										<option value="4">Urgent/ Pain</option>
+									</select>
+								</div>
+							</div>
+						</div>
 
-                        <!-- Appointment Booking Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Select Date & Time</h3>
-                            <div class="row gtr-uniform">
-                                <div class="col-6 col-12-medium">
-                                    <div class="calendar-container">
-                                        <div class="calendar-header">
-                                            <button type="button" class="calendar-nav" id="prevMonth">‹</button>
-                                            <span id="currentMonth"></span>
-                                            <button type="button" class="calendar-nav" id="nextMonth">›</button>
-                                        </div>
-                                        <div class="calendar-grid" id="calendarGrid">
-                                            <!-- Calendar will be generated here -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-12-medium">
-                                    <div class="time-slots" id="timeSlots">
-                                        <h4>Available Times</h4>
-                                        <div class="time-slot-grid" id="timeSlotsGrid">
-                                            <!-- Time slots will be generated here -->
-                                        </div>
-                                    </div>
-                                    <div class="booking-summary" id="bookingSummary">
-                                        <h4>Booking Summary</h4>
-                                        <p><strong>Date:</strong> <span id="selectedDate"></span></p>
-                                        <p><strong>Time:</strong> <span id="selectedTime"></span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <input type="hidden" name="booking-date" id="bookingDate" />
-                            <input type="hidden" name="booking-time" id="bookingTime" />
-                        </div>
+						<!-- Appointment Booking Section -->
+						<div class="form-section">
+							<h3 class="section-title" style="color: white;">Select Date & Time</h3>
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-medium">
+									<div class="calendar-container">
+										<div class="calendar-header">
+											<button type="button" class="calendar-nav" id="prevMonth">‹</button>
+											<span id="currentMonth"></span>
+											<button type="button" class="calendar-nav" id="nextMonth">›</button>
+										</div>
+										<div class="calendar-grid" id="calendarGrid">
+											<!-- Calendar will be generated here -->
+										</div>
+									</div>
+								</div>
+								<div class="col-6 col-12-medium">
+									<div class="time-slots" id="timeSlots">
+										<h4 style="color: white;">Available Times</h4>
+										<div class="time-slot-grid" id="timeSlotsGrid">
+											<!-- Time slots will be generated here -->
+										</div>
+									</div>
+									<div class="booking-summary" id="bookingSummary" style="color: white;">
+										<h4 style="color: white;">Booking Summary</h4>
+										<p><strong>Date:</strong> <span id="selectedDate"></span></p>
+										<p><strong>Time:</strong> <span id="selectedTime"></span></p>
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="booking-date" id="bookingDate" />
+							<input type="hidden" name="booking-time" id="bookingTime" />
+						</div>
 
-                        <!-- Additional Options Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Additional Options</h3>
-                            <div class="row gtr-uniform">
-                                <div class="col-4 col-12-small">
-                                    <input type="radio" id="demo-priority-low" name="demo-priority" checked>
-                                    <label for="demo-priority-low">Standard</label>
-                                </div>
-                                <div class="col-4 col-12-small">
-                                    <input type="radio" id="demo-priority-normal" name="demo-priority">
-                                    <label for="demo-priority-normal">Priority</label>
-                                </div>
-                                <div class="col-4 col-12-small">
-                                    <input type="radio" id="demo-priority-high" name="demo-priority">
-                                    <label for="demo-priority-high">Urgent</label>
-                                </div>
-                                <div class="col-6 col-12-small">
-                                    <input type="checkbox" id="demo-copy" name="demo-copy">
-                                    <label for="demo-copy">Email me a copy</label>
-                                </div>
-                                <div class="col-6 col-12-small">
-                                    <input type="checkbox" id="demo-human" name="demo-human" checked>
-                                    <label for="demo-human">Not a robot</label>
-                                </div>
-                                <div class="col-12">
-                                    <textarea name="demo-message" id="demo-message" placeholder="Enter your message or special requirements" rows="6"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="actions">
-                                        <li><input type="submit" value="Book Appointment" class="primary" /></li>
-                                        <li><input type="reset" value="Reset" /></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </section>
+						<!-- Additional Options Section -->
+						<div class="form-section">
+							<h3 class="section-title" style="color: white;">Additional Options</h3>
+							<div class="row gtr-uniform">
+								<div class="col-4 col-12-small">
+									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+									<label for="demo-priority-low" style="color: white;">Standard</label>
+								</div>
+								<div class="col-4 col-12-small">
+									<input type="radio" id="demo-priority-normal" name="demo-priority">
+									<label for="demo-priority-normal" style="color: white;">Priority</label>
+								</div>
+								<div class="col-4 col-12-small">
+									<input type="radio" id="demo-priority-high" name="demo-priority">
+									<label for="demo-priority-high" style="color: white;">Urgent</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="checkbox" id="demo-copy" name="demo-copy">
+									<label for="demo-copy" style="color: white;">Email me a copy</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="checkbox" id="demo-human" name="demo-human" checked>
+									<label for="demo-human" style="color: white;">Not a robot</label>
+								</div>
+								<div class="col-12">
+									<textarea name="demo-message" id="demo-message" placeholder="Enter your message or special requirements" rows="6"></textarea>
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Book Appointment" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</form>
+				</section>
 
-            </div>
+			</div>
 
 			<!-- Footer -->
 			<footer id="footer">
