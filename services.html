@@ -11,6 +11,125 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Custom styles for expandable sections */
+			.details-btn {
+				background: linear-gradient(135deg, #edbf79ab, #60bca3a1);
+				color: white;
+				padding: 12px 25px;
+				border: none;
+				border-radius: 25px;
+				font-size: 16px;
+				font-weight: bold;
+				text-align: center;
+				line-height: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
+				margin: 20px 0 10px 0;
+				display: block;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.details-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
+				background: linear-gradient(135deg, #edbf79, #60bca4);
+			}
+			
+			.details-btn:active {
+				transform: translateY(0);
+			}
+			
+			.details-btn::after {
+				content: '';
+				margin-left: 10px;
+				font-size: 14px;
+				transition: transform 0.3s ease;
+			}
+			
+			.details-btn.active::after {
+				transform: rotate(180deg);
+			}
+			
+			.expandable-content {
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.4s ease, padding 0.4s ease;
+				background: rgba(255, 255, 255, 0.05);
+				border-left: 4px solid #edbf79;
+				margin: 20px 0;
+				border-radius: 8px;
+			}
+			
+			.expandable-content.expanded {
+				max-height: 1000px;
+				padding: 20px;
+			}
+			
+			.price-info {
+				background: linear-gradient(135deg, #edbf79, #60bca4);
+				color: white;
+				padding: 15px 20px;
+				border-radius: 8px;
+				margin-bottom: 15px;
+				text-align: center;
+			}
+			
+			.price-amount {
+				font-size: 30px;
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+			
+			.price-description {
+				font-size: 18px;
+				opacity: 0.9;
+			}
+			
+			.additional-info {
+				background: rgba(255, 255, 255, 0.1);
+				padding: 15px;
+				border-radius: 6px;
+				margin-top: 15px;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+			}
+			
+			.additional-info h4 {
+				color: #007acc;
+				margin-top: 0;
+				margin-bottom: 10px;
+			}
+			
+			.booking-note {
+				background:linear-gradient(135deg, #edbf79, #60bca4);
+				color: white;
+				border: 1px solid rgba(255, 234, 167, 0.3);
+				padding: 12px;
+				border-radius: 6px;
+				margin-top: 15px;
+				font-size: 18px;
+				@media screen and (max-width: 768px) {
+					font-size: 12px;
+				}
+			}
+			
+			/* Responsive adjustments */
+			@media screen and (max-width: 768px) {
+				.details-btn {
+					font-size: 14px;
+					padding: 10px 20px;
+				}
+				
+				.expandable-content.expanded {
+					max-height: 1100px;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -29,10 +148,11 @@
 						<!-- Content -->
 							<section id="content" class="main">
 								<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+								
 								<h2>Free 20 Minute Call</h2>
 								<p>Curious about how Neuro Athletic Training (NAT) can support your unique goals? Whether you're dealing with chronic pain, recovering from injury, seeking better movement, or simply looking to enhance your performance, this call is your chance to connect with me directly.
 
-									In this free 20-minute call, you’ll get the opportunity to:
+									In this free 20-minute call, you'll get the opportunity to:
 
 										<ul>
 											<li>Ask any questions you have about NAT</li>
@@ -43,48 +163,133 @@
 
 									My goal is to make sure you feel heard, understood, and supported—with clear next steps.
 									All sessions are held online via Google Meet.
-									</p>
+								</p>
+								<button class="details-btn" onclick="toggleSection('section1', this)">More Details & Pricing</button>
+								
+								<div class="expandable-content" id="section1">
+									<div class="price-info">
+										<div class="price-amount">FREE</div>
+										<div class="price-description">20-minute consultation call</div>
+									</div>
+									
+									<div class="additional-info">
+										
+										<h4>Perfect for:</h4>
+										<ul>
+											<li>Anyone curious about neurological approaches to pain and performance</li>
+											<li>People who want to understand their options before committing</li>
+											<li>Those seeking a second opinion on their current approach</li>
+										</ul>
+									</div>
+									
+									<div class="booking-note">
+										<a href="form.html" ><strong>Ready to schedule?</strong></a> Book your free call through our contact form or reach out via email to find a time that works for you.
+									</div>
+								</div>
 
-								<h2>Small Neuroassessment</h2>
+								<h2>Neuroassessment</h2>
 								<p>The Neuroassessment is a detailed, science-based evaluation designed to uncover how your nervous system is functioning—and where it may need support. This session combines well-established tests from clinical neurology to give us a clear picture of your brain-body connection.
 
 								During the assessment, I will evaluate key neurological systems using proven methods, including:
 								
 								<ul>
-
-									<li><strong>Vital signs</strong> – blood pressure, heart rate, and other baseline indicators</li>
-
-									<li><strong>Breathing patterns</strong> – to assess regulation, rhythm, and nervous system tone</li>
-
-									<li><strong>Gait analysis</strong> – how you walk provides insights into coordination and brain function</li>
-
-									<li><strong>Sensory testing</strong> – checking how your nervous system processes touch, temperature, and proprioception</li>
-
-									<li><strong>Cerebellar tests</strong> – to examine balance, motor control, and coordination</li>
-
-									<li><strong>Cranial nerve examination</strong> – assessing all 12 cranial nerves that control essential functions like eye movement, facial sensation, hearing, and more</li>
-
-									<li><strong>Visual testing</strong> – looking at visual tracking, fixation, and processing</li>
-
+									<li><strong>Vital signs</strong> - blood pressure, heart rate, and other baseline indicators</li>
+									<li><strong>Breathing patterns</strong> - to assess regulation, rhythm, and nervous system tone</li>
+									<li><strong>Gait analysis</strong> - how you walk provides insights into coordination and brain function</li>
+									<li><strong>Sensory testing</strong> - checking how your nervous system processes touch, temperature, and proprioception</li>
+									<li><strong>Cerebellar tests</strong> - to examine balance, motor control, and coordination</li>
+									<li><strong>Cranial nerve examination</strong> - assessing all 12 cranial nerves that control essential functions like eye movement, facial sensation, hearing, and more</li>
+									<li><strong>Visual testing</strong> - looking at visual tracking, fixation, and processing</li>
 								</ul>
 
 								These tests are widely recognized in neurological practice and provide valuable insights into how effectively your brain and nervous system is functioning. They help us identify subtle dysfunctions or imbalances—often before they become noticeable in daily life.
 
-By detecting these issues early on, we can take proactive steps to prevent them from worsening. Based on your results, we’ll develop a personalized, targeted plan to help you move more efficiently, feel better, and take back control of your health and performance.</p>
-								<h2>Full Neuroassessment</h2>
-								<p></p>
+								By detecting these issues early on, we can take proactive steps to prevent them from worsening. Based on your results, we'll develop a personalized, targeted plan to help you move more efficiently, feel better, and take back control of your health and performance.</p>
+								<button class="details-btn" onclick="toggleSection('section2', this)">More Details & Pricing</button>
+								
+								<div class="expandable-content" id="section2">
+									<div class="price-info">
+										<div class="price-amount">€150</div>
+										<div class="price-description">Comprehensive 90-minute assessment</div>
+									</div>
+									
+									<div class="additional-info">
+										<h4>What's Included:</h4>
+										<ul>
+											<li>Complete neurological evaluation using clinical-grade tests</li>
+											<li>Detailed analysis of your results and what they mean</li>
+											<li>Personalized report with findings and recommendations</li>
+											
+											
+										</ul>
+										
+										<h4>Ideal for:</h4>
+										<ul>
+											
+											<li>Athletes looking to establish a comprehensive neurological baseline to compare their performance across seasons </li>
+											<li>Individuals with chronic pain seeking root cause analysis</li>
+											<li>People recovering from injury who want comprehensive evaluation</li>
+											<li>Athletes seeking to optimize performance and get an in depth neurological assessment</li>
+											<li>Anyone interested in preventive health and early intervention</li>
+										</ul>
+										
+										
+									</div>
+									
+									<div class="booking-note">
+										<a href="form.html" ><strong>Investment in your health</strong></a> - This comprehensive assessment gives you unprecedented insight into your nervous system function
+									</div>
+								</div>
 
-
-								<h2>Personaltraining</h2>
+								<h2>Personal Training</h2>
 								<p>
+									Unlike the Neuroassessment, your first session focuses on a goal-specific evaluation that begins with an in-depth discussion of your history and training or rehabilitation goals. Based on this, we perform only the tests most relevant to your individual needs.
 
-									Unlike the Neurossessment, your first session focuses on a goal-specific evaluation that begins with an in-depth discussion of your history and training or rehabilitation goals. Based on this, we perform only the tests most relevant to your individual needs.
+									What sets this session apart is that we don't just assess—we start right away. You'll begin with targeted exercises and immediate adjustments to your current training or rehab plan. Together, we'll review your existing program and explore how a neurocentric approach can be integrated to enhance your performance and results.
 
-									What sets this session apart is that we don’t just assess—we start right away. You'll begin with targeted exercises and immediate adjustments to your current training or rehab plan. Together, we’ll review your existing program and explore how a neurocentric approach can be integrated to enhance your performance and results.
+									Whether we create a new personalized plan or build on what you're already doing, every exercise will be chosen to improve the communication between your brain and body—helping you move, perform, and recover more effectively.
+								</p>
+								<button class="details-btn" onclick="toggleSection('section3', this)">More Details & Pricing</button>
+								
+								<div class="expandable-content" id="section3">
+									<div class="price-info">
+										<div class="price-amount">€95/h</div>
+										<div class="price-description">Individual sessions</div>
+									</div>
+									
+									<div class="additional-info">
+										<h4>What You'll Receive:</h4>
+										<ul>
+											<li>Goal-specific neurological assessment tailored to your needs</li>
+											<li>Immediate implementation of corrective exercises</li>
+											<li>Integration of NAT principles into your existing routine</li>
+											<li>Personalized exercise modifications and progressions</li>
+											<li>Ongoing support and adjustments based on your progress</li>
+										</ul>
+										
+										
+										<h4>Perfect for:</h4>
+										<ul>
+											<li>Athletes wanting to enhance performance through neurological training</li>
+											<li>Individuals with specific movement goals or limitations</li>
+											<li>People seeking to integrate NAT into existing fitness routines</li>
+											
+										</ul>
 
-									Whether we create a new personalized plan or build on what you're already doing, every exercise will be chosen to improve the communication between your brain and body—helping you move, perform, and recover more effectively.</p>
+										<h4>Session Duration & Format:</h4>
+										<ul>
+											<li>Sessions are individually timed and can take place either online or at a location that best suits the goals and content of the session</li>
+											<li>For long-term collaboration, feel free to reach out for a personalized offer</li>
+											
+										</ul>
+										</div>
+									
+									<div class="booking-note">
+										<strong>Package Options:</strong> Single sessions available, or save with 4-session packages (€350) or 8-session packages (€650).
+									</div>
+								</div>
 
-								</section>
+							</section>
 
 					</div>
 
@@ -128,6 +333,24 @@ By detecting these issues early on, we can take proactive steps to prevent them 
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<!-- Custom expandable sections script -->
+			<script>
+				function toggleSection(sectionId, button) {
+					const content = document.getElementById(sectionId);
+					const isExpanded = content.classList.contains('expanded');
+					
+					content.classList.toggle('expanded');
+					button.classList.toggle('active');
+					
+					// Update button text
+					if (isExpanded) {
+						button.innerHTML = 'More Details & Pricing <span style="margin-left: 10px;"></span>';
+					} else {
+						button.innerHTML = 'Hide Details <span style="margin-left: 10px;"></span>';
+					}
+				}
+			</script>
 
 	</body>
 </html>
