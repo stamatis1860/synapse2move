@@ -1,254 +1,474 @@
 <!DOCTYPE HTML>
 <!--
-	Stellar by HTML5 UPfStelf
+	Stellar by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 	<head>
-		<title>Neuro Atheltic Training by Stamatis</title>
+		<title>Neuro Athletic Training by Stamatis</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
-
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<style>
+			/* Language Switch Styles */
+			.language-switch {
+				position: fixed;
+				top: 20px;
+				right: 20px;
+				z-index: 10000;
+				background: rgba(0, 0, 0, 0.8);
+				border-radius: 25px;
+				padding: 5px;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+			}
+			
+			.lang-btn {
+				background: transparent;
+				border: none;
+				color: white;
+				padding: 8px 12px;
+				cursor: pointer;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+				font-size: 0.9em;
+				font-weight: bold;
+			}
+			
+			.lang-btn:hover {
+				background: rgba(255, 255, 255, 0.1);
+			}
+			
+			.lang-btn.active {
+				background: #60bca4;
+				color: white;
+			}
+			
+			/* Hide inactive language content */
+			.lang-content {
+				display: none;
+			}
+			
+			.lang-content.active {
+				display: block;
+			}
+			
+			/* Inline language spans */
+			.lang-en, .lang-de {
+				display: none;
+			}
+			
+			.lang-en.active, .lang-de.active {
+				display: inline;
+			}
+			
+			@media (max-width: 600px) {
+				.language-switch {
+					top: 10px;
+					right: 10px;
+					scale: 0.9;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
+		<!-- Language Switch -->
+		<div class="language-switch">
+			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
+			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
+		</div>
+
 		<!-- Wrapper -->
-			<div id="wrapper">
+		<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<!--
-						<span class="logo"><img src="images/logo.svg" alt="" /></span>
-						-->
-						<h1>Synapse²<br>Move</h1>
+			<!-- Header -->
+			<header id="header" class="alt">
+				<h1>Synapse²<br>Move</h1>
+				<p><em>
+					<span class="lang-en active">WHERE THINKING MOVES / creating connections - Vibrantly alive</span>
+					<span class="lang-de">WO DENKEN BEWEGT / creating connections - Vibrantly alive</span>
+				</em></p>
+			</header>
 
-						<p><em>WO DENKEN BEWEGT/ creating connections - Vibrantly alive</em></p>
-					</header>
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="#intro" class="active">
+						<span class="lang-en active">Neuroathletic Training</span>
+						<span class="lang-de">Neuroathletiktraining</span>
+					</a></li>
+					<li><a href="#first">
+						<span class="lang-en active">Services</span>
+						<span class="lang-de">Leistungen</span>
+					</a></li>
+					<li><a href="#second">
+						<span class="lang-en active">Group Workshops</span>
+						<span class="lang-de">Gruppenworkshops</span>
+					</a></li>
+					<li><a href="#third">
+						<span class="lang-en active">Diving into Arts</span>
+						<span class="lang-de">Diving into Arts</span>
+					</a></li>
+					<li><a href="#fourth">
+						<span class="lang-en active">About Me</span>
+						<span class="lang-de">Über mich</span>
+					</a></li>
+					<li><a href="#cta">
+						<span class="lang-en active">Get Started</span>
+						<span class="lang-de">Jetzt starten</span>
+					</a></li>
+				</ul>
+			</nav>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active">Neuroathletictraining</a></li>
-							<li><a href="#first">Services</a></li>
-							<li><a href="#second">Group Workshops</a></li>
-							<li><a href="#third">Diving into Arts</a></li>
-							<li><a href="#fourth">About Me</a></li>
-							<li><a href="#cta">Get Started</a></li>
-						</ul>
-					</nav>
+			<!-- Main -->
+			<div id="main">
 
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Introduction -->
-							<section id="intro" class="main">
-								<div class="spotlight">
-									<div class="content">
-										<header class="major">
-											<h2>Neuroathletictraining</h2>
-										</header>
-										<p>Neuroathletictraining (NAT) is a training method that enhances athletic performance and supports rehabilitation  by targeting and improving the brain and nervous system with movement."</p>
-										<ul class="actions">
-											<li><a href="Neuro.html" class="button">Learn More</a></li>
-										</ul>
-									</div>
-									<span class="image"><img src="images/pic01.jpg" alt="" /></span>
-								</div>
-							</section>
-
-						<!-- First Section -->
-							<section id="first" class="main special">
-								<header class="major">
-									<h2>Services</h2>
-								</header>
-								<ul class="features">
-									<li>
-										<span class="icon solid major style1 fa-phone"></span>
-										<h3>Free 20 min Call</h3>
-										<p>In this 20-minute call, we’ll discuss your goals, challenges, and current physical and mental condition. Whether you're aiming to boost performance or recover from injury, I’ll assess your needs and explain how NAT can help you move better, feel stronger, and reach your potential.</p>
-									</li>
-									<li>
-										<span class="icon solid major style1 fa-brain"></span>
-										<h3>Neuroassessment – Functional Analysis of Your Nervous System</h3>
-										<p>This assessment provides a detailed analysis of your central and peripheral nervous system function, focusing on visual, vestibular, and proprioceptive integration. By identifying potential inefficiencies or imbalances, we gain valuable insights into how your nervous system influences movement, cognition, and overall performance—laying the foundation for targeted interventions if needed.</p>
-									</li>
-									<li>
-										<span class="icon solid major style1 fa-dumbbell"></span>
-										<h3>Personal & Athletic Training – Neurocentric, Goal-Oriented, Effective</h3>
-										<p>
-											Whether you're looking to improve strength, endurance, coordination, or overall fitness, these training sessions are tailored to your individual goals. Using a neurocentric approach, we integrate targeted exercises that not only train your body but also engage and optimize your nervous system—leading to more efficient, sustainable results.</p>
-									</li>
-									
-									
-								</ul>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="services.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
-
-						
-
-							<section id="second" class="main special">
-								<header class="major">
-									<h2> Neuroathletik Group Workshops – Sharpen the Brain, Elevate Performance</h2>
-									<p>
-These group workshops offer a powerful introduction to neurocentric training for teams, clubs, and groups across disciplines. By focusing on the brain and nervous system as the control center of movement, Neuroathletiktraining helps participants improve coordination, reaction time, focus, and overall movement efficiency.
-
-In a team setting—whether in sports, dance, or performance—this approach builds a shared foundation of body awareness, mental clarity, and injury prevention. For sports teams in particular, the benefits are immediate and measurable: faster decision-making, better on-field communication, quicker recovery, and more resilient athletes.
-
-Each workshop is tailored to the specific demands of the group, combining theory with hands-on practice. Participants leave with a deeper understanding of their own nervous system—and tools they can apply in training and competition.
-
-Perfect for sports teams, performance groups, dance ensembles, and anyone looking to level up through smarter training.</p>
-								</header>
-								
-								<p class="content"></p>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="workshops.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
-
-							<section id="third" class="main special">
-								<header class="major">
-									<h2>Diving into Arts / Workshops for Creativity, Productivity & Relaxation – Brain-Based Tools for Modern Life</h2>
-									<p>
-										In these workshops, I guide teams, creatives, and individuals through practical, neuroscience-based tools that help unlock creativity, improve focus, and reduce stress. Whether in a retreat setting or a corporate environment, participants learn how their nervous system influences performance, communication, and well-being—and how to work with it, not against it.
-
-										Using insights from Neuroathletic Training and movement science, these sessions combine theory with direct experience to create lasting impact. From simple breathing techniques and sensory drills to movement-based practices, the tools are easy to apply in everyday life and work.
-
-										Ideal for teams seeking innovation, creatives looking for flow, or anyone wanting more clarity and balance in their day-to-day routines.</p>
-								</header>
-								
-								<p class="content"></p>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="divingarts.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
-
-							<!-- Second Section -->
-							<section id="fourth" class="main special">
-								<header class="major">
-									<h2>About Me</h2>
-									<p></p>
-								</header>
-								<!--
-								<ul class="statistics">
-									<li class="style1">
-										<span class="icon solid fa-code-branch"></span>
-										<strong>5,120</strong> Etiam
-									</li>
-									<li class="style2">
-										<span class="icon fa-folder-open"></span>
-										<strong>8,192</strong> Magna
-									</li>
-									<li class="style3">
-										<span class="icon solid fa-signal"></span>
-										<strong>2,048</strong> Tempus
-									</li>
-									<li class="style4">
-										<span class="icon solid fa-laptop"></span>
-										<strong>4,096</strong> Aliquam
-									</li>
-									<li class="style5">
-										<span class="icon fa-gem"></span>
-										<strong>1,024</strong> Nullam
-									</li>
-								</ul>
-								 -->
-								<p>
-									<span class="image left" style="width:350px; max-width:100%;">
-										<img src="images/stamatios-papavasiliou.jpg" alt="" style="width:100%; height:auto;" />
-									</span>
-												Hi, I'm a sports scientist and certified Neuroathletic Trainer with a deep passion for the movement and how the human brain works. My journey into neuroscience began with the Feldenkrais Method, which opened my eyes to how movement and awareness shape performance, healing, and creativity.
-												After completing my Bachelor's degree in Sport Science, I dove into the world of neuroathletics with Z-Health — fascinated by how targeted brain-based training can unlock new levels of physical and mental potential. I now integrate this approach not only in performance and rehab settings but also in my own artistic work as a dancer and creative.
-												I'm active in triathlon, tennis, calisthenics and really, anything that challenges my body and mind. Above all, I love to dance. I run with my partner a small dance school focused on Brazilian Zouk, and I truly believe that dancing is one of the best workouts you can do for your body and your brain.
-												Whether in training, therapy, or the creative process, my goal is to help people move smarter, feel stronger, and live more fully—guided by the intelligence of the nervous system. If you want to get to know me better click on my peronal <a href="https://www.instagram.com/stamatinhos/"> Instagram </a> account. 
-											<p style="font-size: 0.8em; font-style: italic; color: #22050586; text-align: center;">
-											Click <a href="https://zhealtheducation.com/de/Trainer-finden/" style="color: #60bca4;">here</a> to find my Z-Health Certifications.
-											</p>
-
-								
-								
-							</section>
-
-						<!-- Get Started -->
-							<section id="cta" class="main special">
-								<header class="major">
-									<h2>Training Locations</h2>
-									<p>
-											 &bull; In person at a location suited to the content of the session (e.g. gym, outdoor area).
-
-									</br>&bull; Online via video call — when flexibility is needed ( depends on session if possible).
-											
-										</p>
-								</header>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="form.html" class="button primary">Get Started</a></li>
-										
-									</ul>
-								</footer>
-							</section>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h1 style="font-size: 1.8em;">
-								<strong>Your goals are <span style="font-size: 1.2em;">within reach</span></strong>
-								</h1>
-							<p><strong>Book your session and let’s make it happen.</strong></p>
+				<!-- Introduction -->
+				<section id="intro" class="main">
+					<div class="spotlight">
+						<div class="content">
+							<header class="major">
+								<h2>
+									<span class="lang-en active">Neuroathletic Training</span>
+									<span class="lang-de">Neuroathletiktraining</span>
+								</h2>
+							</header>
+							<div class="lang-en active">
+								<p>Neuroathletic Training (NAT) is a training method that enhances athletic performance and supports rehabilitation by targeting and improving the brain and nervous system with movement.</p>
+							</div>
+							<div class="lang-de">
+								<p>Neuroathletiktraining (NAT) ist eine Trainingsmethode, die die sportliche Leistung steigert und die Rehabilitation unterstützt, indem sie das Gehirn und Nervensystem gezielt durch Bewegung verbessert.</p>
+							</div>
 							<ul class="actions">
-								<li><a href="form.html" class="button"><strong>Get Started!</strong></a></li>
+								<li><a href="Neuro.html" class="button">
+									<span class="lang-en active">Learn More</span>
+									<span class="lang-de">Mehr erfahren</span>
+								</a></li>
 							</ul>
-						</section>
-						<section>
-							<h2>Contact</h2>
-							<dl class="alt">
-								<dt>Address</dt>
-								<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-								<dt>Phone</dt>
-								<dd>+49 152 21319336</dd>
-								<dt>Email</dt>
-								<dd><a href="#">stamatis@ionio.de</a></dd>
-							</dl>
-							<ul class="icons" style="justify-content: center; align-items: center;">
-								<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-							</ul>
-							<style>
-							@media (max-width: 600px) {
-								#footer .icons {
-									display: flex !important;
-									justify-content: center !important;
-									align-items: center !important;
-									padding-left: 0 !important;
-								}
-							}
-							</style>
-						</section>
-						<p class="copyright"> <a href="index.html"><strong>HOME</strong></a> <br> &copy; Stamatios Papavasiliou 2025<br> <a href="impressum.html">Impressum</a>   <br> <a href="datenschutz.html">Datenschutzerklärung</a>   <br>   Template Design: <a href="https://html5up.net">HTML5 UP</a>  <br>   </p>
-					</footer>
+						</div>
+						<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+					</div>
+				</section>
 
+				<!-- First Section -->
+				<section id="first" class="main special">
+					<header class="major">
+						<h2>
+							<span class="lang-en active">Services</span>
+							<span class="lang-de">Leistungen</span>
+						</h2>
+					</header>
+					<ul class="features">
+						<li>
+							<span class="icon solid major style1 fa-phone"></span>
+							<h3>
+								<span class="lang-en active">Free 20 min Call</span>
+								<span class="lang-de">Kostenloses 20-Min-Gespräch</span>
+							</h3>
+							<div class="lang-en active">
+								<p>In this 20-minute call, we'll discuss your goals, challenges, and current physical and mental condition. Whether you're aiming to boost performance or recover from injury, I'll assess your needs and explain how NAT can help you move better, feel stronger, and reach your potential.</p>
+							</div>
+							<div class="lang-de">
+								<p>In diesem 20-minütigen Gespräch besprechen wir deine Ziele, Herausforderungen und deinen aktuellen körperlichen und mentalen Zustand. Ob du deine Leistung steigern oder dich von einer Verletzung erholen möchtest – ich bewerte deine Bedürfnisse und erkläre, wie NAT dir helfen kann, dich besser zu bewegen, stärker zu fühlen und dein Potenzial zu erreichen.</p>
+							</div>
+						</li>
+						<li>
+							<span class="icon solid major style1 fa-brain"></span>
+							<h3>
+								<span class="lang-en active">Neuroassessment – Functional Analysis of Your Nervous System</span>
+								<span class="lang-de">Neuroassessment – Funktionale Analyse deines Nervensystems</span>
+							</h3>
+							<div class="lang-en active">
+								<p>This assessment provides a detailed analysis of your central and peripheral nervous system function, focusing on visual, vestibular, and proprioceptive integration. By identifying potential inefficiencies or imbalances, we gain valuable insights into how your nervous system influences movement, cognition, and overall performance—laying the foundation for targeted interventions if needed.</p>
+							</div>
+							<div class="lang-de">
+								<p>Diese Bewertung bietet eine detaillierte Analyse der Funktion deines zentralen und peripheren Nervensystems, mit Fokus auf visuelle, vestibuläre und propriozeptive Integration. Durch die Identifizierung möglicher Ineffizienzen oder Ungleichgewichte gewinnen wir wertvolle Einblicke, wie dein Nervensystem Bewegung, Kognition und Gesamtleistung beeinflusst – und schaffen die Grundlage für gezielte Interventionen, falls nötig.</p>
+							</div>
+						</li>
+						<li>
+							<span class="icon solid major style1 fa-dumbbell"></span>
+							<h3>
+								<span class="lang-en active">Personal & Athletic Training – Neurocentric, Goal-Oriented, Effective</span>
+								<span class="lang-de">Personal & Athletic Training – Neurozentriert, Zielorientiert, Effektiv</span>
+							</h3>
+							<div class="lang-en active">
+								<p>Whether you're looking to improve strength, endurance, coordination, or overall fitness, these training sessions are tailored to your individual goals. Using a neurocentric approach, we integrate targeted exercises that not only train your body but also engage and optimize your nervous system—leading to more efficient, sustainable results.</p>
+							</div>
+							<div class="lang-de">
+								<p>Ob du Kraft, Ausdauer, Koordination oder allgemeine Fitness verbessern möchtest – diese Trainingseinheiten sind auf deine individuellen Ziele zugeschnitten. Mit einem neurozentrischen Ansatz integrieren wir gezielte Übungen, die nicht nur deinen Körper trainieren, sondern auch dein Nervensystem ansprechen und optimieren – für effizientere, nachhaltigere Ergebnisse.</p>
+							</div>
+						</li>
+					</ul>
+					<footer class="major">
+						<ul class="actions special">
+							<li><a href="services.html" class="button">
+								<span class="lang-en active">Learn More</span>
+								<span class="lang-de">Mehr erfahren</span>
+							</a></li>
+						</ul>
+					</footer>
+				</section>
+
+				<section id="second" class="main special">
+					<header class="major">
+						<h2>
+							<span class="lang-en active">Neuroathletic Group Workshops – Sharpen the Brain, Elevate Performance</span>
+							<span class="lang-de">Neuroathletik Gruppenworkshops – Das Gehirn schärfen, die Leistung steigern</span>
+						</h2>
+						<div class="lang-en active">
+							<p>These group workshops offer a powerful introduction to neurocentric training for teams, clubs, and groups across disciplines. By focusing on the brain and nervous system as the control center of movement, Neuroathletic Training helps participants improve coordination, reaction time, focus, and overall movement efficiency.</p>
+							<p>In a team setting—whether in sports, dance, or performance—this approach builds a shared foundation of body awareness, mental clarity, and injury prevention. For sports teams in particular, the benefits are immediate and measurable: faster decision-making, better on-field communication, quicker recovery, and more resilient athletes.</p>
+							<p>Each workshop is tailored to the specific demands of the group, combining theory with hands-on practice. Participants leave with a deeper understanding of their own nervous system—and tools they can apply in training and competition.</p>
+							<p>Perfect for sports teams, performance groups, dance ensembles, and anyone looking to level up through smarter training.</p>
+						</div>
+						<div class="lang-de">
+							<p>Diese Gruppenworkshops bieten eine kraftvolle Einführung in neurozentriertes Training für Teams, Vereine und Gruppen verschiedener Disziplinen. Durch den Fokus auf das Gehirn und Nervensystem als Kontrollzentrum der Bewegung hilft Neuroathletiktraining den Teilnehmern, Koordination, Reaktionszeit, Konzentration und allgemeine Bewegungseffizienz zu verbessern.</p>
+							<p>In einem Teamumfeld – ob im Sport, Tanz oder Performance – schafft dieser Ansatz eine gemeinsame Basis für Körperbewusstsein, mentale Klarheit und Verletzungsprävention. Besonders für Sportteams sind die Vorteile sofort messbar: schnellere Entscheidungsfindung, bessere Kommunikation auf dem Feld, schnellere Erholung und widerstandsfähigere Athleten.</p>
+							<p>Jeder Workshop ist auf die spezifischen Anforderungen der Gruppe zugeschnitten und kombiniert Theorie mit praktischer Anwendung. Die Teilnehmer gehen mit einem tieferen Verständnis ihres eigenen Nervensystems – und mit Werkzeugen, die sie in Training und Wettkampf anwenden können.</p>
+							<p>Perfekt für Sportteams, Performance-Gruppen, Tanzensembles und jeden, der durch intelligenteres Training aufsteigen möchte.</p>
+						</div>
+					</header>
+					<footer class="major">
+						<ul class="actions special">
+							<li><a href="workshops.html" class="button">
+								<span class="lang-en active">Learn More</span>
+								<span class="lang-de">Mehr erfahren</span>
+							</a></li>
+						</ul>
+					</footer>
+				</section>
+
+				<section id="third" class="main special">
+					<header class="major">
+						<h2>
+							<span class="lang-en active">Diving into Arts / Workshops for Creativity, Productivity & Relaxation – Brain-Based Tools for Modern Life</span>
+							<span class="lang-de">Diving into Arts / Workshops für Kreativität, Produktivität & Entspannung – Gehirnbasierte Tools für das moderne Leben</span>
+						</h2>
+						<div class="lang-en active">
+							<p>In these workshops, I guide teams, creatives, and individuals through practical, neuroscience-based tools that help unlock creativity, improve focus, and reduce stress. Whether in a retreat setting or a corporate environment, participants learn how their nervous system influences performance, communication, and well-being—and how to work with it, not against it.</p>
+							<p>Using insights from Neuroathletic Training and movement science, these sessions combine theory with direct experience to create lasting impact. From simple breathing techniques and sensory drills to movement-based practices, the tools are easy to apply in everyday life and work.</p>
+							<p>Ideal for teams seeking innovation, creatives looking for flow, or anyone wanting more clarity and balance in their day-to-day routines.</p>
+						</div>
+						<div class="lang-de">
+							<p>In diesen Workshops führe ich Teams, Kreative und Einzelpersonen durch praktische, neurowissenschaftsbasierte Tools, die helfen, Kreativität freizusetzen, Fokus zu verbessern und Stress zu reduzieren. Ob in einem Retreat-Setting oder in einer Unternehmensumgebung – die Teilnehmer lernen, wie ihr Nervensystem Leistung, Kommunikation und Wohlbefinden beeinflusst – und wie man mit ihm arbeitet, nicht gegen es.</p>
+							<p>Mit Erkenntnissen aus Neuroathletiktraining und Bewegungswissenschaft kombinieren diese Sessions Theorie mit direkter Erfahrung, um nachhaltige Wirkung zu erzielen. Von einfachen Atemtechniken und sensorischen Übungen bis hin zu bewegungsbasierten Praktiken – die Tools sind einfach im Alltag und bei der Arbeit anzuwenden.</p>
+							<p>Ideal für Teams, die Innovation suchen, Kreative auf der Suche nach Flow oder jeden, der mehr Klarheit und Balance in seinen täglichen Routinen möchte.</p>
+						</div>
+					</header>
+					<footer class="major">
+						<ul class="actions special">
+							<li><a href="divingarts.html" class="button">
+								<span class="lang-en active">Learn More</span>
+								<span class="lang-de">Mehr erfahren</span>
+							</a></li>
+						</ul>
+					</footer>
+				</section>
+
+				<!-- Second Section -->
+				<section id="fourth" class="main special">
+					<header class="major">
+						<h2>
+							<span class="lang-en active">About Me</span>
+							<span class="lang-de">Über mich</span>
+						</h2>
+					</header>
+					<div class="lang-en active">
+						<p>
+							<span class="image left" style="width:350px; max-width:100%;">
+								<img src="images/stamatios-papavasiliou.jpg" alt="" style="width:100%; height:auto;" />
+							</span>
+							Hi, I'm a sports scientist and certified Neuroathletic Trainer with a deep passion for movement and how the human brain works. My journey into neuroscience began with the Feldenkrais Method, which opened my eyes to how movement and awareness shape performance, healing, and creativity.
+							After completing my Bachelor's degree in Sport Science, I dove into the world of neuroathletics with Z-Health — fascinated by how targeted brain-based training can unlock new levels of physical and mental potential. I now integrate this approach not only in performance and rehab settings but also in my own artistic work as a dancer and creative.
+							I'm active in triathlon, tennis, calisthenics and really, anything that challenges my body and mind. Above all, I love to dance. I run with my partner a small dance school focused on Brazilian Zouk, and I truly believe that dancing is one of the best workouts you can do for your body and your brain.
+							Whether in training, therapy, or the creative process, my goal is to help people move smarter, feel stronger, and live more fully—guided by the intelligence of the nervous system. If you want to get to know me better click on my personal <a href="https://www.instagram.com/stamatinhos/"> Instagram </a> account.
+							<p style="font-size: 0.8em; font-style: italic; color: #22050586; text-align: center;">
+								Click <a href="https://zhealtheducation.com/de/Trainer-finden/" style="color: #60bca4;">here</a> to find my Z-Health Certifications.
+							</p>
+						</p>
+					</div>
+					<div class="lang-de">
+						<p>
+							<span class="image left" style="width:350px; max-width:100%;">
+								<img src="images/stamatios-papavasiliou.jpg" alt="" style="width:100%; height:auto;" />
+							</span>
+							Hallo, ich bin Sportwissenschaftler und zertifizierter Neuroathletiktrainer mit einer tiefen Leidenschaft für Bewegung und die Funktionsweise des menschlichen Gehirns. Meine Reise in die Neurowissenschaft begann mit der Feldenkrais-Methode, die mir die Augen dafür öffnete, wie Bewegung und Bewusstsein Leistung, Heilung und Kreativität prägen.
+							Nach Abschluss meines Bachelor-Studiums in Sportwissenschaft tauchte ich mit Z-Health in die Welt der Neuroathletik ein – fasziniert davon, wie gezieltes gehirnbasiertes Training neue Ebenen des physischen und mentalen Potenzials freisetzen kann. Ich integriere diesen Ansatz nun nicht nur in Leistungs- und Reha-Settings, sondern auch in meine eigene künstlerische Arbeit als Tänzer und Kreativer.
+							Ich bin aktiv im Triathlon, Tennis, Calisthenics und eigentlich allem, was meinen Körper und Geist herausfordert. Vor allem aber liebe ich es zu tanzen. Zusammen mit meiner Partnerin betreibe ich eine kleine Tanzschule mit Fokus auf Brazilian Zouk, und ich glaube wirklich, dass Tanzen eines der besten Workouts ist, die du für deinen Körper und dein Gehirn machen kannst.
+							Ob im Training, in der Therapie oder im kreativen Prozess – mein Ziel ist es, Menschen dabei zu helfen, intelligenter zu bewegen, sich stärker zu fühlen und erfüllter zu leben – geleitet von der Intelligenz des Nervensystems. Wenn du mich besser kennenlernen möchtest, klick auf meinen persönlichen <a href="https://www.instagram.com/stamatinhos/"> Instagram </a> Account.
+							<p style="font-size: 0.8em; font-style: italic; color: #22050586; text-align: center;">
+								Klick <a href="https://zhealtheducation.com/de/Trainer-finden/" style="color: #60bca4;">hier</a> um meine Z-Health Zertifizierungen zu finden.
+							</p>
+						</p>
+					</div>
+				</section>
+
+				<!-- Get Started -->
+				<section id="cta" class="main special">
+					<header class="major">
+						<h2>
+							<span class="lang-en active">Training Locations</span>
+							<span class="lang-de">Trainingsstandorte</span>
+						</h2>
+						<div class="lang-en active">
+							<p>
+								&bull; In person at a location suited to the content of the session (e.g. gym, outdoor area).
+								<br>&bull; Online via video call — when flexibility is needed (depends on session if possible).
+							</p>
+						</div>
+						<div class="lang-de">
+							<p>
+								&bull; Persönlich an einem für den Sessioninhalt geeigneten Ort (z.B. Fitnessstudio, Außenbereich).
+								<br>&bull; Online per Videoanruf — wenn Flexibilität benötigt wird (abhängig von der Session, falls möglich).
+							</p>
+						</div>
+					</header>
+					<footer class="major">
+						<ul class="actions special">
+							<li><a href="form.html" class="button primary">
+								<span class="lang-en active">Get Started</span>
+								<span class="lang-de">Jetzt starten</span>
+							</a></li>
+						</ul>
+					</footer>
+				</section>
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<!-- Footer -->
+			<footer id="footer">
+				<section>
+					<h1 style="font-size: 1.8em;">
+						<strong>
+							<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
+							<span class="lang-de">Deine Ziele sind <span style="font-size: 1.2em;">in Reichweite</span></span>
+						</strong>
+					</h1>
+					<p><strong>
+						<span class="lang-en active">Book your session and let's make it happen.</span>
+						<span class="lang-de">Buche deine Session und lass uns das angehen.</span>
+					</strong></p>
+					<ul class="actions">
+						<li><a href="form.html" class="button"><strong>
+							<span class="lang-en active">Get Started!</span>
+							<span class="lang-de">Jetzt starten!</span>
+						</strong></a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>
+						<span class="lang-en active">Contact</span>
+						<span class="lang-de">Kontakt</span>
+					</h2>
+					<dl class="alt">
+						<dt>
+							<span class="lang-en active">Address</span>
+							<span class="lang-de">Adresse</span>
+						</dt>
+						<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
+						<dt>
+							<span class="lang-en active">Phone</span>
+							<span class="lang-de">Telefon</span>
+						</dt>
+						<dd>+49 152 21319336</dd>
+						<dt>Email</dt>
+						<dd><a href="mailto:stamatis@ionio.de">stamatis@ionio.de</a></dd>
+					</dl>
+					<ul class="icons" style="justify-content: center; align-items: center;">
+						<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+					</ul>
+					<style>
+					@media (max-width: 600px) {
+						#footer .icons {
+							display: flex !important;
+							justify-content: center !important;
+							align-items: center !important;
+							padding-left: 0 !important;
+						}
+					}
+					</style>
+				</section>
+				<p class="copyright"> 
+					<a href="index.html"><strong>HOME</strong></a> <br> 
+					&copy; Stamatios Papavasiliou 2025<br> 
+					<a href="impressum.html">Impressum</a> <br> 
+					<a href="datenschutz.html">
+						<span class="lang-en active">Privacy Policy</span>
+						<span class="lang-de">Datenschutzerklärung</span>
+					</a> <br>   
+					Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
+				</p>
+			</footer>
+		</div>
 
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<script>
+			// Language switching functionality
+			let currentLanguage = 'en';
+
+			function switchLanguage(lang) {
+				if (currentLanguage === lang) return;
+				
+				currentLanguage = lang;
+				
+				// Update button states
+				document.querySelectorAll('.lang-btn').forEach(btn => {
+					btn.classList.remove('active');
+					if (btn.dataset.lang === lang) {
+						btn.classList.add('active');
+					}
+				});
+				
+				// Hide all language content
+				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+					element.classList.remove('active');
+				});
+				
+				// Show selected language content
+				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+					element.classList.add('active');
+				});
+				
+				// Update page title and meta
+				updatePageMeta(lang);
+				
+				// Save preference
+				localStorage.setItem('preferred-language', lang);
+			}
+
+			function updatePageMeta(lang) {
+				const translations = {
+					en: {
+						title: "Neuro Athletic Training by Stamatis | Synapse²Move"
+					},
+					de: {
+						title: "Neuroathletiktraining von Stamatis | Synapse²Move"
+					}
+				};
+				
+				document.title = translations[lang].title;
+			}
+
+			// Load saved language preference on page load
+			document.addEventListener('DOMContentLoaded', function() {
+				const savedLang = localStorage.getItem('preferred-language');
+				if (savedLang && savedLang !== currentLanguage) {
+					switchLanguage(savedLang);
+				}
+			});
+		</script>
 	</body>
 </html>
