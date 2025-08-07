@@ -15,65 +15,88 @@
 		
 		<style>
 			/* Language Switch Styles */
-			.language-switch {
-				position: fixed;
-				top: 20px;
-				right: 20px;
-				z-index: 10000;
-				background: rgba(0, 0, 0, 0.8);
-				border-radius: 25px;
-				padding: 5px;
-				display: flex;
-				align-items: center;
-				gap: 5px;
-			}
-			
-			.lang-btn {
-				background: transparent;
-				border: none;
-				color: white;
-				padding: 8px 12px;
-				cursor: pointer;
-				border-radius: 20px;
-				transition: all 0.3s ease;
-				font-size: 0.9em;
-				font-weight: bold;
-			}
-			
-			.lang-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-			}
-			
-			.lang-btn.active {
-				background: #60bca4;
-				color: white;
-			}
-			
-			/* Hide inactive language content */
-			.lang-content {
-				display: none;
-			}
-			
-			.lang-content.active {
-				display: block;
-			}
-			
-			/* Inline language spans */
-			.lang-en, .lang-de {
-				display: none;
-			}
-			
-			.lang-en.active, .lang-de.active {
-				display: inline;
-			}
-			
-			@media (max-width: 600px) {
-				.language-switch {
-					top: 10px;
-					right: 10px;
-					scale: 0.9;
-				}
-			}
+			/* Language Switch Styles - Updated for more subtle, transparent, fixed positioning */
+.language-switch {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 10000;
+	background:  linear-gradient(135deg, #edbf797c, #60bca381);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 25px;
+	padding: 3px;
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	transition: all 0.3s ease;
+	opacity: 0.7;
+}
+
+.language-switch:hover {
+	opacity: 1;
+	background: linear-gradient(135deg, #edbf79, #60bca3);
+}
+
+.lang-btn {
+	background: transparent;
+	border: none;
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0px 0px;
+	cursor: pointer;
+	border-radius: 20px;
+	transition: all 0.3s ease;
+	font-size: 0.50em;
+	font-weight: 800;
+	letter-spacing: 0.5px;
+}
+
+.lang-btn:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+}
+
+.lang-btn.active {
+	background: #edbf79;
+	color: white;
+	box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+}
+
+/* Hide inactive language content */
+.lang-content {
+	display: none;
+}
+
+.lang-content.active {
+	display: block;
+}
+
+/* Inline language spans */
+.lang-en, .lang-de {
+	display: none;
+}
+
+.lang-en.active, .lang-de.active {
+	display: inline;
+}
+
+@media (max-width: 600px) {
+	.language-switch {
+		top: 5px;
+		right: 1px;
+		scale: 0.85;
+		padding: 2px;
+		flex-direction: column;
+		gap: 1px;
+	}
+	
+	.lang-btn {
+		padding: 0px 7px;
+		font-size: 0.65em;
+		border-radius: 15px;
+	}
+}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -416,59 +439,64 @@
 		<script src="assets/js/main.js"></script>
 
 		<script>
-			// Language switching functionality
-			let currentLanguage = 'en';
+			// Session Storage Language Management System
+let currentLanguage = 'en';
 
-			function switchLanguage(lang) {
-				if (currentLanguage === lang) return;
-				
-				currentLanguage = lang;
-				
-				// Update button states
-				document.querySelectorAll('.lang-btn').forEach(btn => {
-					btn.classList.remove('active');
-					if (btn.dataset.lang === lang) {
-						btn.classList.add('active');
-					}
-				});
-				
-				// Hide all language content
-				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-					element.classList.remove('active');
-				});
-				
-				// Show selected language content
-				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-					element.classList.add('active');
-				});
-				
-				// Update page title and meta
-				updatePageMeta(lang);
-				
-				// Save preference
-				localStorage.setItem('preferred-language', lang);
-			}
+function switchLanguage(lang) {
+    if (currentLanguage === lang) return;
+    
+    currentLanguage = lang;
+    
+    // Update button states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Hide all language content
+    document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+        element.classList.remove('active');
+    });
+    
+    // Show selected language content
+    document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+        element.classList.add('active');
+    });
+    
+    // Update page title and meta
+    updatePageMeta(lang);
+    
+    // Save preference to session storage (clears when browser closes)
+    sessionStorage.setItem('preferred-language', lang);
+}
 
-			function updatePageMeta(lang) {
-				const translations = {
-					en: {
-						title: "Neuro Athletic Training by Stamatis | Synapse²Move"
-					},
-					de: {
-						title: "Neuroathletiktraining von Stamatis | Synapse²Move"
-					}
-				};
-				
-				document.title = translations[lang].title;
-			}
+function updatePageMeta(lang) {
+    const translations = {
+        en: {
+            title: "Neuro Athletic Training by Stamatis | Synapse²Move"
+        },
+        de: {
+            title: "Neuroathletiktraining von Stamatis | Synapse²Move"
+        }
+    };
+    
+    document.title = translations[lang].title;
+}
 
-			// Load saved language preference on page load
-			document.addEventListener('DOMContentLoaded', function() {
-				const savedLang = localStorage.getItem('preferred-language');
-				if (savedLang && savedLang !== currentLanguage) {
-					switchLanguage(savedLang);
-				}
-			});
+function initializeLanguage() {
+    // Load saved language preference from session storage
+    const savedLang = sessionStorage.getItem('preferred-language');
+    if (savedLang && savedLang !== currentLanguage) {
+        switchLanguage(savedLang);
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLanguage();
+});
 		</script>
 	</body>
 </html>
