@@ -12,6 +12,89 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
+			/* Language Switch Styles */
+			.language-switch {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				z-index: 10000;
+				background:  linear-gradient(135deg, #edbf797c, #60bca381);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 25px;
+				padding: 3px;
+				display: flex;
+				align-items: center;
+				gap: 2px;
+				transition: all 0.3s ease;
+				opacity: 0.7;
+			}
+
+			.language-switch:hover {
+				opacity: 1;
+				background: linear-gradient(135deg, #edbf79, #60bca3);
+			}
+
+			.lang-btn {
+				background: transparent;
+				border: none;
+				color: rgba(255, 255, 255, 0.8);
+				padding: 0px 0px;
+				cursor: pointer;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+				font-size: 0.50em;
+				font-weight: 800;
+				letter-spacing: 0.5px;
+			}
+
+			.lang-btn:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+			}
+
+			.lang-btn.active {
+				background: #edbf79;
+				color: white;
+				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+			}
+
+			/* Hide inactive language content */
+			.lang-content {
+				display: none;
+			}
+
+			.lang-content.active {
+				display: block;
+			}
+
+			/* Inline language spans */
+			.lang-en, .lang-de {
+				display: none;
+			}
+
+			.lang-en.active, .lang-de.active {
+				display: inline;
+			}
+
+			@media (max-width: 600px) {
+				.language-switch {
+					top: 5px;
+					right: 1px;
+					scale: 0.85;
+					padding: 2px;
+					flex-direction: column;
+					gap: 1px;
+				}
+				
+				.lang-btn {
+					padding: 0px 7px;
+					font-size: 0.65em;
+					border-radius: 15px;
+				}
+			}
+
 			/* Calendar Styles */
 			.calendar-container {
 				max-width: 400px;
@@ -176,12 +259,21 @@
 	</head>
 	<body class="is-preload">
 
+		<!-- Language Switch -->
+		<div class="language-switch">
+			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
+			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
+		</div>
+
 		<!-- Wrapper -->
 		<div id="wrapper">
 
 			<!-- Header -->
 			<header id="header">
-				<h1>Contactform</h1>
+				<h1>
+					<span class="lang-en active">Contact Form</span>
+					<span class="lang-de">Kontaktformular</span>
+				</h1>
 				<p></p>
 			</header>
 			<!-- Main -->
@@ -193,22 +285,41 @@
 					<form method="post" action="#" id="bookingForm">
 						<!-- Personal Information Section -->
 						<div class="form-section">
-							<h3 class="section-title" style="color: white;">Personal Information</h3>
+							<h3 class="section-title" style="color: white;">
+								<span class="lang-en active">Personal Information</span>
+								<span class="lang-de">Persönliche Informationen</span>
+							</h3>
 							<div class="row gtr-uniform">
 								<div class="col-6 col-12-xsmall">
-									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name & Surname" required style="background-color:  white;" />
+									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name & Surname" required style="background-color: white;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required style="background-color:  white;" />
+									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required style="background-color: white;" />
 								</div>
 								<div class="col-12">
 									<select name="demo-category" id="demo-category" style="color: white;">
-										<option value="">- Service Category -</option>
-										<option value="1">Free 20min Call</option>
-										<option value="2">Neuroassesment</option>
-										<option value="3">Personaltraining</option>
-										<option value="4">Urgent/ Pain</option>
-										<option value="5">Other Offers</option>
+										<option value="" class="lang-en active">- Service Category -</option>
+										<option value="" class="lang-de">- Servicekategorie -</option>
+										<option value="1">
+											<span class="lang-en active">Free 20min Call</span>
+											<span class="lang-de">Kostenloses 20-Min-Gespräch</span>
+										</option>
+										<option value="2">
+											<span class="lang-en active">Neuroassessment</span>
+											<span class="lang-de">Neuroassessment</span>
+										</option>
+										<option value="3">
+											<span class="lang-en active">Personal Training</span>
+											<span class="lang-de">Personaltraining</span>
+										</option>
+										<option value="4">
+											<span class="lang-en active">Urgent/Pain</span>
+											<span class="lang-de">Dringend/Schmerzen</span>
+										</option>
+										<option value="5">
+											<span class="lang-en active">Other Offers</span>
+											<span class="lang-de">Andere Angebote</span>
+										</option>
 									</select>
 								</div>
 							</div>
@@ -216,7 +327,10 @@
 
 						<!-- Appointment Booking Section -->
 						<div class="form-section">
-							<h3 class="section-title" style="color: white;">Select Date & Time</h3>
+							<h3 class="section-title" style="color: white;">
+								<span class="lang-en active">Select Date & Time</span>
+								<span class="lang-de">Datum & Uhrzeit wählen</span>
+							</h3>
 							<div class="row gtr-uniform">
 								<div class="col-6 col-12-medium">
 									<div class="calendar-container">
@@ -232,15 +346,27 @@
 								</div>
 								<div class="col-6 col-12-medium">
 									<div class="time-slots" id="timeSlots">
-										<h4>Available Times</h4>
+										<h4>
+											<span class="lang-en active">Available Times</span>
+											<span class="lang-de">Verfügbare Zeiten</span>
+										</h4>
 										<div class="time-slot-grid" id="timeSlotsGrid">
 											<!-- Time slots will be generated here -->
 										</div>
 									</div>
 									<div class="booking-summary" id="bookingSummary">
-										<h4>Booking Summary</h4>
-										<p><strong>Date:</strong> <span id="selectedDate"></span></p>
-										<p><strong>Time:</strong> <span id="selectedTime"></span></p>
+										<h4>
+											<span class="lang-en active">Booking Summary</span>
+											<span class="lang-de">Buchungsübersicht</span>
+										</h4>
+										<p><strong>
+											<span class="lang-en active">Date:</span>
+											<span class="lang-de">Datum:</span>
+										</strong> <span id="selectedDate"></span></p>
+										<p><strong>
+											<span class="lang-en active">Time:</span>
+											<span class="lang-de">Uhrzeit:</span>
+										</strong> <span id="selectedTime"></span></p>
 									</div>
 								</div>
 							</div>
@@ -250,35 +376,52 @@
 
 						<!-- Additional Options Section -->
 						<div class="form-section">
-							<h3 class="section-title" style="color: white;">Additional Options</h3>
+							<h3 class="section-title" style="color: white;">
+								<span class="lang-en active">Additional Options</span>
+								<span class="lang-de">Zusätzliche Optionen</span>
+							</h3>
 							<div class="row gtr-uniform">
 								<div class="col-4 col-12-small">
 									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-									<label for="demo-priority-low" style="color: white;">Standard</label>
+									<label for="demo-priority-low" style="color: white;">
+										<span class="lang-en active">Standard</span>
+										<span class="lang-de">Standard</span>
+									</label>
 								</div>
 								<div class="col-4 col-12-small">
 									<input type="radio" id="demo-priority-normal" name="demo-priority">
-									<label for="demo-priority-normal" style="color: white;">Priority</label>
+									<label for="demo-priority-normal" style="color: white;">
+										<span class="lang-en active">Priority</span>
+										<span class="lang-de">Priorität</span>
+									</label>
 								</div>
 								<div class="col-4 col-12-small">
 									<input type="radio" id="demo-priority-high" name="demo-priority">
-									<label for="demo-priority-high" style="color: white;">Urgent</label>
+									<label for="demo-priority-high" style="color: white;">
+										<span class="lang-en active">Urgent</span>
+										<span class="lang-de">Dringend</span>
+									</label>
 								</div>
 								<div class="col-6 col-12-small">
 									<input type="checkbox" id="demo-copy" name="demo-copy">
-									<label for="demo-copy" style="color: white;">Email me a copy</label>
+									<label for="demo-copy" style="color: white;">
+										<span class="lang-en active">Email me a copy</span>
+										<span class="lang-de">Mir eine Kopie per E-Mail senden</span>
+									</label>
 								</div>
 								<div class="col-6 col-12-small">
 									<input type="checkbox" id="demo-human" name="demo-human" checked>
-									<label for="demo-human" style="color: white;">Not a robot</label>
+									<label for="demo-human" style="color: white;">
+										<span class="lang-en active">Not a robot</span>
+										<span class="lang-de">Kein Roboter</span>
+									</label>
 								</div>
 								<div class="col-12">
-									<textarea name="demo-message" id="demo-message" placeholder="Further Questions / If Urgent Pain explain shortly your Problem" rows="4"   style="background-color:  white;"></textarea>
+									<textarea name="demo-message" id="demo-message" rows="4" style="background-color: white;"></textarea>
 								</div>
 								<div class="col-12">
 									<ul class="actions">
-										<li><input type="submit" value="Book Appointment" class="primary" /></li>
-										
+										<li><input type="submit" value="" class="primary" id="submitBtn" /></li>
 									</ul>
 								</div>
 							</div>
@@ -292,19 +435,37 @@
 			<footer id="footer">
 						<section>
 							<h1 style="font-size: 1.8em;">
-								<strong>Your goals are <span style="font-size: 1.2em;">within reach</span></strong>
+								<strong>
+									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
+									<span class="lang-de">Deine Ziele sind <span style="font-size: 1.2em;">in Reichweite</span></span>
+								</strong>
 								</h1>
-							<p><strong>Book your session and let’s make it happen.</strong></p>
+							<p><strong>
+								<span class="lang-en active">Book your session and let's make it happen.</span>
+								<span class="lang-de">Buche deine Session und lass uns das angehen.</span>
+							</strong></p>
 							<ul class="actions">
-								<li><a href="form.html" class="button"><strong>Get Started!</strong></a></li>
+								<li><a href="form.html" class="button"><strong>
+									<span class="lang-en active">Get Started!</span>
+									<span class="lang-de">Jetzt starten!</span>
+								</strong></a></li>
 							</ul>
 						</section>
 						<section>
-							<h2>Contact</h2>
+							<h2>
+								<span class="lang-en active">Contact</span>
+								<span class="lang-de">Kontakt</span>
+							</h2>
 							<dl class="alt">
-								<dt>Address</dt>
+								<dt>
+									<span class="lang-en active">Address</span>
+									<span class="lang-de">Adresse</span>
+								</dt>
 								<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-								<dt>Phone</dt>
+								<dt>
+									<span class="lang-en active">Phone</span>
+									<span class="lang-de">Telefon</span>
+								</dt>
 								<dd>+49 152 21319336</dd>
 								<dt>Email</dt>
 								<dd><a href="#">stamatis@ionio.de</a></dd>
@@ -323,7 +484,16 @@
 							}
 							</style>
 						</section>
-						<p class="copyright"> <a href="index.html"><strong>HOME</strong></a> <br> &copy; Stamatios Papavasiliou 2025<br> <a href="impressum.html">Impressum</a>   <br> <a href="datenschutz.html">Datenschutzerklärung</a>   <br>   Template Design: <a href="https://html5up.net">HTML5 UP</a>  <br>   </p>
+						<p class="copyright"> 
+							<a href="index.html"><strong>HOME</strong></a> <br> 
+							&copy; Stamatios Papavasiliou 2025<br> 
+							<a href="impressum.html">Impressum</a> <br> 
+							<a href="datenschutz.html">
+								<span class="lang-en active">Privacy Policy</span>
+								<span class="lang-de">Datenschutzerklärung</span>
+							</a> <br>   
+							Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
+						</p>
 					</footer>
 
 		</div>
@@ -338,10 +508,89 @@
 		<script src="assets/js/main.js"></script>
 
 		<script>
+			// Language Management System
+			let currentLanguage = 'en';
+
+			function switchLanguage(lang) {
+				if (currentLanguage === lang) return;
+				
+				currentLanguage = lang;
+				
+				// Update button states
+				document.querySelectorAll('.lang-btn').forEach(btn => {
+					btn.classList.remove('active');
+					if (btn.dataset.lang === lang) {
+						btn.classList.add('active');
+					}
+				});
+				
+				// Hide all language content
+				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+					element.classList.remove('active');
+				});
+				
+				// Show selected language content
+				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+					element.classList.add('active');
+				});
+				
+				// Update dynamic content
+				updateDynamicContent(lang);
+				
+				// Save preference to session storage
+				sessionStorage.setItem('preferred-language', lang);
+			}
+
+			function updateDynamicContent(lang) {
+				const translations = {
+					en: {
+						title: "Neuroathletic Training Contact Form",
+						namePlaceholder: "Name & Surname",
+						messagePlaceholder: "Further Questions / If Urgent Pain explain shortly your Problem",
+						submitBtn: "Book Appointment",
+						noTimesAvailable: "No available times for this day."
+					},
+					de: {
+						title: "Neuroathletiktraining Kontaktformular",
+						namePlaceholder: "Name & Nachname", 
+						messagePlaceholder: "Weitere Fragen / Bei dringenden Schmerzen Problem kurz erklären",
+						submitBtn: "Termin buchen",
+						noTimesAvailable: "Keine verfügbaren Zeiten für diesen Tag."
+					}
+				};
+				
+				// Update page title
+				document.title = translations[lang].title;
+				
+				// Update placeholders
+				const nameInput = document.getElementById('demo-name');
+				if (nameInput) nameInput.placeholder = translations[lang].namePlaceholder;
+				
+				const messageInput = document.getElementById('demo-message');
+				if (messageInput) messageInput.placeholder = translations[lang].messagePlaceholder;
+				
+				// Update submit button
+				const submitBtn = document.getElementById('submitBtn');
+				if (submitBtn) submitBtn.value = translations[lang].submitBtn;
+				
+				// Store translation for calendar use
+				window.currentTranslations = translations[lang];
+			}
+
+			function initializeLanguage() {
+				// Load saved language preference
+				const savedLang = sessionStorage.getItem('preferred-language');
+				if (savedLang && savedLang !== currentLanguage) {
+					switchLanguage(savedLang);
+				} else {
+					updateDynamicContent(currentLanguage);
+				}
+			}
+
 			// CONFIGURATION: Edit these settings to customize availability
 			const BOOKING_CONFIG = {
 				// Available days of the week (0 = Sunday, 1 = Monday, etc.)
-				availableDays: [, 2, 3, 4, ], // Monday to Friday
+				availableDays: [1, 2, 3, 4], // Monday to Thursday
 				
 				// Available time slots for each day
 				timeSlots: {
@@ -391,7 +640,10 @@
 					document.getElementById('bookingForm').addEventListener('submit', (e) => {
 						if (!this.selectedDate || !this.selectedTime) {
 							e.preventDefault();
-							alert('Please select both a date and time for your appointment.');
+							const message = currentLanguage === 'en' 
+								? 'Please select both a date and time for your appointment.'
+								: 'Bitte wählen Sie sowohl ein Datum als auch eine Uhrzeit für Ihren Termin.';
+							alert(message);
 						}
 					});
 				}
@@ -400,17 +652,22 @@
 					const year = this.currentDate.getFullYear();
 					const month = this.currentDate.getMonth();
 					
-					// Update header
-					const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-						'July', 'August', 'September', 'October', 'November', 'December'];
+					// Update header with current language
+					const monthNames = currentLanguage === 'en' 
+						? ['January', 'February', 'March', 'April', 'May', 'June',
+							'July', 'August', 'September', 'October', 'November', 'December']
+						: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+							'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 					document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
 
 					// Clear calendar
 					const grid = document.getElementById('calendarGrid');
 					grid.innerHTML = '';
 
-					// Add day headers (Monday first)
-					const dayHeaders = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+					// Add day headers with current language
+					const dayHeaders = currentLanguage === 'en'
+						? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+						: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 					dayHeaders.forEach(day => {
 						const dayHeader = document.createElement('div');
 						dayHeader.className = 'calendar-day-header';
@@ -512,7 +769,8 @@
 					const availableTimes = BOOKING_CONFIG.timeSlots[dayOfWeek] || [];
 
 					if (availableTimes.length === 0) {
-						timeSlotsGrid.innerHTML = '<p>No available times for this day.</p>';
+						const noTimesMessage = window.currentTranslations?.noTimesAvailable || 'No available times for this day.';
+						timeSlotsGrid.innerHTML = `<p>${noTimesMessage}</p>`;
 						return;
 					}
 
@@ -553,7 +811,6 @@
 					summary.style.display = 'block';
 				}
 
-				// FIXED: Use local timezone instead of UTC
 				formatDate(date) {
 					const year = date.getFullYear();
 					const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -563,7 +820,8 @@
 
 				formatDateForDisplay(date) {
 					const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-					return date.toLocaleDateString('en-US', options);
+					const locale = currentLanguage === 'en' ? 'en-US' : 'de-DE';
+					return date.toLocaleDateString(locale, options);
 				}
 
 				isSameDate(date1, date2) {
@@ -571,8 +829,9 @@
 				}
 			}
 
-			// Initialize calendar when page loads
+			// Initialize when page loads
 			document.addEventListener('DOMContentLoaded', () => {
+				initializeLanguage();
 				new BookingCalendar();
 			});
 		</script>

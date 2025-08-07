@@ -11,16 +11,113 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<style>
+			/* Language Switch Styles */
+			.language-switch {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				z-index: 10000;
+				background:  linear-gradient(135deg, #edbf797c, #60bca381);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 25px;
+				padding: 3px;
+				display: flex;
+				align-items: center;
+				gap: 2px;
+				transition: all 0.3s ease;
+				opacity: 0.7;
+			}
+
+			.language-switch:hover {
+				opacity: 1;
+				background: linear-gradient(135deg, #edbf79, #60bca3);
+			}
+
+			.lang-btn {
+				background: transparent;
+				border: none;
+				color: rgba(255, 255, 255, 0.8);
+				padding: 0px 0px;
+				cursor: pointer;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+				font-size: 0.50em;
+				font-weight: 800;
+				letter-spacing: 0.5px;
+			}
+
+			.lang-btn:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+			}
+
+			.lang-btn.active {
+				background: #edbf79;
+				color: white;
+				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+			}
+
+			/* Hide inactive language content */
+			.lang-content {
+				display: none;
+			}
+
+			.lang-content.active {
+				display: block;
+			}
+
+			/* Inline language spans */
+			.lang-en, .lang-de {
+				display: none;
+			}
+
+			.lang-en.active, .lang-de.active {
+				display: inline;
+			}
+
+			@media (max-width: 600px) {
+				.language-switch {
+					top: 5px;
+					right: 1px;
+					scale: 0.85;
+					padding: 2px;
+					flex-direction: column;
+					gap: 1px;
+				}
+				
+				.lang-btn {
+					padding: 0px 7px;
+					font-size: 0.65em;
+					border-radius: 15px;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
+
+		<!-- Language Switch -->
+		<div class="language-switch">
+			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
+			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
+		</div>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-					<h1>What is<br> Neuroathletictraining</h1>
-						<p>Applied Neuroscience in Humanmovement and Sportscience</p>
+					<h1>
+						<span class="lang-en active">What is<br> Neuroathletictraining</span>
+						<span class="lang-de">Was ist<br> Neuroathletiktraining</span>
+					</h1>
+						<p>
+							<span class="lang-en active">Applied Neuroscience in Humanmovement and Sportscience</span>
+							<span class="lang-de">Angewandte Neurowissenschaft in menschlicher Bewegung und Sportwissenschaft</span>
+						</p>
 					</header>
 
 				<!-- Main -->
@@ -29,45 +126,94 @@
 						<!-- Content -->
 							<section id="content" class="main">
 								<span class="image main"><img src="images/stamatios-papavasiliou.jpg" alt="" /></span>
-								<h2>What is applied Neuroscience</h2>
-								<p>Applied neuroscience in sports and human movement science, also known as neuroathletic training (NAT), is the practice of using insights from the field of neuroscience to improve real-world outcomes in areas such as movement, pain relief, rehabilitation and performance. Rather than focusing solely on muscles, joints or biomechanics, NAT takes a 'brain-first' approach, emphasising that many physical limitations, chronic pain issues or performance plateaus are rooted in how the brain interprets and responds to sensory information. Retraining the nervous system can create rapid, measurable changes in movement efficiency, strength, and pain levels.</p>
+								<h2>
+									<span class="lang-en active">What is applied Neuroscience</span>
+									<span class="lang-de">Was ist angewandte Neurowissenschaft</span>
+								</h2>
+								<div class="lang-en active">
+									<p>Applied neuroscience in sports and human movement science, also known as neuroathletic training (NAT), is the practice of using insights from the field of neuroscience to improve real-world outcomes in areas such as movement, pain relief, rehabilitation and performance. Rather than focusing solely on muscles, joints or biomechanics, NAT takes a 'brain-first' approach, emphasising that many physical limitations, chronic pain issues or performance plateaus are rooted in how the brain interprets and responds to sensory information. Retraining the nervous system can create rapid, measurable changes in movement efficiency, strength, and pain levels.</p>
+								</div>
+								<div class="lang-de">
+									<p>Angewandte Neurowissenschaft im Sport und in der menschlichen Bewegungswissenschaft, auch bekannt als Neuroathletiktraining (NAT), ist die Praxis, Erkenntnisse aus dem Bereich der Neurowissenschaft zu nutzen, um reale Ergebnisse in Bereichen wie Bewegung, Schmerzlinderung, Rehabilitation und Leistung zu verbessern. Anstatt sich ausschließlich auf Muskeln, Gelenke oder Biomechanik zu konzentrieren, verfolgt NAT einen 'gehirn-ersten' Ansatz und betont, dass viele körperliche Einschränkungen, chronische Schmerzprobleme oder Leistungsplateaus darin begründet sind, wie das Gehirn sensorische Informationen interpretiert und darauf reagiert. Das Umtrainieren des Nervensystems kann schnelle, messbare Veränderungen in der Bewegungseffizienz, Kraft und bei Schmerzpegeln bewirken.</p>
+								</div>
 
-								<h2>The Brain - First Approach</h2>
-								<p>This method is based on the idea that the brain constantly processes sensory data—such as vision, balance, and touch—to determine whether a movement or the environment is safe or threatening. If the brain perceives a threat, it may reduce mobility, trigger pain, or restrict strength as a protective response. NAT coaches work directly with the nervous system using targeted sensory drills, nerve mobilisation, visual retraining and motor control exercises, which can be customised to each person’s needs. These strategies aim to recalibrate the brain’s threat perception and restore optimal movement patterns, often within minutes.</p>
-								</section>
-
-								<section id="content" class="main">
-								<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-
-								<h2>Rapid and Measurable Results</h2>
-								<p>One of the key strengths of NAT in this context is its ability to provide immediate, measurable feedback. Movement, vision, and sensory assessments can be used to swiftly determine the type of input to which the nervous system responds best, enabling highly personalised and adaptive training. This approach can help people of all abilities to move, feel and perform better, whether they are elite athletes, chronic pain patients or everyday individuals looking to regain function.</p>
-							
-								<h2>A Practical, Science Based System</h2>
-								<p>In summary, applied neuroscience involves training the brain to alter outcomes, whether physical or mental. By shifting the focus from biomechanics to the nervous system, practitioners can achieve precise and rapid improvements in performance, pain relief and rehabilitation by utilising the brain’s own adaptability as the most powerful tool in human health and movement.</p>
+								<h2>
+									<span class="lang-en active">The Brain - First Approach</span>
+									<span class="lang-de">Der Gehirn-Erste Ansatz</span>
+								</h2>
+								<div class="lang-en active">
+									<p>This method is based on the idea that the brain constantly processes sensory data—such as vision, balance, and touch—to determine whether a movement or the environment is safe or threatening. If the brain perceives a threat, it may reduce mobility, trigger pain, or restrict strength as a protective response. NAT coaches work directly with the nervous system using targeted sensory drills, nerve mobilisation, visual retraining and motor control exercises, which can be customised to each person's needs. These strategies aim to recalibrate the brain's threat perception and restore optimal movement patterns, often within minutes.</p>
+								</div>
+								<div class="lang-de">
+									<p>Diese Methode basiert auf der Idee, dass das Gehirn kontinuierlich sensorische Daten – wie Sehen, Gleichgewicht und Berührung – verarbeitet, um zu bestimmen, ob eine Bewegung oder die Umgebung sicher oder bedrohlich ist. Wenn das Gehirn eine Bedrohung wahrnimmt, kann es als Schutzreaktion die Beweglichkeit reduzieren, Schmerzen auslösen oder die Kraft einschränken. NAT-Trainer arbeiten direkt mit dem Nervensystem unter Verwendung gezielter sensorischer Übungen, Nervenmobilisation, visueller Umschulung und motorischer Kontrollübungen, die auf die Bedürfnisse jeder Person angepasst werden können. Diese Strategien zielen darauf ab, die Bedrohungswahrnehmung des Gehirns zu rekalibrieren und optimale Bewegungsmuster wiederherzustellen, oft innerhalb weniger Minuten.</p>
+								</div>
 							</section>
 
+							<section id="content" class="main">
+								<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+
+								<h2>
+									<span class="lang-en active">Rapid and Measurable Results</span>
+									<span class="lang-de">Schnelle und messbare Ergebnisse</span>
+								</h2>
+								<div class="lang-en active">
+									<p>One of the key strengths of NAT in this context is its ability to provide immediate, measurable feedback. Movement, vision, and sensory assessments can be used to swiftly determine the type of input to which the nervous system responds best, enabling highly personalised and adaptive training. This approach can help people of all abilities to move, feel and perform better, whether they are elite athletes, chronic pain patients or everyday individuals looking to regain function.</p>
+								</div>
+								<div class="lang-de">
+									<p>Eine der Hauptstärken von NAT in diesem Kontext ist die Fähigkeit, sofortiges, messbares Feedback zu liefern. Bewegungs-, Seh- und sensorische Bewertungen können verwendet werden, um schnell die Art von Input zu bestimmen, auf die das Nervensystem am besten reagiert, was hochpersonalisiertes und adaptives Training ermöglicht. Dieser Ansatz kann Menschen aller Fähigkeiten dabei helfen, sich besser zu bewegen, zu fühlen und zu leisten, ob sie nun Spitzensportler, chronische Schmerzpatienten oder alltägliche Personen sind, die ihre Funktion wiederherstellen möchten.</p>
+								</div>
+							
+								<h2>
+									<span class="lang-en active">A Practical, Science Based System</span>
+									<span class="lang-de">Ein praktisches, wissenschaftsbasiertes System</span>
+								</h2>
+								<div class="lang-en active">
+									<p>In summary, applied neuroscience involves training the brain to alter outcomes, whether physical or mental. By shifting the focus from biomechanics to the nervous system, practitioners can achieve precise and rapid improvements in performance, pain relief and rehabilitation by utilising the brain's own adaptability as the most powerful tool in human health and movement.</p>
+								</div>
+								<div class="lang-de">
+									<p>Zusammenfassend beinhaltet angewandte Neurowissenschaft das Training des Gehirns, um Ergebnisse zu verändern, sei es körperlich oder mental. Durch die Verschiebung des Fokus von der Biomechanik zum Nervensystem können Praktiker präzise und schnelle Verbesserungen in Leistung, Schmerzlinderung und Rehabilitation erreichen, indem sie die eigene Anpassungsfähigkeit des Gehirns als das mächtigste Werkzeug in menschlicher Gesundheit und Bewegung nutzen.</p>
+								</div>
+							</section>
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
 						<section>
 							<h1 style="font-size: 1.8em;">
-								<strong>Your goals are <span style="font-size: 1.2em;">within reach</span></strong>
-								</h1>
-							<p><strong>Book your session and let’s make it happen.</strong></p>
+								<strong>
+									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
+									<span class="lang-de">Deine Ziele sind <span style="font-size: 1.2em;">in Reichweite</span></span>
+								</strong>
+							</h1>
+							<p><strong>
+								<span class="lang-en active">Book your session and let's make it happen.</span>
+								<span class="lang-de">Buche deine Session und lass uns das angehen.</span>
+							</strong></p>
 							<ul class="actions">
-								<li><a href="form.html" class="button"><strong>Get Started!</strong></a></li>
+								<li><a href="form.html" class="button"><strong>
+									<span class="lang-en active">Get Started!</span>
+									<span class="lang-de">Jetzt starten!</span>
+								</strong></a></li>
 							</ul>
 						</section>
 						<section>
-							<h2>Contact</h2>
+							<h2>
+								<span class="lang-en active">Contact</span>
+								<span class="lang-de">Kontakt</span>
+							</h2>
 							<dl class="alt">
-								<dt>Address</dt>
+								<dt>
+									<span class="lang-en active">Address</span>
+									<span class="lang-de">Adresse</span>
+								</dt>
 								<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-								<dt>Phone</dt>
+								<dt>
+									<span class="lang-en active">Phone</span>
+									<span class="lang-de">Telefon</span>
+								</dt>
 								<dd>+49 152 21319336</dd>
 								<dt>Email</dt>
-								<dd><a href="#">stamatis@ionio.de</a></dd>
+								<dd><a href="mailto:stamatis@ionio.de">stamatis@ionio.de</a></dd>
 							</dl>
 							<ul class="icons" style="justify-content: center; align-items: center;">
 								<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
@@ -83,9 +229,17 @@
 							}
 							</style>
 						</section>
-						<p class="copyright"> <a href="index.html"><strong>HOME</strong></a> <br> &copy; Stamatios Papavasiliou 2025<br> <a href="impressum.html">Impressum</a>   <br> <a href="datenschutz.html">Datenschutzerklärung</a>   <br>   Template Design: <a href="https://html5up.net">HTML5 UP</a>  <br>   </p>
+						<p class="copyright"> 
+							<a href="index.html"><strong>HOME</strong></a> <br> 
+							&copy; Stamatios Papavasiliou 2025<br> 
+							<a href="impressum.html">Impressum</a> <br> 
+							<a href="datenschutz.html">
+								<span class="lang-en active">Privacy Policy</span>
+								<span class="lang-de">Datenschutzerklärung</span>
+							</a> <br>   
+							Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
+						</p>
 					</footer>
-
 			</div>
 
 		<!-- Scripts -->
@@ -97,5 +251,65 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+			<script>
+				// Session Storage Language Management System
+				let currentLanguage = 'en';
+
+				function switchLanguage(lang) {
+					if (currentLanguage === lang) return;
+					
+					currentLanguage = lang;
+					
+					// Update button states
+					document.querySelectorAll('.lang-btn').forEach(btn => {
+						btn.classList.remove('active');
+						if (btn.dataset.lang === lang) {
+							btn.classList.add('active');
+						}
+					});
+					
+					// Hide all language content
+					document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+						element.classList.remove('active');
+					});
+					
+					// Show selected language content
+					document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+						element.classList.add('active');
+					});
+					
+					// Update page title and meta
+					updatePageMeta(lang);
+					
+					// Save preference to session storage (clears when browser closes)
+					sessionStorage.setItem('preferred-language', lang);
+				}
+
+				function updatePageMeta(lang) {
+					const translations = {
+						en: {
+							title: "What is Neuroathletictraining | Applied Neuroscience"
+						},
+						de: {
+							title: "Was ist Neuroathletiktraining | Angewandte Neurowissenschaft"
+						}
+					};
+					
+					document.title = translations[lang].title;
+				}
+
+				function initializeLanguage() {
+					// Load saved language preference from session storage
+					const savedLang = sessionStorage.getItem('preferred-language');
+					if (savedLang && savedLang !== currentLanguage) {
+						switchLanguage(savedLang);
+					}
+				}
+
+				// Initialize on page load
+				document.addEventListener('DOMContentLoaded', function() {
+					initializeLanguage();
+				});
+			</script>
 	</body>
 </html>

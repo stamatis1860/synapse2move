@@ -11,16 +11,113 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<style>
+			/* Language Switch Styles */
+			.language-switch {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				z-index: 10000;
+				background:  linear-gradient(135deg, #edbf797c, #60bca381);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 25px;
+				padding: 3px;
+				display: flex;
+				align-items: center;
+				gap: 2px;
+				transition: all 0.3s ease;
+				opacity: 0.7;
+			}
+
+			.language-switch:hover {
+				opacity: 1;
+				background: linear-gradient(135deg, #edbf79, #60bca3);
+			}
+
+			.lang-btn {
+				background: transparent;
+				border: none;
+				color: rgba(255, 255, 255, 0.8);
+				padding: 0px 0px;
+				cursor: pointer;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+				font-size: 0.50em;
+				font-weight: 800;
+				letter-spacing: 0.5px;
+			}
+
+			.lang-btn:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+			}
+
+			.lang-btn.active {
+				background: #edbf79;
+				color: white;
+				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+			}
+
+			/* Hide inactive language content */
+			.lang-content {
+				display: none;
+			}
+
+			.lang-content.active {
+				display: block;
+			}
+
+			/* Inline language spans */
+			.lang-en, .lang-de {
+				display: none;
+			}
+
+			.lang-en.active, .lang-de.active {
+				display: inline;
+			}
+
+			@media (max-width: 600px) {
+				.language-switch {
+					top: 5px;
+					right: 1px;
+					scale: 0.85;
+					padding: 2px;
+					flex-direction: column;
+					gap: 1px;
+				}
+				
+				.lang-btn {
+					padding: 0px 7px;
+					font-size: 0.65em;
+					border-radius: 15px;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
+
+		<!-- Language Switch -->
+		<div class="language-switch">
+			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
+			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
+		</div>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-					<h1>Workshops</h1>
-						<p>My more versatile options</p>
+					<h1>
+						<span class="lang-en active">Workshops</span>
+						<span class="lang-de">Workshops</span>
+					</h1>
+						<p>
+							<span class="lang-en active">My more versatile options</span>
+							<span class="lang-de">Meine vielseitigeren Optionen</span>
+						</p>
 					</header>
 
 				<!-- Main -->
@@ -29,70 +126,107 @@
 						<!-- Content -->
 							<section id="content" class="main">
 								<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-								<h2>Neurotraining Integration for Sports Teams </h2>
-								<p> These group workshops are designed for sports teams and movement collectives — regardless of discipline — who want to integrate neurocentric methods into their regular training. Whether you're in dance, martial arts, athletics, or team sports, the training is tailored to your field.
-
-									I will guide your group through targeted sessions that develop e.g. vision, balance, proprioception or interoception.
-
-									This format is particularly well-suited for training camps, intensives, and focused group sessions, where there's time and space to dive deep and implement new tools effectively.
-
-									The goal: faster reactions, more precise movement, fewer injuries, and better overall performance.
-									<br><br>
-									<b>This isn't just an add-on — it's a smart upgrade to how you train. Let's bring brain-based training into your sport.</b>
-									
-                                </p>
-							</section>
-							<section id="content" class="main">
-								<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-                                <h2>Neurocentric Training for Coaches</h2>
-								<p>
-									I offer tailored support for sports teams/ movement coaches and their staff who want to integrate brain-based training tools into their regular routines — without overhauling their existing training plans.
-
-									By focusing on the nervous system — the control center of every movement — we can enhance athletic performance from the inside out. Through targeted assessments and practical tools, I work closely with coaches and trainers to help them implement neurocentric methods that align with their sport-specific goals and structure.
-
-									We’re not here to replace your current training system, but to complement it with, effective neuroathletic tools that can improve for example vision, balance, coordination, and reaction speed. This approach also plays a key role in injury prevention, boosting movement quality, and joint control.
-
-									Teams receive ready-to-use drills and systems that integrate smoothly into existing plans. The result: more focused athletes, better decision-making under pressure, fewer injuries, and a lasting performance edge.
-									<br><br>
-									<b>Neurocentric Training in partnership with your coaching team, and built to fit your system.</b>
-								</p>
-								</section>
-								<section id="content" class="main">
-                                    <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-                                <h2>Talks & Lectures – Understanding the Nervous System and Neuroathletic Training</h2>
-								<p>
-
-                                    In my talks, I provide a clear and accessible introduction to the fascinating world of the nervous system and how it shapes everything we do—from movement and performance to focus and recovery.
-
-                                            Audiences will gain insight into how the brain, eyes, balance system, and body communicate—and why this connection is critical for athletes, creatives, and everyday movers alike. I break down the core principles of Neuroathletiktraining, showing how targeted, brain-based interventions can unlock new levels of coordination, resilience, and injury prevention.
-
-                                            Whether for sports clubs, professional groups, educational institutions, or wellness events, these talks are informative, practical, and designed to inspire a new perspective on performance and training.
-
-                                            Ideal for coaches, therapists, athletes, and anyone curious about how the brain drives the body.</p>
+								<h2>
+									<span class="lang-en active">Neurotraining Integration for Sports Teams</span>
+									<span class="lang-de">Neurotraining-Integration für Sportteams</span>
+								</h2>
+								<div class="lang-en active">
+									<p>These group workshops are designed for sports teams and movement collectives — regardless of discipline — who want to integrate neurocentric methods into their regular training. Whether you're in dance, martial arts, athletics, or team sports, the training is tailored to your field.</p>
+									<p>I will guide your group through targeted sessions that develop e.g. vision, balance, proprioception or interoception.</p>
+									<p>This format is particularly well-suited for training camps, intensives, and focused group sessions, where there's time and space to dive deep and implement new tools effectively.</p>
+									<p>The goal: faster reactions, more precise movement, fewer injuries, and better overall performance.</p>
+									<p><b>This isn't just an add-on — it's a smart upgrade to how you train. Let's bring brain-based training into your sport.</b></p>
+								</div>
+								<div class="lang-de">
+									<p>Diese Gruppenworkshops sind für Sportteams und Bewegungskollektive konzipiert — unabhängig von der Disziplin — die neurozentrierte Methoden in ihr reguläres Training integrieren möchten. Ob Tanz, Kampfsport, Leichtathletik oder Teamsport, das Training wird auf dein Fachgebiet zugeschnitten.</p>
+									<p>Ich führe deine Gruppe durch gezielte Sessions, die z.B. Sehen, Balance, Propriozeption oder Interozeption entwickeln.</p>
+									<p>Dieses Format eignet sich besonders gut für Trainingslager, Intensivkurse und fokussierte Gruppensessions, wo Zeit und Raum vorhanden sind, um tief einzutauchen und neue Tools effektiv zu implementieren.</p>
+									<p>Das Ziel: schnellere Reaktionen, präzisere Bewegungen, weniger Verletzungen und bessere Gesamtleistung.</p>
+									<p><b>Das ist nicht nur ein Add-on — es ist ein intelligentes Upgrade für dein Training. Lass uns gehirnbasiertes Training in deinen Sport bringen.</b></p>
+								</div>
 							</section>
 							
+							<section id="content" class="main">
+								<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+                                <h2>
+									<span class="lang-en active">Neurocentric Training for Coaches</span>
+									<span class="lang-de">Neurozentrisches Training für Trainer</span>
+								</h2>
+								<div class="lang-en active">
+									<p>I offer tailored support for sports teams/ movement coaches and their staff who want to integrate brain-based training tools into their regular routines — without overhauling their existing training plans.</p>
+									<p>By focusing on the nervous system — the control center of every movement — we can enhance athletic performance from the inside out. Through targeted assessments and practical tools, I work closely with coaches and trainers to help them implement neurocentric methods that align with their sport-specific goals and structure.</p>
+									<p>We're not here to replace your current training system, but to complement it with, effective neuroathletic tools that can improve for example vision, balance, coordination, and reaction speed. This approach also plays a key role in injury prevention, boosting movement quality, and joint control.</p>
+									<p>Teams receive ready-to-use drills and systems that integrate smoothly into existing plans. The result: more focused athletes, better decision-making under pressure, fewer injuries, and a lasting performance edge.</p>
+									<p><b>Neurocentric Training in partnership with your coaching team, and built to fit your system.</b></p>
+								</div>
+								<div class="lang-de">
+									<p>Ich biete maßgeschneiderte Unterstützung für Sportteams/Bewegungstrainer und ihre Mitarbeiter, die gehirnbasierte Trainingstools in ihre regulären Routinen integrieren möchten — ohne ihre bestehenden Trainingspläne komplett umzukrempeln.</p>
+									<p>Durch den Fokus auf das Nervensystem — das Kontrollzentrum jeder Bewegung — können wir die sportliche Leistung von innen heraus verbessern. Durch gezielte Bewertungen und praktische Tools arbeite ich eng mit Trainern zusammen, um ihnen bei der Implementierung neurozentrischer Methoden zu helfen, die mit ihren sportspezifischen Zielen und Strukturen übereinstimmen.</p>
+									<p>Wir sind nicht hier, um dein aktuelles Trainingssystem zu ersetzen, sondern um es mit effektiven neuroathletischen Tools zu ergänzen, die z.B. Sehen, Balance, Koordination und Reaktionsgeschwindigkeit verbessern können. Dieser Ansatz spielt auch eine Schlüsselrolle bei der Verletzungsprävention, der Verbesserung der Bewegungsqualität und Gelenkkontrolle.</p>
+									<p>Teams erhalten sofort einsetzbare Übungen und Systeme, die sich nahtlos in bestehende Pläne integrieren lassen. Das Ergebnis: fokussiertere Athleten, bessere Entscheidungsfindung unter Druck, weniger Verletzungen und ein nachhaltiger Leistungsvorteil.</p>
+									<p><b>Neurozentrisches Training in Partnerschaft mit deinem Trainerteam, maßgeschneidert für dein System.</b></p>
+								</div>
+							</section>
+							
+							<section id="content" class="main">
+                                <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+                                <h2>
+									<span class="lang-en active">Talks & Lectures – Understanding the Nervous System and Neuroathletic Training</span>
+									<span class="lang-de">Vorträge & Lectures – Das Nervensystem und Neuroathletiktraining verstehen</span>
+								</h2>
+								<div class="lang-en active">
+									<p>In my talks, I provide a clear and accessible introduction to the fascinating world of the nervous system and how it shapes everything we do—from movement and performance to focus and recovery.</p>
+									<p>Audiences will gain insight into how the brain, eyes, balance system, and body communicate—and why this connection is critical for athletes, creatives, and everyday movers alike. I break down the core principles of Neuroathletiktraining, showing how targeted, brain-based interventions can unlock new levels of coordination, resilience, and injury prevention.</p>
+									<p>Whether for sports clubs, professional groups, educational institutions, or wellness events, these talks are informative, practical, and designed to inspire a new perspective on performance and training.</p>
+									<p>Ideal for coaches, therapists, athletes, and anyone curious about how the brain drives the body.</p>
+								</div>
+								<div class="lang-de">
+									<p>In meinen Vorträgen biete ich eine klare und zugängliche Einführung in die faszinierende Welt des Nervensystems und wie es alles prägt, was wir tun — von Bewegung und Leistung bis hin zu Fokus und Erholung.</p>
+									<p>Das Publikum gewinnt Einblicke, wie Gehirn, Augen, Gleichgewichtssystem und Körper kommunizieren — und warum diese Verbindung für Athleten, Kreative und alltägliche Beweger gleichermaßen kritisch ist. Ich erkläre die Grundprinzipien des Neuroathletiktrainings und zeige, wie gezielte, gehirnbasierte Interventionen neue Ebenen von Koordination, Belastbarkeit und Verletzungsprävention freisetzen können.</p>
+									<p>Ob für Sportvereine, professionelle Gruppen, Bildungseinrichtungen oder Wellness-Events, diese Vorträge sind informativ, praktisch und darauf ausgelegt, eine neue Perspektive auf Leistung und Training zu inspirieren.</p>
+									<p>Ideal für Trainer, Therapeuten, Athleten und jeden, der neugierig ist, wie das Gehirn den Körper antreibt.</p>
+								</div>
+							</section>
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
 						<section>
 							<h1 style="font-size: 1.8em;">
-								<strong>Your goals are <span style="font-size: 1.2em;">within reach</span></strong>
-								</h1>
-							<p><strong>Book your session and let’s make it happen.</strong></p>
+								<strong>
+									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
+									<span class="lang-de">Deine Ziele sind <span style="font-size: 1.2em;">in Reichweite</span></span>
+								</strong>
+							</h1>
+							<p><strong>
+								<span class="lang-en active">Book your session and let's make it happen.</span>
+								<span class="lang-de">Buche deine Session und lass uns das angehen.</span>
+							</strong></p>
 							<ul class="actions">
-								<li><a href="form.html" class="button"><strong>Get Started!</strong></a></li>
+								<li><a href="form.html" class="button"><strong>
+									<span class="lang-en active">Get Started!</span>
+									<span class="lang-de">Jetzt starten!</span>
+								</strong></a></li>
 							</ul>
 						</section>
 						<section>
-							<h2>Contact</h2>
+							<h2>
+								<span class="lang-en active">Contact</span>
+								<span class="lang-de">Kontakt</span>
+							</h2>
 							<dl class="alt">
-								<dt>Address</dt>
+								<dt>
+									<span class="lang-en active">Address</span>
+									<span class="lang-de">Adresse</span>
+								</dt>
 								<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-								<dt>Phone</dt>
+								<dt>
+									<span class="lang-en active">Phone</span>
+									<span class="lang-de">Telefon</span>
+								</dt>
 								<dd>+49 152 21319336</dd>
 								<dt>Email</dt>
-								<dd><a href="#">stamatis@ionio.de</a></dd>
+								<dd><a href="mailto:stamatis@ionio.de">stamatis@ionio.de</a></dd>
 							</dl>
 							<ul class="icons" style="justify-content: center; align-items: center;">
 								<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
@@ -108,7 +242,16 @@
 							}
 							</style>
 						</section>
-						<p class="copyright"> <a href="index.html"><strong>HOME</strong></a> <br> &copy; Stamatios Papavasiliou 2025<br> <a href="impressum.html">Impressum</a>   <br> <a href="datenschutz.html">Datenschutzerklärung</a>   <br>   Template Design: <a href="https://html5up.net">HTML5 UP</a>  <br>   </p>
+						<p class="copyright"> 
+							<a href="index.html"><strong>HOME</strong></a> <br> 
+							&copy; Stamatios Papavasiliou 2025<br> 
+							<a href="impressum.html">Impressum</a> <br> 
+							<a href="datenschutz.html">
+								<span class="lang-en active">Privacy Policy</span>
+								<span class="lang-de">Datenschutzerklärung</span>
+							</a> <br>   
+							Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
+						</p>
 					</footer>
 			</div>
 
@@ -121,5 +264,65 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+			<script>
+				// Session Storage Language Management System
+				let currentLanguage = 'en';
+
+				function switchLanguage(lang) {
+					if (currentLanguage === lang) return;
+					
+					currentLanguage = lang;
+					
+					// Update button states
+					document.querySelectorAll('.lang-btn').forEach(btn => {
+						btn.classList.remove('active');
+						if (btn.dataset.lang === lang) {
+							btn.classList.add('active');
+						}
+					});
+					
+					// Hide all language content
+					document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+						element.classList.remove('active');
+					});
+					
+					// Show selected language content
+					document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+						element.classList.add('active');
+					});
+					
+					// Update page title and meta
+					updatePageMeta(lang);
+					
+					// Save preference to session storage (clears when browser closes)
+					sessionStorage.setItem('preferred-language', lang);
+				}
+
+				function updatePageMeta(lang) {
+					const translations = {
+						en: {
+							title: "Workshops | Neuro Athletic Training by Stamatis"
+						},
+						de: {
+							title: "Workshops | Neuroathletiktraining von Stamatis"
+						}
+					};
+					
+					document.title = translations[lang].title;
+				}
+
+				function initializeLanguage() {
+					// Load saved language preference from session storage
+					const savedLang = sessionStorage.getItem('preferred-language');
+					if (savedLang && savedLang !== currentLanguage) {
+						switchLanguage(savedLang);
+					}
+				}
+
+				// Initialize on page load
+				document.addEventListener('DOMContentLoaded', function() {
+					initializeLanguage();
+				});
+			</script>
 	</body>
 </html>
