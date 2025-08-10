@@ -2311,7 +2311,10 @@ input, select, textarea {
 			}
 
 		.icon.style1 {
-			color: #edbf799a;
+			background: linear-gradient(135deg, #edbf79, #60bca4);
+			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent; 
+			color: transparent;
 		}
 
 		.icon.style2 {
