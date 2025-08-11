@@ -298,28 +298,7 @@
 								</div>
 								<div class="col-12">
 									<select name="demo-category" id="demo-category" style="color: white;">
-										<option value="" class="lang-en active">- Service Category -</option>
-										<option value="" class="lang-de">- Servicekategorie -</option>
-										<option value="1">
-											<span class="lang-en active">Free 20min Call</span>
-											<span class="lang-de">Kostenloses 20-Min-Gespräch</span>
-										</option>
-										<option value="2">
-											<span class="lang-en active">Neuroassessment</span>
-											<span class="lang-de">Neuroassessment</span>
-										</option>
-										<option value="3">
-											<span class="lang-en active">Personal Training</span>
-											<span class="lang-de">Personaltraining</span>
-										</option>
-										<option value="4">
-											<span class="lang-en active">Urgent/Pain</span>
-											<span class="lang-de">Dringend/Schmerzen</span>
-										</option>
-										<option value="5">
-											<span class="lang-en active">Other Offers</span>
-											<span class="lang-de">Andere Angebote</span>
-										</option>
+										<!-- Options will be populated by JavaScript -->
 									</select>
 								</div>
 							</div>
@@ -380,6 +359,7 @@
 								<span class="lang-en active">Additional Options</span>
 								<span class="lang-de">Zusätzliche Optionen</span>
 							</h3>
+							<!-- 
 							<div class="row gtr-uniform">
 								<div class="col-4 col-12-small">
 									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
@@ -416,9 +396,12 @@
 										<span class="lang-de">Kein Roboter</span>
 									</label>
 								</div>
+								-->
+								
 								<div class="col-12">
 									<textarea name="demo-message" id="demo-message" rows="4" style="background-color: white;"></textarea>
 								</div>
+								<br><br>
 								<div class="col-12">
 									<ul class="actions">
 										<li><input type="submit" value="" class="primary" id="submitBtn" /></li>
@@ -437,7 +420,7 @@
 							<h1 style="font-size: 1.8em;">
 								<strong>
 									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
-									<span class="lang-de">Deine Ziele sind <span style="font-size: 1.2em;">in Reichweite</span></span>
+									<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
 								</strong>
 								</h1>
 							<p><strong>
@@ -511,6 +494,47 @@
 			// Language Management System
 			let currentLanguage = 'en';
 
+			// Service category options for each language
+			const serviceCategories = {
+				en: [
+					{ value: "", text: "- Service Category -" },
+					{ value: "1", text: "Free 20min Call" },
+					{ value: "2", text: "Neuroassessment" },
+					{ value: "3", text: "Personal Training" },
+					{ value: "4", text: "Urgent/Pain" },
+					{ value: "5", text: "Other Offers" }
+				],
+				de: [
+					{ value: "", text: "- Servicekategorie -" },
+					{ value: "1", text: "Kostenloses 20-Min-Gespräch" },
+					{ value: "2", text: "Neuroassessment" },
+					{ value: "3", text: "Personaltraining" },
+					{ value: "4", text: "Dringend/Schmerzen" },
+					{ value: "5", text: "Andere Angebote" }
+				]
+			};
+
+			function updateServiceCategories(lang) {
+				const selectElement = document.getElementById('demo-category');
+				const currentValue = selectElement.value; // Store current selection
+				
+				// Clear existing options
+				selectElement.innerHTML = '';
+				
+				// Add options for selected language
+				serviceCategories[lang].forEach(category => {
+					const option = document.createElement('option');
+					option.value = category.value;
+					option.textContent = category.text;
+					selectElement.appendChild(option);
+				});
+				
+				// Restore selection if the value still exists
+				if (currentValue && selectElement.querySelector(`option[value="${currentValue}"]`)) {
+					selectElement.value = currentValue;
+				}
+			}
+
 			function switchLanguage(lang) {
 				if (currentLanguage === lang) return;
 				
@@ -537,8 +561,11 @@
 				// Update dynamic content
 				updateDynamicContent(lang);
 				
-				// Save preference to session storage
-				sessionStorage.setItem('preferred-language', lang);
+				// Update service categories
+				updateServiceCategories(lang);
+				
+				// Save preference to local storage (using variable instead of sessionStorage for Claude.ai compatibility)
+				window.preferredLanguage = lang;
 			}
 
 			function updateDynamicContent(lang) {
@@ -579,11 +606,12 @@
 
 			function initializeLanguage() {
 				// Load saved language preference
-				const savedLang = sessionStorage.getItem('preferred-language');
+				const savedLang = window.preferredLanguage;
 				if (savedLang && savedLang !== currentLanguage) {
 					switchLanguage(savedLang);
 				} else {
 					updateDynamicContent(currentLanguage);
+					updateServiceCategories(currentLanguage);
 				}
 			}
 
