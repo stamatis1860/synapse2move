@@ -2674,15 +2674,18 @@ input, select, textarea {
 
 		header.major h2 {
 			font-size: 2em;
+			display: inline-block; /* shrink header to text width */
+    position: relative;    /* for the after element */
 		}
 
 			header.major h2:after {
 				display: block;
 				content: '';
-				width: 3.25em;
+				width: 100%;           /* match text width */
 				height: 2px;
 				margin: 0.7em 0 1em 0;
 				border-radius: 2px;
+				
 			}
 
 				section.special header.major h2:after, article.special header.major h2:after {
