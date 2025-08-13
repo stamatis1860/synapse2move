@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Thank You - Neuroathletictraining</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Language Switch Styles */
+			.language-switch {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				z-index: 10000;
+				background: linear-gradient(135deg, #edbf797c, #60bca381);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 25px;
+				padding: 3px;
+				display: flex;
+				align-items: center;
+				gap: 2px;
+				transition: all 0.3s ease;
+				opacity: 0.7;
+			}
+
+			.language-switch:hover {
+				opacity: 1;
+				background: linear-gradient(135deg, #edbf79, #60bca3);
+			}
+
+			.lang-btn {
+				background: transparent;
+				border: none;
+				color: rgba(255, 255, 255, 0.8);
+				padding: 0px 0px;
+				cursor: pointer;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+				font-size: 0.50em;
+				font-weight: 800;
+				letter-spacing: 0.5px;
+			}
+
+			.lang-btn:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+			}
+
+			.lang-btn.active {
+				background: #edbf79;
+				color: white;
+				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+			}
+
+			/* Hide inactive language content */
+			.lang-content {
+				display: none;
+			}
+
+			.lang-content.active {
+				display: block;
+			}
+
+			/* Inline language spans */
+			.lang-en, .lang-de {
+				display: none;
+			}
+
+			.lang-en.active, .lang-de.active {
+				display: inline;
+			}
+
+			@media (max-width: 600px) {
+				.language-switch {
+					top: 5px;
+					right: 1px;
+					scale: 0.85;
+					padding: 2px;
+					flex-direction: column;
+					gap: 1px;
+				}
+				
+				.lang-btn {
+					padding: 0px 7px;
+					font-size: 0.65em;
+					border-radius: 15px;
+				}
+			}
+
+			/* Thank you page specific styles */
+			.thank-you-container {
+				text-align: center;
+				padding: 40px 20px;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.success-icon {
+				font-size: 4em;
+				color: #fbfcfb;
+				margin-bottom: 20px;
+				animation: fadeInScale 0.8s ease-out;
+			}
+
+			.thank-you-message {
+				background: rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 15px;
+				padding: 30px;
+				margin: 30px 0;
+				animation: fadeInUp 1s ease-out 0.2s both;
+			}
+
+			.info-box {
+				background: transparent;
+				border: 2px solid rgba(214, 209, 202, 0.3);
+				border-radius: 10px;
+				padding: 20px;
+				margin: 20px 0;
+				animation: fadeInUp 1s ease-out 0.4s both;
+			}
+
+			.next-steps {
+				background: rgba(96, 188, 164, 0.2);
+				border: 1px solid rgba(96, 188, 164, 0.3);
+				border-radius: 10px;
+				padding: 20px;
+				margin: 20px 0;
+				text-align: left;
+				animation: fadeInUp 1s ease-out 0.6s both;
+			}
+
+			.contact-info {
+				background: rgba(255, 255, 255, 0.05);
+				border-radius: 10px;
+				padding: 20px;
+				margin: 20px 0;
+				animation: fadeInUp 1s ease-out 0.8s both;
+			}
+
+			.action-buttons {
+				margin: 30px 0;
+				animation: fadeInUp 1s ease-out 1s both;
+			}
+
+			.action-buttons .button {
+				margin: 0 10px 10px 10px;
+				display: inline-block;
+			}
+
+			@keyframes fadeInScale {
+				from {
+					opacity: 0;
+					transform: scale(0.5);
+				}
+				to {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			/* Mobile adjustments */
+			@media (max-width: 600px) {
+				.thank-you-container {
+					padding: 20px 10px;
+				}
+				
+				.success-icon {
+					font-size: 4em;
+				}
+				
+				.thank-you-message,
+				.info-box,
+				.next-steps,
+				.contact-info {
+					padding: 20px 15px;
+					margin: 15px 0;
+				}
+				
+				.action-buttons .button {
+					display: block;
+					margin: 10px 0;
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Language Switch -->
+		<div class="language-switch">
+			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
+			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
+		</div>
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+		<h1 id="thank-you" style="font-size: 120px;">
+    <span class="lang-en active">Thank You!</span>
+    <span class="lang-de">Vielen Dank!</span>
+</h1>
+
+<style>
+    @media (max-width: 600px) {
+        #thank-you {
+            font-size: 32px !important;
+        }
+    }
+</style>
+			</header>
+
+			<!-- Main -->
+			<div id="main" style="background: transparent;">
+				<section class="main">
+					<div class="thank-you-container">
+						
+
+						<!-- Main Thank You Message -->
+						<div class="thank-you-message">
+							<h2 style="color: white; margin-bottom: 15px;">
+								<span class="lang-en active">Your appointment request has been successfully submitted!</span>
+								<span class="lang-de">Deine Terminanfrage wurde erfolgreich übermittelt!</span>
+							</h2>
+							<p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
+								<span class="lang-en active">We have received your booking request and will get back to you shortly.</span>
+								<span class="lang-de">Wir haben deine Buchungsanfrage erhalten und werden uns bald bei dir melden.</span>
+							</p>
+						</div>
+
+						<!-- What Happens Next -->
+						<div class="info-box">
+							<h3 style="color: white; margin-bottom: 15px;">
+								<span class="lang-en active">What happens next?</span>
+								<span class="lang-de">Was passiert als nächstes?</span>
+							</h3>
+							<p style="color: rgba(255, 255, 255, 0.9);">
+								<span class="lang-en active">  We will review your request and contact you within 24 hours to confirm your appointment details.</span>
+								<span class="lang-de"> Wir werden deine Anfrage prüfen und dich innerhalb von 24 Stunden kontaktieren, um die Termindetails zu bestätigen.</span>
+							</p>
+						</div>
+
+						<!-- Next Steps -->
+						<div class="next-steps">
+							<h3 style="color: white; margin-bottom: 15px;">
+								<span class="lang-en active">Important Information</span>
+								<span class="lang-de">Wichtige Informationen</span>
+							</h3>
+							<ul style="color: rgba(255, 255, 255, 0.9); text-align: left; padding-left: 20px;">
+								<li class="lang-en active"><br>&bull; Check your email (including spam folder) for confirmation</li>
+								<li class="lang-en active"><br>&bull; Prepare any relevant medical history or questions</li>
+								<li class="lang-en active"><br>&bull; If possible, wear clothing that is comfortable to move in and fits closely</li>
+								<li class="lang-en active"><br>&bull; Arrive 5-10 minutes early for your appointment</li>
+								
+								<li class="lang-de"><br>&bull; Überprüfe deine E-Mails (auch den Spam-Ordner) für die Bestätigung</li>
+								<li class="lang-de"><br>&bull; Bereite relevante Krankengeschichte oder Fragen vor</li>
+								<li class="lang-de"><br>&bull; Trage wenn möglich Kleidung, in der du dich gut bewegen kannst und eng anliegt</li>
+								<li class="lang-de"><br>&bull; Komme 5-10 Minuten früher zu deinem Termin</li>
+							</ul>
+						</div>
+
+						<!-- Contact Information -->
+						<div class="contact-info">
+							<h3 style="color: white; margin-bottom: 15px;">
+								<span class="lang-en active">Need to make changes?</span>
+								<span class="lang-de">Änderungen nötig?</span>
+							</h3>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px;">
+								<span class="lang-en active">If you need to reschedule or have any questions, please contact us:</span>
+								<span class="lang-de">Falls du umbuchen musst oder Fragen hast, kontaktiere uns:</span>
+							</p>
+							<div style="color: rgba(255, 255, 255, 0.9);">
+								<p><strong>
+									<span class="lang-en active">Phone:</span>
+									<span class="lang-de">Telefon:</span>
+								</strong> +49 152 21319336</p>
+								<p><strong>Email:</strong> stamatis@ionio.de</p>
+								<p><strong>
+									<span class="lang-en active">Address:</span>
+									<span class="lang-de">Adresse:</span>
+								</strong> Ganghoferstraße 17, München, 80339</p>
+							</div>
+						</div>
+
+						<!-- Action Buttons -->
+						<div class="action-buttons">
+							<a href="index.html" class="button primary">
+								<span class="lang-en active">Back to Home</span>
+								<span class="lang-de">Zurück zur Startseite</span>
+							</a>
+							<a href="form.html" class="button">
+								<span class="lang-en active">Book Another Appointment</span>
+								<span class="lang-de">Weiteren Termin buchen</span>
+							</a>
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+                <h1 style="font-size: 1.8em;">
+								<strong>
+									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
+									<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
+								</strong>
+								</h1>
+				<section style="text-align: center;">
+					<h2>
+						<span class="lang-en active">Follow Us</span>
+						<span class="lang-de">Folge uns</span>
+					</h2>
+					<ul class="icons" style="justify-content: center; align-items: center; display: flex; padding-left: 0;">
+						<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+					</ul>
+				</section>
+				<p class="copyright"> 
+					<a href="index.html"><strong>HOME</strong></a> <br> 
+					&copy; Stamatios Papavasiliou 2025<br> 
+					<a href="impressum.html">Impressum</a> <br> 
+					<a href="datenschutz.html">
+						<span class="lang-en active">Privacy Policy</span>
+						<span class="lang-de">Datenschutzerklärung</span>
+					</a> <br>   
+					Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
+				</p>
+			</footer>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<script>
+			// Language Management System
+			let currentLanguage = 'en';
+
+			function switchLanguage(lang) {
+				if (currentLanguage === lang) return;
+				
+				currentLanguage = lang;
+				
+				// Update button states
+				document.querySelectorAll('.lang-btn').forEach(btn => {
+					btn.classList.remove('active');
+					if (btn.dataset.lang === lang) {
+						btn.classList.add('active');
+					}
+				});
+				
+				// Hide all language content
+				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+					element.classList.remove('active');
+				});
+				
+				// Show selected language content
+				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+					element.classList.add('active');
+				});
+				
+				// Update page title
+				const titles = {
+					en: "Thank You - Neuroathletictraining",
+					de: "Vielen Dank - Neuroathletiktraining"
+				};
+				document.title = titles[lang];
+				
+				// Store preference
+				window.preferredLanguage = lang;
+			}
+
+			function detectLanguage() {
+				// Check URL parameters first
+				const urlParams = new URLSearchParams(window.location.search);
+				const langFromUrl = urlParams.get('lang');
+				
+				if (langFromUrl && (langFromUrl === 'en' || langFromUrl === 'de')) {
+					return langFromUrl;
+				}
+				
+				// Check stored preference
+				const storedLang = window.preferredLanguage;
+				if (storedLang && (storedLang === 'en' || storedLang === 'de')) {
+					return storedLang;
+				}
+				
+				// Check browser language
+				const browserLang = navigator.language || navigator.userLanguage;
+				if (browserLang.startsWith('de')) {
+					return 'de';
+				}
+				
+				// Default to English
+				return 'en';
+			}
+
+			function initializeLanguage() {
+				const detectedLang = detectLanguage();
+				switchLanguage(detectedLang);
+			}
+
+			// Initialize when page loads
+			document.addEventListener('DOMContentLoaded', () => {
+				initializeLanguage();
+			});
+
+			// Add smooth scroll effect for better UX
+			document.addEventListener('DOMContentLoaded', function() {
+				// Fade in animations
+				const elements = document.querySelectorAll('.thank-you-message, .info-box, .next-steps, .contact-info, .action-buttons');
+				elements.forEach((element, index) => {
+					element.style.opacity = '0';
+					element.style.transform = 'translateY(30px)';
+					
+					setTimeout(() => {
+						element.style.transition = 'all 0.8s ease-out';
+						element.style.opacity = '1';
+						element.style.transform = 'translateY(0)';
+					}, 200 + (index * 200));
+				});
+			});
+		</script>
+
+	</body>
+</html>
