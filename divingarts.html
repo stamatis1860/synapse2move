@@ -1,312 +1,862 @@
 <!DOCTYPE HTML>
 <!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Stellar by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Neuroathletictraining</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
-		<style>
-			/* Language Switch Styles */
-			.language-switch {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				z-index: 10000;
-				background:  linear-gradient(135deg, #edbf797c, #60bca381);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 25px;
-				padding: 3px;
-				display: flex;
-				align-items: center;
-				gap: 2px;
-				transition: all 0.3s ease;
-				opacity: 0.7;
-			}
+    <head>
+        <title>Neuroathletictraining</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+       
+        <style>
+            /* Language Switch Styles */
+            .language-switch {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 10000;
+                background:  linear-gradient(135deg, #edbf797c, #60bca381);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 25px;
+                padding: 3px;
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            }
+            .language-switch:hover {
+                opacity: 1;
+                background: linear-gradient(135deg, #edbf79, #60bca3);
+            }
+            .lang-btn {
+                background: transparent;
+                border: none;
+                color: rgba(255, 255, 255, 0.8);
+                padding: 0px 0px;
+                cursor: pointer;
+                border-radius: 20px;
+                transition: all 0.3s ease;
+                font-size: 0.50em;
+                font-weight: 800;
+                letter-spacing: 0.5px;
+            }
+            .lang-btn:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: white;
+            }
+            .lang-btn.active {
+                background: #edbf79;
+                color: white;
+                box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+            }
+            /* Hide inactive language content */
+            .lang-content {
+                display: none;
+            }
+            .lang-content.active {
+                display: block;
+            }
+            /* Inline language spans */
+            .lang-en, .lang-de {
+                display: none;
+            }
+            .lang-en.active, .lang-de.active {
+                display: inline;
+            }
 
-			.language-switch:hover {
-				opacity: 1;
-				background: linear-gradient(135deg, #edbf79, #60bca3);
-			}
+            /* Slideshow Styles - Integrated with Website Design */
+            .slideshow-container {
+                position: relative;
+                width: 100%;
+                height: 400px;
+                margin: 2em 0;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                background: rgba(255, 255, 255, 0.05);
+            }
 
-			.lang-btn {
-				background: transparent;
-				border: none;
-				color: rgba(255, 255, 255, 0.8);
-				padding: 0px 0px;
-				cursor: pointer;
-				border-radius: 20px;
-				transition: all 0.3s ease;
-				font-size: 0.50em;
-				font-weight: 800;
-				letter-spacing: 0.5px;
-			}
+            .slide {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+                transform: scale(1.1);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                cursor: pointer;
+            }
 
-			.lang-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-			}
+            .slide:hover {
+                transform: scale(1.02);
+            }
 
-			.lang-btn.active {
-				background: #edbf79;
-				color: white;
-				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
-			}
+            .slide.active {
+                opacity: 1;
+                transform: scale(1);
+            }
 
-			/* Hide inactive language content */
-			.lang-content {
-				display: none;
-			}
+            .slide.active:hover {
+                transform: scale(1.02);
+            }
 
-			.lang-content.active {
-				display: block;
-			}
+            /* Modal for enlarged slideshow images */
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                z-index: 10000;
+                animation: fadeIn 0.3s ease;
+            }
 
-			/* Inline language spans */
-			.lang-en, .lang-de {
-				display: none;
-			}
+            .modal-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 95%;
+                max-height: 95%;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            }
 
-			.lang-en.active, .lang-de.active {
-				display: inline;
-			}
+            .modal-image {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                max-height: 90vh;
+            }
 
-			@media (max-width: 600px) {
-				.language-switch {
-					top: 5px;
-					right: 1px;
-					scale: 0.85;
-					padding: 2px;
-					flex-direction: column;
-					gap: 1px;
-				}
-				
-				.lang-btn {
-					padding: 0px 7px;
-					font-size: 0.65em;
-					border-radius: 15px;
-				}
-			}
-		</style>
-	</head>
-	<body class="is-preload">
+            .modal-info {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+                color: white;
+                padding: 30px;
+                text-align: center;
+            }
 
-		<!-- Language Switch -->
-		<div class="language-switch">
-			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
-			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
-		</div>
+            .modal-title {
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 10px;
+                text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+            .modal-description {
+                font-size: 1.1rem;
+                font-weight: 300;
+                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+                opacity: 0.9;
+            }
 
-				<!-- Header -->
-					<header id="header">
-					<h1>
-						<span class="lang-en active">Diving into Arts</span>
-						<span class="lang-de">Diving into Arts</span>
-					</h1>
-						<p>
-							<span class="lang-en active"></span>
-							<span class="lang-de"></span>
-						</p>
-					</header>
+            .close-modal {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                color: white;
+                font-size: 35px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                z-index: 10001;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(10px);
+            }
 
-				<!-- Main -->
-					<div id="main">
+            .close-modal:hover {
+                background: rgba(0, 0, 0, 0.5);
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
 
-						<!-- Content -->
-							<section id="content" class="main">
-								
-								<h2>
-									<span class="lang-en active"><b>Creative Process Support</b></span>
-									<span class="lang-de"><b>Unterstützung im kreativen Prozess</b></span>
-								</h2>
-								<div class="lang-en active">
-									
-									<p>I accompany people in their creative processes — whether in dance, design, art, or personal projects. As a Neuroathletiktrainer and a creative myself, I bring tools from brain-based training, movement, and deep listening into our work.
-									Together, we untangle blocks, reconnect with your body's wisdom, and create space for clarity and flow. It's not about pushing harder — it's about tuning in and moving from there.
-								Using insights from Neuroathletic Training and movement science, these sessions combine theory with direct experience to create lasting impact. 
-								From simple breathing techniques and sensory drills to movement-based practices, the tools are easy to apply in everyday life and work.</p>
-							
-								</div>
-								<div class="lang-de">
-									
-									<p>Ich unterstütze Personen dabei, ihre kreativen Prozesse in Schwung zu bringen – egal ob in Tanz, Design, Kunst oder ähnlichen Projekten. Durch meine Erfahrung als Neuroathletiktrainer und als Kreativer verbinde ich gehirnbasiertes Training, Bewegung mit ein offenem und aufmerksamem Zuhören.
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
 
-										Wir arbeiten daran, innere Blockaden zu lösen, die Verbindung zu deinem Körper zu stärken und wieder mehr Leichtigkeit und Klarheit ins Schaffen zu bringen. Statt mehr Druck zu machen, geht es darum, in sich hinzuspüren und daraus wider in Flow zu kommen.
+            .slide::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba(0, 0, 0, 0.2), transparent);
+            }
 
-										Die Sessions kombinieren neurowissenschaftliche Ansätze und Bewegungspraxis mit erlebbarer Erfahrung. Ob einfache Atemübungen, gezielte Sinnes-Drills oder bewegungsbasierte Methoden – alles ist so gestaltet, dass du es direkt in deinen Alltag und deine kreative Arbeit einfließen lassen kannst.
-										</p>
-								</div>
-							</section>
-							
-							<section id="content" class="main">
-								<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+            .slide-content {
+                position: absolute;
+                bottom: 40px;
+                left: 40px;
+                right: 40px;
+                color: white;
+                text-align: center;
+                z-index: 2;
+            }
+
+            .slide-title {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 10px;
+                text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                transform: translateY(30px);
+                animation: slideInUp 0.8s ease-out 0.5s forwards;
+            }
+
+            .slide-description {
+                font-size: 1.1rem;
+                font-weight: 300;
+                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                transform: translateY(30px);
+                animation: slideInUp 0.8s ease-out 0.7s forwards;
+            }
+
+            .progress-bar {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #edbf79, #60bca3);
+                transform-origin: left;
+                animation: progressBar 4s linear infinite;
+            }
+
+            .dots-container {
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 10px;
+                z-index: 3;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                border: 2px solid transparent;
+            }
+
+            .dot.active {
+                background: white;
+                transform: scale(1.2);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            }
+
+            .controls {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                color: white;
+                font-size: 12px !important;
+                padding: 0 !important;
+                cursor: pointer;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                opacity: 0.7;
+                width: 28px !important;
+                height: 28px !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .controls:hover {
+                background: rgba(255, 255, 255, 0.3);
+                opacity: 1;
+                transform: translateY(-50%) scale(1.1);
+            }
+
+            .prev {
+                left: 15px;
+            }
+
+            .next {
+                right: 15px;
+            }
+
+            @keyframes slideInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes progressBar {
+                from {
+                    width: 0%;
+                }
+                to {
+                    width: 100%;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .language-switch {
+                    top: 5px;
+                    right: 1px;
+                    scale: 0.85;
+                    padding: 2px;
+                    flex-direction: column;
+                    gap: 1px;
+                }
+               
+                .lang-btn {
+                    padding: 0px 7px;
+                    font-size: 0.65em;
+                    border-radius: 15px;
+                }
+
+                .slideshow-container {
+                    height: 300px;
+                    margin: 1.5em 0;
+                }
+
+                .slide-content {
+                    bottom: 25px;
+                    left: 25px;
+                    right: 25px;
+                }
+                
+                .slide-title {
+                    font-size: 1.5rem;
+                }
+                
+                .slide-description {
+                    font-size: 0.9rem;
+                }
+                
+                .controls {
+                    font-size: 10px !important;
+                    padding: 0 !important;
+                    width: 24px !important;
+                    height: 24px !important;
+                }
+
+                .modal-content {
+                    max-width: 98%;
+                    max-height: 98%;
+                }
+
+                .modal-image {
+                    max-height: 95vh;
+                }
+
+                .modal-info {
+                    padding: 20px;
+                }
+
+                .modal-title {
+                    font-size: 1.4rem;
+                }
+
+                .modal-description {
+                    font-size: 0.9rem;
+                }
+
+                .close-modal {
+                    top: 10px;
+                    right: 15px;
+                    width: 40px;
+                    height: 40px;
+                    font-size: 28px;
+                }
+
+                #footer .icons {
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    padding-left: 0 !important;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .slideshow-container {
+                    height: 250px;
+                }
+
+                .slide-title {
+                    font-size: 1.2rem;
+                }
+
+                .slide-description {
+                    font-size: 0.8rem;
+                }
+
+                .controls {
+                    width: 22px !important;
+                    height: 22px !important;
+                    font-size: 8px !important;
+                }
+
+                .modal-content {
+                    max-width: 99%;
+                    max-height: 99%;
+                }
+
+                .modal-image {
+                    max-height: 96vh;
+                }
+
+                .modal-info {
+                    padding: 15px;
+                }
+
+                .modal-title {
+                    font-size: 1.2rem;
+                }
+
+                .modal-description {
+                    font-size: 0.8rem;
+                }
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+        <!-- Language Switch -->
+        <div class="language-switch">
+            <button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
+            <button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
+        </div>
+        <!-- Wrapper -->
+            <div id="wrapper">
+                <!-- Header -->
+                    <header id="header">
+                    <h1>
+                        <span class="lang-en active">Diving into Arts</span>
+                        <span class="lang-de">Diving into Arts</span>
+                    </h1>
+                        <p>
+                            <span class="lang-en active"></span>
+                            <span class="lang-de"></span>
+                        </p>
+                    </header>
+                <!-- Main -->
+                    <div id="main">
+                        <!-- Content -->
+                            <section id="content" class="main">
+                               
                                 <h2>
-									<span class="lang-en active"><b>Brazilian Zouk</b></span>
-									<span class="lang-de"><b>Brazilian Zouk</b></span>
-								</h2>
-								<div class="lang-en active">
-									<p>Dancing isn't just art – it's one of the most powerful neurological workouts available. When you dance, your brain simultaneously processes rhythm, coordinates complex movements, manages spatial awareness, and responds to a partner and music in real-time.
-									This multi-tasking challenge creates new neural pathways, and strengthens the connections between different brain regions. The result? Improved cognitive flexibility, better motor control, enhanced memory, and stronger stress resilience.
-									From a neuroathletic perspective, dancing integrates visual, vestibular, and proprioceptive systems like no other activity. It's why I run a Brazilian Zouk dance school alongside my neuroathletic training – because I truly believe dancing is one of the best things you can do for your body and your brain.
-									Your nervous system doesn't just control movement – it craves it.</p>
-									Have a look at our Danceschool <a href="https://www.zoukseed.de/">zoukseed</a>🌱</p>
-								</div>
-								<div class="lang-de">
-									<p>Tanzen ist nicht nur Kunst – es ist auch eines der wirksamsten neurologischen Trainings überhaupt. Beim Tanzen verarbeitet dein Gehirn gleichzeitig Rhythmus, koordiniert komplexe Bewegungen, steuert dein räumliches Bewusstsein und reagiert in Echtzeit auf Musik und Partner.
+                                    <span class="lang-en active"><b>Creative Process Support</b></span>
+                                    <span class="lang-de"><b>Unterstützung im kreativen Prozess</b></span>
+                                </h2>
+                                <div class="lang-en active">
+                                   
+                                    <p>I accompany people in their creative processes — whether in dance, design, art, or personal projects. As a Neuroathletiktrainer and a creative myself, I bring tools from brain-based training, movement, and deep listening into our work.
+                                    Together, we untangle blocks, reconnect with your body's wisdom, and create space for clarity and flow. It's not about pushing harder — it's about tuning in and moving from there.
+                                Using insights from Neuroathletic Training and movement science, these sessions combine theory with direct experience to create lasting impact.
+                                From simple breathing techniques and sensory drills to movement-based practices, the tools are easy to apply in everyday life and work.</p>
+                           
+                                </div>
+                                <div class="lang-de">
+                                   
+                                    <p>Ich unterstütze Personen dabei, ihre kreativen Prozesse in Schwung zu bringen – egal ob in Tanz, Design, Kunst oder ähnlichen Projekten. Durch meine Erfahrung als Neuroathletiktrainer und als Kreativer verbinde ich gehirnbasiertes Training, Bewegung mit ein offenem und aufmerksamem Zuhören.
+                                        Wir arbeiten daran, innere Blockaden zu lösen, die Verbindung zu deinem Körper zu stärken und wieder mehr Leichtigkeit und Klarheit ins Schaffen zu bringen. Statt mehr Druck zu machen, geht es darum, in sich hinzuspüren und daraus wider in Flow zu kommen.
+                                        Die Sessions kombinieren neurowissenschaftliche Ansätze und Bewegungspraxis mit erlebbarer Erfahrung. Ob einfache Atemübungen, gezielte Sinnes-Drills oder bewegungsbasierte Methoden – alles ist so gestaltet, dass du es direkt in deinen Alltag und deine kreative Arbeit einfließen lassen kannst.
+                                        </p>
+                                </div>
+                            </section>
+                           
+                            <section id="content" class="main">
+                                <!-- Automatic Slideshow replaces the single image -->
+                                  <h2>bilder</h2>
+                                <div class="slideshow-container">
+                                    <div class="slide active" style="background-image: url('images/OS_8.jpg')" data-full="images/OS_8.jpg" data-title="Dance Movement" data-description="Flowing connection between mind and body through Brazilian Zouk">
+                                        <div class="slide-content">
+                                            <h2 class="slide-title">Dance Movement</h2>
+                                            <p class="slide-description">Flowing connection between mind and body through Brazilian Zouk</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slide" style="background-image: url('images/OS_2.jpg')" data-full="images/OS_2.jpg" data-title="Brain Training" data-description="Neuroplasticity and cognitive enhancement through targeted exercises">
+                                        <div class="slide-content">
+                                            <h2 class="slide-title">Brain Training</h2>
+                                            <p class="slide-description">Neuroplasticity and cognitive enhancement through targeted exercises</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slide" style="background-image: url('images/OS_3.jpg');" data-full="images/OS_3.jpg" data-title="Creative Expression" data-description="Unlocking artistic potential through neuroathletic training">
+                                        <div class="slide-content">
+                                            <h2 class="slide-title">Creative Expression</h2>
+                                            <p class="slide-description">Unlocking artistic potential through neuroathletic training</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slide" style="background-image: url('images/OS_1.jpg');" data-full="images/OS_1.jpg" data-title="Partner Connection" data-description="Building trust and communication through partner dance">
+                                        <div class="slide-content">
+                                            <h2 class="slide-title">Partner Connection</h2>
+                                            <p class="slide-description">Building trust and communication through partner dance</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slide" style="background-image: url('images/OS_4.jpg');" data-full="images/OS_4.jpg" data-title="Body Awareness" data-description="Developing proprioception and movement intelligence">
+                                        <div class="slide-content">
+                                            <h2 class="slide-title">Body Awareness</h2>
+                                            <p class="slide-description">Developing proprioception and movement intelligence</p>
+                                        </div>
+                                    </div>
 
-									Diese Vielschichtigkeit fördert neue neuronale Verbindungen und stärkt die Kommunikation zwischen verschiedenen Gehirnarealen. Das Ergebnis: mehr geistige Flexibilität, bessere Bewegungssteuerung, gesteigertes Erinnerungsvermögen und eine höhere Stressresistenz.
+                                    <button class="controls prev" onclick="changeSlide(-1)">❮</button>
+                                    <button class="controls next" onclick="changeSlide(1)">❯</button>
+                                    
+                                    
+                                    
+                                    <div class="dots-container">
+                                        <span class="dot active" onclick="currentSlide(1)"></span>
+                                        <span class="dot" onclick="currentSlide(2)"></span>
+                                        <span class="dot" onclick="currentSlide(3)"></span>
+                                        <span class="dot" onclick="currentSlide(4)"></span>
+                                        <span class="dot" onclick="currentSlide(5)"></span>
+                                    </div>
+                                </div>
 
-									Aus neuroathletischer Sicht verbindet Tanzen visuelle, vestibuläre und propriozeptive Systeme wie kaum eine andere Aktivität. Genau deshalb leite ich neben meinem Neuroathletiktraining auch eine Brazilian-Zouk-Tanzschule – weil ich fest davon überzeugt bin, dass Tanzen zu den besten Dingen gehört, die du für Körper und Gehirn tun kannst.</p>
-									<p>Breit den ersten Schritt zu machen? dann schau mal auf  <a href="https://www.zoukseed.de/">zoukseed</a>🌱 vorbei</p>
-								</div>
-							</section>
-					</div>
+                                <h2>
+                                    <span class="lang-en active"><b>Brazilian Zouk</b></span>
+                                    <span class="lang-de"><b>Brazilian Zouk</b></span>
+                                </h2>
+                                <div class="lang-en active">
+                                    <p>Dancing isn't just art – it's one of the most powerful neurological workouts available. When you dance, your brain simultaneously processes rhythm, coordinates complex movements, manages spatial awareness, and responds to a partner and music in real-time.
+                                    This multi-tasking challenge creates new neural pathways, and strengthens the connections between different brain regions. The result? Improved cognitive flexibility, better motor control, enhanced memory, and stronger stress resilience.
+                                    From a neuroathletic perspective, dancing integrates visual, vestibular, and proprioceptive systems like no other activity. It's why I run a Brazilian Zouk dance school alongside my neuroathletic training – because I truly believe dancing is one of the best things you can do for your body and your brain.
+                                    Your nervous system doesn't just control movement – it craves it.</p>
+                                    <p>Have a look at our Danceschool <a href="https://www.zoukseed.de/">zoukseed</a>🌱</p>
+                                </div>
+                                <div class="lang-de">
+                                    <p>Tanzen ist nicht nur Kunst – es ist auch eines der wirksamsten neurologischen Trainings überhaupt. Beim Tanzen verarbeitet dein Gehirn gleichzeitig Rhythmus, koordiniert komplexe Bewegungen, steuert dein räumliches Bewusstsein und reagiert in Echtzeit auf Musik und Partner.
+                                    Diese Vielschichtigkeit fördert neue neuronale Verbindungen und stärkt die Kommunikation zwischen verschiedenen Gehirnarealen. Das Ergebnis: mehr geistige Flexibilität, bessere Bewegungssteuerung, gesteigertes Erinnerungsvermögen und eine höhere Stressresistenz.
+                                    Aus neuroathletischer Sicht verbindet Tanzen visuelle, vestibuläre und propriozeptive Systeme wie kaum eine andere Aktivität. Genau deshalb leite ich neben meinem Neuroathletiktraining auch eine Brazilian-Zouk-Tanzschule – weil ich fest davon überzeugt bin, dass Tanzen zu den besten Dingen gehört, die du für Körper und Gehirn tun kannst.</p>
+                                    <p>Breit den ersten Schritt zu machen? dann schau mal auf  <a href="https://www.zoukseed.de/">zoukseed</a>🌱 vorbei</p>
+                                </div>
+                            </section>
+                    </div>
+                <!-- Footer -->
+                    <footer id="footer">
+                        <section>
+                            <h1 style="font-size: 1.8em;">
+                                <strong>
+                                    <span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
+                                    <span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
+                                </strong>
+                            </h1>
+                            <p><strong>
+                                <span class="lang-en active">Book your session and let's make it happen.</span>
+                                <span class="lang-de">Buche deine Session und lass uns das angehen.</span>
+                            </strong></p>
+                            <ul class="actions">
+                                <li><a href="form.html" class="button"><strong>
+                                    <span class="lang-en active">Get Started!</span>
+                                    <span class="lang-de">Jetzt starten!</span>
+                                </strong></a></li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h2>
+                                <span class="lang-en active">Contact</span>
+                                <span class="lang-de">Kontakt</span>
+                            </h2>
+                            <dl class="alt">
+                                <dt>
+                                    <span class="lang-en active">Address</span>
+                                    <span class="lang-de">Adresse</span>
+                                </dt>
+                                <dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
+                                <dt>
+                                    <span class="lang-en active">Phone</span>
+                                    <span class="lang-de">Telefon</span>
+                                </dt>
+                                <dd>+49 152 21319336</dd>
+                                <dt>Email</dt>
+                                <dd><a href="mailto:stamatis@ionio.de">stamatis@ionio.de</a></dd>
+                            </dl>
+                            <ul class="icons" style="justify-content: center; align-items: center;">
+                                <li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+                            </ul>
+                        </section>
+                        <p class="copyright">
+                            <a href="index.html"><strong>HOME</strong></a> <br>
+                            &copy; Stamatios Papavasiliou 2025<br>
+                            <a href="impressum.html">Impressum</a> <br>
+                            <a href="datenschutz.html">
+                                <span class="lang-en active">Privacy Policy</span>
+                                <span class="lang-de">Datenschutzerklärung</span>
+                            </a> <br>  
+                            Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
+                        </p>
+                    </footer>
+            </div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h1 style="font-size: 1.8em;">
-								<strong>
-									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
-									<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
-								</strong>
-							</h1>
-							<p><strong>
-								<span class="lang-en active">Book your session and let's make it happen.</span>
-								<span class="lang-de">Buche deine Session und lass uns das angehen.</span>
-							</strong></p>
-							<ul class="actions">
-								<li><a href="form.html" class="button"><strong>
-									<span class="lang-en active">Get Started!</span>
-									<span class="lang-de">Jetzt starten!</span>
-								</strong></a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>
-								<span class="lang-en active">Contact</span>
-								<span class="lang-de">Kontakt</span>
-							</h2>
-							<dl class="alt">
-								<dt>
-									<span class="lang-en active">Address</span>
-									<span class="lang-de">Adresse</span>
-								</dt>
-								<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-								<dt>
-									<span class="lang-en active">Phone</span>
-									<span class="lang-de">Telefon</span>
-								</dt>
-								<dd>+49 152 21319336</dd>
-								<dt>Email</dt>
-								<dd><a href="mailto:stamatis@ionio.de">stamatis@ionio.de</a></dd>
-							</dl>
-							<ul class="icons" style="justify-content: center; align-items: center;">
-								<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-							</ul>
-							<style>
-							@media (max-width: 600px) {
-								#footer .icons {
-									display: flex !important;
-									justify-content: center !important;
-									align-items: center !important;
-									padding-left: 0 !important;
-								}
-							}
-							</style>
-						</section>
-						<p class="copyright"> 
-							<a href="index.html"><strong>HOME</strong></a> <br> 
-							&copy; Stamatios Papavasiliou 2025<br> 
-							<a href="impressum.html">Impressum</a> <br> 
-							<a href="datenschutz.html">
-								<span class="lang-en active">Privacy Policy</span>
-								<span class="lang-de">Datenschutzerklärung</span>
-							</a> <br>   
-							Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
-						</p>
-					</footer>
-			</div>
+        <!-- Modal for enlarged slideshow images -->
+        <div class="modal" id="imageModal">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <img class="modal-image" id="modalImage" src="" alt="">
+                <div class="modal-info">
+                    <div class="modal-title" id="modalTitle"></div>
+                    <div class="modal-description" id="modalDescription"></div>
+                </div>
+            </div>
+        </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script>
+                // Session Storage Language Management System
+                let currentLanguage = 'en';
+                function switchLanguage(lang) {
+                    if (currentLanguage === lang) return;
+                   
+                    currentLanguage = lang;
+                   
+                    // Update button states
+                    document.querySelectorAll('.lang-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.lang === lang) {
+                            btn.classList.add('active');
+                        }
+                    });
+                   
+                    // Hide all language content
+                    document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+                        element.classList.remove('active');
+                    });
+                   
+                    // Show selected language content
+                    document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+                        element.classList.add('active');
+                    });
+                   
+                    // Update page title and meta
+                    updatePageMeta(lang);
+                   
+                    // Save preference to session storage (clears when browser closes)
+                    sessionStorage.setItem('preferred-language', lang);
+                }
+                function updatePageMeta(lang) {
+                    const translations = {
+                        en: {
+                            title: "Diving into Arts | Neuro Athletic Training by Stamatis"
+                        },
+                        de: {
+                            title: "Diving into Arts | Neuroathletiktraining von Stamatis"
+                        }
+                    };
+                   
+                    document.title = translations[lang].title;
+                }
+                function initializeLanguage() {
+                    // Load saved language preference from session storage
+                    const savedLang = sessionStorage.getItem('preferred-language');
+                    if (savedLang && savedLang !== currentLanguage) {
+                        switchLanguage(savedLang);
+                    }
+                }
 
-			<script>
-				// Session Storage Language Management System
-				let currentLanguage = 'en';
+                // Slideshow Functionality
+                let currentIndex = 0;
+                const slides = document.querySelectorAll('.slide');
+                const dots = document.querySelectorAll('.dot');
+                const totalSlides = slides.length;
+                let autoSlideInterval;
+                let isModalOpen = false;
 
-				function switchLanguage(lang) {
-					if (currentLanguage === lang) return;
-					
-					currentLanguage = lang;
-					
-					// Update button states
-					document.querySelectorAll('.lang-btn').forEach(btn => {
-						btn.classList.remove('active');
-						if (btn.dataset.lang === lang) {
-							btn.classList.add('active');
-						}
-					});
-					
-					// Hide all language content
-					document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-						element.classList.remove('active');
-					});
-					
-					// Show selected language content
-					document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-						element.classList.add('active');
-					});
-					
-					// Update page title and meta
-					updatePageMeta(lang);
-					
-					// Save preference to session storage (clears when browser closes)
-					sessionStorage.setItem('preferred-language', lang);
-				}
+                // Modal elements
+                const modal = document.getElementById('imageModal');
+                const modalImage = document.getElementById('modalImage');
+                const modalTitle = document.getElementById('modalTitle');
+                const modalDescription = document.getElementById('modalDescription');
 
-				function updatePageMeta(lang) {
-					const translations = {
-						en: {
-							title: "Diving into Arts | Neuro Athletic Training by Stamatis"
-						},
-						de: {
-							title: "Diving into Arts | Neuroathletiktraining von Stamatis"
-						}
-					};
-					
-					document.title = translations[lang].title;
-				}
+                function showSlide(index) {
+                    // Remove active class from all slides and dots
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    // Add active class to current slide and dot
+                    slides[index].classList.add('active');
+                    dots[index].classList.add('active');
+                    
+                    // Reset and restart animations
+                    const slideContent = slides[index].querySelector('.slide-content');
+                    const title = slideContent.querySelector('.slide-title');
+                    const description = slideContent.querySelector('.slide-description');
+                    
+                    // Remove animation classes
+                    title.style.animation = 'none';
+                    description.style.animation = 'none';
+                    
+                    // Force reflow
+                    title.offsetHeight;
+                    description.offsetHeight;
+                    
+                    // Re-add animation classes
+                    title.style.animation = 'slideInUp 0.8s ease-out 0.5s forwards';
+                    description.style.animation = 'slideInUp 0.8s ease-out 0.7s forwards';
+                }
 
-				function initializeLanguage() {
-					// Load saved language preference from session storage
-					const savedLang = sessionStorage.getItem('preferred-language');
-					if (savedLang && savedLang !== currentLanguage) {
-						switchLanguage(savedLang);
-					}
-				}
+                function nextSlide() {
+                    if (isModalOpen) return; // Don't advance if modal is open
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    showSlide(currentIndex);
+                }
 
-				// Initialize on page load
-				document.addEventListener('DOMContentLoaded', function() {
-					initializeLanguage();
-				});
-			</script>
-	</body>
+                function prevSlide() {
+                    if (isModalOpen) return; // Don't advance if modal is open
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    showSlide(currentIndex);
+                }
+
+                function currentSlide(index) {
+                    if (isModalOpen) return; // Don't change slide if modal is open
+                    currentIndex = index - 1;
+                    showSlide(currentIndex);
+                    resetAutoSlide();
+                }
+
+                function changeSlide(direction) {
+                    if (isModalOpen) return; // Don't change slide if modal is open
+                    if (direction === 1) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                    resetAutoSlide();
+                }
+
+                function startAutoSlide() {
+                    if (isModalOpen) return; // Don't start auto slide if modal is open
+                    autoSlideInterval = setInterval(nextSlide, 4000);
+                }
+
+                function resetAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                    if (!isModalOpen) {
+                        startAutoSlide();
+                    }
+                }
+
+                function stopAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                }
+
+                function openModal() {
+                    // Get the currently active slide
+                    const activeSlide = slides[currentIndex];
+                    const fullImageUrl = activeSlide.getAttribute('data-full');
+                    const title = activeSlide.getAttribute('data-title');
+                    const description = activeSlide.getAttribute('data-description');
+                    
+                    modalImage.src = fullImageUrl;
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    isModalOpen = true;
+                    stopAutoSlide();
+                }
+
+                function closeModal() {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    isModalOpen = false;
+                    resetAutoSlide();
+                }
+
+                // Start the slideshow
+                function initSlideshow() {
+                    startAutoSlide();
+
+                    // Add click event to slides for modal
+                    slides.forEach(slide => {
+                        slide.addEventListener('click', (e) => {
+                            // Only open modal if clicking on the slide itself, not controls
+                            if (!e.target.classList.contains('controls') && 
+                                !e.target.classList.contains('dot') && 
+                                !e.target.closest('.controls') && 
+                                !e.target.closest('.dots-container')) {
+                                openModal();
+                            }
+                        });
+                    });
+
+                    // Pause on hover
+                    const container = document.querySelector('.slideshow-container');
+                    if (container) {
+                        container.addEventListener('mouseenter', () => {
+                            if (!isModalOpen) {
+                                clearInterval(autoSlideInterval);
+                            }
+                        });
+
+                        container.addEventListener('mouseleave', () => {
+                            if (!isModalOpen) {
+                                startAutoSlide();
+                            }
+                        });
+                    }
+
+                    // Close modal when clicking outside the image
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            closeModal();
+                        }
+                    });
+
+                    // Keyboard navigation
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && isModalOpen) {
+                            closeModal();
+                        } else if (e.key === 'ArrowLeft' && !isModalOpen) {
+                            changeSlide(-1);
+                        } else if (e.key === 'ArrowRight' && !isModalOpen) {
+                            changeSlide(1);
+                        }
+                    });
+                }
+
+                // Initialize on page load
+                document.addEventListener('DOMContentLoaded', function() {
+                    initializeLanguage();
+                    initSlideshow();
+                });
+            </script>
+    </body>
 </html>
