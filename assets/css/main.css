@@ -2311,7 +2311,7 @@ input, select, textarea {
 			}
 
 		.icon.style1 {
-			background: linear-gradient(135deg, #edbf79, #60bca4);
+			background: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
 			-webkit-background-clip: text;
   			-webkit-text-fill-color: transparent; 
 			color: transparent;
