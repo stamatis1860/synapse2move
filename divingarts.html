@@ -81,6 +81,7 @@
                 overflow: hidden;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
                 background: rgba(255, 255, 255, 0.05);
+                touch-action: pan-y; /* Allow vertical scrolling but handle horizontal gestures */
             }
 
             .slide {
@@ -215,6 +216,7 @@
                 color: white;
                 text-align: center;
                 z-index: 2;
+                pointer-events: none; /* Prevent interference with touch events */
             }
 
             .slide-title {
@@ -308,6 +310,24 @@
                 right: 15px;
             }
 
+            /* Swipe indicator for mobile */
+            .swipe-indicator {
+                position: absolute;
+                bottom: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-size: 0.9rem;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 8px 16px;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+                opacity: 0;
+                animation: swipeHint 3s ease-in-out 2s forwards;
+                pointer-events: none;
+                z-index: 4;
+            }
+
             @keyframes slideInUp {
                 to {
                     opacity: 1;
@@ -324,22 +344,26 @@
                 }
             }
 
-            @media (max-width: 600px) {
-                .language-switch {
-                    top: 5px;
-                    right: 1px;
-                    scale: 0.85;
-                    padding: 2px;
-                    flex-direction: column;
-                    gap: 1px;
+            @keyframes swipeHint {
+                0%, 90%, 100% {
+                    opacity: 0;
                 }
-               
-                .lang-btn {
-                    padding: 0px 7px;
-                    font-size: 0.65em;
-                    border-radius: 15px;
+                20%, 70% {
+                    opacity: 0.8;
                 }
+            }
 
+            @media (max-width: 768px) {
+                /* Hide controls on mobile/tablet */
+                .controls {
+                    display: none !important;
+                }
+                
+                /* Show swipe indicator on mobile */
+                .swipe-indicator {
+                    display: block;
+                }
+                
                 .slideshow-container {
                     height: 300px;
                     margin: 1.5em 0;
@@ -358,12 +382,38 @@
                 .slide-description {
                     font-size: 0.9rem;
                 }
-                
-                .controls {
-                    font-size: 10px !important;
-                    padding: 0 !important;
-                    width: 24px !important;
-                    height: 24px !important;
+
+                .dots-container {
+                    bottom: 10px;
+                }
+
+                .dot {
+                    width: 8px;
+                    height: 8px;
+                }
+            }
+
+            @media (min-width: 769px) {
+                /* Hide swipe indicator on desktop */
+                .swipe-indicator {
+                    display: none !important;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .language-switch {
+                    top: 5px;
+                    right: 1px;
+                    scale: 0.85;
+                    padding: 2px;
+                    flex-direction: column;
+                    gap: 1px;
+                }
+               
+                .lang-btn {
+                    padding: 0px 7px;
+                    font-size: 0.65em;
+                    border-radius: 15px;
                 }
 
                 .modal-content {
@@ -416,12 +466,6 @@
                     font-size: 0.8rem;
                 }
 
-                .controls {
-                    width: 22px !important;
-                    height: 22px !important;
-                    font-size: 8px !important;
-                }
-
                 .modal-content {
                     max-width: 99%;
                     max-height: 99%;
@@ -441,6 +485,11 @@
 
                 .modal-description {
                     font-size: 0.8rem;
+                }
+
+                .swipe-indicator {
+                    font-size: 0.8rem;
+                    padding: 6px 12px;
                 }
             }
         </style>
@@ -496,53 +545,53 @@
                                     <span class="lang-en active"><b>Impressions from my last Performance</b></span>
                                     <span class="lang-de"><b>Impressionen von meinem letzen Auftritt</b></span>
                                 </h2>
-                                <div class="slideshow-container">
-                                    <div class="slide active" style="background-image: url('images/OS_8.jpg')" data-full="images/OS_8.jpg" data-title="Dance Movement" data-description="Flowing connection between mind and body through Brazilian Zouk">
+                                <div class="slideshow-container" id="slideshowContainer">
+                                    <div class="slide active" style="background-image: url('images/OS_8.webp')" data-full="images/OS_8.webp" data-title="" data-description="">
                                         <div class="slide-content">
                                             <h2 class="slide-title"></h2>
                                             <p class="slide-description"></p>
                                         </div>
                                     </div>
                                     
-                                    <div class="slide" style="background-image: url('images/OS_2.jpg')" data-full="images/OS_2.jpg" data-title="Brain Training" data-description="Neuroplasticity and cognitive enhancement through targeted exercises">
+                                    <div class="slide" style="background-image: url('images/OS_2.webp')" data-full="images/OS_2.webp" data-title="" data-description="">
                                         <div class="slide-content">
                                             <h2 class="slide-title"></h2>
                                             <p class="slide-description"></p>
                                         </div>
                                     </div>
                                     
-                                    <div class="slide" style="background-image: url('images/OS_3.jpg');" data-full="images/OS_3.jpg" data-title="Creative Expression" data-description="Unlocking artistic potential through neuroathletic training">
+                                    <div class="slide" style="background-image: url('images/OS_3.webp');" data-full="images/OS_3.webp" data-title="" data-description="">
                                         <div class="slide-content">
                                             <h2 class="slide-title"></h2>
                                             <p class="slide-description"></p>
                                         </div>
                                     </div>
                                     
-                                    <div class="slide" style="background-image: url('images/OS_1.jpg');" data-full="images/OS_1.jpg" data-title="Partner Connection" data-description="Building trust and communication through partner dance">
+                                    <div class="slide" style="background-image: url('images/OS_1.webp');" data-full="images/OS_1.webp" data-title="" data-description="">
                                         <div class="slide-content">
                                             <h2 class="slide-title"></h2>
                                             <p class="slide-description"></p>
                                         </div>
                                     </div>
                                     
-                                    <div class="slide" style="background-image: url('images/OS_4.jpg');" data-full="images/OS_4.jpg" data-title="Body Awareness" data-description="Developing proprioception and movement intelligence">
-                                        <div class="slide-content">
-                                            <h2 class="slide-title"></h2>
-                                            <p class="slide-description"></p>
-                                        </div>
-                                    </div>
+                                   
 
+                                    <!-- Desktop Controls (hidden on mobile) -->
                                     <button class="controls prev" onclick="changeSlide(-1)">❮</button>
                                     <button class="controls next" onclick="changeSlide(1)">❯</button>
                                     
-                                    
+                                    <!-- Mobile Swipe Indicator -->
+                                    <div class="swipe-indicator">
+                                        <span class="lang-en active">← Swipe to browse →</span>
+                                        <span class="lang-de">← Wischen zum Durchblättern →</span>
+                                    </div>
                                     
                                     <div class="dots-container">
                                         <span class="dot active" onclick="currentSlide(1)"></span>
                                         <span class="dot" onclick="currentSlide(2)"></span>
                                         <span class="dot" onclick="currentSlide(3)"></span>
                                         <span class="dot" onclick="currentSlide(4)"></span>
-                                        <span class="dot" onclick="currentSlide(5)"></span>
+                                       
                                     </div>
                                 </div>
 
@@ -693,7 +742,7 @@
                     }
                 }
 
-                // Slideshow Functionality
+                // Slideshow Functionality with Touch/Swipe Support
                 let currentIndex = 0;
                 const slides = document.querySelectorAll('.slide');
                 const dots = document.querySelectorAll('.dot');
@@ -701,11 +750,20 @@
                 let autoSlideInterval;
                 let isModalOpen = false;
 
+                // Touch/Swipe handling variables
+                let startX = 0;
+                let startY = 0;
+                let startTime = 0;
+                let isSwiping = false;
+                let minSwipeDistance = 50;
+                let maxSwipeTime = 300;
+
                 // Modal elements
                 const modal = document.getElementById('imageModal');
                 const modalImage = document.getElementById('modalImage');
                 const modalTitle = document.getElementById('modalTitle');
                 const modalDescription = document.getElementById('modalDescription');
+                const slideshowContainer = document.getElementById('slideshowContainer');
 
                 function showSlide(index) {
                     // Remove active class from all slides and dots
@@ -803,33 +861,111 @@
                     resetAutoSlide();
                 }
 
+                // Touch/Swipe Event Handlers
+                function handleTouchStart(e) {
+                    if (isModalOpen) return;
+                    
+                    const touch = e.touches[0];
+                    startX = touch.clientX;
+                    startY = touch.clientY;
+                    startTime = Date.now();
+                    isSwiping = false;
+                    
+                    // Stop auto-slide while touching
+                    clearInterval(autoSlideInterval);
+                }
+
+                function handleTouchMove(e) {
+                    if (isModalOpen) return;
+                    
+                    const touch = e.touches[0];
+                    const deltaX = Math.abs(touch.clientX - startX);
+                    const deltaY = Math.abs(touch.clientY - startY);
+                    
+                    // If horizontal movement is greater than vertical, we're swiping
+                    if (deltaX > deltaY && deltaX > 10) {
+                        isSwiping = true;
+                        // Prevent vertical scrolling during horizontal swipe
+                        e.preventDefault();
+                    }
+                }
+
+                function handleTouchEnd(e) {
+                    if (isModalOpen || !isSwiping) {
+                        // Restart auto-slide if not swiping
+                        if (!isModalOpen) {
+                            startAutoSlide();
+                        }
+                        return;
+                    }
+                    
+                    const touch = e.changedTouches[0];
+                    const endX = touch.clientX;
+                    const endTime = Date.now();
+                    
+                    const deltaX = endX - startX;
+                    const deltaTime = endTime - startTime;
+                    
+                    // Check if it's a valid swipe (minimum distance and within time limit)
+                    if (Math.abs(deltaX) >= minSwipeDistance && deltaTime <= maxSwipeTime) {
+                        if (deltaX > 0) {
+                            // Swipe right - go to previous slide
+                            prevSlide();
+                        } else {
+                            // Swipe left - go to next slide
+                            nextSlide();
+                        }
+                    }
+                    
+                    // Reset swipe state
+                    isSwiping = false;
+                    
+                    // Restart auto-slide
+                    resetAutoSlide();
+                }
+
+                // Handle click events (for opening modal)
+                function handleSlideClick(e) {
+                    // Don't open modal if we just finished swiping
+                    if (isSwiping) return;
+                    
+                    // Only open modal if clicking on the slide itself, not controls or dots
+                    if (!e.target.classList.contains('controls') && 
+                        !e.target.classList.contains('dot') && 
+                        !e.target.closest('.controls') && 
+                        !e.target.closest('.dots-container')) {
+                        // Add a small delay to distinguish between swipe and tap
+                        setTimeout(() => {
+                            if (!isSwiping) {
+                                openModal();
+                            }
+                        }, 100);
+                    }
+                }
+
                 // Start the slideshow
                 function initSlideshow() {
                     startAutoSlide();
 
+                    // Add touch event listeners for swipe functionality
+                    slideshowContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+                    slideshowContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+                    slideshowContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+
                     // Add click event to slides for modal
                     slides.forEach(slide => {
-                        slide.addEventListener('click', (e) => {
-                            // Only open modal if clicking on the slide itself, not controls
-                            if (!e.target.classList.contains('controls') && 
-                                !e.target.classList.contains('dot') && 
-                                !e.target.closest('.controls') && 
-                                !e.target.closest('.dots-container')) {
-                                openModal();
-                            }
-                        });
+                        slide.addEventListener('click', handleSlideClick);
                     });
 
-                    // Pause on hover
-                    const container = document.querySelector('.slideshow-container');
-                    if (container) {
-                        container.addEventListener('mouseenter', () => {
+                    // Pause on hover (desktop only)
+                    if (window.innerWidth > 768) {
+                        slideshowContainer.addEventListener('mouseenter', () => {
                             if (!isModalOpen) {
                                 clearInterval(autoSlideInterval);
                             }
                         });
 
-                        container.addEventListener('mouseleave', () => {
+                        slideshowContainer.addEventListener('mouseleave', () => {
                             if (!isModalOpen) {
                                 startAutoSlide();
                             }
@@ -843,7 +979,7 @@
                         }
                     });
 
-                    // Keyboard navigation
+                    // Keyboard navigation (desktop only)
                     document.addEventListener('keydown', (e) => {
                         if (e.key === 'Escape' && isModalOpen) {
                             closeModal();
