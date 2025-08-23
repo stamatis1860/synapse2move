@@ -1,0 +1,721 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Neuroathletictraining</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<style>
+			/* Custom styles for expandable sections */
+			.details-btn {
+				background: linear-gradient(135deg, #edbf79ab, #60bca3a1);
+				color: white;
+				padding: 12px 25px;
+				border: none;
+				border-radius: 25px;
+				font-size: 16px;
+				font-weight: bold;
+				text-align: center;
+				line-height: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
+				margin: 20px 0 10px 0;
+				display: block;
+				position: relative;
+				overflow: hidden;
+				width: 100%;
+			}
+			
+			.details-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
+				background: linear-gradient(135deg, #edbf79, #60bca4);
+			}
+			
+			.details-btn:active {
+				transform: translateY(0);
+			}
+			
+			.details-btn::after {
+				content: '▼';
+				margin-left: 10px;
+				font-size: 14px;
+				transition: transform 0.3s ease;
+			}
+			
+			.details-btn.active::after {
+				transform: rotate(180deg);
+			}
+			
+			.expandable-content {
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.4s ease, padding 0.4s ease;
+				background: rgba(255, 255, 255, 0.05);
+				border-left: 4px solid #edbf79;
+				margin: 20px 0;
+				border-radius: 8px;
+			}
+			
+			.expandable-content.expanded {
+				max-height: 2000px;
+				padding: 20px;
+			}
+			
+			.price-info {
+				background: linear-gradient(135deg, #edbf79, #60bca4);
+				color: white;
+				padding: 15px 20px;
+				border-radius: 8px;
+				margin-bottom: 15px;
+				text-align: center;
+			}
+			
+			.price-amount {
+				font-size: 30px;
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+			
+			.price-description {
+				font-size: 18px;
+				opacity: 0.9;
+			}
+			
+			.additional-info {
+				background: rgba(255, 255, 255, 0.1);
+				padding: 15px;
+				border-radius: 6px;
+				margin-top: 15px;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+			}
+			
+			.additional-info h4 {
+				color: #007acc;
+				margin-top: 0;
+				margin-bottom: 10px;
+			}
+			
+			.booking-note {
+				background:linear-gradient(135deg, #edbf79, #60bca4);
+				color: white;
+				border: 1px solid rgba(255, 234, 167, 0.3);
+				padding: 12px;
+				border-radius: 6px;
+				margin-top: 15px;
+				font-size: 18px;
+			}
+			
+			@media screen and (max-width: 768px) {
+				.details-btn {
+					font-size: 14px;
+					padding: 10px 20px;
+				}
+				
+				.expandable-content.expanded {
+					max-height: 1500px;
+				}
+				
+				.booking-note {
+					font-size: 14px;
+				}
+			}
+
+			/* Language Switch Styles */
+			.language-switch {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				z-index: 10000;
+				background:  linear-gradient(135deg, #edbf797c, #60bca381);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 25px;
+				padding: 3px;
+				display: flex;
+				align-items: center;
+				gap: 2px;
+				transition: all 0.3s ease;
+				opacity: 0.7;
+			}
+
+			.language-switch:hover {
+				opacity: 1;
+				background: linear-gradient(135deg, #edbf79, #60bca3);
+			}
+
+			.lang-btn {
+				background: transparent;
+				border: none;
+				color: rgba(255, 255, 255, 0.8);
+				padding: 0px 0px;
+				cursor: pointer;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+				font-size: 0.5em;
+				font-weight: 800;
+				letter-spacing: 0.5px;
+			}
+
+			.lang-btn:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+			}
+
+			.lang-btn.active {
+				background: #edbf79;
+				color: white;
+				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+			}
+
+			/* Hide inactive language content */
+			.lang-content {
+				display: none;
+			}
+
+			.lang-content.active {
+				display: block;
+			}
+
+			/* Inline language spans */
+			.lang-en, .lang-de {
+				display: none;
+			}
+
+			.lang-en.active, .lang-de.active {
+				display: inline;
+			}
+
+			@media (max-width: 600px) {
+				.language-switch {
+					top: 5px;
+					right: 5px;
+					scale: 0.85;
+					padding: 2px;
+					flex-direction: column;
+					gap: 1px;
+				}
+				
+				.lang-btn {
+					padding: 0px 7px;
+					font-size: 0.65em;
+					border-radius: 15px;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Language Switch -->
+		<div class="language-switch">
+			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
+			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
+		</div>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					<h1>
+						<span class="lang-en active">Services</span>
+						<span class="lang-de">Leistungen</span>
+					</h1>
+						<p>
+							<span class="lang-en active"></span>
+							<span class="lang-de"></span>
+						</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+						<section id="content" class="main">
+							
+						   
+							<h2>
+								<span class="lang-en active"><strong>20 Minute Call</strong> </span>
+								<span class="lang-de"><strong>Kostenloses 20-Minuten-Gespräch</strong></span>
+							</h2>
+						   
+							<div class="lang-en active">
+								<p>Curious about how Neuro Athletic Training (NAT) can support your unique goals? Whether you're dealing with chronic pain, recovering from injury, seeking better movement, or simply looking to enhance your performance, this call is your chance to connect with me directly.
+									
+								</p>
+								<h4>
+										Perfect for:
+									</h4>
+									<ul>
+										<li>Anyone curious about neurological approaches to pain and performance</li>
+
+										<li>People who want to understand their options before committing</li>
+
+										<li>Those seeking a second opinion on their current approach</li>
+
+										<li>Share your goals, challenges, or concerns—no matter where you're starting from</li>
+									</ul>
+									All sessions are held online via Google Meet.
+							</div>
+							
+						   
+							<div class="lang-de">
+								<p>Bist du neugierig, wie Neuroathletiktraining (NAT) deine individuellen Ziele unterstützen kann? Egal, ob du mit chronischen Schmerzen zu kämpfen hast, dich von einer Verletzung erholst oder deine Mobilität und Performance verbessern möchtest – dieser Anruf ist deine Chance, direkt mit mir in Kontakt zu treten.
+									
+								</p>
+								<h4>
+										Perfekt für:
+									</h4>
+									<ul>
+										<li>Alle, die neugierig auf neurologische Ansätze bei Schmerz und Leistungssteigerung sind</li>
+										<li>Wenn du fragen zu meinem Angebot hast</li>
+										<li>Du eine zweite Meinung zu deinem aktuellen Ansatz suchst</li>
+										<li>Teile deine Ziele, Herausforderungen oder Anliegen – ganz egal, wo du gerade stehst</li>
+									</ul>
+									Alle Sessions finden online über Google Meet statt.
+							</div>
+						   
+							<div class="booking-note">
+								<a href="form.html">
+									<span class="lang-en active"><strong>Ready to schedule?</strong></span>
+									<span class="lang-de"><strong>Bereit zu buchen?</strong></span>
+								</a>
+								<span class="lang-en active">Book your free call through our contact form or reach out via email to find a time that works for you.</span>
+								<span class="lang-de">Buche dein kostenloses Gespräch über das Kontaktformular oder melde dich per E-Mail, um einen passenden Termin zu finden.</span>
+							</div>
+							
+							<hr class="decorative">
+							<style>
+								hr.decorative {
+									border: none;
+									height: 2px;
+									background: linear-gradient(to right, transparent, #999, transparent);
+									margin: 3em auto;  /* spacing above and below */
+									width: 60%;        /* shorter than full width */
+								}
+							</style>
+							
+							<h2>
+								<span class="lang-en active"><strong>Neuroassessment</strong></span>
+								<span class="lang-de"><strong>Neuroassessment</strong></span>
+							</h2>
+							
+							<div class="lang-en active">
+								<h4>What's Included:</h4>
+									<ul>
+										<li>
+											Complete neurological evaluation using clinical-grade tests
+										</li>
+										<li>
+											Detailed analysis of your results and what they mean
+										</li>
+										<li>
+											Personalized report with findings and recommendations
+										</li>
+									</ul>
+									
+												<h4>
+												Ideal for:
+												</h4>
+												<ul>
+													<li>
+														Athletes looking to establish a comprehensive neurological baseline to compare their performance across seasons
+													<li>
+														Individuals with chronic pain seeking root cause analysis
+													</li>
+													<li>
+														People recovering from injury who want comprehensive evaluation
+													</li>
+													<li>
+													Athletes seeking to optimize performance and get an in depth neurological assessment
+													</li>
+													<li>
+														Anyone interested in preventive health and early intervention
+													</li>
+												</ul>
+											
+										</div>
+							<div class="lang-de">
+											<h4>Enhält:</h4>
+				<ul>
+				<li>
+					Umfassende neurologische Untersuchung mit klinischen Tests
+				</li>
+				<li>
+					Detaillierte Analyse Ihrer Ergebnisse und deren Bedeutung
+				</li>
+				<li>
+					Persönlicher Bericht mit Befunden und Empfehlungen
+				</li>
+				</ul>
+
+				<h4>
+				Ideal für:
+				</h4>
+				<ul>
+				<li>
+					Athleten, die eine umfassende neurologische Basislinie erstellen möchten, um ihre Leistung über die Saisons hinweg zu vergleichen
+				</li>
+				<li>
+					 Chronischen Schmerzpatienten, die eine Ursachenanalyse suchen
+				</li>
+				<li>
+					Personen in Reha, die eine umfassende Untersuchung wünschen
+				</li>
+				<li>
+					Athleten, die ihre Leistung optimieren und eine tiefgehende neurologische Untersuchung erhalten möchten
+				</li>
+				<li>
+					Alle, die an Präventivmedizin und frühzeitiger Intervention interessiert sind
+				</li>
+				</ul>
+
+			</div>			
+							
+							<button class="details-btn" onclick="toggleSection('section2', this)">
+								<span class="lang-en active">More Details & Pricing</span>
+								<span class="lang-de">Mehr Details & Preise</span>
+							</button>
+							
+							<div class="expandable-content" id="section2">
+								<div class="price-info">
+									<div class="price-amount">€150</div>
+									<div class="price-description">
+										<span class="lang-en active">Comprehensive 90-minute assessment</span>
+										<span class="lang-de">Umfassende 90-minütige Bewertung</span>
+									</div>
+								</div>
+								
+								<div class="additional-info">
+									<div class="lang-en active">
+									<p>The Neuroassessment is a detailed, science-based evaluation designed to uncover how your nervous system is functioning—and where it may need support. This session combines well-established tests from clinical neurology to give us a clear picture of your brain-body connection.
+
+								During the assessment, I will evaluate key neurological systems using proven methods, including:
+								
+								<ul>
+									<li><strong>Vital signs</strong> - blood pressure, heart rate, and other baseline indicators</li>
+									<li><strong>Breathing patterns</strong> - to assess regulation, rhythm, and nervous system tone</li>
+									<li><strong>Gait analysis</strong> - how you walk provides insights into various brain functions</li>
+									<li><strong>Sensory testing</strong> - checking how your nervous system processes touch, temperature, and proprioception</li>
+									<li><strong>Cerebellar tests</strong> - to examine balance, motor control, and coordination</li>
+									<li><strong>Cranial nerve examination</strong> - assessing all 12 cranial nerves that control essential functions like eye movement, facial sensation, hearing, and more</li>
+									<li><strong>Visual testing</strong> - looking at visual tracking, fixation, and processing</li>
+								</ul>
+
+								These tests are widely recognized in neurological practice and provide valuable insights into how effectively your brain and nervous system is functioning. They help us identify subtle dysfunctions or imbalances—often before they become noticeable in daily life.
+
+								By detecting these issues early on, we can take proactive steps to prevent them from worsening. Based on your results, we'll develop a personalized, targeted plan to help you move more efficiently, feel better, and take back control of your health and performance.</p>
+								</div>
+								<div class="lang-de">
+									<p>Das Neuroassessment ist eine detaillierte, wissenschaftlich fundierte Untersuchung, die aufzeigt, wie Ihr Nervensystem arbeitet – und wo es möglicherweise Unterstützung braucht. Diese Sitzung kombiniert bewährte Tests aus der klinischen Neurologie, um ein klares Bild von deinem Nervensystem zu erhalten. Während des Assessments überprüfe ich zentrale neurologische Systeme anhand erprobter Methoden, darunter:
+								
+								<ul>
+									<li><strong>Vitalzeichen</strong> - Blutdruck, Herzfrequenz und andere Grundindikatoren</li>
+									<li><strong>Atemmuster</strong> - zur Bewertung von Regulation und Rhythmus </li>
+									<li><strong>Ganganalyse</strong> - wie du gehst, gibt Einblicke in verschiedene Gehirnfunktion</li>
+									<li><strong>Sensorische Tests</strong> - wie dein Nervensystem Berührung, Temperatur und Propriozeption verarbeitet</li>
+									<li><strong>Kleinhirntests</strong> - zur Untersuchung von Gleichgewicht, motorischer Kontrolle und Koordination</li>
+									<li><strong>Hirnnerven-Untersuchung</strong> - Bewertung aller 12 Hirnnerven, die wesentliche Funktionen wie Augenbewegung, Gesichtsempfindung, Hören und mehr steuern</li>
+									<li><strong>Visueller Test</strong> - Betrachtung von visueller Verfolgung und Fixierung von objekten sowie die Verarbeitung dieser Reize</li>
+								</ul>
+
+								Diese Tests sind in der neurologischen Praxis weit anerkannt und liefern wertvolle Einblicke in die Funktionsweise von Gehirn und Nervensystem. Sie helfen uns, selbst subtile Funktionsstörungen oder Ungleichgewichte zu erkennen – oft noch bevor sie sich im Alltag bemerkbar machen. Durch diese frühe Erkennung können wir gezielt gegensteuern, bevor sich Probleme verschlimmern. Auf Grundlage Ihrer Ergebnisse entwickeln wir einen individuellen, zielgerichteten Plan, der Ihnen hilft, sich effizienter zu bewegen, besser zu fühlen und Ihre Gesundheit und Leistungsfähigkeit wieder in die eigene Hand zu nehmen</p>
+							</div>
+
+						
+						</div>
+								<div class="booking-note">
+									<a href="form.html">
+										<span class="lang-en active"><strong>Investment in your health</strong></span>
+										<span class="lang-de"><strong>Investition in deine Gesundheit</strong></span>
+									</a>
+									<span class="lang-en active">- This comprehensive assessment gives you unprecedented insight into your nervous system function</span>
+									<span class="lang-de">- Diese umfassende Bewertung gibt dir beispiellose Einblicke in die Funtion deines Nervensystems</span>
+								</div>
+							</div>
+							<hr class="decorative">
+							<h2>
+								<span class="lang-en active"><strong>Personal Training</strong></span>
+								<span class="lang-de"><strong>Personal Training</strong></span>
+							</h2>
+							
+							<div class="lang-en active">
+								<h4>
+										What You'll Receive:
+									</h4>
+									<ul>
+										<li>
+											Goal-specific neurological assessment tailored to your needs</li>
+										
+										<li>
+											Integration of NAT principles into your existing routine</li>
+										<li>
+											Personalized exercise modifications and progressions</li>
+										<li>
+											Ongoing support and adjustments based on your progress</li>
+									</ul>
+									
+									<h4>
+										Perfect for:</h4>
+									<ul>
+										<li>
+											Athletes wanting to enhance performance through NAT</li>
+										<li>
+											Individuals with specific movement goals or limitations</li>
+										<li>
+											People seeking to integrate NAT into existing fitness routines</li>
+									</ul>
+								
+							</div>
+							
+							<div class="lang-de">
+								<h4>
+								Was Sie erhalten:
+								</h4>
+								<ul>
+								<li>
+									Zielorientierte neurologische Bewertung, abgestimmt auf Ihre individuellen Bedürfnisse
+								</li>
+								
+								<li>
+									Integration der NAT-Prinzipien in Ihre bestehende Routine
+								</li>
+								<li>
+									Individuelle Übungsanpassungen und -steigerungen
+								</li>
+								<li>
+									Laufende Unterstützung und Anpassungen basierend auf Ihrem Fortschritt
+								</li>
+								</ul>
+
+								<h4>
+								Perfekt für:
+								</h4>
+								<ul>
+								<li>
+									Athleten, die ihre Leistung durch NAT steigern möchten
+								</li>
+								<li>
+									Personen mit spezifischen Bewegungszielen oder Einschränkungen
+								</li>
+								<li>
+									Menschen, die NAT in bestehende Fitnessroutinen integrieren möchten
+								</li>
+								</ul>
+
+								
+							</div>
+							
+							<button class="details-btn" onclick="toggleSection('section3', this)">
+								<span class="lang-en active">More Details & Pricing</span>
+								<span class="lang-de">Mehr Details & Preise</span>
+							</button>
+							
+							<div class="expandable-content" id="section3">
+								<div class="price-info">
+									<div class="price-amount">€95/h</div>
+									<div class="price-description">
+										<span class="lang-en active">Individual sessions</span>
+										<span class="lang-de">Einzelsessions</span>
+									</div>
+								</div>
+								
+								<div class="additional-info">
+									<div class="lang-en active">
+												<p>
+									Unlike the Neuroassessment, your first session focuses on a goal-specific evaluation that begins with an in-depth discussion of your history and training or rehabilitation goals. Based on this, we perform only the tests most relevant to your individual needs. What sets this session apart is that we don't just assess—we start right away. You'll begin with targeted exercises and immediate adjustments to your current training or rehab plan. Together, we'll review your existing program and explore how a neurocentric approach can be integrated to enhance your performance and results. Whether we create a new personalized plan or build on what you're already doing, every exercise will be chosen to improve the input your brain receives from your body and senses—helping you move, perform, and recover more effectively. </p>
+
+									</div>
+
+									<div class="lang-de">
+										<p>
+											Im Gegensatz zum Neuroassessment steht in deiner ersten Sitzung dein persönliches Ziel im Mittelpunkt. Wir starten mit einem ausführlichen Gespräch über deine Vorgeschichte und deine Trainings- oder Reha-Ziele. Danach machen wir nur die Tests, die für dich wirklich relevant sind.
+
+											 Du bekommst gezielte Übungen und sofortige Anpassungen für dein aktuelles Training oder deinen Rehaplan. Gemeinsam schauen wir uns an, was du bisher machst, und überlegen, wie wir mit einem neurozentrierten Ansatz deine Leistung und Ergebnisse noch weiter steigern können.
+
+											Ob wir dafür einen komplett neuen Plan erstellen oder dein bestehendes Programm optimieren – jede Übung ist so gewählt, dass dein Gehirn den best möglichen Input bekommt. So kannst du dich leichter bewegen, mehr leisten und schneller regenerieren.</p>
+									
+									</div>
+
+									<h4>
+										<span class="lang-en active">Session Duration & Format:</span>
+										<span class="lang-de">Session-Dauer & Format:</span>
+									</h4>
+									<ul>
+										<li>
+											<span class="lang-en active">Sessions are individually timed and can take place either online or at a location that best suits the goals and content of the session</span>
+											<span class="lang-de">Sessions sind individuell getaktet und können entweder online oder an einem Ort stattfinden, der den Zielen und dem Inhalt der Session am besten entspricht</span>
+										</li>
+										<li>
+											<span class="lang-en active">For long-term collaboration, feel free to reach out for a personalized offer</span>
+											<span class="lang-de">Für langfristige Zusammenarbeit melde dich gerne für ein personalisiertes Angebot</span>
+										</li>
+									</ul>
+								</div>
+								
+								<div class="booking-note">
+									<span class="lang-en active"><strong>Package Options:</strong> Single sessions available, or save with 4-session packages (€350) or 8-session packages (€650).</span>
+									<span class="lang-de"><strong>Paket-Optionen:</strong> Einzelsessions verfügbar, oder spare mit 4-Session-Paketen (€350) oder 8-Session-Paketen (€650).</span>
+								</div>
+							</div>
+
+						</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+				<section>
+					<h1 style="font-size: 1.8em;">
+						<strong>
+							<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
+							<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
+						</strong>
+					</h1>
+					<p><strong>
+						<span class="lang-en active">Book your session and let's make it happen.</span>
+						<span class="lang-de">Buche deine Session und lass es uns angehen</span>
+					</strong></p>
+					<ul class="actions">
+						<li><a href="form.html" class="button"><strong>
+							<span class="lang-en active">Get Started!</span>
+							<span class="lang-de">Jetzt starten!</span>
+						</strong></a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>
+						<span class="lang-en active">Contact</span>
+						<span class="lang-de">Kontakt</span>
+					</h2>
+					<dl class="alt">
+						<dt>
+							<span class="lang-en active">Address</span>
+							<span class="lang-de">Adresse</span>
+						</dt>
+						<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
+						<dt>
+							<span class="lang-en active">Phone</span>
+							<span class="lang-de">Telefon</span>
+						</dt>
+						<dd>+49 152 21319336</dd>
+						<dt>Email</dt>
+						<dd><a href="mailto:stamatis@ionio.de">stamatis@ionio.de</a></dd>
+					</dl>
+					<ul class="icons" style="justify-content: center; align-items: center;">
+						<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+					</ul>
+					<style>
+					@media (max-width: 600px) {
+						#footer .icons {
+							display: flex !important;
+							justify-content: center !important;
+							align-items: center !important;
+							padding-left: 0 !important;
+						}
+					}
+					</style>
+				</section>
+				<p class="copyright"> 
+					<a href="index.html"><strong>HOME</strong></a> <br> 
+					&copy; Stamatios Papavasiliou 2025<br> 
+					<a href="impressum.html">Impressum</a> <br> 
+					<a href="datenschutz.html">
+						<span class="lang-en active">Privacy Policy</span>
+						<span class="lang-de">Datenschutzerklärung</span>
+					</a> <br>   
+					Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
+				</p>
+			</footer>
+			</div>
+
+		<!-- Scripts -->
+		<script>
+			// Toggle expandable sections
+			function toggleSection(sectionId, button) {
+				const section = document.getElementById(sectionId);
+				const isExpanded = section.classList.contains('expanded');
+				
+				if (isExpanded) {
+					section.classList.remove('expanded');
+					button.classList.remove('active');
+				} else {
+					section.classList.add('expanded');
+					button.classList.add('active');
+				}
+			}
+
+			// Session Storage Language Management System
+			let currentLanguage = 'en';
+
+			function switchLanguage(lang) {
+				if (currentLanguage === lang) return;
+				
+				currentLanguage = lang;
+				
+				// Update button states
+				document.querySelectorAll('.lang-btn').forEach(btn => {
+					btn.classList.remove('active');
+					if (btn.dataset.lang === lang) {
+						btn.classList.add('active');
+					}
+				});
+				
+				// Hide all language content
+				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
+					element.classList.remove('active');
+				});
+				
+				// Show selected language content
+				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
+					element.classList.add('active');
+				});
+				
+				// Update page title and meta
+				updatePageMeta(lang);
+				
+				// Save preference to session storage (clears when browser closes)
+				sessionStorage.setItem('preferred-language', lang);
+			}
+
+			function updatePageMeta(lang) {
+				const translations = {
+					en: {
+						title: "Neuro Athletic Training by Stamatis | Synapse²Move"
+					},
+					de: {
+						title: "Neuroathletiktraining von Stamatis | Synapse²Move"
+					}
+				};
+				
+				document.title = translations[lang].title;
+			}
+
+			function initializeLanguage() {
+				// Load saved language preference from session storage
+				const savedLang = sessionStorage.getItem('preferred-language');
+				if (savedLang && savedLang !== currentLanguage) {
+					switchLanguage(savedLang);
+				}
+			}
+
+			// Initialize on page load
+			document.addEventListener('DOMContentLoaded', function() {
+				initializeLanguage();
+			});
+		</script>
+
+	</body>
+</html>
