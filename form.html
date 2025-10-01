@@ -291,22 +291,52 @@
 								<span class="lang-de">Persönliche Informationen</span>
 							</h3>
 							<div class="row gtr-uniform">
-								<div class="col-6 col-12-xsmall">
-									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name & Surname" required style="background-color: white;" />
+									<div class="col-12">
+										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name & Surname" required style="background-color: white;" />
+									</div>
+									<div class="col-6 col-12-xsmall">
+										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required style="background-color: white;" />
+									</div>
+									<div class="col-6 col-12-xsmall">
+										<input type="email" name="demo-email-confirm" id="demo-email-confirm" value="" placeholder="Confirm Email" required style="background-color: white;" />
+									</div>
+									<div class="col-12">
+										<input type="text" name="demo-street" id="demo-street" value="" placeholder="Street Address" required style="background-color: white;" />
+									</div>
+									<div class="col-6 col-12-xsmall">
+										<input type="text" name="demo-city" id="demo-city" value="" placeholder="City" required style="background-color: white;" />
+									</div>
+									<div class="col-6 col-12-xsmall">
+										<input type="text" name="demo-zip" id="demo-zip" value="" placeholder="Zip Code" required style="background-color: white;" />
+									</div>
 								</div>
-								<div class="col-6 col-12-xsmall">
-									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required style="background-color: white;" />
-								</div>
+						</div>
+						<div class="form-section">		
 								<div class="col-12">
-									<select name="demo-category" id="demo-category" style="color: white;">
+									<select name="demo-category" id="demo-category" style="color: white;" onchange="handleCategoryChange()">
 										<!-- Options will be populated by JavaScript -->
 									</select>
 								</div>
 							</div>
+						
+						<!-- Workshop Selection Section (Hidden by default) -->
+						<div class="form-section" id="workshopSection" style="display: none;">
+							<h3 class="section-title" style="color: white;">
+								<span class="lang-en active">Select Workshop Date</span>
+								<span class="lang-de">Workshop-Datum wählen</span>
+							</h3>
+							<div class="row gtr-uniform">
+								<div class="col-12">
+									<div class="time-slot-grid" id="workshopDatesGrid">
+										<!-- Workshop dates will be generated here -->
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="workshop-date" id="workshopDate" />
 						</div>
 
 						<!-- Appointment Booking Section -->
-						<div class="form-section">
+						<div class="form-section" id="appointmentSection" style="display: none;">
 							<h3 class="section-title" style="color: white;">
 								<span class="lang-en active">Select Date & Time</span>
 								<span class="lang-de">Datum & Uhrzeit wählen</span>
@@ -358,8 +388,8 @@
 						<!-- Additional Options Section -->
 						<div class="form-section">
 							<h3 class="section-title" style="color: white;">
-								<span class="lang-en active">Additional Options</span>
-								<span class="lang-de">Zusätzliche Optionen</span>
+								<span class="lang-en active">Further Questions / If Urgent Pain explain shortly your Problem</span>
+								<span class="lang-de">Weitere Fragen / Bei dringenden Schmerzen Problem kurz erklären</span>
 							</h3>
 							<!--
 							<div class="row gtr-uniform">
@@ -492,7 +522,7 @@
 					{ value: "2", text: "Neuroassessment" },
 					{ value: "3", text: "Personal Training" },
 					{ value: "4", text: "Urgent/Pain" },
-					{ value: "5", text: "Other Offers" }
+					{ value: "workshop", text: "Workshops" }
 				],
 				de: [
 					{ value: "", text: "- Servicekategorie -" },
@@ -500,9 +530,93 @@
 					{ value: "2", text: "Neuroassessment" },
 					{ value: "3", text: "Personaltraining" },
 					{ value: "4", text: "Dringend/Schmerzen" },
-					{ value: "5", text: "Andere Angebote" }
+					{ value: "workshop", text: "Workshops" }
 				]
 			};
+
+			// Workshop dates configuration
+			const workshopDates = {
+				en: [
+					{ value: "2025-11-15", text: "Coming soon! - Kinesiotaping for Periodpain" }
+				],
+				de: [
+					{ value: "2025-11-15", text: "Bald! - Kinesiotaping für Periodenschmerzen" }
+				]
+			};
+
+			function handleCategoryChange() {
+				const categorySelect = document.getElementById('demo-category');
+				const selectedValue = categorySelect.value;
+				const appointmentSection = document.getElementById('appointmentSection');
+				const workshopSection = document.getElementById('workshopSection');
+				
+				// Hide both sections initially
+				appointmentSection.style.display = 'none';
+				workshopSection.style.display = 'none';
+				
+				// Show appropriate section based on selection
+				if (selectedValue === 'workshop') {
+					workshopSection.style.display = 'block';
+					renderWorkshopDates();
+				} else if (selectedValue !== '') {
+					appointmentSection.style.display = 'block';
+				}
+			}
+
+			function renderWorkshopDates() {
+				const workshopGrid = document.getElementById('workshopDatesGrid');
+				workshopGrid.innerHTML = '';
+				workshopGrid.style.display = 'grid';
+				
+				// Adjust grid columns based on screen width
+				if (window.innerWidth <= 600) {
+					workshopGrid.style.gridTemplateColumns = '1fr'; // Single column for mobile
+					workshopGrid.style.maxWidth = '100%';
+					workshopGrid.style.margin = '0 auto';
+				} else {
+					workshopGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+				}
+				
+				workshopGrid.style.gap = '10px';
+				
+				const dates = workshopDates[currentLanguage];
+				
+				dates.forEach(workshop => {
+					const workshopSlot = document.createElement('div');
+					workshopSlot.className = 'time-slot';
+					workshopSlot.textContent = workshop.text;
+					workshopSlot.style.textAlign = 'left';
+					workshopSlot.style.padding = '12px 16px';
+					workshopSlot.style.height = '100%';
+					workshopSlot.style.width = '100%'; // Ensure full width
+					workshopSlot.style.boxSizing = 'border-box'; // Include padding in width calculation
+					
+					workshopSlot.addEventListener('click', () => selectWorkshopDate(workshop.value, workshop.text, workshopSlot));
+					workshopGrid.appendChild(workshopSlot);
+				});
+				
+				// Add resize listener to handle orientation changes
+				window.addEventListener('resize', () => {
+					if (window.innerWidth <= 600) {
+						workshopGrid.style.gridTemplateColumns = '1fr';
+					} else {
+						workshopGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+					}
+				});
+			}
+
+			function selectWorkshopDate(date, text, element) {
+				// Remove previous selection
+				document.querySelectorAll('#workshopDatesGrid .time-slot.selected').forEach(el => {
+					el.classList.remove('selected');
+				});
+				
+				// Add selection to clicked element
+				element.classList.add('selected');
+				
+				// Update hidden input
+				document.getElementById('workshopDate').value = `${text} (${date})`;
+			}
 
 			function updateServiceCategories(lang) {
 				const selectElement = document.getElementById('demo-category');
@@ -554,6 +668,12 @@
 				// Update service categories
 				updateServiceCategories(lang);
 				
+				// Re-render workshop dates if workshop section is visible
+				const workshopSection = document.getElementById('workshopSection');
+				if (workshopSection.style.display !== 'none') {
+					renderWorkshopDates();
+				}
+				
 				// Save preference to local storage (using variable instead of sessionStorage for Claude.ai compatibility)
 				window.preferredLanguage = lang;
 			}
@@ -563,14 +683,14 @@
 					en: {
 						title: "Neuroathletic Training Contact Form",
 						namePlaceholder: "Name & Surname",
-						messagePlaceholder: "Further Questions / If Urgent Pain explain shortly your Problem",
+						messagePlaceholder: "",
 						submitBtn: "Book Appointment",
 						noTimesAvailable: "No available times for this day."
 					},
 					de: {
 						title: "Neuroathletiktraining Kontaktformular",
 						namePlaceholder: "Name & Nachname", 
-						messagePlaceholder: "Weitere Fragen / Bei dringenden Schmerzen Problem kurz erklären",
+						messagePlaceholder: "",
 						submitBtn: "Termin buchen",
 						noTimesAvailable: "Keine verfügbaren Zeiten für diesen Tag."
 					}
@@ -655,13 +775,31 @@
 						this.renderCalendar();
 					});
 
-					document.getElementById('bookingForm').addEventListener('submit', (e) => {
-						if (!this.selectedDate || !this.selectedTime) {
-							e.preventDefault();
-							const message = currentLanguage === 'en' 
-								? 'Please select both a date and time for your appointment.'
-								: 'Bitte wählen Sie sowohl ein Datum als auch eine Uhrzeit für Ihren Termin.';
-							alert(message);
+					document.querySelector('form').addEventListener('submit', (e) => {
+						const categorySelect = document.getElementById('demo-category');
+						const selectedCategory = categorySelect.value;
+						
+						// If workshop is selected, check if a workshop date is selected
+						if (selectedCategory === 'workshop') {
+							const workshopDate = document.getElementById('workshopDate').value;
+							if (!workshopDate) {
+								e.preventDefault();
+								const message = currentLanguage === 'en' 
+									? 'Please select a workshop date.'
+									: 'Bitte wählen Sie ein Workshop-Datum.';
+								alert(message);
+								return;
+							}
+						} else if (selectedCategory !== '') {
+							// For other categories, check if date and time are selected
+							if (!this.selectedDate || !this.selectedTime) {
+								e.preventDefault();
+								const message = currentLanguage === 'en' 
+									? 'Please select both a date and time for your appointment.'
+									: 'Bitte wählen Sie sowohl ein Datum als auch eine Uhrzeit für Ihren Termin.';
+								alert(message);
+								return;
+							}
 						}
 					});
 				}
