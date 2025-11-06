@@ -335,6 +335,21 @@
 							<input type="hidden" name="workshop-date" id="workshopDate" />
 						</div>
 
+						<!-- Payment Method Section (Hidden by default) -->
+						<div class="form-section" id="paymentSection" style="display: none;">
+							<h3 class="section-title" style="color: white;">
+								<span class="lang-en active">Select Payment Method</span>
+								<span class="lang-de">Zahlungsmethode wählen</span>
+							</h3>
+							<div class="row gtr-uniform">
+								<div class="col-12">
+									<select name="payment-method" id="paymentMethod" style="color: white;" required>
+										<!-- Options will be populated by JavaScript -->
+									</select>
+								</div>
+							</div>
+						</div>
+
 						<!-- Appointment Booking Section -->
 						<div class="form-section" id="appointmentSection" style="display: none;">
 							<h3 class="section-title" style="color: white;">
@@ -534,6 +549,22 @@
 				]
 			};
 
+			// Payment method options for each language
+			const paymentMethods = {
+				en: [
+					{ value: "", text: "- Select Payment Method -" },
+					{ value: "paypal", text: "PayPal" },
+					{ value: "bank-transfer", text: "Bank Transfer" },
+					{ value: "credit-card", text: "Credit Card" }
+				],
+				de: [
+					{ value: "", text: "- Zahlungsmethode wählen -" },
+					{ value: "paypal", text: "PayPal" },
+					{ value: "bank-transfer", text: "Banküberweisung" },
+					{ value: "credit-card", text: "Kreditkarte" }
+				]
+			};
+
 			// Workshop dates configuration
 			const workshopDates = {
 				en: [
@@ -549,15 +580,18 @@
 				const selectedValue = categorySelect.value;
 				const appointmentSection = document.getElementById('appointmentSection');
 				const workshopSection = document.getElementById('workshopSection');
+				const paymentSection = document.getElementById('paymentSection');
 				
-				// Hide both sections initially
+				// Hide all sections initially
 				appointmentSection.style.display = 'none';
 				workshopSection.style.display = 'none';
+				paymentSection.style.display = 'none';
 				
 				// Show appropriate section based on selection
 				if (selectedValue === 'workshop') {
 					workshopSection.style.display = 'block';
 					renderWorkshopDates();
+					updatePaymentMethods(currentLanguage);
 				} else if (selectedValue !== '') {
 					appointmentSection.style.display = 'block';
 				}
@@ -616,6 +650,31 @@
 				
 				// Update hidden input
 				document.getElementById('workshopDate').value = `${text} (${date})`;
+				
+				// Show payment section
+				const paymentSection = document.getElementById('paymentSection');
+				paymentSection.style.display = 'block';
+			}
+
+			function updatePaymentMethods(lang) {
+				const selectElement = document.getElementById('paymentMethod');
+				const currentValue = selectElement.value; // Store current selection
+				
+				// Clear existing options
+				selectElement.innerHTML = '';
+				
+				// Add options for selected language
+				paymentMethods[lang].forEach(method => {
+					const option = document.createElement('option');
+					option.value = method.value;
+					option.textContent = method.text;
+					selectElement.appendChild(option);
+				});
+				
+				// Restore selection if the value still exists
+				if (currentValue && selectElement.querySelector(`option[value="${currentValue}"]`)) {
+					selectElement.value = currentValue;
+				}
 			}
 
 			function updateServiceCategories(lang) {
@@ -667,6 +726,9 @@
 				
 				// Update service categories
 				updateServiceCategories(lang);
+				
+				// Update payment methods
+				updatePaymentMethods(lang);
 				
 				// Re-render workshop dates if workshop section is visible
 				const workshopSection = document.getElementById('workshopSection');
