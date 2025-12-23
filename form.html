@@ -282,8 +282,8 @@
 				<!-- Form -->
 				<section class="main">
 					<h2></h2>
-					<form action="https://formsubmit.co/1062feb8fc049b0c0800d890ccc6e8cc" method="POST" />
-					<input type="hidden" name="_next" value="https://www.synapse2move.de/thanks.html">
+					<form action="https://formspree.io/f/mojarrgz" method="POST" />
+						<!--<input type="hidden" name="_next" value="https://www.synapse2move.de/thanks.html">-->
 						<!-- Personal Information Section -->
 						<div class="form-section">
 							<h3 class="section-title" style="color: white;">
@@ -582,18 +582,40 @@
 				const workshopSection = document.getElementById('workshopSection');
 				const paymentSection = document.getElementById('paymentSection');
 				
-				// Hide all sections initially
+				// Get hidden input fields
+				const bookingDate = document.getElementById('bookingDate');
+				const bookingTime = document.getElementById('bookingTime');
+				const workshopDate = document.getElementById('workshopDate');
+				const paymentMethod = document.getElementById('paymentMethod');
+				
+				// Hide all sections and disable their required fields
 				appointmentSection.style.display = 'none';
 				workshopSection.style.display = 'none';
 				paymentSection.style.display = 'none';
+				
+				// Remove required attribute from all conditional fields
+				bookingDate.removeAttribute('required');
+				bookingTime.removeAttribute('required');
+				workshopDate.removeAttribute('required');
+				paymentMethod.removeAttribute('required');
+				
+				// Reset values
+				bookingDate.value = '';
+				bookingTime.value = '';
+				workshopDate.value = '';
+				paymentMethod.value = '';
 				
 				// Show appropriate section based on selection
 				if (selectedValue === 'workshop') {
 					workshopSection.style.display = 'block';
 					renderWorkshopDates();
 					updatePaymentMethods(currentLanguage);
+					workshopDate.setAttribute('required', 'required');
+					paymentMethod.setAttribute('required', 'required');
 				} else if (selectedValue !== '') {
 					appointmentSection.style.display = 'block';
+					bookingDate.setAttribute('required', 'required');
+					bookingTime.setAttribute('required', 'required');
 				}
 			}
 
