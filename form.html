@@ -254,7 +254,159 @@
 				border-bottom: 2px solid #eee;
 				padding-bottom: 10px;
 			}
-			 
+
+			/* Policy checkbox styles */
+			.policy-checks {
+				margin: 18px 0 10px 0;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+
+			.policy-check-item {
+				display: flex;
+				align-items: flex-start;
+				gap: 10px;
+			}
+
+			.policy-check-item input[type="checkbox"] {
+				margin-top: 3px;
+				flex-shrink: 0;
+				width: 17px;
+				height: 17px;
+				accent-color: #60bca4;
+				cursor: pointer;
+			}
+
+			.policy-check-item label {
+				color: white;
+				font-size: 0.9em;
+				line-height: 1.4;
+				cursor: pointer;
+			}
+
+			.policy-link {
+				color: white;
+				text-decoration: underline;
+				cursor: pointer;
+			}
+
+			.policy-link:hover {
+				color: rgba(255,255,255,0.7);
+			}
+
+			/* Modal styles */
+			.policy-modal-overlay {
+				display: none;
+				position: fixed;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.7);
+				z-index: 99999;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+			}
+
+			.policy-modal-overlay.open {
+				display: flex;
+			}
+
+			.policy-modal {
+				background: #1a2e28;
+				border: 1px solid rgba(96, 188, 164, 0.3);
+				border-radius: 12px;
+				max-width: 600px;
+				width: 100%;
+				max-height: 80vh;
+				display: flex;
+				flex-direction: column;
+				box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+				animation: modalIn 0.25s ease;
+			}
+
+			@keyframes modalIn {
+				from { opacity: 0; transform: translateY(-20px) scale(0.97); }
+				to   { opacity: 1; transform: translateY(0) scale(1); }
+			}
+
+			.policy-modal-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 18px 22px;
+				border-bottom: 1px solid rgba(96, 188, 164, 0.2);
+				flex-shrink: 0;
+			}
+
+			.policy-modal-header h3 {
+				color: #edbf79;
+				margin: 0;
+				font-size: 1.1em;
+			}
+
+			.policy-modal-close {
+				all: unset;
+				color: rgba(255,255,255,0.6);
+				font-size: 1.1em;
+				cursor: pointer;
+				line-height: 1;
+				padding: 0 4px;
+				transition: color 0.2s;
+			}
+
+			.policy-modal-close:hover {
+				color: #edbf79;
+			}
+
+			.policy-modal-body {
+				overflow-y: auto;
+				padding: 20px 22px;
+				color: rgba(255,255,255,0.85);
+				font-size: 0.88em;
+				line-height: 1.7;
+			}
+
+			.policy-modal-body h4 {
+				color: #60bca4;
+				margin: 1.2em 0 0.4em;
+				font-size: 0.95em;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.policy-modal-body p {
+				margin: 0 0 0.8em;
+			}
+
+			.policy-modal-footer {
+				padding: 14px 22px;
+				border-top: 1px solid rgba(96, 188, 164, 0.2);
+				display: flex;
+				justify-content: flex-end;
+				flex-shrink: 0;
+			}
+
+			.policy-modal-accept {
+				background: #60bca4;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				padding: 6px 14px;
+				cursor: pointer;
+				font-size: 0.78em;
+				font-weight: 600;
+				transition: background 0.2s;
+			}
+
+			.policy-modal-accept:hover {
+				background: #4da88f;
+			}
+
+			@media (max-width: 600px) {
+				.policy-modal {
+					max-height: 90vh;
+				}
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -406,42 +558,184 @@
 								<span class="lang-en active">Further Questions / If Urgent Pain explain shortly your Problem</span>
 								<span class="lang-de">Weitere Fragen / Bei dringenden Schmerzen Problem kurz erklären</span>
 							</h3>
-							<!--
-							<div class="row gtr-uniform">
-								<div class="col-4 col-12-small">
-									<input type="radio" id="demo-session-online" name="demo-session-online" >
-									<label for="demo-session-online" style="color: white;">
-										<span class="lang-en active">Online-Session</span>
-										<span class="lang-de">Online-Session</span>
-									</label>
-								</div>
-								
-								
-								<div class="col-6 col-12-small">
-									<input type="checkbox" id="demo-copy" name="demo-copy">
-									<label for="demo-copy" style="color: white;">
-										<span class="lang-en active">Email me a copy</span>
-										<span class="lang-de">Mir eine Kopie per E-Mail senden</span>
-									</label>
-								</div>
-								<div class="col-6 col-12-small">
-									<input type="checkbox" id="demo-human" name="demo-human" checked>
-									<label for="demo-human" style="color: white;">
-										<span class="lang-en active">Not a robot</span>
-										<span class="lang-de">Kein Roboter</span>
-									</label>
-								</div>
-								-->
 								
 								<div class="col-12">
 									<textarea name="demo-message" id="demo-message" rows="4" style="background-color: white;"></textarea>
 								</div>
+
+								<!-- Policy Checkboxes -->
+								<div class="policy-checks">
+									<div class="policy-check-item">
+										<input type="checkbox" id="confirm-privacy" name="confirm-privacy" required />
+										<label for="confirm-privacy">
+											<span class="lang-en active">I have read and accept the <span class="policy-link" onclick="openModal('privacy')">Privacy Policy</span>.</span>
+											<span class="lang-de">Ich habe die <span class="policy-link" onclick="openModal('privacy')">Datenschutzerklärung</span> gelesen und akzeptiere sie.</span>
+										</label>
+									</div>
+									<div class="policy-check-item">
+										<input type="checkbox" id="confirm-cancellation" name="confirm-cancellation" required />
+										<label for="confirm-cancellation">
+											<span class="lang-en active">I have read and accept the <span class="policy-link" onclick="openModal('cancellation')">Cancellation Policy</span>.</span>
+											<span class="lang-de">Ich habe die <span class="policy-link" onclick="openModal('cancellation')">Stornierungsbedingungen</span> gelesen und akzeptiere sie.</span>
+										</label>
+									</div>
+								</div>
+
+								<!-- Privacy Policy Modal -->
+								<div class="policy-modal-overlay" id="modal-privacy" onclick="closeModalOnOverlay(event, 'privacy')">
+									<div class="policy-modal">
+										<div class="policy-modal-header">
+											<h3>
+												<span class="lang-en active">Privacy Policy</span>
+												<span class="lang-de">Datenschutzerklärung</span>
+											</h3>
+											<button type="button" class="policy-modal-close" onclick="closeModal('privacy')">&times;</button>
+										</div>
+										<div class="policy-modal-body">
+											<span class="lang-en active">
+												<h4>1. Controller</h4>
+												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
+
+												<h4>2. Collection and Storage of Personal Data</h4>
+												<p>Our website is a static website and generally does not collect personal data from visitors unless they actively contact us. No automatic storage or processing of personal data takes place through server-side applications.</p>
+
+												<h4>a) When Visiting the Website</h4>
+												<p>Our static website is hosted by a hosting provider. The hosting provider may automatically store certain technical information in server log files, including: date and time of access, name and URL of the retrieved file, referring website, browser and operating system used, and name of the internet service provider. This data is used solely for statistical purposes and to ensure technical operation of the website.</p>
+
+												<h4>b) When Using the Contact Form</h4>
+												<p>If you contact us via the contact form, the data you enter is processed via Formspree — your message is transmitted to and stored on Formspree's servers. Processing is based on Art. 6 para. 1 lit. b GDPR. For more information see: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" style="color:#60bca4;">formspree.io/legal/privacy-policy</a>.</p>
+
+												<h4>3. Sharing of Data</h4>
+												<p>As our website is static and offers no user accounts or personalised services, no personal data is passed on to third parties unless required to handle an inquiry or mandated by law.</p>
+
+												<h4>4. Cookies and Tracking</h4>
+												<p>Our static website does not use cookies or tracking technologies such as Google Analytics or Facebook Pixel.</p>
+
+												<h4>5. Your Rights</h4>
+												<p>You have the right to: request information about your processed personal data (Art. 15 GDPR); request correction or completion of stored data (Art. 16 GDPR); request deletion of your data (Art. 17 GDPR); request restriction of processing (Art. 18 GDPR); object to processing (Art. 21 GDPR); receive your data in a structured, machine-readable format (Art. 20 GDPR); and lodge a complaint with a supervisory authority (Art. 77 GDPR).</p>
+
+												<h4>6. Data Security</h4>
+												<p>Our static website uses modern security measures to protect your data. Since no data processing takes place on our website, there is no elevated risk of data misuse.</p>
+
+												<h4>7. Retention Period</h4>
+												<p>Technical data is stored only as long as necessary for the purposes described in this policy. After fulfilling the respective purpose, data is anonymised or deleted.</p>
+
+												<h4>8. Third-Party Content</h4>
+												<p>Third-party content (e.g. YouTube videos, Google Maps, Instagram) may be embedded in this website. Providers of such content require your IP address to deliver it to your browser. We strive to use only providers that use IP addresses solely for content delivery and have no influence over whether providers store IP addresses for statistical purposes.</p>
+
+												<h4>9. Changes to this Policy</h4>
+												<p>We reserve the right to update this privacy policy to reflect changes in legal requirements or new services. The current version is always available on our website.</p>
+
+												<h4>Contact</h4>
+												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
+											</span>
+											<span class="lang-de">
+												<h4>1. Verantwortlicher</h4>
+												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
+
+												<h4>2. Erhebung und Speicherung personenbezogener Daten</h4>
+												<p>Unsere Website ist eine statische Website und erhebt grundsätzlich keine personenbezogenen Daten von Besuchern, außer wenn sie aktiv Kontakt mit uns aufnehmen. Es findet keine automatische Speicherung oder Verarbeitung personenbezogener Daten durch serverseitige Anwendungen statt.</p>
+
+												<h4>a) Beim Besuch der Website</h4>
+												<p>Unsere statische Website wird von einem Hosting-Anbieter bereitgestellt. Dabei können durch den Hosting-Provider automatisch bestimmte technische Informationen in Server-Logfiles gespeichert werden: Datum und Uhrzeit des Zugriffs, Name und URL der abgerufenen Datei, verweisende Website, verwendeter Browser und Betriebssystem sowie Name des Internet-Service-Providers. Diese Daten werden lediglich für statistische Zwecke sowie zur Sicherstellung des technischen Betriebs verwendet.</p>
+
+												<h4>b) Bei Nutzung des Kontaktformulars</h4>
+												<p>Falls Sie uns über das Kontaktformular erreichen, werden die dort eingegebenen Daten über Formspree verarbeitet. Ihre Nachricht wird an die Server von Formspree übermittelt und dort gespeichert. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" style="color:#60bca4;">formspree.io/legal/privacy-policy</a>.</p>
+
+												<h4>3. Weitergabe von Daten</h4>
+												<p>Da unsere Website statisch ist und keine Benutzerkonten oder personalisierten Dienste anbietet, erfolgt keine Weitergabe personenbezogener Daten an Dritte, es sei denn, dies ist zur Bearbeitung einer Anfrage notwendig oder gesetzlich vorgeschrieben.</p>
+
+												<h4>4. Cookies und Tracking</h4>
+												<p>Unsere statische Website verwendet keine Cookies oder Tracking-Technologien wie Google Analytics oder Facebook Pixel.</p>
+
+												<h4>5. Rechte der betroffenen Personen</h4>
+												<p>Sie haben das Recht auf: Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Widerspruch (Art. 21 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO).</p>
+
+												<h4>6. Datensicherheit</h4>
+												<p>Unsere statische Website verwendet moderne Sicherheitsmaßnahmen zum Schutz Ihrer Daten. Da keine Datenverarbeitung auf unserer Website erfolgt, besteht kein erhöhtes Risiko für Datenmissbrauch.</p>
+
+												<h4>7. Dauer der Datenspeicherung</h4>
+												<p>Die erhobenen technischen Daten werden nur so lange gespeichert, wie dies zur Erreichung der genannten Zwecke notwendig ist. Nach Erfüllung des jeweiligen Zwecks werden die Daten anonymisiert oder gelöscht.</p>
+
+												<h4>8. Einbindung von Diensten Dritter</h4>
+												<p>Es können Inhalte Dritter (z. B. YouTube, Google Maps, Instagram) eingebunden sein. Dies setzt voraus, dass die Anbieter die IP-Adresse des Nutzers kennen. Wir bemühen uns, nur solche Inhalte zu verwenden, bei denen die IP-Adresse nur zur Auslieferung genutzt wird, haben jedoch keinen Einfluss auf eine etwaige statistische Speicherung durch Drittanbieter.</p>
+
+												<h4>9. Änderungen dieser Datenschutzerklärung</h4>
+												<p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, um sie an geänderte rechtliche Anforderungen oder neue Dienste anzupassen. Die jeweils aktuelle Version kann jederzeit auf unserer Website abgerufen werden.</p>
+
+												<h4>Kontakt</h4>
+												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
+											</span>
+										</div>
+										<div class="policy-modal-footer">
+											<button type="button" class="policy-modal-accept" onclick="acceptAndClose('privacy', 'confirm-privacy')">
+												<span class="lang-en active">Accept &amp; Close</span>
+												<span class="lang-de">Akzeptieren &amp; Schließen</span>
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<!-- Cancellation Policy Modal -->
+								<div class="policy-modal-overlay" id="modal-cancellation" onclick="closeModalOnOverlay(event, 'cancellation')">
+									<div class="policy-modal">
+										<div class="policy-modal-header">
+											<h3>
+												<span class="lang-en active">Cancellation Policy</span>
+												<span class="lang-de">Stornierungsbedingungen</span>
+											</h3>
+											<button type="button" class="policy-modal-close" onclick="closeModal('cancellation')">&times;</button>
+										</div>
+										<div class="policy-modal-body">
+											<span class="lang-en active">
+												<h4>Cancellation Deadline</h4>
+												<p>Appointments and workshop bookings may be cancelled free of charge up to <strong>48 hours</strong> before the scheduled start time.</p>
+
+												<h4>Late Cancellations</h4>
+												<p>Cancellations made less than 48 hours in advance will be charged at <strong>50% of the session fee</strong>.</p>
+
+												<h4>No-Shows</h4>
+												<p>Failure to attend without prior notice will be charged at <strong>100% of the session fee</strong>.</p>
+
+												<h4>How to Cancel</h4>
+												<p>Please cancel by email at s2m@ionio.de or by phone at +49 152 21319336. Cancellations are confirmed once you receive a written acknowledgement from us.</p>
+
+												<h4>Payment</h4>
+												<p>Payment is due within <strong>7 days</strong> of receiving your confirmation email. If you register for a workshop taking place within 7 days, payment is due within <strong>24 hours</strong> of your confirmation email.</p>
+											</span>
+											<span class="lang-de">
+												<h4>Stornierungsfrist</h4>
+												<p>Termine und Workshop-Buchungen können bis <strong>48 Stunden</strong> vor dem geplanten Beginn kostenlos storniert werden.</p>
+
+												<h4>Späte Stornierungen</h4>
+												<p>Stornierungen, die weniger als 48 Stunden im Voraus erfolgen, werden mit <strong>50 % der Sitzungsgebühr</strong> berechnet.</p>
+
+												<h4>Nichterscheinen</h4>
+												<p>Nichterscheinen ohne vorherige Benachrichtigung wird mit <strong>100 % der Sitzungsgebühr</strong> in Rechnung gestellt.</p>
+
+												<h4>So stornieren Sie</h4>
+												<p>Bitte stornieren Sie per E-Mail unter s2m@ionio.de oder telefonisch unter +49 152 21319336. Stornierungen gelten als bestätigt, sobald Sie eine schriftliche Bestätigung von uns erhalten.</p>
+
+												<h4>Zahlung</h4>
+												<p>Die Zahlung ist innerhalb von <strong>7 Tagen</strong> nach Erhalt Ihrer Bestätigungsmail fällig. Bei Anmeldung zu einem Workshop, der in weniger als 7 Tagen stattfindet, ist die Zahlung innerhalb von <strong>24 Stunden</strong> nach Ihrer Bestätigungsmail fällig.</p>
+											</span>
+										</div>
+										<div class="policy-modal-footer">
+											<button type="button" class="policy-modal-accept" onclick="acceptAndClose('cancellation', 'confirm-cancellation')">
+												<span class="lang-en active">Accept &amp; Close</span>
+												<span class="lang-de">Akzeptieren &amp; Schließen</span>
+											</button>
+										</div>
+									</div>
+								</div>
+
 								<br>
-								<br>*You will get an confirmation mail within 24h.
 								<div class="col-12">
 									<ul class="actions">
 										<li><input type="submit" value="" class="primary" id="submitBtn" /></li>
 									</ul>
+								*<span class="lang-en active">You will get a confirmation mail within 24h.</span>
+								<span class="lang-de">Du erhältst eine Bestätigungsmail innerhalb von 24 Stunden.</span>
 								</div>
 							</div>
 						</div>
@@ -1069,6 +1363,33 @@
 					return date1.toDateString() === date2.toDateString();
 				}
 			}
+
+			// Modal functions
+			function openModal(type) {
+				document.getElementById('modal-' + type).classList.add('open');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeModal(type) {
+				document.getElementById('modal-' + type).classList.remove('open');
+				document.body.style.overflow = '';
+			}
+
+			function closeModalOnOverlay(event, type) {
+				if (event.target === event.currentTarget) closeModal(type);
+			}
+
+			function acceptAndClose(type, checkboxId) {
+				document.getElementById(checkboxId).checked = true;
+				closeModal(type);
+			}
+
+			// Close modals on Escape key
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape') {
+					['privacy', 'cancellation'].forEach(closeModal);
+				}
+			});
 
 			// Initialize when page loads
 			document.addEventListener('DOMContentLoaded', () => {
