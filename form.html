@@ -1194,7 +1194,7 @@ nav {
     
 
   </main>
-</div>
+  </div>
 
 <!-- PRIVACY MODAL -->
 <div class="modal-overlay" id="modal-privacy" onclick="closeModalOverlay(event,'privacy')">
@@ -1636,18 +1636,19 @@ document.addEventListener('keydown', e => {
 });
 
 /* ── FORM SUBMIT ── */
-document.getElementById('booking-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  if (!validateStep(4)) return;
+async function sendBooking(formEl) {
+  if (!validateStep(4)) return false;
   document.getElementById('submitBtn').textContent = currentLang === 'en' ? 'Sending…' : 'Wird gesendet…';
   document.getElementById('submitBtn').disabled = true;
-  const formData = new FormData(this);
+  const formData = new FormData(formEl);
   try {
-    const res = await fetch(this.action, { method:'POST', body: formData, headers: { Accept: 'application/json' } });
+    const res = await fetch(formEl.action, { method:'POST', body: formData, headers: { Accept: 'application/json' } });
     if (res.ok) {
-      document.getElementById('booking-form').style.display = 'none';
-      document.getElementById('progress-track').style.display = 'none';
-      
+      let data = null;
+      try { data = await res.json(); } catch (err) { data = null; }
+      const redirectUrl = data && data.redirect ? data.redirect : (document.querySelector('input[name="redirect"]')?.value || 'thanks.html');
+      window.location.href = redirectUrl;
+      return true;
     } else {
       document.getElementById('submitBtn').disabled = false;
       document.getElementById('submitBtn').textContent = currentLang === 'en' ? 'Try Again →' : 'Erneut versuchen →';
@@ -1655,10 +1656,17 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         ? 'Something went wrong. Please email s2m@ionio.de directly.'
         : 'Fehler beim Senden. Bitte direkt an s2m@ionio.de schreiben.';
       document.getElementById('err-4').classList.add('show');
+      return false;
     }
-  } catch {
+  } catch (err) {
     document.getElementById('submitBtn').disabled = false;
+    return false;
   }
+}
+
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  sendBooking(this);
 });
 
 /* ── INIT LANG ── */
