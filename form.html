@@ -235,6 +235,10 @@ nav {
 }
 .field:first-child { border-left: 1px solid var(--rule); }
 .field-row.single .field { border-left: 1px solid var(--rule); }
+@media(max-width:500px) { 
+  .field-row .field { border-right: 1px solid var(--rule); border-left: 1px solid var(--rule); border-top: 1px solid var(--rule); }
+  .field-row .field:first-child { border-left: 1px solid var(--rule); }
+}
 .field-row + .field-row .field { border-top: none; }
 .field:focus-within { background: rgba(61,107,79,0.03); }
 
@@ -463,6 +467,7 @@ nav {
 }
 
 /* ── TIME LABEL ── */
+.time-label {
   font-family: var(--fm);
   font-size: 9px;
   letter-spacing: 0.14em;
