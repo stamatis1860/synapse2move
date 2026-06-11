@@ -783,6 +783,8 @@ nav {
 }
 .btn-modal-accept:hover { background: #2d5038; }
 
+
+
 /* ── ERROR ── */
 .field-error { font-family: var(--fm); font-size: 9px; letter-spacing: 0.08em; color: #a03030; padding: 4px 18px 0; }
 .error-banner {
@@ -856,8 +858,7 @@ nav {
     </div>
 
     <!-- ACTUAL FORM  -->
-    <form id="booking-form">
-      <form action="https://api.web3forms.com/submit" method="POST">
+    <form id="booking-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="c60af88e-81ec-4624-8efd-057f44d4fe3e">
       <input type="hidden" name="booking-date" id="hBookingDate"/>
       <input type="hidden" name="booking-time" id="hBookingTime"/>
@@ -1189,6 +1190,8 @@ nav {
         </p>
       </div>
     </form>
+
+    
 
   </main>
 </div>
@@ -1642,7 +1645,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
   try {
     const res = await fetch(this.action, { method:'POST', body: formData, headers: { Accept: 'application/json' } });
     if (res.ok) {
-      window.location.href = 'thanks.html';
+      document.getElementById('booking-form').style.display = 'none';
+      document.getElementById('progress-track').style.display = 'none';
+      
     } else {
       document.getElementById('submitBtn').disabled = false;
       document.getElementById('submitBtn').textContent = currentLang === 'en' ? 'Try Again →' : 'Erneut versuchen →';
