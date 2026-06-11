@@ -902,8 +902,9 @@ nav {
       </div>
     </div>
 
-    <!-- ACTUAL FORM (posts to Formspree) -->
-    <form id="booking-form" action="https://formspree.io/f/mojarrgz" method="POST" novalidate>
+    <!-- ACTUAL FORM  -->
+    <form id="booking-form" <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="c60af88e-81ec-4624-8efd-057f44d4fe3e">
       <input type="hidden" name="booking-date" id="hBookingDate"/>
       <input type="hidden" name="booking-time" id="hBookingTime"/>
       <input type="hidden" name="workshop-date" id="hWorkshopDate"/>
