@@ -783,53 +783,6 @@ nav {
 }
 .btn-modal-accept:hover { background: #2d5038; }
 
-/* ── SUCCESS STATE ── */
-.success-block {
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.2rem;
-  padding: 60px 0;
-  animation: fadeUp 0.5s ease both;
-}
-.success-block.active { display: flex; }
-.success-icon {
-  width: 56px; height: 56px;
-  border: 1.5px solid var(--green);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--green);
-  font-size: 22px;
-}
-.success-title {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: clamp(40px, 5vw, 60px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-.success-title .italic { font-style: italic; color: var(--green); }
-.success-body {
-  font-size: 14px;
-  color: var(--ink-muted);
-  line-height: 1.75;
-  max-width: 420px;
-  font-weight: 300;
-}
-.success-back {
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px;
-  border-bottom: 1.5px solid var(--ink);
-  padding-bottom: 2px;
-  margin-top: 12px;
-}
-
 /* ── ERROR ── */
 .field-error { font-family: var(--fm); font-size: 9px; letter-spacing: 0.08em; color: #a03030; padding: 4px 18px 0; }
 .error-banner {
@@ -903,7 +856,8 @@ nav {
     </div>
 
     <!-- ACTUAL FORM  -->
-    <form id="booking-form" <form action="https://api.web3forms.com/submit" method="POST">
+    <form id="booking-form">
+      <form action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="c60af88e-81ec-4624-8efd-057f44d4fe3e">
       <input type="hidden" name="booking-date" id="hBookingDate"/>
       <input type="hidden" name="booking-time" id="hBookingTime"/>
@@ -1235,23 +1189,6 @@ nav {
         </p>
       </div>
     </form>
-
-    <!-- SUCCESS STATE -->
-    <div class="success-block" id="success-block">
-      <div class="success-icon">✓</div>
-      <h2 class="success-title">
-        <span class="lang-en active">You're<br><span class="italic">booked.</span></span>
-        <span class="lang-de">Gebucht.<br><span class="italic">Danke.</span></span>
-      </h2>
-      <p class="success-body">
-        <span class="lang-en active">Your request has been sent. Stamatios will confirm your appointment within 24 hours by email.</span>
-        <span class="lang-de">Deine Anfrage wurde gesendet. Stamatios bestätigt deinen Termin innerhalb von 24 Stunden per E-Mail.</span>
-      </p>
-      <a href="index.html" class="success-back">
-        <span class="lang-en active">← Back to homepage</span>
-        <span class="lang-de">← Zurück zur Startseite</span>
-      </a>
-    </div>
 
   </main>
 </div>
@@ -1705,9 +1642,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
   try {
     const res = await fetch(this.action, { method:'POST', body: formData, headers: { Accept: 'application/json' } });
     if (res.ok) {
-      document.getElementById('booking-form').style.display = 'none';
-      document.getElementById('progress-track').style.display = 'none';
-      document.getElementById('success-block').classList.add('active');
+      window.location.href = 'thanks.html';
     } else {
       document.getElementById('submitBtn').disabled = false;
       document.getElementById('submitBtn').textContent = currentLang === 'en' ? 'Try Again →' : 'Erneut versuchen →';
