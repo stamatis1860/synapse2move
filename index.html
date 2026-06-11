@@ -1,606 +1,1445 @@
-<!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Neuro Athletictraining in Munich</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/custom.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<!-- Favicons in a folder -->
-		<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-		<link rel="manifest" href="/assets/favicons/site.webmanifest">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Synapse²Move — Neuroathletic Training Munich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --cream: #f5f0e8;
+  --paper: #ede8dc;
+  --ink: #1a1a14;
+  --ink-muted: #5a5850;
+  --ink-faint: #9a9488;
+  --rule: rgba(26,26,20,0.12);
+  --green: #3d6b4f;
+  --green-light: #e2ede7;
+  --plum: #5c2d6e;
+  --plum-light: #ede4f2;
+  --gold: #c49a2a;
+  --r: 3px;
 
-		
-		<style>
-			/* Language Switch Styles */
-			/* Language Switch Styles - Updated for more subtle, transparent, fixed positioning */
-.language-switch {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	z-index: 10000;
-	background:  linear-gradient(135deg, #edbf797c, #60bca381);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	border-radius: 25px;
-	padding: 3px;
-	display: flex;
-	align-items: center;
-	gap: 2px;
-	transition: all 0.3s ease;
-	opacity: 0.7;
+  --line: rgba(26,26,20,0.1);
+  --fd: 'Playfair Display', Georgia, serif;
+  --fb: 'Space Grotesk', system-ui, sans-serif;
+  --fm: 'Space Mono', monospace;
 }
 
-.language-switch:hover {
-	opacity: 1;
-	background: linear-gradient(135deg, #edbf79, #60bca3);
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body {
+  font-family: var(--fb);
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
+/* ── LANG ── */
+.lang-en,.lang-de{display:none}
+.lang-en.active,.lang-de.active{display:block}
+span.lang-en,span.lang-de{display:none}
+span.lang-en.active,span.lang-de.active{display:inline}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  transition: background 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.solid {
+  background: rgba(245,240,232,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--ink);
+}
+.nav-logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+.nav-logo sup { font-size: 10px; vertical-align: super; font-family: var(--fm); opacity: 0.7; }
+nav.solid .nav-logo { color: var(--ink); }
+
+.nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+.nav-links li { border-left: 1px solid rgba(255,255,255,0.15); }
+nav.solid .nav-links li { border-left-color: var(--rule); }
+.nav-links li:first-child { border-left: none; }
+.nav-links a {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a:active {
+  color: #fff;
+}
+nav.solid .nav-links a { color: var(--ink-muted); }
+nav.solid .nav-links a:hover,
+nav.solid .nav-links a:focus,
+nav.solid .nav-links a:active { color: var(--ink); background: var(--paper); }
+.nav-cta-link {
+  background: rgba(255,255,255,0.1) !important;
+  color: rgba(255,255,255,0.85) !important;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.nav-cta-link:hover { background: rgba(255,255,255,0.2) !important; color: #fff !important; }
+nav.solid .nav-cta-link {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
+  border: none;
+}
+nav.solid .nav-cta-link:hover { background: var(--plum) !important; color: #fff !important; }
+
+.lang-switch { display: flex; padding: 0 8px; }
 .lang-btn {
-	background: transparent;
-	border: none;
-	color: rgba(255, 255, 255, 0.8);
-	padding: 0px 0px;
-	cursor: pointer;
-	border-radius: 20px;
-	transition: all 0.3s ease;
-	font-size: 0.50em;
-	font-weight: 800;
-	letter-spacing: 0.5px;
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.35);
+  padding: 0 8px;
+  height: 36px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.lang-btn.active { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.5); }
+nav.solid .lang-btn { color: var(--ink-faint); }
+nav.solid .lang-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+.ham {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+.ham span { display: block; width: 20px; height: 1.5px; background: #fff; transition: background 0.4s; }
+nav.solid .ham span { background: var(--ink); }
+.mob {
+  display: none;
+  position: fixed;
+  top: 56px; left: 0; right: 0;
+  background: var(--cream);
+  border-bottom: 1.5px solid var(--ink);
+  flex-direction: column;
+  z-index: 99;
+}
+.mob.open { display: flex; }
+.mob a {
+  padding: 0.9rem 2rem;
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.mob a:last-child { border: none; color: var(--plum); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.hero-canvas-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 65%, #1e0f2a 0%, transparent 60%),
+    radial-gradient(ellipse 55% 70% at 85% 35%, #0e2218 0%, transparent 60%),
+    linear-gradient(155deg, #141009 0%, #1c1510 100%);
 }
 
-.lang-btn:hover {
-	background: rgba(255, 255, 255, 0.1);
-	color: white;
+/* ── NEURAL CANVAS: desktop = right-center panel ── */
+#neural-canvas {
+  position: absolute;
+  /* Right half, vertically centered */
+  right: 200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  height: 55%;
+  z-index: 2;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-.lang-btn.active {
-	background: #edbf79;
-	color: white;
-	box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(20,16,9,0.4) 0%, rgba(20,16,9,0.1) 45%, rgba(20,16,9,0.8) 100%);
+  z-index: 3;
+}
+.hero-body {
+  position: relative;
+  z-index: 4;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: calc(56px + 4rem) 48px 4rem;
+  max-width: 860px;
 }
 
-/* Hide inactive language content */
-.lang-content {
-	display: none;
+.hero-sub {
+  font-family: var(--fm);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: up 0.9s 0.4s forwards;
+}
+.hero-sub::before { content: ''; width: 40px; height: 1px; background: rgba(255,255,255,0.3); display: block; }
+
+.hero-title {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(64px, 8vw, 112px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.6rem;
+  opacity: 0;
+  animation: up 1s 0.6s forwards;
+}
+.hero-title .italic { font-style: italic; color: rgba(255,255,255,0.55); }
+.hero-title .outlined {
+  color: rgba(255,255,255,0.94);
+  -webkit-text-fill-color: rgba(255,255,255,0.94);
+  -webkit-text-stroke: 0.8px rgba(255,255,255,0.85);
+  text-shadow: 0 0 12px rgba(255,255,255,0.18);
 }
 
-.lang-content.active {
-	display: block;
+.hero-tagline {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 2.4rem;
+  opacity: 0;
+  animation: up 0.9s 0.8s forwards;
 }
 
-/* Inline language spans */
-.lang-en, .lang-de {
-	display: none;
+.hero-actions {
+  display: flex;
+  gap: 0;
+  opacity: 0;
+  animation: up 0.9s 1s forwards;
+}
+.btn-ink {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  background: var(--plum);
+  color: #fff;
+  border: 1.5px solid var(--plum);
+  transition: background 0.2s, border-color 0.2s;
+  display: inline-block;
+}
+.btn-ink:hover { background: #431f52; border-color: #431f52; }
+.btn-ghost {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  background: transparent;
+  color: rgba(255,255,255,0.65);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-left: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.55); color: #fff; }
+
+.hero-foot {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px 2.5rem;
+  opacity: 0;
+  animation: up 0.9s 1.3s forwards;
+}
+.scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--fm);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+}
+.scroll-cue-line {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.2);
+  transform-origin: top;
+  animation: grow 1.2s 1.4s both;
+}
+@keyframes grow { from{transform:scaleY(0)} to{transform:scaleY(1)} }
+.hero-loc {
+  font-family: var(--fm);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
 }
 
-.lang-en.active, .lang-de.active {
-	display: inline;
+@keyframes up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 600px) {
-	.language-switch {
-		top: 5px;
-		right: 1px;
-		scale: 0.85;
-		padding: 2px;
-		flex-direction: column;
-		gap: 1px;
-	}
-	
-	.lang-btn {
-		padding: 0px 7px;
-		font-size: 0.65em;
-		border-radius: 15px;
-	}
+/* ── INTRO STRIP ── */
+.intro-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1.5px solid var(--ink);
 }
-		</style>
-	</head>
-	<body class="is-preload">
+.intro-cell {
+  padding: 2.6rem 2.5rem;
+  border-right: 1.5px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+.intro-cell:last-child { border-right: none; }
+.cell-label {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.cell-value {
+  font-family: var(--fd);
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.cell-detail {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
 
-		<!-- Language Switch -->
-		<div class="language-switch">
-			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
-			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
-		</div>
+/* ── S-LABEL ── */
+.s-label {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.s-label::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--plum); opacity: 0.5; }
 
-		<!-- Wrapper -->
-		<div id="wrapper">
+/* ── SECTION COMMON ── */
+section { position: relative; z-index: 1; }
 
-			<!-- Header -->
-			<header id="header" class="alt">
-				<h1>Synapse²<br>Move</h1>
-				<p><em>
-					<span class="lang-en active">creating connections - vibrantly alive</span>
-					<span class="lang-de">WO DENKEN BEWEGT </span>
-				</em></p>
-			</header>
+.section-head {
+  border-bottom: 1.5px solid var(--ink);
+  padding: 20px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.section-num {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+.section-label {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.section-title {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.section-title .italic { font-style: italic; color: var(--green); }
+.section-title .outlined {
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+  -webkit-text-stroke: 0.9px rgba(26,26,20,0.26);
+  text-shadow: 0 0 8px rgba(26,26,20,0.08);
+}
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="Neuro.html" class="active">
-						<span class="lang-en active">Neuroathletic Training</span>
-						<span class="lang-de">Neuroathletiktraining</span>
-					</a></li>
-					<li><a href="services.html">
-						<span class="lang-en active">Services</span>
-						<span class="lang-de">Leistungen</span>
-					</a></li>
-					<li><a href="openworkshps.html">
-						<span class="lang-en active">Open Workshops</span>
-						<span class="lang-de">Offene Workshops</span>
-					</a></li>
-					<li><a href="workshops.html">
-						<span class="lang-en active">Neuro Workshops</span>
-						<span class="lang-de">Neuro Workshops</span>
-					</a></li>
-					<li><a href="divingarts.html">
-						<span class="lang-en active">Diving into Arts</span>
-						<span class="lang-de">Diving into Arts</span>
-					</a></li>
-					<li><a href="#fifth">
-						<span class="lang-en active">About Me</span>
-						<span class="lang-de">Über mich</span>
-					</a></li>
-					<li><a href="form.html">
-						<span class="lang-en active">Get Started</span>
-						<span class="lang-de">Jetzt starten</span>
-					</a></li>
-				</ul>
-			</nav>
+/* ── WHAT IS NAT ── */
+#what { padding: 80px 0; border-bottom: 1.5px solid var(--ink); }
 
-			<!-- Main -->
-			<div id="main">
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.what-left { border-right: 1px solid var(--rule); padding-right: 60px; }
+.what-right { padding-left: 60px; }
 
-				<!-- Introduction -->
-				<section id="intro" class="main ">
-					<div class="spotlight">
-						<div class="content">
-							<header class="major">
-								<style>
-								@media (max-width:600px){
-									.hide-on-mobile{display:none!important;}
-								}
-								</style>
-								<h2 class="hide-on-mobile">
-									<span class="lang-en active">Neuroathletic Training</span>
-									<span class="lang-de">Neuroathletiktraining</span>
-								</h2></h2>
-								<span class="image right" style="width:350px; max-width:100%;">
-								<a href="#fifth">
-									<img src="images/stamatios-papavasiliou.webp" alt="" style="width:100%; height:auto;" />
-								</a>
-							</span>
-							</header>
-								
-							<div class="lang-en active">
-								
-								<p>	
-									<strong>
-										<ul style="margin: 0; list-style-type: disc;">
-											<li>Traditional medicine can't find the cause of your recurring pain or movement issues?</li>
-											<li>Your athletic progress has plateaued — even though you're doing everything right?</li>
-											<li>You know your body can do more — you just don't know what's holding it back?</li>
-										</ul>
-										
-									</strong>
-									<br><br>
-									At Synapse² Move, we look where others don’t — inside the control center of your body: your nervous system.
-									<br>Your brain controls every movement, every muscle contraction, every signal of pain or tension.
-									If that communication between brain and body is disrupted, performance drops, pain persists, and progress slows — even if everything else seems “fine.”
-								</p>
-							</div>
-							<div class="lang-de">
-								<p>
-									<strong>
-										<ul style="margin: 0; list-style-type: disc;">
-											<li>Die Schulmedizin kann die Ursache deiner wiederkehrenden Schmerzen oder Bewegungsprobleme nicht finden?</li>
-											<li>Dein sportlicher Fortschritt stagniert — obwohl du alles richtig machst?</li>
-											<li>Du weißt, dein Körper kann mehr — du weißt nur nicht, was ihn daran hindert?</li>
-										</ul>
-									</strong>
-									<br><br>
-									Bei Synapse² Move schauen wir dorthin, wo andere nicht hinschauen — ins Steuerzentrum deines Körpers: dein Nervensystem.
-									<br>Dein Gehirn steuert jede Bewegung, jede Muskelkontraktion und jedes Signal von Schmerz oder Verspannung. Wenn die Kommunikation zwischen Gehirn und Körper gestört ist, sinkt die Leistung, Schmerzen bleiben bestehen und Fortschritte verlangsamen sich — selbst wenn sonst alles „in Ordnung“ scheint.
-								</p>
-							</div>
-							<ul class="actions special">
-								<li><a href="Neuro.html" class="button">
-									<span class="lang-en active"> What is Neuroathletic Training?</span>
-									<span class="lang-de">Was ist Neuroathletiktraining?</span>
-								</a></li>
-								<li><a href="form.html" class="button primary">
-									<span class="lang-en active">Book Free 20 Min Call</span>
-									<span class="lang-de">Kostenloses 20-Min-Gespräch buchen</span>
-								</a></li>
-							</ul>
-						</div>
-						
-					</div>
-					</section>
-					<!-- <section id="first" class="main special">
-					
-						<div class="content">
-							<header class="major">
-								<h2>
-									<span class="lang-en active"> What is Neuroathletic Training</span>
-									<span class="lang-de"> Was ist Neuroathletiktraining</span>
-								</h2>
-								
-							</header>
-							<div class="lang-en active">
-								<p>
-									Neuroathletic Training (NAT) is a training method that improves athletic performance and supports rehabilitation by targeting and enhancing the brain and nervous system through movement and sensory input.</p>
-							</div>
-							<div class="lang-de">
-								<p>Neuroathletiktraining (NAT) ist eine Trainingsmethode, die gezielt das Gehirn und Nervensystem durch Bewegung und sensorische Reize stärkt, um sportliche Leistung zu steigern und Rehabilitation wirksam zu unterstützen.</p>
-							</div>
-							<footer class="major">
-						<ul class="actions special">
-							<li><a href="services.html" class="button primary">
-								<span class="lang-en active">Learn More</span>
-								<span class="lang-de">Mehr erfahren</span>
-							</a></li>
-						</ul>
-					</footer>
-						</div>
-						
-					
-				</section> -->
-					
-				<!-- First Section -->
-				<section id="first" class="main special">
-					<header class="major">
-						<h2>
-							<span class="lang-en active">Services</span>
-							<span class="lang-de">Leistungen</span>
-						</h2>
-					</header>
-					<ul class="features">
-						<li>
-							<span class="icon solid major style1 fa-phone"></span>
-							
-							<h3>
-								<span class="lang-en active"><strong>Free 20 min Call</strong></span>
-								<span class="lang-de"><strong>Kostenloses 20-Min-Gespräch</strong></span>
-							</h3>
-							
-							<div class="lang-en active">
-								<p>During this 20-minute call, we'll talk about your goals, the challenges you're facing, and your current physical and mental state. Whether you're looking to improve your performance or recover from an injury, I'll talk you through how NAT can help you move better, feel stronger and reach your full potential.</p>
-							</div>
-							<div class="lang-de">
-								<p>In diesem 20-minütigen Gespräch besprechen wir deine Ziele, Herausforderungen und deine aktuelle körperliche sowie mentale Verfassung. Ganz gleich, ob du deine Leistung steigern oder dich von einer Verletzung erholen möchtest - ich erkläre dir, wie dir NAT dabei helfen kann, dich besser zu bewegen, widerstandsfähiger zu werden und dein volles Potenzial auszuschöpfen.</p>
-							</div>
-						</li>
-						<li>
-							<span class="icon solid major style1 fa-brain"></span>
-							<h3>
-								<span class="lang-en active"><strong>Neuroassessment</strong> - <br> Functional Analysis of Your Nervous System</span>
-								<span class="lang-de"><strong>Neuroassessment</strong> - <br> Funktionale Analyse deines Nervensystems</span>
-							</h3>
-							<div class="lang-en active">
-								<p>This assessment provides a detailed analysis of your central and peripheral nervous system function. By identifying potential inefficiencies or imbalances, we gain valuable insights into how your nervous system influences movement, cognition, and overall performance laying the foundation for targeted interventions if needed.</p>
-							</div>
-							<div class="lang-de">
-								<p>Dieses Assessment liefert eine detaillierte Analyse der Funktionalität deines zentralen und peripheren Nervensystems. Durch die Identifizierung potenzieller Ineffizienzen oder Ungleichgewichte gewinnen wir wertvolle Erkenntnisse darüber, wie dein Nervensystem Bewegung, Kognition und Performance beeinflusst – und legen damit die Grundlage für gezielte Interventionen.</p>
-							</div>
-						</li>
-						<li>
-							<span class="icon solid major style1 fa-dumbbell"></span>
-							<h3>
-								<span class="lang-en active"><strong>Personal & Athletic Training</strong> – Neurocentric, Goal-Oriented, Effective</span>
-								<span class="lang-de"><strong>Personal & Athletik Training</strong> – Neurozentriert, Zielorientiert, Effektiv</span>
-							</h3>
-							<div class="lang-en active">
-								<p>Whether you're looking to improve strength, endurance, coordination, or overall fitness, these training sessions are tailored to your individual goals. Using a neurocentric approach, we integrate targeted exercises that not only train your body but also engage and optimize your nervous system, leading to more efficient, sustainable results.</p>
-							</div>
-							<div class="lang-de">
-								<p>Egal, ob du deine Kraft, Ausdauer, Koordination oder allgemeine Fitness verbessern möchtest – diese Trainingseinheiten sind auf deine individuellen Ziele zugeschnitten. Mit einem neurozentrischen Ansatz integrieren wir gezielte Übungen, die nicht nur deinen Körper trainieren, sondern auch dein Nervensystem ansprechen und optimieren, was zu effizienteren und nachhaltigeren Ergebnissen führt.</p>
-							</div>
-						</li>
-					</ul>
-					<footer class="major">
-						<ul class="actions special">
-							<li><a href="services.html" class="button primary">
-								<span class="lang-en active">Learn More</span>
-								<span class="lang-de">Mehr erfahren</span>
-							</a></li>
-						</ul>
-					</footer>
-				</section>
+.what-left p {
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.what-left strong { color: var(--ink); font-weight: 500; }
 
-				<section id="second" class="main special">
-					<header class="major">
-						<h2>
-							<span class="lang-en active"><strong>Open Workshops</strong> </span>
-							<span class="lang-de"><strong>Offene Workshops</strong></span>
-						</h2>
-						<div class="lang-en active">
-							<p>At Synapse² Move, we believe in empowering people with practical tools that support both body and mind in everyday life. That’s why we offer a range of additional workshops, designed for everyone who wants to take active steps toward better well-being and resilience.
+.pullquote {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 18px 0;
+  margin: 28px 0;
+}
+.pullquote::before { content: '\201C'; color: var(--plum); font-size: 1.8rem; line-height: 0; vertical-align: -0.4rem; margin-right: 0.25rem; }
 
-These workshops are hands-on, easy to apply, and backed by modern insights from neuroscience, movement, and holistic health. </p>
-						</div>
-						<div class="lang-de">
-							<p>Bei Synapse² Move möchten wir Menschen dabei unterstützen, Körper und Geist im Alltag in Einklang zu bringen. Unsere zusätzlichen Workshops richten sich an alle, die aktiv etwas für ihre Gesundheit und ihr Wohlbefinden tun möchten.
+/* ── Pillar rows ── */
+.pillar-row {
+  display: grid;
+  grid-template-columns: 1px 1fr;
+  gap: 0 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.pillar-row:first-child { padding-top: 0; }
+.pillar-row:last-child { border: none; }
+.pillar-line {
+  width: 1px;
+  background: var(--rule);
+  position: relative;
+  align-self: stretch;
+}
+.pillar-line::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.pillar-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.pillar-index {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--green);
+  letter-spacing: 0.06em;
+}
+.pillar-title {
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+.pillar-row p { font-size: 13px; color: var(--ink-muted); line-height: 1.6; font-weight: 300; }
 
-Die Inhalte sind praxisorientiert, leicht umsetzbar und verbinden moderne Ansätze aus Neurowissenschaft, Bewegung und ganzheitlicher Gesundheitsförderung.</p>
-						</div>
-					</header>
-					<footer class="major">
-						<ul class="actions special">
-							<li><a href="openworkshps.html" class="button primary">
-								<span class="lang-en active">Learn More</span>
-								<span class="lang-de">Mehr erfahren</span>
-							</a></li>
-						</ul>
-					</footer>
-				</section>
+/* ── SERVICES TABLE ── */
+#services { padding: 80px 0; border-bottom: 1.5px solid var(--ink); }
 
-				<section id="third" class="main special">
-					<header class="major">
-						<h2>
-							<span class="lang-en active"><strong>Neuroathletic Workshops</strong> </span>
-							<span class="lang-de"><strong>Neuroathletik Workshops</strong></span>
-						</h2>
-						<div class="lang-en active">
-							<p>These group workshops provide a powerful and engaging way for teams, clubs, and groups from all disciplines to enhance their performance together. In a motivating group setting where we’ll explore NAT trainingmethods, you’ll refine your coordination, reaction time, focus, and overall movement efficiency while building a shared foundation of body awareness and mental clarity.
-								
-							<br>Perfect for sports teams, performance groups, dance ensembles, and anyone ready to level up through smarter, more targeted training.</p>
-						</div>
-						<div class="lang-de">
-							<p>Diese Gruppenworkshops bieten Teams, Vereinen und Gruppen aus allen Disziplinen eine attraktive Möglichkeit, ihre Leistung gemeinsam zu verbessern. In einem Gruppensetting erforschen wir NAT-Trainingsmethoden. Dabei arbeiten wir an Koordination, Reaktionszeit, Konzentration und allgemeiner Bewegungseffizienz. Gleichzeitig schaffen wir eine Grundlage für Körperbewusstsein und geistige Klarheit.
-								
-								<br>Die Workshops sind ideal für Sportteams, Performance-Gruppen, Tanzensembles und alle, die bereit sind, durch intelligenteres und gezielteres Training ein neues Leistungsniveau zu erreichen.</p>
-						</div>
-					</header>
-					<footer class="major">
-						<ul class="actions special">
-							<li><a href="workshops.html" class="button primary">
-								<span class="lang-en active">Learn More</span>
-								<span class="lang-de">Mehr erfahren</span>
-							</a></li>
-						</ul>
-					</footer>
-				</section>
+.services-table { width: 100%; border-collapse: collapse; }
+.services-table tr { border-top: 1px solid var(--rule); }
+.services-table tr:first-child { border-top: none; }
+.services-table tr:hover td { background: var(--plum-light); }
 
-				<section id="fourth" class="main special">
-					<header class="major">
-						<h2>
-							<span class="lang-en active"><strong>Diving into Arts</strong></span>
-							<span class="lang-de"><strong>Diving into Arts</strong></span>
-						</h2>
-						<div class="lang-en active">
-							<p>Workshops for Creativity, Productivity & Relaxation - Brain-Based Tools for Modern Life. In these Workshops I guide teams, creatives, and individuals through practical, neuroscience-based tools that help unlock creativity, improve focus, and reduce stress. Whether in a retreat setting or a corporate environment, participants learn how their nervous system influences performance and well-being—and how to work with it, not against it.
-							<br><br>Ideal for teams seeking innovation, creatives looking for flow, or anyone wanting more clarity and balance in their day-to-day routines.</p>
-						</div>
-						<div class="lang-de">
-							<p>Workshops für Kreativität, Produktivität & Entspannung – Brain-Based Tools for Modern Life.
-							In diesen Workshops unterstütze ich Teams und Kreative mit praxisnahen, neurowissenschaftlich basierten Methoden dabei, ihre Kreativität zu entfalten, ihren Fokus zu schärfen und Stress abzubauen. Ob im Rahmen eines Retreats oder in einem Unternehmen – die Teilnehmenden lernen, wie ihr Nervensystem Performance und Wohlbefinden beeinflusst und wie sie im Einklang damit arbeiten können.
+.svc-num { font-family: var(--fm); font-size: 11px; color: var(--ink-faint); padding: 28px 20px 28px 0; width: 48px; vertical-align: top; }
+.svc-body { padding: 28px 40px 28px 0; }
+.svc-title { font-family: var(--fd); font-weight: 700; font-size: 24px; color: var(--ink); margin-bottom: 4px; }
+.svc-sub {
+  font-family: var(--fm);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.svc-sub::after { content: ''; flex: 0 0 20px; height: 1px; background: var(--plum); opacity: 0.45; }
+.svc-body p { font-size: 14px; color: var(--ink-muted); line-height: 1.7; max-width: 520px; font-weight: 300; }
+.svc-arrow { width: 48px; text-align: right; vertical-align: middle; }
+.svc-arrow a { font-family: var(--fm); font-size: 18px; color: var(--ink-faint); text-decoration: none; transition: color 0.15s, transform 0.15s; display: inline-block; }
+.services-table tr:hover .svc-arrow a { color: var(--plum); transform: translateX(4px); }
 
-							<br>Ideal für Teams, die Innovation fördern wollen, Kreative, die ihren Flow finden möchten, und alle, die sich im Alltag mehr Klarheit und Balance wünschen.
-							</p>
-						</div>
-					</header>
-					<footer class="major">
-						<ul class="actions special">
-							<li><a href="divingarts.html" class="button primary">
-								<span class="lang-en active">Learn More</span>
-								<span class="lang-de">Mehr erfahren</span>
-							</a></li>
-						</ul>
-					</footer>
-				</section>
+/* ── WORKSHOPS ── */
+#workshops { border-bottom: 1.5px solid var(--ink); }
 
-				<!-- Second Section -->
-				<section id="fifth" class="main special">
-					<header class="major">
-						<h2>
-							<span class="lang-en active">About Me</span>
-							<span class="lang-de">Über mich</span>
-						</h2>
-					</header>
-					<div class="lang-en active">
-						<p>
-							<span class="image left" style="width:350px; max-width:100%;">
-								<img src="images/stamatios-papavasiliou.webp" alt="" style="width:100%; height:auto;" />
-							</span>
-							Hi, I'm a sports scientist and certified Neuroathletic Trainer with a deep passion for movement and how the human brain works. My journey into neuroscience began with the Feldenkrais Method, which opened my eyes to how movement and awareness shape performance, regeneration, and creativity.
-							After completing my Bachelor's degree in Sport Science, I dove into the world of neuroathletics with Z-Health — fascinated by how targeted brain-based training can unlock new levels of physical and mental potential. I now integrate this approach not only in performance and rehab settings but also in my own artistic work as a dancer and creative.
-							I'm active in triathlon, tennis, calisthenics and really, anything that challenges my body and mind. Above all, I love to dance. I run with my partner a small dance school focused on Brazilian Zouk, and I truly believe that dancing is one of the best workouts you can do for your body and your brain.
-							Whether in training, therapy, or the creative process, my goal is to help people move smarter, feel stronger, and live more fully. If you want to get to know me better click on my personal <a href="https://www.instagram.com/stamatinhos/"> Instagram </a> account.
-							<p style="font-size: 0.8em; font-style: italic; color: #22050586; text-align: right;">
-								Click <a href="https://zhealtheducation.com/de/Trainer-finden/" style="color: #60bca4;">here</a> to find my Z-Health Certifications.
-							</p>
-						</p>
-					</div>
-					<div class="lang-de">
-						<p>
-							<span class="image left" style="width:350px; max-width:100%;">
-								<img src="images/stamatios-papavasiliou.webp" alt="" style="width:100%; height:auto;" />
-							</span>
-							Hallo, ich bin Sportwissenschaftler und zertifizierter Neuroathletik-Trainer mit einer großen Leidenschaft für Bewegung und Neurowissenschaften. Meine Reise in die Neurowissenschaften begann mit der Feldenkrais-Methode, die mir die Augen dafür geöffnet hat, wie Bewegung und Bewusstsein, Performance und Kreativität beeinflussen. Nach meinem Bachelor-Abschluss in Sportwissenschaften tauchte ich mit Z-Health in die Welt der Neuroathletik ein, fasziniert davon, wie gehirnbasiertes Training neue Ebenen des körperlichen und geistigen Potenzials erschließen kann. Ich integriere diesen Ansatz nun nicht nur in Leistungs- und im Reha-Bereich, sondern auch in meine eigene künstlerische Arbeit als Tänzer und Kreativer. Ich bin aktiv im Triathlon, Tennis, Calisthenics und eigentlich allem, was mich körperlich und mental herausfordert. Vor allem liebe ich es zu tanzen. Gemeinsam mit meiner Partnerin leite ich eine kleine auf brasilianischen Zouk spezialisierte Tanzschule – überzeugt davon, dass Tanzen eines der besten Workouts für Körper und Geist ist. Ob im Training, in der Therapie oder im kreativen Prozess – mein Ziel ist es, Menschen dabei zu helfen, sich intelligenter zu bewegen und ein erfüllteres Leben zu führen. Wenn du mich besser kennenlernen möchtest, wirf einen blick auf mein persönliches <a href="https://www.instagram.com/stamatinhos/"> Instagramkonto </a>.
-							<p style="font-size: 0.8em; font-style: italic; color: #22050586; text-align: center;">
-								Klick <a href="https://zhealtheducation.com/de/Trainer-finden/" style="color: #60bca4;">hier</a> um meine Z-Health Zertifizierungen zu finden.
-							</p>
-						</p>
-					</div>
-				</section>
+.workshops-outer {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+}
+.workshops-left {
+  padding: 80px 48px 80px 0;
+  border-right: 1px solid var(--rule);
+  position: sticky;
+  top: 56px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.workshops-left h2 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(36px, 3.5vw, 52px);
+  line-height: 0.97;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.workshops-left h2 .italic { font-style: italic; color: var(--green); }
+.workshops-left p {
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.75;
+  font-weight: 300;
+}
+.plant-wrap {
+  margin-top: auto;
+  padding-top: 2.5rem;
+  opacity: 0.18;
+}
+.plant-svg { display: block; overflow: visible; pointer-events: none; }
 
-				<!-- Get Started -->
-				<section id="cta" class="main special">
-					<header class="major">
-						<h2>
-							<span class="lang-en active">Training Locations</span>
-							<span class="lang-de">Trainingorte</span>
-						</h2>
-						<div class="lang-en active" style="text-align: left;">
-								<ul>
-									<li>In person at a location suited to the content of the session (e.g. gym, track or outdoor areas).</li>
-									<li>Online via video call — when flexibility is needed (depends on session if possible).</li>
-								</ul>
-							</div>
-							<div class="lang-de" style="text-align: left;">
-								<ul>
-									<li>Persönlich an einem für den Sessioninhalt geeigneten Ort (z.B. Fitnessstudio, Im Freien).</li>
-									<li>Online per Videoanruf — wenn Flexibilität benötigt wird (abhängig von der Session, falls möglich).</li>
-								</ul>
-							</div>
-					</header>
-					<footer class="major">
-						<ul class="actions special">
-							<li><a href="form.html" class="button primary">
-								<span class="lang-en active">Get Started</span>
-								<span class="lang-de">Jetzt starten</span>
-							</a></li>
-						</ul>
-					</footer>
-				</section>
-			</div>
+.workshops-right {
+  padding: 80px 0 80px 60px;
+  display: flex;
+  flex-direction: column;
+}
+.wk-item {
+  display: grid;
+  grid-template-columns: 1px 1fr;
+  gap: 0 2.2rem;
+  padding: 2.8rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.wk-item:first-child { padding-top: 0; }
+.wk-item:last-child { border: none; }
+.wk-line {
+  width: 1px;
+  background: var(--rule);
+  position: relative;
+  align-self: stretch;
+}
+.wk-line::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--plum);
+}
+.wk-tag {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 3px 9px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+}
+.wk-tag.green { background: var(--green-light); color: var(--green); }
+.wk-tag.plum  { background: var(--plum-light); color: var(--plum); }
+.wk-tag.gold  { background: #f5edd8; color: var(--gold); }
+.wk-item h3 { font-family: var(--fd); font-weight: 700; font-style: italic; font-size: 24px; line-height: 1.1; color: var(--ink); margin-bottom: 12px; }
+.wk-item p { font-size: 13px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 16px; font-weight: 300; }
+.wk-link {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.wk-link:hover { gap: 14px; }
+.wk-link::after { content: '\2192'; font-size: 14px; }
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section>
-					<h1 style="font-size: 1.8em;">
-						<strong>
-							<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
-							<span class="lang-de">Deine Ziele sind<br><span style="font-size: 1.184em;">in Reichweite</span></span>
-						</strong>
-					</h1>
-					<p><strong>
-						<span class="lang-en active">Book your session and let's make it happen.</span>
-						<span class="lang-de">Buche deine Session und lass es uns angehen.</span>
-					</strong></p>
-					<ul class="actions">
-						<li><a href="form.html" class="button"><strong>
-							<span class="lang-en active">Get Started!</span>
-							<span class="lang-de">Jetzt starten!</span>
-						</strong></a></li>
-					</ul>
-				</section>
-				<section>
-					<h2>
-						<span class="lang-en active">Contact</span>
-						<span class="lang-de">Kontakt</span>
-					</h2>
-					<dl class="alt">
-						<dt>
-							<span class="lang-en active">Address</span>
-							<span class="lang-de">Adresse</span>
-						</dt>
-						<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-						<dt>
-							<span class="lang-en active">Phone</span>
-							<span class="lang-de">Telefon</span>
-						</dt>
-						<dd>+49 152 21319336</dd>
-						<dt>Email</dt>
-						<dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
-					</dl>
-					<ul class="icons" style="justify-content: center; align-items: center;">
-						<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-					</ul>
-					<style>
-					@media (max-width: 600px) {
-						#footer .icons {
-							display: flex !important;
-							justify-content: center !important;
-							align-items: center !important;
-							padding-left: 0 !important;
-						}
-					}
-					</style>
-				</section>
-				<p class="copyright"> 
-					<a href="index.html"><strong>HOME</strong></a> <br> 
-					&copy; Stamatios Papavasiliou 2025<br> 
-					<a href="impressum.html">Impressum</a> <br> 
-					<a href="datenschutz.html">
-						<span class="lang-en active">Privacy Policy</span>
-						<span class="lang-de">Datenschutzerklärung</span>
-					</a> <br>   
-					Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
-				</p>
-			</footer>
-		</div>
+/* ── ABOUT ── */
+#about { padding: 80px 0; border-bottom: 1.5px solid var(--ink); }
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+.about-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 0;
+}
+.about-left { border-right: 1px solid var(--rule); padding-right: 60px; }
+.about-right { padding-left: 60px; }
 
-		<script>
-			// Session Storage Language Management System
-let currentLanguage = 'en';
+.about-img-wrap { position: sticky; top: 76px; }
+.about-img-wrap img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%) contrast(1.1);
+  mix-blend-mode: multiply;
+}
+.about-img-caption {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+.about-img-caption a { color: var(--green); text-decoration: none; }
 
+.about-name {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(40px, 4.5vw, 60px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.about-role {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--green);
+  margin-bottom: 32px;
+}
+
+.about-right p { font-size: 14px; color: var(--ink-muted); line-height: 1.85; margin-bottom: 16px; font-weight: 300; }
+.about-right strong { color: var(--ink); font-weight: 500; }
+.about-right a { color: var(--green); text-decoration: none; }
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 28px; }
+.tag {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+  color: var(--ink-muted);
+}
+
+.about-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.6rem;
+  font-family: var(--fm);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--plum);
+  text-decoration: none;
+}
+.about-more::after { content: '\2192'; transition: transform 0.2s; display: inline-block; }
+.about-more:hover::after { transform: translateX(4px); }
+
+/* ── LOCATIONS ── */
+#locations {
+  padding: 48px 0;
+  border-bottom: 1.5px solid var(--ink);
+}
+.locations-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.loc-item { border-right: 1px solid var(--rule); padding: 0 40px 0 0; margin-right: 40px; }
+.loc-item:first-child { padding-left: 0; }
+.loc-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.loc-label { font-family: var(--fm); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; }
+.loc-value { font-family: var(--fd); font-size: 1.1rem; font-weight: 400; color: var(--ink); line-height: 1.5; }
+.loc-note { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+
+/* ── CTA ── */
+#cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1.5px solid var(--ink);
+}
+.cta-left {
+  padding: 100px 60px 100px 0;
+  border-right: 1px solid var(--rule);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cta-left h2 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(52px, 6vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.cta-left h2 .italic { font-style: italic; color: var(--plum); }
+.cta-left .cta-sub {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-muted);
+  margin-bottom: 2.5rem;
+}
+.cta-plant-wrap {
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.cta-right {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 48px;
+  gap: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+#cta-canvas {
+  position: absolute;
+  /* Right half, vertically centered */
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70%;
+  height: 55%;
+  z-index: 2;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  #cta-canvas {
+    right: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(420px, 80vw);
+    height: min(420px, 80vw);
+    opacity: 0.45;
+    z-index: 1;
+  }
+  .cta-right { padding: 48px 20px; }
+}
+.cta-kicker {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.35);
+  position: relative;
+  z-index: 1;
+}
+.cta-right h2 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.cta-right h2 .green { color: #6ec9a4; }
+.btn-cream {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 36px;
+  background: var(--cream);
+  color: var(--ink);
+  border: 1.5px solid var(--cream);
+  display: inline-block;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.btn-cream:hover { background: var(--plum-light); border-color: var(--plum-light); }
+.cta-right-note {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1.5px solid rgba(245,240,232,0.1);
+  padding: 56px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-bottom: 48px;
+}
+.footer-col { border-right: 1px solid rgba(245,240,232,0.08); padding-right: 48px; margin-right: 48px; }
+.footer-col:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.footer-logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--cream);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+}
+.footer-logo sup { font-size: 10px; color: #6ec9a4; font-family: var(--fm); }
+.footer-desc { font-size: 13px; color: rgba(245,240,232,0.3); line-height: 1.6; max-width: 200px; font-weight: 300; }
+footer h4 { font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 16px; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 10px; }
+footer ul a { font-size: 13px; color: rgba(245,240,232,0.45); text-decoration: none; transition: color 0.15s; font-weight: 300; }
+footer ul a:hover { color: #6ec9a4; }
+footer dl dt { font-family: var(--fm); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 2px; margin-top: 12px; }
+footer dl dd { font-size: 13px; color: rgba(245,240,232,0.45); font-weight: 300; }
+footer dl dd a { color: #6ec9a4; text-decoration: none; }
+.footer-bottom {
+  border-top: 1px solid rgba(245,240,232,0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: rgba(245,240,232,0.18);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom a { color: rgba(245,240,232,0.18); text-decoration: none; }
+.footer-bottom a:hover { color: #6ec9a4; }
+
+.ft-plant {
+  opacity: 0.25;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* ── CONTAINER ── */
+.container { width: 100%; padding: 0 48px; }
+
+/* ── MOBILE ── */
+.nav-mobile-toggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  padding: 7px 10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
+.nav-mobile-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; }
+
+@media(max-width:1024px){
+  .workshops-outer { grid-template-columns: 1fr; }
+  .workshops-left { position: relative; top: auto; border-right: none; border-bottom: 1.5px solid var(--ink); padding: 60px 0 40px; }
+  .workshops-right { padding: 40px 0 60px; }
+}
+@media(max-width:900px){
+  /* ── NEURAL CANVAS: mobile = centered in the hero ── */
+  #neural-canvas {
+    right: auto;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 94%;
+    height: 65%;
+    opacity: 0.7;
+  }
+
+  nav { padding: 0 20px; }
+  .nav-mobile-toggle { display: flex; }
+  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--cream); border-bottom: 1.5px solid var(--ink); flex-direction: column; padding: 12px 0; gap: 0; }
+  .nav-links li { border-left: none; border-top: 1px solid var(--rule); }
+  .nav-links a { height: 44px; }
+  .mobile-nav-open .nav-links { display: flex; }
+  .container { padding: 0 20px; }
+  .hero-body { padding: calc(56px + 2rem) 20px 3rem; }
+  .hero-foot { padding: 0 20px 2rem; }
+  .intro-strip { display: none; }
+  .intro-cell { border-right: none; border-bottom: 1.5px solid var(--ink); }
+  .intro-cell:last-child { border-bottom: none; }
+  .what-grid,.about-grid { grid-template-columns: 1fr; }
+  .what-left,.about-left { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 40px; margin-bottom: 40px; }
+  .what-right,.about-right { padding-left: 0; }
+  .about-img-wrap { position: relative; top: 0; max-width: 260px; }
+  .locations-inner { grid-template-columns: 1fr; }
+  .loc-item { border-right: none; border-bottom: 1px solid var(--rule); padding: 0 0 16px; margin: 0 0 16px; }
+  .loc-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  #cta { grid-template-columns: 1fr; }
+  .cta-left { padding: 60px 0; border-right: none; border-bottom: 1.5px solid var(--ink); }
+  .cta-plant-wrap { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-col { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); padding: 0 0 28px; margin: 0 0 28px; }
+  .footer-col:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .footer-bottom { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Synapse<sup>2</sup>Move</a>
+  <button class="nav-mobile-toggle" id="mob-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#what"><span class="lang-en active">Neuroathletics</span><span class="lang-de">Neuroathletik</span></a></li>
+    <li><a href="#services"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#about"><span class="lang-en active">About</span><span class="lang-de">Über</span></a></li>
+    <li>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
+      </div>
+    </li>
+    <li><a href="form.html" class="nav-cta-link"><span class="lang-en active">Book Call</span><span class="lang-de">Gespräch</span></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-canvas-bg"></div>
+  <canvas id="neural-canvas"></canvas>
+  <div class="hero-scrim"></div>
+  <div class="hero-body">
+    <p class="hero-sub"></p>
+    <h1 class="hero-title">
+      <span class="lang-en active">Train<br>Your <span class="italic">Brain.</span><br><span class="outlined">Move</span><br>Better.</span>
+      <span class="lang-de">Trainiere<br>dein <span class="italic">Gehirn.</span><br><span class="outlined">Bewege</span><br>dich besser.</span>
+    </h1>
+    <p class="hero-tagline">
+      <span class="lang-en active">creating connections, vibrantly alive.</span>
+      <span class="lang-de">Wo Denken bewegt </span>
+    </p>
+    <div class="hero-actions">
+      <a href="form.html" class="btn-ink"><span class="lang-en active">Book Free Call</span><span class="lang-de">Gespräch buchen</span></a>
+      <a href="#what" class="btn-ghost"><span class="lang-en active">Learn More</span><span class="lang-de">Mehr erfahren</span></a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <a href="#what" class="scroll-cue">
+      <span class="scroll-cue-line"></span>
+      <span class="lang-en active">Explore</span><span class="lang-de">Erkunden</span>
+    </a>
+    <span class="hero-loc"></span>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-cell">
+    <span class="cell-label"><span class="lang-en active">Method</span><span class="lang-de">Methode</span></span>
+    <span class="cell-value">Functional Neurology</span>
+    <span class="cell-detail"><span class="lang-en active">Brain &amp; nervous system focused<br>Backed by modern neuroscience</span><span class="lang-de"> Nervensystem fokussiert<br>Basierend auf moderner Neurowissenschaft</span></span>
+  </div>
+  <div class="intro-cell">
+    <span class="cell-label"><span class="lang-en active">Format</span><span class="lang-de">Format</span></span>
+    <span class="cell-value"><span class="lang-en active">In Person + Online</span><span class="lang-de">Persönlich + Online</span></span>
+    <span class="cell-detail"><br><span class="lang-en active">Select sessions via video call</span><span class="lang-de">Ausgewählte Sessions per Video</span></span>
+  </div>
+  <div class="intro-cell">
+    <span class="cell-label"><span class="lang-en active">Who</span><span class="lang-de">Für wen</span></span>
+    <span class="cell-value"><span class="lang-en active">Athletes &amp; movers</span><span class="lang-de">Athleten &amp; movers</span></span>
+    <span class="cell-detail"><span class="lang-en active">Beginners to high-performance —<br>free 20-min discovery call to start</span><span class="lang-de">Einsteiger bis Leistungssportler —<br>kostenloses Erstgespräch</span></span>
+  </div>
+</div>
+
+<!-- WHAT IS NAT -->
+<section id="what">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num"> 01</span>
+      <span class="section-label"><span class="lang-en active"></span><span class="lang-de"></span></span>
+      <h2 class="section-title">
+        <span class="lang-en active">The Brain-<span class="italic">Body</span> <span class="outlined">Link</span></span>
+        <span class="lang-de">Die Gehirn-<span class="italic">Körper</span> <span class="outlined">Verbindung</span></span>
+      </h2>
+    </div>
+    <div class="what-grid">
+      <div class="what-left">
+        <p class="s-label"><span class="lang-en active">The Science</span><span class="lang-de">Die Wissenschaft</span></p>
+        <div class="lang-en active">
+          <p>Neuroathletic Training (NAT) is a method that improves athletic performance and supports rehabilitation by <strong>targeting the brain and nervous system</strong> through movement and sensory input.</p>
+          <p>Your brain controls every movement, every muscle contraction, every signal of pain or tension. If that communication is disrupted, performance drops, pain persists, and progress slows — even if everything else seems "fine."</p>
+          <blockquote class="pullquote">NAT identifies and corrects exactly those disruptions — at the source.</blockquote>
+          <p>We map your sensory systems — visual, vestibular, proprioceptive — and retrain the pathways that govern how you move, feel, and perform.</p>
+        </div>
+        <div class="lang-de">
+          <p>Neuroathletiktraining (NAT) verbessert sportliche Leistung und unterstützt Rehabilitation, indem es <strong>gezielt das Gehirn und Nervensystem</strong> durch Bewegung und sensorische Reize stärkt.</p>
+          <p>Dein Gehirn steuert jede Bewegung. Wenn diese Kommunikation gestört ist, sinkt die Leistung — selbst wenn sonst alles „in Ordnung" scheint.</p>
+          <blockquote class="pullquote">NAT identifiziert und korrigiert genau diese Störungen — an der Quelle.</blockquote>
+          <p>Wir analysieren deine sensorischen Systeme und trainieren gezielt die Bahnen, die deine Bewegung und Performance steuern.</p>
+        </div>
+        <div style="margin-top:32px;">
+      <a href="Neuro.html" class="btn-ghost" style="border:1.5px solid var(--ink); color:var(--ink); display:inline-block;">
+        <span class="lang-en active">Learn More</span><span class="lang-de">Mehr erfahren</span>
+      </a>
+    </div>
+      </div>
+      <div class="what-right">
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div class="pillar-content">
+            <div class="pillar-head"><span class="pillar-index">01</span><span class="pillar-title"><span class="lang-en active">Visual System</span><span class="lang-de">Visuelles System</span></span></div>
+            <div class="lang-en active"><p>Eye movements and gaze stability profoundly affect balance, coordination, and pain perception.</p></div>
+            <div class="lang-de"><p>Augenbewegungen und Blickstabilität beeinflussen Gleichgewicht und Schmerzwahrnehmung tiefgreifend.</p></div>
+          </div>
+        </div>
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div class="pillar-content">
+            <div class="pillar-head"><span class="pillar-index">02</span><span class="pillar-title"><span class="lang-en active">Vestibular System</span><span class="lang-de">Vestibuläres System</span></span></div>
+            <div class="lang-en active"><p>The inner ear governs spatial orientation, posture, and movement efficiency in ways most training ignores.</p></div>
+            <div class="lang-de"><p>Das Innenohr steuert räumliche Orientierung und Bewegungseffizienz auf Weisen, die meist ignoriert werden.</p></div>
+          </div>
+        </div>
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div class="pillar-content">
+            <div class="pillar-head"><span class="pillar-index">03</span><span class="pillar-title"><span class="lang-en active">Proprioception</span><span class="lang-de">Propriozeption</span></span></div>
+            <div class="lang-en active"><p>Your body's internal position-sensing system — when accurate, movement becomes effortless and injury-resistant.</p></div>
+            <div class="lang-de"><p>Das interne Positionssensorsystem — wenn präzise, wird Bewegung mühelos und verletzungsresistent.</p></div>
+          </div>
+        </div>
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div class="pillar-content">
+            <div class="pillar-head"><span class="pillar-index">04</span><span class="pillar-title"><span class="lang-en active">Breath &amp; Regulation</span><span class="lang-de">Atmung &amp; Regulation</span></span></div>
+            <div class="lang-en active"><p>Breathing patterns directly modulate nervous system state, impacting strength and recovery speed.</p></div>
+            <div class="lang-de"><p>Atemmuster modulieren direkt den Nervensystemzustand und beeinflussen Kraft und Erholungsgeschwindigkeit.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <span class="section-label"><span class="lang-en active"></span><span class="lang-de"></span></span>
+      <h2 class="section-title">
+        <span class="lang-en active"><span class="italic">What</span> We <span class="outlined">Offer</span></span>
+        <span class="lang-de"><span class="italic">Was</span> Wir <span class="outlined">Bieten</span></span>
+      </h2>
+    </div>
+    <table class="services-table">
+      <tr onclick="window.location='form.html'" style="cursor:pointer;">
+        <td class="svc-num">01</td>
+        <td class="svc-body">
+          <div class="svc-title"><span class="lang-en active">Free 20-Minute Discovery Call</span><span class="lang-de">Kostenloses Erstgespräch</span></div>
+          <div class="svc-sub"><span class="lang-en active">No commitment · Discovery</span><span class="lang-de">Unverbindlich · Erstgespräch</span></div>
+          <div class="lang-en active"><p>We'll discuss your goals, current challenges, and physical state. I'll show you exactly how NAT can help you reach your full potential.</p></div>
+          <div class="lang-de"><p>Wir besprechen deine Ziele und körperliche Verfassung. Ich erkläre, wie NAT dir helfen kann, dein volles Potenzial zu erreichen.</p></div>
+        </td>
+        <td class="svc-arrow"><a href="form.html">&#8594;</a></td>
+      </tr>
+      <tr onclick="window.location='services.html'" style="cursor:pointer;">
+        <td class="svc-num">02</td>
+        <td class="svc-body">
+          <div class="svc-title">Neuroassessment</div>
+          <div class="svc-sub"><span class="lang-en active">Nervous system · Functional analysis</span><span class="lang-de">Nervensystem · Funktionale Analyse</span></div>
+          <div class="lang-en active"><p>A detailed analysis of your central and peripheral nervous system. We identify inefficiencies and understand how your nervous system influences movement and performance.</p></div>
+          <div class="lang-de"><p>Eine detaillierte Analyse deines Nervensystems. Wir identifizieren Ineffizienzen und verstehen, wie dein Nervensystem Bewegung beeinflusst.</p></div>
+        </td>
+        <td class="svc-arrow"><a href="services.html">&#8594;</a></td>
+      </tr>
+      <tr onclick="window.location='services.html'" style="cursor:pointer;">
+        <td class="svc-num">03</td>
+        <td class="svc-body">
+          <div class="svc-title"><span class="lang-en active">Personal &amp; Athletic Training</span><span class="lang-de">Personal &amp; Athletik Training</span></div>
+          <div class="svc-sub"><span class="lang-en active">Neurocentric · Goal-oriented · Effective</span><span class="lang-de">Neurozentriert · Zielorientiert · Effektiv</span></div>
+          <div class="lang-en active"><p>Tailored to your goals — strength, endurance, coordination, or overall fitness. A neurocentric approach that trains your body and optimizes your nervous system for lasting results.</p></div>
+          <div class="lang-de"><p>Auf deine Ziele zugeschnitten — Kraft, Ausdauer, Koordination. Ein neurozentrierter Ansatz für nachhaltigere Ergebnisse.</p></div>
+        </td>
+        <td class="svc-arrow"><a href="services.html">&#8594;</a></td>
+      </tr>
+    </table>
+    <div style="margin-top:32px;">
+      <a href="services.html" class="btn-ghost" style="border:1.5px solid var(--ink); color:var(--ink); display:inline-block;">
+        <span class="lang-en active">View All Services</span><span class="lang-de">Alle Leistungen</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section id="workshops">
+  <div class="container">
+    <div class="workshops-outer">
+      <div class="workshops-left">
+        <p class="s-label"><span class="lang-en active">Group Work</span><span class="lang-de">Gruppenarbeit</span></p>
+        <h2>
+          <span class="lang-en active"><span class="outlined">Group</span> <span class="italic">Experiences</span></span>
+          <span class="lang-de"><span class="outlined">Gruppen</span>-<span class="italic">Erlebnisse</span></span>
+        </h2>
+        <p>
+          <span class="lang-en active">Hands-on workshops for teams, athletes, and creatives — bringing brain-health tools into shared spaces.</span>
+          <span class="lang-de">Praxisnahe Workshops für Teams, Athleten und Kreative — brain-health im gemeinsamen Raum.</span>
+        </p>
+        
+      </div>
+      <div class="workshops-right">
+        <div class="wk-item">
+          <div class="wk-line"></div>
+          <div class="wk-content">
+            <span class="wk-tag green"><span class="lang-en active">Open to all</span><span class="lang-de">Offen für alle</span></span>
+            <h3><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></h3>
+            <div class="lang-en active"><p>Practical tools for body and mind in everyday life. Hands-on, easy to apply, backed by modern neuroscience and holistic health insights.</p></div>
+            <div class="lang-de"><p>Praktische Werkzeuge für Körper und Geist. Praxisorientiert, leicht umsetzbar, basierend auf moderner Neurowissenschaft.</p></div>
+            <a href="openworkshps.html" class="wk-link"><span class="lang-en active">Learn more</span><span class="lang-de">Mehr erfahren</span></a>
+          </div>
+        </div>
+
+        <div class="wk-item">
+          <div class="wk-line"></div>
+          <div class="wk-content">
+            <span class="wk-tag green"><span class="lang-en active">Teams &amp; Clubs</span><span class="lang-de">Teams &amp; Vereine</span></span>
+            <h3><span class="lang-en active">Neuroathletic Workshops</span><span class="lang-de">Neuroathletik Workshops</span></h3>
+            <div class="lang-en active"><p>Group workshops for sports teams, dance ensembles, and performance groups. Improve coordination, reaction time, focus, and movement efficiency.</p></div>
+            <div class="lang-de"><p>Gruppenworkshops für Sportteams und Performance-Gruppen. Verbessert gemeinsam Koordination, Reaktionszeit und Bewegungseffizienz.</p></div>
+            <a href="workshops.html" class="wk-link"><span class="lang-en active">Learn more</span><span class="lang-de">Mehr erfahren</span></a>
+          </div>
+        </div>
+
+        <div class="wk-item">
+          <div class="wk-line"></div>
+          <div class="wk-content">
+            <span class="wk-tag gold"><span class="lang-en active">Creative &amp; Corporate</span><span class="lang-de">Kreativ &amp; Unternehmen</span></span>
+            <h3>Brain-Health</h3>
+            <div class="lang-en active"><p>Workshops for creativity, productivity &amp; relaxation — brain-based tools for modern life. Neuroscience-backed methods for teams and creatives to unlock focus and reduce stress.</p></div>
+            <div class="lang-de"><p>Workshops für Kreativität, Produktivität &amp; Entspannung — neurowissenschaftlich basiert für Teams und Kreative.</p></div>
+            <a href="brain-health.html" class="wk-link"><span class="lang-en active">Learn more</span><span class="lang-de">Mehr erfahren</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <span class="section-label"><span class="lang-en active"></span><span class="lang-de"></span></span>
+      <h2 class="section-title">
+        <span class="lang-en active"><span class="italic">About</span> <span class="outlined">Me</span></span>
+        <span class="lang-de"><span class="italic">Über</span> <span class="outlined">Mich</span></span>
+      </h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-img-wrap">
+          <img src="images/stamatios-papavasiliou.webp" alt="Stamatios Papavasiliou"/>
+          <div class="about-img-caption">
+            <span class="lang-en active">Z-Health certified neuroathletic trainer, Munich. <a href="https://zhealtheducation.com/de/Trainer-finden/" target="_blank">View certifications &#8594;</a></span>
+            <span class="lang-de">Z-Health zertifizierter Neuroathletik-Trainer, München. <a href="https://zhealtheducation.com/de/Trainer-finden/" target="_blank">Zertifizierungen &#8594;</a></span>
+          </div>
+          <a href="https://www.instagram.com/synapse2move/" target="_blank" class="about-more">@synapse2move</a>
+        </div>
+      </div>
+      <div class="about-right">
+        <h2 class="about-name">Stamatios<br>Papavasiliou</h2>
+        <p class="about-role"><span class="lang-en active">Sports Scientist · Neuroathletic Trainer · Dancer</span><span class="lang-de">Sportwissenschaftler · Neuroathletik-Trainer · Tänzer</span></p>
+        <div class="lang-en active">
+          <p>Hi, I'm a sports scientist and certified Neuroathletic Trainer with a deep passion for movement and how the human brain works. My journey into neuroscience began with the <strong>Feldenkrais Method</strong>, which opened my eyes to how movement and awareness shape performance, regeneration, and creativity.</p>
+          <p>After completing my Bachelor's in Sport Science, I dove into the world of neuroathletics with <strong>Z-Health</strong> — fascinated by how targeted brain-based training can unlock new levels of physical and mental potential.</p>
+          <p>I'm active in triathlon, tennis, and calisthenics. Above all, I love to dance. My partner and I run a small dance school focused on <strong>Brazilian Zouk</strong>, and I truly believe dancing is one of the best workouts for body and brain. <a href="https://www.instagram.com/stamatinhos/" target="_blank">Personal Instagram &#8594;</a></p>
+        </div>
+        <div class="lang-de">
+          <p>Hallo, ich bin Sportwissenschaftler und zertifizierter Neuroathletik-Trainer. Meine Reise begann mit der <strong>Feldenkrais-Methode</strong>, die mir die Augen dafür geöffnet hat, wie Bewegung Performance und Kreativität beeinflusst.</p>
+          <p>Nach meinem Bachelor in Sportwissenschaften tauchte ich mit <strong>Z-Health</strong> in die Welt der Neuroathletik ein. Gemeinsam mit meiner Partnerin leite ich eine auf <strong>brasilianischen Zouk</strong> spezialisierte Tanzschule. <a href="https://www.instagram.com/stamatinhos/" target="_blank">Persönliches Instagram &#8594;</a></p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations">
+  <div class="container">
+    <div class="locations-inner">
+      <div class="loc-item">
+        <div class="loc-label"><span class="lang-en active">Location</span><span class="lang-de">Standort</span></div>
+        <div class="loc-value"><br></div>
+      </div>
+      <div class="loc-item">
+        <div class="loc-label"><span class="lang-en active">Format</span><span class="lang-de">Format</span></div>
+        <div class="loc-value"><span class="lang-en active">In Person + Online</span><span class="lang-de">Persönlich + Online</span></div>
+        <div class="loc-note"><span class="lang-en active">Select sessions available via video call</span><span class="lang-de">Ausgewählte Sessions per Video</span></div>
+      </div>
+      <div class="loc-item">
+        <div class="loc-label">Contact</div>
+        <div class="loc-value">
+          <a href="tel:+4915221319336" style="color:var(--green);text-decoration:none;">+49 152 21319336</a><br>
+          <a href="mailto:s2m@ionio.de" style="color:var(--green);text-decoration:none;">s2m@ionio.de</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container" style="display:contents;">
+    <div class="cta-left container">
+      <h2>
+        <span class="lang-en active">Your Goals<br>Are <span class="italic">Within</span><br><span class="outlined">Reach</span></span>
+        <span class="lang-de">Deine Ziele<br>Sind <span class="italic">In</span><br><span class="outlined">Reichweite</span></span>
+      </h2>
+      <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
+      <a href="form.html" class="btn-ink" style="display:inline-block;">
+        <span class="lang-en active">Book Free Call &#8594;</span>
+        <span class="lang-de">Gespräch buchen &#8594;</span>
+      </a>
+      
+    </div>
+    <div class="cta-right">
+      <canvas id="cta-canvas"></canvas>
+      <p class="cta-kicker"><span class="lang-en active">Ready to start?</span><span class="lang-de">Bereit anzufangen?</span></p>
+      <h2>
+        <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
+        <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
+      </h2>
+      <a href="form.html" class="btn-cream">
+        <span class="lang-en active">Book Free 20 Min Call</span>
+        <span class="lang-de">Kostenloses Gespräch buchen</span>
+      </a>
+      <p class="cta-right-note">
+        <span class="lang-en active">Munich · In Person + Online </span>
+        <span class="lang-de">München · Persönlich + Online</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">Synapse<sup>2</sup>Move</a>
+        <p class="footer-desc"><span class="lang-en active">Neuroathletic training in Munich.<br> creating connectios - vibrantly alive.</span><span class="lang-de">Neuroathletiktraining in München. Wo Denken bewegt.</span></p>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Navigation</span><span class="lang-de">Navigation</span></h4>
+        <ul>
+          <li><a href="Neuro.html"><span class="lang-en active">Neuroathletic Training</span><span class="lang-de">Neuroathletiktraining</span></a></li>
+          <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
+          <li><a href="openworkshps.html"><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></a></li>
+          <li><a href="workshops.html"><span class="lang-en active">Neuro Workshops</span><span class="lang-de">Neuro Workshops</span></a></li>
+          <li><a href="divingarts.html">Diving into Arts</a></li>
+          <li><a href="form.html"><span class="lang-en active">Get Started</span><span class="lang-de">Jetzt starten</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Contact</span><span class="lang-de">Kontakt</span></h4>
+        <dl>
+          <dt><span class="lang-en active">Address</span><span class="lang-de">Adresse</span></dt>
+          <dd>Ganghoferstraße 17<br>80339 München</dd>
+          <dt><span class="lang-en active">Phone</span><span class="lang-de">Telefon</span></dt>
+          <dd><a href="tel:+4915221319336">+49 152 21319336</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>
+        
+        &copy; 2026 Stamatios Papavasiliou
+      </span>
+      <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html"><span class="lang-en active">Privacy Policy</span><span class="lang-de">Datenschutz</span></a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+let currentLang = 'en';
 function switchLanguage(lang) {
-    if (currentLanguage === lang) return;
-    
-    currentLanguage = lang;
-    
-    // Update button states
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.lang === lang) {
-            btn.classList.add('active');
-        }
-    });
-    
-    // Hide all language content
-    document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-        element.classList.remove('active');
-    });
-    
-    // Show selected language content
-    document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-        element.classList.add('active');
-    });
-    
-    // Update page title and meta
-    updatePageMeta(lang);
-    
-    // Save preference to session storage (clears when browser closes)
-    sessionStorage.setItem('preferred-language', lang);
+  if (currentLang === lang) return;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
+  sessionStorage.setItem('preferred-language', lang);
 }
+const saved = sessionStorage.getItem('preferred-language');
+if (saved && saved !== 'en') switchLanguage(saved);
 
-function updatePageMeta(lang) {
-    const translations = {
-        en: {
-            title: "Synapse²Move | Neuro Athletictraining"
-        },
-        de: {
-            title: "Synapse²Move | Neuroathletiktraining"
-        }
-    };
-    
-    document.title = translations[lang].title;
-}
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('solid', window.scrollY > 30);
+}, { passive: true });
 
-function initializeLanguage() {
-    // Load saved language preference from session storage
-    const savedLang = sessionStorage.getItem('preferred-language');
-    if (savedLang && savedLang !== currentLanguage) {
-        switchLanguage(savedLang);
-    }
-}
+const mobileToggle = document.getElementById('mob-toggle');
+const mainNav = document.getElementById('main-nav');
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    initializeLanguage();
+mobileToggle.addEventListener('click', () => {
+  mainNav.classList.toggle('mobile-nav-open');
 });
-		</script>
-	</body>
+
+document.addEventListener('click', event => {
+  if (!mainNav.classList.contains('mobile-nav-open')) return;
+  if (!mainNav.contains(event.target) && event.target !== mobileToggle) {
+    mainNav.classList.remove('mobile-nav-open');
+  }
+});
+
+function makeNeuralCanvas(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes;
+
+  function resize() {
+    // Use getBoundingClientRect for accurate CSS-positioned dimensions
+    const rect = canvas.getBoundingClientRect();
+    W = canvas.width  = Math.max(rect.width  || canvas.offsetWidth,  100);
+    H = canvas.height = Math.max(rect.height || canvas.offsetHeight, 100);
+    nodes = Array.from({length: 60}, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.7, vy: (Math.random() - 0.5) * 0.5,
+      pulse: Math.random() * Math.PI * 2,
+      kind: Math.random() < 0.2 ? 'b' : 'a'
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+      n.pulse += 0.1;
+    });
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 145) {
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(61,107,79,' + ((1 - d/145) * 0.35) + ')';
+          ctx.lineWidth = 0.65; ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n => {
+      const g = (Math.sin(n.pulse) + 1) * 0.5;
+      ctx.beginPath(); ctx.arc(n.x, n.y, 1 + g * 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = n.kind === 'b'
+        ? 'rgba(92,45,110,' + (0.4 + g * 0.35) + ')'
+        : 'rgba(61,107,79,' + (0.35 + g * 0.3) + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  // Wait for layout to settle before measuring
+  requestAnimationFrame(() => { resize(); draw(); });
+  window.addEventListener('resize', resize, { passive: true });
+}
+
+makeNeuralCanvas('neural-canvas');
+makeNeuralCanvas('cta-canvas');
+</script>
+</body>
 </html>

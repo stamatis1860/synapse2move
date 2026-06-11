@@ -1,709 +1,1085 @@
-<!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Neuroathletictraining</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Open Workshops — Synapse²Move Neuroathletic Training Munich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --cream: #f5f0e8;
+  --paper: #ede8dc;
+  --ink: #1a1a14;
+  --ink-muted: #5a5850;
+  --ink-faint: #9a9488;
+  --rule: rgba(26,26,20,0.12);
+  --green: #3d6b4f;
+  --green-light: #e2ede7;
+  --plum: #5c2d6e;
+  --plum-light: #ede4f2;
+  --gold: #c49a2a;
+  --r: 3px;
+  --fd: 'Playfair Display', Georgia, serif;
+  --fb: 'Space Grotesk', system-ui, sans-serif;
+  --fm: 'Space Mono', monospace;
+}
 
-		<style>
-			/* Custom styles for expandable sections */
-			.details-btn {
-				background: linear-gradient(135deg, #edbf79ab, #60bca3a1);
-				color: white;
-				padding: 12px 25px;
-				border: none;
-				border-radius: 25px;
-				font-size: 16px;
-				font-weight: bold;
-				text-align: center;
-				line-height: 1;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				cursor: pointer;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
-				margin: 20px 0 10px 0;
-				display: block;
-				position: relative;
-				overflow: hidden;
-				width: 100%;
-			}
-			
-			.details-btn:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
-				background: linear-gradient(135deg, #edbf79, #60bca4);
-			}
-			
-			.details-btn:active {
-				transform: translateY(0);
-			}
-			
-			.details-btn::after {
-				content: '▼';
-				margin-left: 10px;
-				font-size: 14px;
-				transition: transform 0.3s ease;
-			}
-			
-			.details-btn.active::after {
-				transform: rotate(180deg);
-			}
-			
-			.expandable-content {
-				max-height: 0;
-				overflow: hidden;
-				transition: max-height 0.4s ease, padding 0.4s ease;
-				background: rgba(255, 255, 255, 0.05);
-				border-left: 4px solid #edbf79;
-				margin: 20px 0;
-				border-radius: 8px;
-			}
-			
-			.expandable-content.expanded {
-				max-height: 2000px;
-				padding: 20px;
-			}
-			
-			.price-info {
-				background: linear-gradient(135deg, #edbf79, #60bca4);
-				color: white;
-				padding: 15px 20px;
-				border-radius: 8px;
-				margin-bottom: 15px;
-				text-align: center;
-			}
-			
-			.price-amount {
-				font-size: 30px;
-				font-weight: bold;
-				margin-bottom: 5px;
-			}
-			
-			.price-description {
-				font-size: 18px;
-				opacity: 0.9;
-			}
-			
-			.additional-info {
-				background: rgba(255, 255, 255, 0.1);
-				padding: 15px;
-				border-radius: 6px;
-				margin-top: 15px;
-				border: 1px solid rgba(255, 255, 255, 0.2);
-			}
-			
-			.additional-info h4 {
-				color: #007acc;
-				margin-top: 0;
-				margin-bottom: 10px;
-			}
-			
-			.booking-note {
-				background:linear-gradient(135deg, #edbf79, #60bca4);
-				color: white;
-				border: 1px solid rgba(255, 234, 167, 0.3);
-				padding: 12px;
-				border-radius: 6px;
-				margin-top: 15px;
-				font-size: 18px;
-			}
-			
-			@media screen and (max-width: 768px) {
-				.details-btn {
-					font-size: 14px;
-					padding: 10px 20px;
-				}
-				
-				.expandable-content.expanded {
-					max-height: 3000px;
-				}
-				
-				.booking-note {
-					font-size: 14px;
-				}
-			}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 
-			/* Language Switch Styles */
-			.language-switch {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				z-index: 10000;
-				background:  linear-gradient(135deg, #edbf797c, #60bca381);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 25px;
-				padding: 3px;
-				display: flex;
-				align-items: center;
-				gap: 2px;
-				transition: all 0.3s ease;
-				opacity: 0.7;
-			}
+body {
+  font-family: var(--fb);
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
 
-			.language-switch:hover {
-				opacity: 1;
-				background: linear-gradient(135deg, #edbf79, #60bca3);
-			}
+/* ── LANG ── */
+.lang-en,.lang-de{display:none}
+.lang-en.active,.lang-de.active{display:block}
+span.lang-en,span.lang-de{display:none}
+span.lang-en.active,span.lang-de.active{display:inline}
 
-			.lang-btn {
-				background: transparent;
-				border: none;
-				color: rgba(255, 255, 255, 0.8);
-				padding: 0px 0px;
-				cursor: pointer;
-				border-radius: 20px;
-				transition: all 0.3s ease;
-				font-size: 0.5em;
-				font-weight: 800;
-				letter-spacing: 0.5px;
-			}
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(245,240,232,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ink);
+}
+.nav-logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo sup { font-size: 10px; vertical-align: super; font-family: var(--fm); opacity: 0.7; }
+.nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+.nav-links li { border-left: 1px solid var(--rule); }
+.nav-links li:first-child { border-left: none; }
+.nav-links a {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--ink); background: var(--paper); }
+.nav-cta-link {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
+}
+.nav-cta-link:hover { background: var(--plum) !important; color: #fff !important; }
+.lang-switch { display: flex; padding: 0 8px; }
+.lang-btn {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--ink-faint);
+  padding: 0 8px;
+  height: 36px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.lang-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+.nav-mobile-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 7px 10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-mobile-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; }
 
-			.lang-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-			}
+/* ── PAGE HERO ── */
+.page-hero {
+  position: relative;
+  padding-top: 56px;
+  min-height: 340px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 40%, #0e2218 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 10% 70%, #1e0f2a 0%, transparent 55%),
+    linear-gradient(155deg, #141009 0%, #1c1510 100%);
+}
+#page-canvas {
+  position: absolute;
+  right: 0; top: 0;
+  width: 55%; height: 100%;
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.page-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20,16,9,0.85) 0%, rgba(20,16,9,0.2) 70%, rgba(20,16,9,0.5) 100%);
+  z-index: 2;
+}
+.page-hero-body {
+  position: relative;
+  z-index: 3;
+  padding: 80px 48px 56px;
+  max-width: 700px;
+}
+.hero-breadcrumb {
+  font-family: var(--fm);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hero-breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.hero-breadcrumb a:hover { color: rgba(255,255,255,0.65); }
+.hero-breadcrumb::before { content: ''; width: 32px; height: 1px; background: rgba(255,255,255,0.25); display: block; }
+.page-hero h1 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: up 1s 0.3s forwards;
+}
+.page-hero h1 .italic { font-style: italic; color: rgba(255,255,255,0.5); }
+.page-hero h1 .outlined {
+  -webkit-text-fill-color: rgba(255,255,255,0.94);
+  -webkit-text-stroke: 0.8px rgba(255,255,255,0.8);
+  text-shadow: 0 0 12px rgba(255,255,255,0.15);
+}
+.page-hero-sub {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.4);
+  opacity: 0;
+  animation: up 0.9s 0.55s forwards;
+}
 
-			.lang-btn.active {
-				background: #edbf79;
-				color: white;
-				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
-			}
+@keyframes up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-			/* Hide inactive language content */
-			.lang-content {
-				display: none;
-			}
+/* ── CONTAINER ── */
+.container { width: 100%; padding: 0 48px; }
 
-			.lang-content.active {
-				display: block;
-			}
+/* ── INTRO STRIP ── */
+.intro-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1.5px solid var(--ink);
+  border-top: 1.5px solid var(--ink);
+}
+.intro-cell {
+  padding: 2rem 2.5rem;
+  border-right: 1.5px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.intro-cell:last-child { border-right: none; }
+.cell-label {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.cell-value {
+  font-family: var(--fd);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
 
-			/* Inline language spans */
-			.lang-en, .lang-de {
-				display: none;
-			}
+/* ── WORKSHOP BLOCKS ── */
+.workshop-block {
+  border-bottom: 1.5px solid var(--ink);
+}
+.workshop-block:last-child { border-bottom: none; }
 
-			.lang-en.active, .lang-de.active {
-				display: inline;
-			}
+.workshop-inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  padding: 72px 0;
+}
 
-			@media (max-width: 600px) {
-				.language-switch {
-					top: 5px;
-					right: 5px;
-					scale: 0.85;
-					padding: 2px;
-					flex-direction: column;
-					gap: 1px;
-				}
-				
-				.lang-btn {
-					padding: 0px 7px;
-					font-size: 0.65em;
-					border-radius: 15px;
-				}
-			}
-		</style>
-	</head>
-	<body class="is-preload">
+/* LEFT COLUMN */
+.workshop-left {
+  border-right: 1px solid var(--rule);
+  padding-right: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: sticky;
+  top: 72px;
+  align-self: start;
+}
+.workshop-index {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.workshop-title {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(26px, 2.8vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.workshop-title .italic { font-style: italic; color: var(--green); }
+.workshop-tag {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+.workshop-tag.green { background: var(--green-light); color: var(--green); }
+.workshop-tag.plum  { background: var(--plum-light); color: var(--plum); }
+.workshop-tag.gold  { background: #f5edd8; color: var(--gold); }
+.workshop-tag.muted { background: var(--paper); color: var(--ink-faint); border: 1px solid var(--rule); }
 
-		<!-- Language Switch -->
-		<div class="language-switch">
-			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
-			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
-		</div>
+.price-badge { margin-top: auto; padding-top: 2rem; }
+.price-amount {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: var(--ink);
+  line-height: 1;
+}
+.price-note {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+.workshop-cta-link {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 24px;
+  background: var(--plum);
+  color: #fff;
+  border: 1.5px solid var(--plum);
+  display: inline-block;
+  transition: background 0.2s;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+.workshop-cta-link:hover { background: #431f52; }
+.workshop-cta-muted {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 24px;
+  background: transparent;
+  color: var(--ink-faint);
+  border: 1.5px solid var(--rule);
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  cursor: default;
+}
 
-				<!-- Header -->
-					<header id="header">
-					<h1>
-						<span class="lang-en active">Open <br> Workshops</span>
-						<span class="lang-de">Offene <br> Workshops</span>
-					</h1>
-						<p>
-							<span class="lang-en active"></span>
-							<span class="lang-de"></span>
-						</p>
-					</header>
+/* RIGHT COLUMN */
+.workshop-right {
+  padding-left: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.workshop-right p {
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.workshop-right p strong { color: var(--ink); font-weight: 500; }
+.workshop-right p a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(61,107,79,0.3); transition: border-color 0.2s; }
+.workshop-right p a:hover { border-color: var(--green); }
 
-				<!-- Main -->
-					<div id="main">
+/* Workshop image */
+.workshop-img {
+  float: right;
+  width: 95%;
+  max-height: 280px;
+  object-fit: cover;
+  margin: 0 0 20px 32px;
+  border: 1px solid var(--rule);
+}
+.img-wrap {
+  float: right;
+  width: 95%;
+  margin: 0 0 20px 32px;
+  position: relative;
+}
+.img-wrap .workshop-img {
+  float: none;
+  width: 100%;
+  margin: 0;
+}
+/* clearfix so content flows under image */
+.workshop-right::after {
+  content: '';
+  display: table;
+  clear: both;
+}
 
-						<!-- Content -->
-						<section id="content" class="main">
-							
-						   
-							
-							
-							<style>
-								hr.decorative {
-									border: none;
-									height: 2px;
-									background: linear-gradient(to right, transparent, #999, transparent);
-									margin: 3em auto;  /* spacing above and below */
-									width: 60%;        /* shorter than full width */
-								}
-							</style>
-							
-							<style>
-								.workshop-image {
-									float: right;
-									width: 45%;
-									max-width: 500px;
-									margin-left: 2em;
-									margin-bottom: 1em;
-									border-radius: 8px;
-									box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-								}
+/* list head */
+.list-head {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin: 24px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.list-head::after { content:''; flex: 0 0 20px; height: 1px; background: var(--green); opacity: 0.5; }
 
-								@media screen and (max-width: 768px) {
-									.workshop-image {
-										float: none;
-										width: 100%;
-										margin: 0 0 1.5em 0;
-									}
-								}
-							</style>
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.check-list li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0 10px;
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.65;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.check-list li:last-child { border: none; }
+.check-list li::before {
+  content: '→';
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--green);
+  padding-top: 2px;
+}
 
-							<h2>
-								
-								<span class="lang-en active"><strong>Training and Rehab for Healthy Hips</strong></span>
-								<span class="lang-de"><strong>Training and Rehab for Healthy Hips</strong></span>
-								<img src="images/Healthyhips.png" alt="Healthy Hips" class="workshop-image">
-							</h2>
-							
-							<div class="lang-en active">
-								<h4>What you can expect:</h4>
-									<ul>
-										<li>
-											Understanding the hips – Learn about the key muscles and how to target them effectively
-										</li>
-										<li>
-											Move better – Coordination and mobilisation exercises for greater flexibility and joint health
-										</li>
-										<li>
-											 Put it into practice straight away – A floor mobilisation routine you can incorporate into your daily routine immediately
-										</li>
-										
-									</ul>
-									
-												
-											
-										</div>
-							<div class="lang-de">
-											<h4>Darauf kannst du dich freuen:</h4>
-											<ul>
-												<li>
-												Hüfte verstehen – Lerne die wichtigsten Muskeln kennen und wie du sie gezielt ansteuerst
-												</li>
-												<li>
-													Besser bewegen – Koordinations- & Mobilisationsübungen für mehr Beweglichkeit und Gelenkgesundheit
-												</li>
-												<li>
-													Direkt anwenden – Eine Floor Mobilisation Routine, die du sofort in deinen Alltag integrieren kannst
-												</li>
-												
-											</ul>
+/* detail panel */
+.detail-panel {
+  margin-top: 36px;
+  border: 1.5px solid var(--ink);
+  padding: 36px;
+  position: relative;
+}
+.detail-panel-label {
+  position: absolute;
+  top: -10px; left: 24px;
+  background: var(--cream);
+  padding: 0 8px;
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.detail-panel p { font-size: 13px; color: var(--ink-muted); line-height: 1.75; margin-bottom: 14px; font-weight: 300; }
+.detail-panel p:last-child { margin-bottom: 0; }
+.detail-panel p a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(61,107,79,0.3); transition: border-color 0.2s; }
+.detail-panel p a:hover { border-color: var(--green); }
+.detail-panel .location-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-weight: 300;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  margin-top: 14px;
+}
+.detail-panel .location-label {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  padding-top: 2px;
+}
 
-											
-										</div>
-							
-							<button class="details-btn" onclick="toggleSection('section2', this)">
-								<span class="lang-en active">More Details & Pricing</span>
-								<span class="lang-de">Mehr Details & Preise</span>
-							</button>
-							
-							<div class="expandable-content" id="section2">
-								<div class="price-info">
-									<div class="price-amount">€30 p.P.</div>
-									<div class="price-description">
-										<span class="lang-en active">90 min</span>
-										<span class="lang-de">90 min</span>
-									</div>
-								</div>
-								
-								<div class="additional-info">
-									<div class="lang-en active">
-										<p>
-											The hips form the foundation of every movement – and yet they are one of the most frequently neglected parts of the body. In this workshop, you will learn how to specifically train and mobilise your hips and keep them healthy in the long term. Together, we’ll look at the main muscle groups of the hip and develop an understanding of how to consciously engage and activate them. You’ll learn coordination exercises that promote neuromuscular coordination, as well as targeted mobilisation exercises that release restricted movement and support joint health. The session concludes with a practical floor mobilisation routine – a sequence on the floor that you can integrate directly into your daily life or your training.
-											<br><br><strong>Location: </strong><a href="https://share.google/AiKx0M1IReGqe1jdX">Vertical Ballerina</a> ,  Hohenzollernstraße 60, 80801 München</p>
-								</div>
-								<div class="lang-de">
-									<p>Die Hüfte ist das Fundament jeder Bewegung – und gleichzeitig eine der am häufigsten vernachlässigten Körperregionen. In diesem Workshop lernst du, wie du deine Hüfte gezielt trainierst, mobilisierst und langfristig gesund hältst.
-										Gemeinsam schauen wir uns die primären Muskelgruppen der Hüfte an und erarbeiten ein Verständnis dafür, wie man sie bewusst ansteuert und aktiviert. Du lernst koordinative Übungen, die das neuromuskuläre Zusammenspiel fördern, sowie gezielte Mobilisationsübungen, die Bewegungseinschränkungen lösen und die Gelenkgesundheit unterstützen. Den Abschluss bildet eine praktische Floor Mobilisation Routine – eine Sequenz am Boden, die du direkt in deinen Alltag oder dein Training integrieren kannst.
-										<br><br><strong>Location: </strong><a href="https://share.google/AiKx0M1IReGqe1jdX">Vertical Ballerina</a> ,  Hohenzollernstraße 60, 80801 München</p>
-								</div>
-									<div class="booking-note">
-										<button class="button booking-action" type="button" onclick="window.location.href='form.html'">
-										<span class="lang-en active"><strong style="font-size: 1.3em;">Sign up now </strong></span>
-										<span class="lang-de"><strong style="font-size: 1.3em;">Melde dich jetzt an</strong></span>
-										</button>
-								
-										<span class="lang-en active"></span>
-										<span class="lang-de"></span>
-			
-									</div>
+/* coming-soon overlay on image */
+.img-wrap { position: relative; }
+.soon-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+}
 
-						
-						</div>
-						
-								
-							</div>
-							<hr class="decorative">
+/* ── CTA ── */
+#cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+.cta-left {
+  padding: 100px 60px 100px 0;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cta-left h2 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(52px, 6vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.cta-left h2 .italic { font-style: italic; color: var(--plum); }
+.cta-left .cta-sub {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-muted);
+  margin-bottom: 2.5rem;
+}
+.cta-right {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 48px;
+  gap: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+#cta-canvas {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70%;
+  height: 55%;
+  z-index: 2;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.cta-kicker {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.35);
+  position: relative;
+  z-index: 1;
+}
+.cta-right h2 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.cta-right h2 .green { color: #6ec9a4; }
+.btn-ink {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  background: var(--plum);
+  color: #fff;
+  border: 1.5px solid var(--plum);
+  transition: background 0.2s, border-color 0.2s;
+  display: inline-block;
+}
+.btn-ink:hover { background: #431f52; border-color: #431f52; }
+.btn-cream {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 36px;
+  background: var(--cream);
+  color: var(--ink);
+  border: 1.5px solid var(--cream);
+  display: inline-block;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.btn-cream:hover { background: var(--plum-light); border-color: var(--plum-light); }
+.cta-right-note {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
 
-							<h2>
-								
-								<span class="lang-en active"><strong>Kinesiotaping (soon again)</strong></span>
-								<span class="lang-de"><strong>Kinesiotaping  (bald wieder)</strong></span>
-								<img src="images/kinesio.webp" alt="Kinesiotaping Workshop" class="workshop-image">
-							</h2>
-							
-							<div class="lang-en active">
-								<h4>What's Included:</h4>
-									<ul>
-										<li>
-											Intro to Painphysiology, understanding Pain
-										</li>
-										<li>
-											How Kinsiotaping works and how to use it
-										</li>
-										<li>
-											How to apply it to Periodpain (or other Pain issues)
-										</li>
-										<li>
-											Goodie-Bag with a roll of Kinesiotape and a small surprise
-										</li>
-									</ul>
-									
-												<h4>
-												Ideal for:
-												</h4>
-												<ul>
-													<li>
-														Individuals looking for non-pharmacological pain relief methods
-													<li>
-														Those interested in learning self-care techniques for managing menstrual discomfort
-													</li>
-													<li>
-														Anyone seeking to understand the benefits of kinesiotaping for pain management
-													</li>
-													
-												</ul>
-											
-										</div>
-							<div class="lang-de">
-											<h4>Das ist enthalten:</h4>
-											<ul>
-												<li>
-												Einführung in die Schmerzphysiologie, Schmerzen verstehen
-												</li>
-												<li>
-													Wie Kinesiotaping funktioniert und wie man es anwendet
-												</li>
-												<li>
-													Praktische Anwendung bei Regelschmerzen (oder anderen Schmerzbeschwerden)
-												</li>
-												<li>
-													Goodie-Bag mit einer Rolle Kinesiotape und kleiner Überraschung
-												</li>
-											</ul>
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1.5px solid rgba(245,240,232,0.1);
+  padding: 56px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-bottom: 48px;
+}
+.footer-col { border-right: 1px solid rgba(245,240,232,0.08); padding-right: 48px; margin-right: 48px; }
+.footer-col:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.footer-logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--cream);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+}
+.footer-logo sup { font-size: 10px; color: #6ec9a4; font-family: var(--fm); }
+.footer-desc { font-size: 13px; color: rgba(245,240,232,0.3); line-height: 1.6; max-width: 200px; font-weight: 300; }
+footer h4 { font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 16px; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 10px; }
+footer ul a { font-size: 13px; color: rgba(245,240,232,0.45); text-decoration: none; transition: color 0.15s; font-weight: 300; }
+footer ul a:hover { color: #6ec9a4; }
+footer dl dt { font-family: var(--fm); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 2px; margin-top: 12px; }
+footer dl dd { font-size: 13px; color: rgba(245,240,232,0.45); font-weight: 300; }
+footer dl dd a { color: #6ec9a4; text-decoration: none; }
+.footer-bottom {
+  border-top: 1px solid rgba(245,240,232,0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: rgba(245,240,232,0.18);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom a { color: rgba(245,240,232,0.18); text-decoration: none; }
+.footer-bottom a:hover { color: #6ec9a4; }
 
-											<h4>
-												Ideal für:
-											</h4>
-											<ul>
-												<li>
-													Personen, die nach nicht-medikamentösen Methoden zur Schmerzlinderung suchen
-												</li>
-												<li>
-													Alle, die Selbsthilfetechniken zur Linderung von Menstruationsbeschwerden erlernen möchten
-												</li>
-												<li>
-													Interessierte, die die Vorteile von Kinesiotaping im Schmerzmanagement verstehen wollen
-												</li>
-											</ul>
-										</div>
-							
-							<button class="details-btn" onclick="toggleSection('section3', this)">
-								<span class="lang-en active">More Details & Pricing</span>
-								<span class="lang-de">Mehr Details & Preise</span>
-							</button>
-							
-							<div class="expandable-content" id="section3">
-								<div class="price-info">
-									<div class="price-amount">€55 p.P.</div>
-									<div class="price-description">
-										<span class="lang-en active">120 min</span>
-										<span class="lang-de">120 min</span>
-									</div>
-								</div>
-								
-								<div class="additional-info">
-									<div class="lang-en active">
-										<p>
-											Kinesiotaping is a simple yet effective method to ease pain and support the body’s natural healing processes. The elastic tape gently lifts the skin, which can improve circulation, alter the input you get from pain receptors, and support muscles and joints.
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav { padding: 0 20px; }
+  .nav-mobile-toggle { display: flex; }
+  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--cream); border-bottom: 1.5px solid var(--ink); flex-direction: column; padding: 12px 0; gap: 0; }
+  .nav-links li { border-left: none; border-top: 1px solid var(--rule); }
+  .nav-links a { height: 44px; }
+  .mobile-nav-open .nav-links { display: flex; }
+  .container { padding: 0 20px; }
+  .page-hero-body { padding: 60px 20px 40px; }
+  #page-canvas { width: 100%; opacity: 0.3; }
+  .intro-strip { display: none; }
+  .workshop-inner { grid-template-columns: 1fr; }
+  .workshop-left { position: relative; top: auto; border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 32px; margin-bottom: 0; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .price-badge { padding-top: 0.5rem; }
+  .workshop-right { padding-left: 0; padding-top: 32px; }
+  .workshop-img { float: none; width: 100%; max-height: 220px; margin: 0 0 24px 0; }
+  .img-wrap { float: none; width: 100%; margin: 0 0 24px 0; }
+  .detail-panel { padding: 24px 20px; }
+  #cta { grid-template-columns: 1fr; }
+  .cta-left { padding: 60px 20px; border-right: none; border-bottom: 1.5px solid var(--ink); align-items: center; text-align: center; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-col { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); padding: 0 0 28px; margin: 0 0 28px; }
+  .footer-col:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .footer-bottom { flex-direction: column; }
+  #cta-canvas { right: auto; left: 50%; top: 50%; transform: translate(-50%,-50%); width: min(420px,80vw); height: min(420px,80vw); opacity: 0.45; z-index: 1; }
+  .cta-right { padding: 48px 20px; }
+}
+</style>
+</head>
+<body>
 
-											The best part: you don’t need advanced knowledge to benefit from it. With just a few basic techniques, you can easily apply the tape on yourself – or with the help of a partner or friend – to relieve discomfort in everyday life.
-											<br><br><strong>Location: </strong><a href="https://share.google/lpMOe9NDa5gwMSEzX">Kulturzentrum Luise / Luise Singt</a> ,  Ruppertstraße 5, 80337 München </p>
-								</div>
-								<div class="lang-de">
-									<p>Kinesiotaping ist eine einfache und dennoch wirkungsvolle Methode, um Schmerzen zu lindern und die natürlichen Heilungsprozesse des Körpers zu unterstützen. Das elastische Tape hebt die Haut sanft an, wodurch die Durchblutung verbessert, die Schmerzwahrnehmung beeinflusst und Muskeln sowie Gelenke entlastet werden können.
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Synapse<sup>2</sup>Move</a>
+  <button class="nav-mobile-toggle" id="mob-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#what"><span class="lang-en active">Neuroathletics</span><span class="lang-de">Neuroathletik</span></a></li>
+    <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
+    <li><a href="openworkshps.html" style="color:var(--ink);font-weight:500;">Workshops</a></li>
+    <li><a href="index.html#about"><span class="lang-en active">About</span><span class="lang-de">Über</span></a></li>
+    <li>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
+      </div>
+    </li>
+    <li><a href="form.html" class="nav-cta-link"><span class="lang-en active">Book Call</span><span class="lang-de">Gespräch</span></a></li>
+  </ul>
+</nav>
 
-										Das Beste daran: Man braucht kein spezielles Fachwissen, um davon zu profitieren. Mit ein paar grundlegenden Techniken lässt sich das Tape ganz leicht selbst anlegen – oder gemeinsam mit einem Partner –, um Beschwerden im Alltag zu lindern.
-										<br><br><strong>Location: </strong><a href="https://share.google/lpMOe9NDa5gwMSEzX">Kulturzentrum Luise / Luise Singt</a> ,  Ruppertstraße 5, 80337 München </p>
-								</div>
-									<div class="booking-note">
-										<button class="button booking-action" type="button" onclick="window.location.href='form.html'">
-										<span class="lang-en active"><strong style="font-size: 1.3em;">Sign up now </strong></span>
-										<span class="lang-de"><strong style="font-size: 1.3em;">Melde dich jetzt an</strong></span>
-										</button>
-								
-										<span class="lang-en active">and discover how easily you can help yourself or a loved one!</span>
-										<span class="lang-de">und entdecke, wie du dir oder einem lieben Menschen ganz unkompliziert helfen kannst!</span>
-			
-									</div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <canvas id="page-canvas"></canvas>
+  <div class="page-hero-scrim"></div>
+  <div class="page-hero-body">
+    <div class="hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/ <span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></span>
+    </div>
+    <h1>
+      <span class="lang-en active"><span class="italic">Open</span><br>Work<span class="outlined">shops</span></span>
+      <span class="lang-de"><span class="italic">Offene</span><br>Work<span class="outlined">shops</span></span>
+    </h1>
+    <p class="page-hero-sub">
+      <span class="lang-en active">Hands-on sessions for curious minds — no prior experience needed.</span>
+      <span class="lang-de">Praxisorientierte Sessions für neugierige Menschen — kein Vorwissen nötig.</span>
+    </p>
+  </div>
+</section>
 
-						
-						</div>
-						
-								
-							</div>
-							<hr class="decorative">
-							<h2>
-                                    <span class="lang-en active"><b>St. Moritz: storytelling and brain-based creative support</b></span>
-                                    <span class="lang-de"><b>St. Moritz: Storytelling and brain-based kreative Unterstützung</b></span>
-                                </h2>
-                                <div class="lang-en active">  
-                                    <p>The neuroathletics workshops in St. Moritz are part of Peter Linden's storytelling seminar. For one week, participants research, plan and write different narrative pieces. As a co-lecturer, I work with the participants on topics such as concentration and focused work. This helps them to stay focused during the writing process and to put their thoughts down on paper clearly and precisely.
-                                        Another focus is on sharpening the senses. With the help of exercises that promote perception and mindfulness, participants learn to perceive more subtle impressions – those subtleties that are not obvious at first glance. This ability enables them, on the one hand, to notice a wide variety of details during research and interviews and, on the other hand, to write more empathetic and nuanced texts that reflect reality in a more complex way.
-                                        The combination of intense focus, attention to stimuli and openness to new sensory impressions opens up new creative possibilities. 
-                                        <br>Have a look at our Instagram to see  <a href="/">more.</a>
-                                        <br> <a href="http://www.peterlinden.de/seminare-workshops/kreativitaet/">Registration</a> for St.Moritz 2026. 
-                                    </p>
-                           
-                                </div>
-                                <div class="lang-de">
-                                   
-                                    <p>Die Neuroathletik-Workshops in St. Moritz sind Teil des Storytelling-Seminars von Peter Linden. Eine Woche lang recherchieren, planen und schreiben die Teilnehmenden unterschiedliche Erzählstücke. Als Co-Dozent arbeite ich mit den Teilnehmenden unter anderem an den Themen Konzentration und fokussierter Arbeit. Dies hilft vor allem während des Schreibprozesses, fokussiert zu bleiben und Gedanken klar und präzise zu Papier zu bringen.
-                                        Ein weiterer Schwerpunkt liegt auf der gezielten Schärfung der Sinne. Mithilfe von Übungen, die die Wahrnehmung und Achtsamkeit fördern, lernen die Teilnehmenden, auch subtilere Eindrücke wahrzunehmen – jene Feinheiten, die auf den ersten Blick nicht offensichtlich sind. Diese Fähigkeit ermöglicht es ihnen einerseits, bei Recherchen und Interviews die verschiedensten Details wahrzunehmen, und andererseits, empathischere und differenziertere Texte zu verfassen, die die Realität vielschichtiger abbilden.
-                                        Die Kombination aus intensivem Fokus, Aufmerksamkeit für Reize und Offenheit gegenüber neuen Sinneseindrücken eröffnet neue kreative Möglichkeiten.
-                                        <br>Mehr Eindrücke auf <a href="/">Instagram. </a>
-                                        <br>  <a href="http://www.peterlinden.de/seminare-workshops/kreativitaet/">Anmeldung</a> für St.Moritz 2026.
-                                    </p>
-                                </div>
-                            </section>
-							<!--  
-							<button class="details-btn" onclick="toggleSection('section3', this)">
-								<span class="lang-en active">More Details & Pricing</span>
-								<span class="lang-de">Mehr Details & Preise</span>
-							</button>
-							
-							<div class="expandable-content" id="section3">
-								<div class="price-info">
-									<div class="price-amount">€95/h</div>
-									<div class="price-description">
-										<span class="lang-en active">Individual sessions</span>
-										<span class="lang-de">Einzelsessions</span>
-									</div>
-								</div>
-								
-								<div class="additional-info">
-									<div class="lang-en active">
-												<p>
-									Unlike the Neuroassessment, your first session focuses on a goal-specific evaluation that begins with an in-depth discussion of your history and training or rehabilitation goals. Based on this, we perform only the tests most relevant to your individual needs. What sets this session apart is that we don't just assess—we start right away. You'll begin with targeted exercises and immediate adjustments to your current training or rehab plan. Together, we'll review your existing program and explore how a neurocentric approach can be integrated to enhance your performance and results. Whether we create a new personalized plan or build on what you're already doing, every exercise will be chosen to improve the input your brain receives from your body and senses—helping you move, perform, and recover more effectively. </p>
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-cell">
+    <span class="cell-label"><span class="lang-en active">Healthy Hips</span><span class="lang-de">Gesunde Hüfte</span></span>
+    <span class="cell-value">€30 · 90 min</span>
+  </div>
+  <div class="intro-cell">
+    <span class="cell-label">Kinesiotaping</span>
+    <span class="cell-value"><span class="lang-en active">€55 · Coming Soon</span><span class="lang-de">€55 · Bald wieder</span></span>
+  </div>
+  <div class="intro-cell">
+    <span class="cell-label">St. Moritz</span>
+    <span class="cell-value"><span class="lang-en active">Storytelling &amp; Creativity</span><span class="lang-de">Storytelling &amp; Kreativität</span></span>
+  </div>
+</div>
 
-									</div>
+<!-- WORKSHOPS -->
+<div class="container">
 
-									<div class="lang-de">
-										<p>
-											Im Gegensatz zum Neuroassessment steht in deiner ersten Sitzung dein persönliches Ziel im Mittelpunkt. Wir starten mit einem ausführlichen Gespräch über deine Vorgeschichte und deine Trainings- oder Reha-Ziele. Danach machen wir nur die Tests, die für dich wirklich relevant sind.
+  <!-- WORKSHOP 01: Healthy Hips -->
+  <div class="workshop-block">
+    <div class="workshop-inner">
+      <div class="workshop-left">
+        <span class="workshop-index">01</span>
+        <h2 class="workshop-title">
+          <span class="lang-en active">Training &amp;<br><span class="italic">Rehab</span> for<br>Healthy Hips</span>
+          <span class="lang-de">Training &amp;<br><span class="italic">Rehab</span> für<br>Gesunde Hüfte</span>
+        </h2>
+        <span class="workshop-tag green"><span class="lang-en active">Movement · Mobility</span><span class="lang-de">Bewegung · Mobilität</span></span>
+        <div class="price-badge">
+          <div class="price-amount">€30</div>
+          <div class="price-note">90 <span class="lang-en active">min · In Person</span><span class="lang-de">Min · Vor Ort</span></div>
+        </div>
+        <a href="form.html" class="workshop-cta-link">
+          <span class="lang-en active">Sign Up →</span>
+          <span class="lang-de">Anmelden →</span>
+        </a>
+      </div>
 
-											 Du bekommst gezielte Übungen und sofortige Anpassungen für dein aktuelles Training oder deinen Rehaplan. Gemeinsam schauen wir uns an, was du bisher machst, und überlegen, wie wir mit einem neurozentrierten Ansatz deine Leistung und Ergebnisse noch weiter steigern können.
+      <div class="workshop-right">
+        <img src="images/Healthyhips.png" alt="Healthy Hips Workshop" class="workshop-img"/>
 
-											Ob wir dafür einen komplett neuen Plan erstellen oder dein bestehendes Programm optimieren – jede Übung ist so gewählt, dass dein Gehirn den best möglichen Input bekommt. So kannst du dich leichter bewegen, mehr leisten und schneller regenerieren.</p>
-									
-									</div>
+        <div class="lang-en active">
+          <p>The hips are the foundation of every movement — and yet one of the most frequently neglected regions of the body. In this workshop you'll develop a real understanding of how to activate, coordinate, and mobilise your hips for lasting joint health.</p>
+        </div>
+        <div class="lang-de">
+          <p>Die Hüfte ist das Fundament jeder Bewegung — und gleichzeitig eine der am häufigsten vernachlässigten Körperregionen. In diesem Workshop entwickelst du ein echtes Verständnis dafür, wie du deine Hüfte aktivierst, koordinierst und mobilisierst.</p>
+        </div>
 
-									<h4>
-										<span class="lang-en active">Session Duration & Format:</span>
-										<span class="lang-de">Session-Dauer & Format:</span>
-									</h4>
-									<ul>
-										<li>
-											<span class="lang-en active">Sessions are individually timed and can take place either online or at a location that best suits the goals and content of the session</span>
-											<span class="lang-de">Sessions sind individuell getaktet und können entweder online oder an einem Ort stattfinden, der den Zielen und dem Inhalt der Session am besten entspricht</span>
-										</li>
-										<li>
-											<span class="lang-en active">For long-term collaboration, feel free to reach out for a personalized offer</span>
-											<span class="lang-de">Für langfristige Zusammenarbeit melde dich gerne für ein personalisiertes Angebot</span>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="booking-note">
-									<span class="lang-en active"><strong>Package Options:</strong> Single sessions available, or save with 4-session packages (€350) or 8-session packages (€650).</span>
-									<span class="lang-de"><strong>Paket-Optionen:</strong> Einzelsessions verfügbar, oder spare mit 4-Session-Paketen (€350) oder 8-Session-Paketen (€650).</span>
-								</div>
-							</div>
-								-->
-						</section>
+        <p class="list-head"><span class="lang-en active">What You'll Learn</span><span class="lang-de">Was du lernst</span></p>
+        <ul class="check-list">
+          <li>
+            <span class="lang-en active"><strong>Understand the hips</strong> — key muscles and how to target them effectively</span>
+            <span class="lang-de"><strong>Hüfte verstehen</strong> — wichtige Muskeln und wie man sie gezielt ansteuert</span>
+          </li>
+          <li>
+            <span class="lang-en active"><strong>Move better</strong> — coordination and mobilisation exercises for flexibility and joint health</span>
+            <span class="lang-de"><strong>Besser bewegen</strong> — Koordinations- &amp; Mobilisationsübungen für Beweglichkeit und Gelenkgesundheit</span>
+          </li>
+          <li>
+            <span class="lang-en active"><strong>Take it home</strong> — a floor mobilisation routine to integrate into your daily life immediately</span>
+            <span class="lang-de"><strong>Direkt anwenden</strong> — eine Floor Mobilisation Routine, die du sofort in deinen Alltag integrieren kannst</span>
+          </li>
+        </ul>
 
-					</div>
-					
-				<!-- Footer -->
-					<footer id="footer">
-				<section>
-					<h1 style="font-size: 1.8em;">
-						<strong>
-							<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
-							<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
-						</strong>
-					</h1>
-					<p><strong>
-						<span class="lang-en active">Book your session and let's make it happen.</span>
-						<span class="lang-de">Buche deine Session und lass es uns angehen</span>
-					</strong></p>
-					<ul class="actions">
-						<li><a href="form.html" class="button"><strong>
-							<span class="lang-en active">Get Started!</span>
-							<span class="lang-de">Jetzt starten!</span>
-						</strong></a></li>
-					</ul>
-				</section>
-				<section>
-					<h2>
-						<span class="lang-en active">Contact</span>
-						<span class="lang-de">Kontakt</span>
-					</h2>
-					<dl class="alt">
-						<dt>
-							<span class="lang-en active">Address</span>
-							<span class="lang-de">Adresse</span>
-						</dt>
-						<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-						<dt>
-							<span class="lang-en active">Phone</span>
-							<span class="lang-de">Telefon</span>
-						</dt>
-						<dd>+49 152 21319336</dd>
-						<dt>Email</dt>
-						<dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
-					</dl>
-					<ul class="icons" style="justify-content: center; align-items: center;">
-						<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-					</ul>
-					<style>
-					@media (max-width: 600px) {
-						#footer .icons {
-							display: flex !important;
-							justify-content: center !important;
-							align-items: center !important;
-							padding-left: 0 !important;
-						}
-					}
-					</style>
-				</section>
-				<p class="copyright"> 
-					<a href="index.html"><strong>HOME</strong></a> <br> 
-					&copy; Stamatios Papavasiliou 2025<br> 
-					<a href="impressum.html">Impressum</a> <br> 
-					<a href="datenschutz.html">
-						<span class="lang-en active">Privacy Policy</span>
-						<span class="lang-de">Datenschutzerklärung</span>
-					</a> <br>   
-					Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
-				</p>
-			</footer>
-			</div>
+        <div class="detail-panel">
+          <span class="detail-panel-label"><span class="lang-en active">Location &amp; Format</span><span class="lang-de">Ort &amp; Format</span></span>
+          <div class="lang-en active">
+            <p>A practical, hands-on session — bring comfortable clothes you can move in freely. No prior experience necessary; the workshop is designed for everyone from beginners to active athletes.</p>
+          </div>
+          <div class="lang-de">
+            <p>Eine praktische Session — bring bequeme Kleidung mit, in der du dich frei bewegen kannst. Kein Vorwissen nötig; der Workshop ist für alle geeignet, von Anfängern bis hin zu aktiven Athleten.</p>
+          </div>
+          <div class="location-row">
+            <span class="location-label"><span class="lang-en active">Location</span><span class="lang-de">Ort</span></span>
+            <span><a href="https://share.google/AiKx0M1IReGqe1jdX">Vertical Ballerina</a> — Hohenzollernstraße 60, 80801 München</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<!-- Scripts -->
-		<script>
-			// Toggle expandable sections
-			function toggleSection(sectionId, button) {
-				const section = document.getElementById(sectionId);
-				const isExpanded = section.classList.contains('expanded');
-				
-				if (isExpanded) {
-					section.classList.remove('expanded');
-					button.classList.remove('active');
-				} else {
-					section.classList.add('expanded');
-					button.classList.add('active');
-				}
-			}
+  <!-- WORKSHOP 02: Kinesiotaping -->
+  <div class="workshop-block">
+    <div class="workshop-inner">
+      <div class="workshop-left">
+        <span class="workshop-index">02</span>
+        <h2 class="workshop-title">
+          <span class="lang-en active">Kinesio<span class="italic">taping</span></span>
+          <span class="lang-de">Kinesio<span class="italic">taping</span></span>
+        </h2>
+        <span class="workshop-tag muted"><span class="lang-en active">Coming Soon Again</span><span class="lang-de">Bald wieder</span></span>
+        <div class="price-badge">
+          <div class="price-amount">€55</div>
+          <div class="price-note">120 <span class="lang-en active">min · In Person</span><span class="lang-de">Min · Vor Ort</span></div>
+        </div>
+        <span class="workshop-cta-muted">
+          <span class="lang-en active">Not Yet Bookable</span>
+          <span class="lang-de">Noch nicht buchbar</span>
+        </span>
+      </div>
 
-			// Session Storage Language Management System
-			let currentLanguage = 'en';
+      <div class="workshop-right">
+        <div class="img-wrap">
+          <img src="images/kinesio.webp" alt="Kinesiotaping Workshop" class="workshop-img"/>
+          <span class="soon-badge"><span class="lang-en active">Coming Soon</span><span class="lang-de">Bald wieder</span></span>
+        </div>
 
-			function switchLanguage(lang) {
-				if (currentLanguage === lang) return;
-				
-				currentLanguage = lang;
-				
-				// Update button states
-				document.querySelectorAll('.lang-btn').forEach(btn => {
-					btn.classList.remove('active');
-					if (btn.dataset.lang === lang) {
-						btn.classList.add('active');
-					}
-				});
-				
-				// Hide all language content
-				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-					element.classList.remove('active');
-				});
-				
-				// Show selected language content
-				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-					element.classList.add('active');
-				});
-				
-				// Update page title and meta
-				updatePageMeta(lang);
-				
-				// Save preference to session storage (clears when browser closes)
-				sessionStorage.setItem('preferred-language', lang);
-			}
+        <div class="lang-en active">
+          <p>Kinesiotaping is a simple yet powerful method to ease pain and support the body's natural healing processes. The elastic tape gently lifts the skin — improving circulation, altering pain receptor signals, and supporting muscles and joints.</p>
+          <p><strong>The best part:</strong> you don't need advanced knowledge. With a few basic techniques you can apply it yourself — or with a partner — to relieve everyday discomfort.</p>
+        </div>
+        <div class="lang-de">
+          <p>Kinesiotaping ist eine einfache und wirkungsvolle Methode, um Schmerzen zu lindern und die natürlichen Heilungsprozesse zu unterstützen. Das elastische Tape hebt die Haut sanft an — verbessert die Durchblutung, beeinflusst Schmerzrezeptoren und entlastet Muskeln und Gelenke.</p>
+          <p><strong>Das Beste:</strong> Kein Fachwissen nötig. Mit ein paar Grundtechniken kannst du das Tape selbst anlegen — oder gemeinsam mit einem Partner.</p>
+        </div>
 
-			function updatePageMeta(lang) {
-				const translations = {
-					en: {
-						title: "Synapse²Move | Open Workshops"
-					},
-					de: {
-						title: "Synapse²Move | Offene Workshops"
-					}
-				};
-				
-				document.title = translations[lang].title;
-			}
+        <p class="list-head"><span class="lang-en active">What's Included</span><span class="lang-de">Was enthalten ist</span></p>
+        <ul class="check-list">
+          <li>
+            <span class="lang-en active">Intro to pain physiology — understanding how pain actually works</span>
+            <span class="lang-de">Einführung in die Schmerzphysiologie — wie Schmerzen wirklich funktionieren</span>
+          </li>
+          <li>
+            <span class="lang-en active">How kinesiotaping works and how to apply it correctly</span>
+            <span class="lang-de">Wie Kinesiotaping funktioniert und wie man es korrekt anlegt</span>
+          </li>
+          <li>
+            <span class="lang-en active">Practical application for period pain and other pain issues</span>
+            <span class="lang-de">Praktische Anwendung bei Regelschmerzen und anderen Beschwerden</span>
+          </li>
+          <li>
+            <span class="lang-en active">Goodie bag — a roll of kinesiotape plus a small surprise</span>
+            <span class="lang-de">Goodie-Bag — eine Rolle Kinesiotape und eine kleine Überraschung</span>
+          </li>
+        </ul>
 
-			function initializeLanguage() {
-				// Load saved language preference from session storage
-				const savedLang = sessionStorage.getItem('preferred-language');
-				if (savedLang && savedLang !== currentLanguage) {
-					switchLanguage(savedLang);
-				}
-			}
+        <div class="detail-panel">
+          <span class="detail-panel-label"><span class="lang-en active">Ideal For</span><span class="lang-de">Ideal für</span></span>
+          <div class="lang-en active">
+            <p>Anyone looking for non-pharmacological pain relief. Those interested in self-care techniques for menstrual discomfort. Anyone curious about taping as a tool for everyday pain management — no prior experience needed.</p>
+          </div>
+          <div class="lang-de">
+            <p>Alle, die nach nicht-medikamentösen Methoden suchen. Wer Selbsthilfetechniken bei Menstruationsbeschwerden erlernen möchte. Interessierte, die Taping als Alltagswerkzeug entdecken wollen — kein Vorwissen nötig.</p>
+          </div>
+          <div class="location-row">
+            <span class="location-label"><span class="lang-en active">Location</span><span class="lang-de">Ort</span></span>
+            <span><a href="https://share.google/lpMOe9NDa5gwMSEzX">Kulturzentrum Luise / Luise Singt</a> — Ruppertstraße 5, 80337 München</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-			// Initialize on page load
-			document.addEventListener('DOMContentLoaded', function() {
-				initializeLanguage();
-			});
-		</script>
+  <!-- WORKSHOP 03: St. Moritz -->
+  <div class="workshop-block">
+    <div class="workshop-inner">
+      <div class="workshop-left">
+        <span class="workshop-index">03</span>
+        <h2 class="workshop-title">
+          <span class="lang-en active">St. Moritz<br><span class="italic">Storytelling</span><br>&amp; Creativity</span>
+          <span class="lang-de">St. Moritz<br><span class="italic">Storytelling</span><br>&amp; Kreativität</span>
+        </h2>
+        <span class="workshop-tag plum"><span class="lang-en active">Creativity · Focus</span><span class="lang-de">Kreativität · Fokus</span></span>
+        <div class="price-badge">
+          <div class="price-note" style="font-size:0.7rem;letter-spacing:0.08em;text-transform:none;margin-top:0;color:var(--ink-muted);">
+            <span class="lang-en active">Part of Peter Linden's seminar</span>
+            <span class="lang-de">Teil des Seminars von Peter Linden</span>
+          </div>
+        </div>
+        <a href="http://www.peterlinden.de/seminare-workshops/kreativitaet/" target="_blank" class="workshop-cta-link">
+          <span class="lang-en active">Registration →</span>
+          <span class="lang-de">Anmeldung →</span>
+        </a>
+      </div>
 
-	</body>
+      <div class="workshop-right">
+        <div class="lang-en active">
+          <p>The neuroathletics workshops in St. Moritz are part of Peter Linden's storytelling seminar. For one week, participants research, plan, and write different narrative pieces. As co-lecturer, the focus is on <strong>concentration, focused work, and sensory sharpening</strong> — the tools that make a writer's eye truly distinct.</p>
+          <p>The combination of intense focus, attention to stimuli, and openness to new sensory impressions opens up new creative possibilities. Participants leave not only with better texts, but with a new awareness of how the brain shapes perception and expression.</p>
+        </div>
+        <div class="lang-de">
+          <p>Die Neuroathletik-Workshops in St. Moritz sind Teil des Storytelling-Seminars von Peter Linden. Eine Woche lang recherchieren, planen und schreiben die Teilnehmenden unterschiedliche Erzählstücke. Als Co-Dozent liegt der Fokus auf <strong>Konzentration, fokussierter Arbeit und Sinnesschärfung</strong> — jenen Werkzeugen, die einen Schriftsteller wirklich auszeichnen.</p>
+          <p>Die Kombination aus intensivem Fokus, Aufmerksamkeit für Reize und Offenheit gegenüber neuen Sinneseindrücken eröffnet neue kreative Möglichkeiten.</p>
+        </div>
+
+        <p class="list-head"><span class="lang-en active">What We Work On</span><span class="lang-de">Woran wir arbeiten</span></p>
+        <ul class="check-list">
+          <li>
+            <span class="lang-en active">Concentration and sustained focus during long writing sessions</span>
+            <span class="lang-de">Konzentration und anhaltender Fokus bei langen Schreibsessions</span>
+          </li>
+          <li>
+            <span class="lang-en active">Sensory sharpening — noticing the subtleties others miss</span>
+            <span class="lang-de">Sinnesschärfung — jene Feinheiten wahrnehmen, die andere übersehen</span>
+          </li>
+          <li>
+            <span class="lang-en active">Neuromuscular mindfulness exercises to support the creative process</span>
+            <span class="lang-de">Neuromuskuläre Achtsamkeitsübungen zur Unterstützung des kreativen Prozesses</span>
+          </li>
+          <li>
+            <span class="lang-en active">Empathetic, nuanced perception for richer, more complex texts</span>
+            <span class="lang-de">Empathische, differenzierte Wahrnehmung für vielschichtigere Texte</span>
+          </li>
+        </ul>
+
+        <div class="detail-panel">
+          <span class="detail-panel-label"><span class="lang-en active">More Information</span><span class="lang-de">Weitere Informationen</span></span>
+          <div class="lang-en active">
+            <p>More impressions from past editions on <a href="/">Instagram</a>. Registration for St. Moritz 2026 is open via <a href="http://www.peterlinden.de/seminare-workshops/kreativitaet/">peterlinden.de</a>.</p>
+          </div>
+          <div class="lang-de">
+            <p>Mehr Eindrücke aus vergangenen Ausgaben auf <a href="/">Instagram</a>. Anmeldung für St. Moritz 2026 über <a href="http://www.peterlinden.de/seminare-workshops/kreativitaet/">peterlinden.de</a>.</p>
+          </div>
+          <div class="location-row">
+            <span class="location-label"><span class="lang-en active">Location</span><span class="lang-de">Ort</span></span>
+            <span>St. Moritz, Switzerland</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container" style="display:contents;">
+    <div class="cta-left container">
+      <h2>
+        <span class="lang-en active">Your Goals<br>Are <span class="italic">Within</span><br>Reach</span>
+        <span class="lang-de">Deine Ziele<br>Sind <span class="italic">In</span><br>Reichweite</span>
+      </h2>
+      <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
+      <a href="form.html" class="btn-ink">
+        <span class="lang-en active">Book Free Call →</span>
+        <span class="lang-de">Gespräch buchen →</span>
+      </a>
+    </div>
+    <div class="cta-right">
+      <canvas id="cta-canvas"></canvas>
+      <p class="cta-kicker"><span class="lang-en active">Ready to start?</span><span class="lang-de">Bereit anzufangen?</span></p>
+      <h2>
+        <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
+        <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
+      </h2>
+      <a href="form.html" class="btn-cream">
+        <span class="lang-en active">Book Free 20 Min Call</span>
+        <span class="lang-de">Kostenloses Gespräch buchen</span>
+      </a>
+      <p class="cta-right-note">
+        <span class="lang-en active">Munich · In Person + Online</span>
+        <span class="lang-de">München · Persönlich + Online</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">Synapse<sup>2</sup>Move</a>
+        <p class="footer-desc"><span class="lang-en active">Neuroathletic training in Munich. Creating connections — vibrantly alive.</span><span class="lang-de">Neuroathletiktraining in München. Wo Denken bewegt.</span></p>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Navigation</span><span class="lang-de">Navigation</span></h4>
+        <ul>
+          <li><a href="Neuro.html"><span class="lang-en active">Neuroathletic Training</span><span class="lang-de">Neuroathletiktraining</span></a></li>
+          <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
+          <li><a href="openworkshps.html"><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></a></li>
+          <li><a href="workshops.html"><span class="lang-en active">Neuro Workshops</span><span class="lang-de">Neuro Workshops</span></a></li>
+          <li><a href="divingarts.html">Diving into Arts</a></li>
+          <li><a href="form.html"><span class="lang-en active">Get Started</span><span class="lang-de">Jetzt starten</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Contact</span><span class="lang-de">Kontakt</span></h4>
+        <dl>
+          <dt><span class="lang-en active">Address</span><span class="lang-de">Adresse</span></dt>
+          <dd>Ganghoferstraße 17<br>80339 München</dd>
+          <dt><span class="lang-en active">Phone</span><span class="lang-de">Telefon</span></dt>
+          <dd><a href="tel:+4915221319336">+49 152 21319336</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stamatios Papavasiliou</span>
+      <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html"><span class="lang-en active">Privacy Policy</span><span class="lang-de">Datenschutz</span></a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── LANGUAGE ── */
+let currentLang = 'en';
+function switchLanguage(lang) {
+  if (currentLang === lang) return;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
+  sessionStorage.setItem('preferred-language', lang);
+}
+const saved = sessionStorage.getItem('preferred-language');
+if (saved && saved !== 'en') switchLanguage(saved);
+
+/* ── MOBILE NAV ── */
+document.getElementById('mob-toggle').addEventListener('click', () => {
+  document.getElementById('main-nav').classList.toggle('mobile-nav-open');
+});
+
+/* ── NEURAL CANVAS ── */
+function makeNeuralCanvas(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    W = canvas.width  = Math.max(rect.width  || canvas.offsetWidth,  100);
+    H = canvas.height = Math.max(rect.height || canvas.offsetHeight, 100);
+    nodes = Array.from({length: 55}, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.65, vy: (Math.random() - 0.5) * 0.45,
+      pulse: Math.random() * Math.PI * 2,
+      kind: Math.random() < 0.2 ? 'b' : 'a'
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+      n.pulse += 0.1;
+    });
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 140) {
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(61,107,79,' + ((1 - d/140) * 0.3) + ')';
+          ctx.lineWidth = 0.6; ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n => {
+      const g = (Math.sin(n.pulse) + 1) * 0.5;
+      ctx.beginPath(); ctx.arc(n.x, n.y, 1 + g * 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = n.kind === 'b'
+        ? 'rgba(92,45,110,' + (0.4 + g * 0.35) + ')'
+        : 'rgba(61,107,79,' + (0.35 + g * 0.3) + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  requestAnimationFrame(() => { resize(); draw(); });
+  window.addEventListener('resize', resize, { passive: true });
+}
+
+makeNeuralCanvas('page-canvas');
+makeNeuralCanvas('cta-canvas');
+</script>
+</body>
 </html>

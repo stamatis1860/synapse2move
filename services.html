@@ -1,722 +1,1071 @@
-<!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Neuroathletictraining</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Services — Synapse²Move Neuroathletic Training Munich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --cream: #f5f0e8;
+  --paper: #ede8dc;
+  --ink: #1a1a14;
+  --ink-muted: #5a5850;
+  --ink-faint: #9a9488;
+  --rule: rgba(26,26,20,0.12);
+  --green: #3d6b4f;
+  --green-light: #e2ede7;
+  --plum: #5c2d6e;
+  --plum-light: #ede4f2;
+  --gold: #c49a2a;
+  --r: 3px;
+  --fd: 'Playfair Display', Georgia, serif;
+  --fb: 'Space Grotesk', system-ui, sans-serif;
+  --fm: 'Space Mono', monospace;
+}
 
-		<style>
-			/* Custom styles for expandable sections */
-			.details-btn {
-				background: linear-gradient(135deg, #edbf79ab, #60bca3a1);
-				color: white;
-				padding: 12px 25px;
-				border: none;
-				border-radius: 25px;
-				font-size: 16px;
-				font-weight: bold;
-				text-align: center;
-				line-height: 1;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				cursor: pointer;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
-				margin: 20px 0 10px 0;
-				display: block;
-				position: relative;
-				overflow: hidden;
-				width: 100%;
-			}
-			
-			.details-btn:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
-				background: linear-gradient(135deg, #edbf79, #60bca4);
-			}
-			
-			.details-btn:active {
-				transform: translateY(0);
-			}
-			
-			.details-btn::after {
-				content: '▼';
-				margin-left: 10px;
-				font-size: 14px;
-				transition: transform 0.3s ease;
-			}
-			
-			.details-btn.active::after {
-				transform: rotate(180deg);
-			}
-			
-			.expandable-content {
-				max-height: 0;
-				overflow: hidden;
-				transition: max-height 0.4s ease, padding 0.4s ease;
-				background: rgba(255, 255, 255, 0.05);
-				border-left: 4px solid #edbf79;
-				margin: 20px 0;
-				border-radius: 8px;
-			}
-			
-			.expandable-content.expanded {
-				max-height: 2000px;
-				padding: 20px;
-			}
-			
-			.price-info {
-				background: linear-gradient(135deg, #edbf79, #60bca4);
-				color: white;
-				padding: 15px 20px;
-				border-radius: 8px;
-				margin-bottom: 15px;
-				text-align: center;
-			}
-			
-			.price-amount {
-				font-size: 30px;
-				font-weight: bold;
-				margin-bottom: 5px;
-			}
-			
-			.price-description {
-				font-size: 18px;
-				opacity: 0.9;
-			}
-			
-			.additional-info {
-				background: rgba(255, 255, 255, 0.1);
-				padding: 15px;
-				border-radius: 6px;
-				margin-top: 15px;
-				border: 1px solid rgba(255, 255, 255, 0.2);
-			}
-			
-			.additional-info h4 {
-				color: #007acc;
-				margin-top: 0;
-				margin-bottom: 10px;
-			}
-			
-			.booking-note {
-				background:linear-gradient(135deg, #edbf79, #60bca4);
-				color: white;
-				border: 1px solid rgba(255, 234, 167, 0.3);
-				padding: 12px;
-				border-radius: 6px;
-				margin-top: 15px;
-				font-size: 18px;
-			}
-			
-			@media screen and (max-width: 768px) {
-				.details-btn {
-					font-size: 14px;
-					padding: 10px 20px;
-				}
-				
-				.expandable-content.expanded {
-					max-height: 3000px;
-				}
-				
-				.booking-note {
-					font-size: 14px;
-				}
-			}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 
-			/* Language Switch Styles */
-			.language-switch {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				z-index: 10000;
-				background:  linear-gradient(135deg, #edbf797c, #60bca381);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 25px;
-				padding: 3px;
-				display: flex;
-				align-items: center;
-				gap: 2px;
-				transition: all 0.3s ease;
-				opacity: 0.7;
-			}
+body {
+  font-family: var(--fb);
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
 
-			.language-switch:hover {
-				opacity: 1;
-				background: linear-gradient(135deg, #edbf79, #60bca3);
-			}
+/* ── LANG ── */
+.lang-en,.lang-de{display:none}
+.lang-en.active,.lang-de.active{display:block}
+span.lang-en,span.lang-de{display:none}
+span.lang-en.active,span.lang-de.active{display:inline}
 
-			.lang-btn {
-				background: transparent;
-				border: none;
-				color: rgba(255, 255, 255, 0.8);
-				padding: 0px 0px;
-				cursor: pointer;
-				border-radius: 20px;
-				transition: all 0.3s ease;
-				font-size: 0.5em;
-				font-weight: 800;
-				letter-spacing: 0.5px;
-			}
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(245,240,232,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ink);
+}
+.nav-logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo sup { font-size: 10px; vertical-align: super; font-family: var(--fm); opacity: 0.7; }
+.nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+.nav-links li { border-left: 1px solid var(--rule); }
+.nav-links li:first-child { border-left: none; }
+.nav-links a {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--ink); background: var(--paper); }
+.nav-cta-link {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
+}
+.nav-cta-link:hover { background: var(--plum) !important; color: #fff !important; }
+.lang-switch { display: flex; padding: 0 8px; }
+.lang-btn {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--ink-faint);
+  padding: 0 8px;
+  height: 36px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.lang-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+.nav-mobile-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 7px 10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-mobile-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; }
 
-			.lang-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-			}
+/* ── PAGE HERO ── */
+.page-hero {
+  position: relative;
+  padding-top: 56px;
+  min-height: 340px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 40%, #0e2218 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 10% 70%, #1e0f2a 0%, transparent 55%),
+    linear-gradient(155deg, #141009 0%, #1c1510 100%);
+}
+#page-canvas {
+  position: absolute;
+  right: 0; top: 0;
+  width: 55%; height: 100%;
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.page-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20,16,9,0.85) 0%, rgba(20,16,9,0.2) 70%, rgba(20,16,9,0.5) 100%);
+  z-index: 2;
+}
+.page-hero-body {
+  position: relative;
+  z-index: 3;
+  padding: 80px 48px 56px;
+  max-width: 700px;
+}
+.hero-breadcrumb {
+  font-family: var(--fm);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hero-breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.hero-breadcrumb a:hover { color: rgba(255,255,255,0.65); }
+.hero-breadcrumb::before { content: ''; width: 32px; height: 1px; background: rgba(255,255,255,0.25); display: block; }
+.page-hero h1 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: up 1s 0.3s forwards;
+}
+.page-hero h1 .italic { font-style: italic; color: rgba(255,255,255,0.5); }
+.page-hero h1 .outlined {
+  -webkit-text-fill-color: rgba(255,255,255,0.94);
+  -webkit-text-stroke: 0.8px rgba(255,255,255,0.8);
+  text-shadow: 0 0 12px rgba(255,255,255,0.15);
+}
+.page-hero-sub {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.4);
+  opacity: 0;
+  animation: up 0.9s 0.55s forwards;
+}
 
-			.lang-btn.active {
-				background: #edbf79;
-				color: white;
-				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
-			}
+@keyframes up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-			/* Hide inactive language content */
-			.lang-content {
-				display: none;
-			}
+/* ── CONTAINER ── */
+.container { width: 100%; padding: 0 48px; }
 
-			.lang-content.active {
-				display: block;
-			}
+/* ── S-LABEL ── */
+.s-label {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.s-label::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--plum); opacity: 0.5; }
 
-			/* Inline language spans */
-			.lang-en, .lang-de {
-				display: none;
-			}
+/* ── SECTION HEAD ── */
+.section-num-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 16px;
+  margin-bottom: 0;
+}
+.section-num {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
 
-			.lang-en.active, .lang-de.active {
-				display: inline;
-			}
+/* ── SERVICE BLOCKS ── */
+.service-block {
+  border-bottom: 1.5px solid var(--ink);
+}
+.service-block:last-child { border-bottom: none; }
 
-			@media (max-width: 600px) {
-				.language-switch {
-					top: 5px;
-					right: 5px;
-					scale: 0.85;
-					padding: 2px;
-					flex-direction: column;
-					gap: 1px;
-				}
-				
-				.lang-btn {
-					padding: 0px 7px;
-					font-size: 0.65em;
-					border-radius: 15px;
-				}
-			}
-		</style>
-	</head>
-	<body class="is-preload">
+.service-inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  padding: 72px 0;
+}
+.service-left {
+  border-right: 1px solid var(--rule);
+  padding-right: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: sticky;
+  top: 72px;
+  align-self: start;
+}
+.service-index {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.service-title {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.service-title .italic { font-style: italic; color: var(--green); }
+.service-tag {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+.service-tag.green { background: var(--green-light); color: var(--green); }
+.service-tag.plum  { background: var(--plum-light); color: var(--plum); }
+.service-tag.gold  { background: #f5edd8; color: var(--gold); }
 
-		<!-- Language Switch -->
-		<div class="language-switch">
-			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
-			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
-		</div>
+.price-badge {
+  margin-top: auto;
+  padding-top: 2rem;
+}
+.price-amount {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: var(--ink);
+  line-height: 1;
+}
+.price-note {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+.service-cta-link {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 24px;
+  background: var(--plum);
+  color: #fff;
+  border: 1.5px solid var(--plum);
+  display: inline-block;
+  transition: background 0.2s;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+.service-cta-link:hover { background: #431f52; }
+.service-cta-free {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 24px;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  display: inline-block;
+  transition: all 0.2s;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+.service-cta-free:hover { background: var(--ink); color: var(--cream); }
 
-				<!-- Header -->
-					<header id="header">
-					<h1>
-						<span class="lang-en active">Services</span>
-						<span class="lang-de">Leistungen</span>
-					</h1>
-						<p>
-							<span class="lang-en active"></span>
-							<span class="lang-de"></span>
-						</p>
-					</header>
+.service-right {
+  padding-left: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 
-				<!-- Main -->
-					<div id="main">
+.service-right p {
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.service-right p strong { color: var(--ink); font-weight: 500; }
 
-						<!-- Content -->
-						<section id="content" class="main">
-							
-						   
-							<h2>
-								<span class="lang-en active"><strong>20 Minute Call</strong> </span>
-								<span class="lang-de"><strong>Kostenloses 20-Minuten-Gespräch</strong></span>
-							</h2>
-						   
-							<div class="lang-en active">
-								<p>Curious about how Neuro Athletic Training (NAT) can support your unique goals? Whether you're dealing with chronic pain, recovering from injury, seeking better movement, or simply looking to enhance your performance, this call is your chance to connect with me directly.
-									
-								</p>
-								<h4>
-										Perfect for:
-									</h4>
-									<ul>
-										<li>Anyone curious about neurological approaches to pain and performance</li>
+/* lists */
+.service-right .list-head {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin: 24px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.service-right .list-head::after { content:''; flex: 0 0 20px; height: 1px; background: var(--green); opacity: 0.5; }
 
-										<li>People who want to understand their options before committing</li>
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.check-list li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0 10px;
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.65;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.check-list li:last-child { border: none; }
+.check-list li::before {
+  content: '→';
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--green);
+  padding-top: 2px;
+}
 
-										<li>Those seeking a second opinion on their current approach</li>
+/* detail panel — replaces the expandable toggle */
+.detail-panel {
+  margin-top: 36px;
+  border: 1.5px solid var(--ink);
+  padding: 36px;
+  position: relative;
+}
+.detail-panel-label {
+  position: absolute;
+  top: -10px; left: 24px;
+  background: var(--cream);
+  padding: 0 8px;
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.detail-panel p { font-size: 13px; color: var(--ink-muted); line-height: 1.75; margin-bottom: 14px; font-weight: 300; }
+.detail-panel p:last-child { margin-bottom: 0; }
+.detail-panel ul { list-style: none; margin: 10px 0 14px; }
+.detail-panel ul li {
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 7px 0 7px 18px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.detail-panel ul li:last-child { border: none; }
+.detail-panel ul li::before { content: '—'; position: absolute; left: 0; color: var(--plum); font-family: var(--fm); font-size: 11px; }
+.detail-panel ul li strong { color: var(--ink); font-weight: 500; }
 
-										<li>Share your goals, challenges, or concerns—no matter where you're starting from</li>
-									</ul>
-									All sessions are held online via Google Meet.
-							</div>
-							
-						   
-							<div class="lang-de">
-								<p>Bist du neugierig, wie Neuroathletiktraining (NAT) deine individuellen Ziele unterstützen kann? Egal, ob du mit chronischen Schmerzen zu kämpfen hast, dich von einer Verletzung erholst oder deine Mobilität und Performance verbessern möchtest – dieser Anruf ist deine Chance, direkt mit mir in Kontakt zu treten.
-									
-								</p>
-								<h4>
-										Perfekt für:
-									</h4>
-									<ul>
-										<li>Alle, die neugierig auf neurologische Ansätze bei Schmerz und Leistungssteigerung sind</li>
-										<li>Wenn du fragen zu meinem Angebot hast</li>
-										<li>Du eine zweite Meinung zu deinem aktuellen Ansatz suchst</li>
-										<li>Teile deine Ziele, Herausforderungen oder Anliegen – ganz egal, wo du gerade stehst</li>
-									</ul>
-									Alle Sessions finden online über Google Meet statt.
-							</div>
-						   
-							<div class="booking-note">
-								<button class="button booking-action" type="button" onclick="window.location.href='form.html'">
-										<span class="lang-en active"><strong style="font-size: 1.3em;">Ready to schedule?</strong></span>
-										<span class="lang-de"><strong style="font-size: 1.3em;">Bereit zu buchen?</strong></span>
-									</button>
-								
-								<span class="lang-en active">Book your free call through our contact form or reach out via email to find a time that works for you.</span>
-								<span class="lang-de">Buche dein kostenloses Gespräch über das Kontaktformular oder melde dich per E-Mail, um einen passenden Termin zu finden.</span>
-							</div>
-							
-							<hr class="decorative">
-							<style>
-								hr.decorative {
-									border: none;
-									height: 2px;
-									background: linear-gradient(to right, transparent, #999, transparent);
-									margin: 3em auto;  /* spacing above and below */
-									width: 60%;        /* shorter than full width */
-								}
-							</style>
-							
-							<h2>
-								<span class="lang-en active"><strong>Neuroassessment</strong></span>
-								<span class="lang-de"><strong>Neuroassessment</strong></span>
-							</h2>
-							
-							<div class="lang-en active">
-								<h4>What's Included:</h4>
-									<ul>
-										<li>
-											Complete neurological evaluation using clinical-grade tests
-										</li>
-										<li>
-											Detailed analysis of your results and what they mean
-										</li>
-										<li>
-											Personalized report with findings and recommendations
-										</li>
-									</ul>
-									
-												<h4>
-												Ideal for:
-												</h4>
-												<ul>
-													<li>
-														Athletes looking to establish a comprehensive neurological baseline to compare their performance across seasons
-													<li>
-														Individuals with chronic pain seeking root cause analysis
-													</li>
-													<li>
-														People recovering from injury who want comprehensive evaluation
-													</li>
-													<li>
-													Athletes seeking to optimize performance and get an in depth neurological assessment
-													</li>
-													<li>
-														Anyone interested in preventive health and early intervention
-													</li>
-												</ul>
-											
-										</div>
-							<div class="lang-de">
-											<h4>Enhält:</h4>
-				<ul>
-				<li>
-					Umfassende neurologische Untersuchung mit klinischen Tests
-				</li>
-				<li>
-					Detaillierte Analyse Ihrer Ergebnisse und deren Bedeutung
-				</li>
-				<li>
-					Persönlicher Bericht mit Befunden und Empfehlungen
-				</li>
-				</ul>
+.package-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-top: 20px;
+}
+.pkg {
+  padding: 20px;
+  border-right: 1px solid var(--rule);
+  text-align: center;
+}
+.pkg:last-child { border-right: none; }
+.pkg-name {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+.pkg-price {
+  font-family: var(--fd);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1;
+}
+.pkg-detail {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 4px;
+  font-family: var(--fm);
+}
 
-				<h4>
-				Ideal für:
-				</h4>
-				<ul>
-				<li>
-					Athleten, die eine umfassende neurologische Basislinie erstellen möchten, um ihre Leistung über die Saisons hinweg zu vergleichen
-				</li>
-				<li>
-					 Chronischen Schmerzpatienten, die eine Ursachenanalyse suchen
-				</li>
-				<li>
-					Personen in Reha, die eine umfassende Untersuchung wünschen
-				</li>
-				<li>
-					Athleten, die ihre Leistung optimieren und eine tiefgehende neurologische Untersuchung erhalten möchten
-				</li>
-				<li>
-					Alle, die an Präventivmedizin und frühzeitiger Intervention interessiert sind
-				</li>
-				</ul>
+/* ── INTRO STRIP ── */
+.intro-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1.5px solid var(--ink);
+  border-top: 1.5px solid var(--ink);
+}
+.intro-cell {
+  padding: 2rem 2.5rem;
+  border-right: 1.5px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.intro-cell:last-child { border-right: none; }
+.cell-label {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.cell-value {
+  font-family: var(--fd);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
 
-			</div>			
-							
-							<button class="details-btn" onclick="toggleSection('section2', this)">
-								<span class="lang-en active">More Details & Pricing</span>
-								<span class="lang-de">Mehr Details & Preise</span>
-							</button>
-							
-							<div class="expandable-content" id="section2">
-								<div class="price-info">
-									<div class="price-amount">€145</div>
-									<div class="price-description">
-										<span class="lang-en active">Comprehensive 90-minute assessment</span>
-										<span class="lang-de">Umfassende 90-minütige Bewertung</span>
-									</div>
-								</div>
-								
-								<div class="additional-info">
-									<div class="lang-en active">
-									<p>The Neuroassessment is a detailed, science-based evaluation designed to uncover how your nervous system is functioning—and where it may need support. This session combines well-established tests from clinical neurology to give us a clear picture of your brain-body connection.
+.btn-ink {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  background: var(--plum);
+  color: #fff;
+  border: 1.5px solid var(--plum);
+  transition: background 0.2s, border-color 0.2s;
+  display: inline-block;
+}
+.btn-ink:hover { background: #431f52; border-color: #431f52; }
 
-								During the assessment, I will evaluate key neurological systems using proven methods, including:
-								
-								<ul>
-									<li><strong>Vital signs</strong> - blood pressure, heart rate, and other baseline indicators</li>
-									<li><strong>Breathing patterns</strong> - to assess regulation, rhythm, and nervous system tone</li>
-									<li><strong>Gait analysis</strong> - how you walk provides insights into various brain functions</li>
-									<li><strong>Sensory testing</strong> - checking how your nervous system processes touch, temperature, and proprioception</li>
-									<li><strong>Cerebellar tests</strong> - to examine balance, motor control, and coordination</li>
-									<li><strong>Cranial nerve examination</strong> - assessing all 12 cranial nerves that control essential functions like eye movement, facial sensation, hearing, and more</li>
-									<li><strong>Visual testing</strong> - looking at visual tracking, fixation, and processing</li>
-								</ul>
+/* ── CTA (mirrors index) ── */
+#cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+.cta-left {
+  padding: 100px 60px 100px 0;
+  border-right: 1px solid var(--rule);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cta-left h2 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(52px, 6vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.cta-left h2 .italic { font-style: italic; color: var(--plum); }
+.cta-left .cta-sub {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-muted);
+  margin-bottom: 2.5rem;
+}
+.cta-right {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 48px;
+  gap: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+#cta-canvas {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70%;
+  height: 55%;
+  z-index: 2;
+  opacity: 0.7;
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  #cta-canvas {
+    right: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(420px, 80vw);
+    height: min(420px, 80vw);
+    opacity: 0.45;
+    z-index: 1;
+  }
+  .cta-right { padding: 48px 20px; }
+}
+.cta-kicker {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.35);
+  position: relative;
+  z-index: 1;
+}
+.cta-right h2 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.cta-right h2 .green { color: #6ec9a4; }
+.btn-cream {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 36px;
+  background: var(--cream);
+  color: var(--ink);
+  border: 1.5px solid var(--cream);
+  display: inline-block;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.btn-cream:hover { background: var(--plum-light); border-color: var(--plum-light); }
+.cta-right-note {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
 
-								These tests are widely recognized in neurological practice and provide valuable insights into how effectively your brain and nervous system is functioning. They help us identify subtle dysfunctions or imbalances—often before they become noticeable in daily life.
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1.5px solid rgba(245,240,232,0.1);
+  padding: 56px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-bottom: 48px;
+}
+.footer-col { border-right: 1px solid rgba(245,240,232,0.08); padding-right: 48px; margin-right: 48px; }
+.footer-col:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.footer-logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--cream);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+}
+.footer-logo sup { font-size: 10px; color: #6ec9a4; font-family: var(--fm); }
+.footer-desc { font-size: 13px; color: rgba(245,240,232,0.3); line-height: 1.6; max-width: 200px; font-weight: 300; }
+footer h4 { font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 16px; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 10px; }
+footer ul a { font-size: 13px; color: rgba(245,240,232,0.45); text-decoration: none; transition: color 0.15s; font-weight: 300; }
+footer ul a:hover { color: #6ec9a4; }
+footer dl dt { font-family: var(--fm); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 2px; margin-top: 12px; }
+footer dl dd { font-size: 13px; color: rgba(245,240,232,0.45); font-weight: 300; }
+footer dl dd a { color: #6ec9a4; text-decoration: none; }
+.footer-bottom {
+  border-top: 1px solid rgba(245,240,232,0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: rgba(245,240,232,0.18);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom a { color: rgba(245,240,232,0.18); text-decoration: none; }
+.footer-bottom a:hover { color: #6ec9a4; }
 
-								By detecting these issues early on, we can take proactive steps to prevent them from worsening. Based on your results, we'll develop a personalized, targeted plan to help you move more efficiently, feel better, and take back control of your health and performance.</p>
-								</div>
-								<div class="lang-de">
-									<p>Das Neuroassessment ist eine detaillierte, wissenschaftlich fundierte Untersuchung, die aufzeigt, wie Ihr Nervensystem arbeitet – und wo es möglicherweise Unterstützung braucht. Diese Sitzung kombiniert bewährte Tests aus der klinischen Neurologie, um ein klares Bild von deinem Nervensystem zu erhalten. Während des Assessments überprüfe ich zentrale neurologische Systeme anhand erprobter Methoden, darunter:
-								
-								<ul>
-									<li><strong>Vitalzeichen</strong> - Blutdruck, Herzfrequenz und andere Grundindikatoren</li>
-									<li><strong>Atemmuster</strong> - zur Bewertung von Regulation und Rhythmus </li>
-									<li><strong>Ganganalyse</strong> - wie du gehst, gibt Einblicke in verschiedene Gehirnfunktion</li>
-									<li><strong>Sensorische Tests</strong> - wie dein Nervensystem Berührung, Temperatur und Propriozeption verarbeitet</li>
-									<li><strong>Kleinhirntests</strong> - zur Untersuchung von Gleichgewicht, motorischer Kontrolle und Koordination</li>
-									<li><strong>Hirnnerven-Untersuchung</strong> - Bewertung aller 12 Hirnnerven, die wesentliche Funktionen wie Augenbewegung, Gesichtsempfindung, Hören und mehr steuern</li>
-									<li><strong>Visueller Test</strong> - Betrachtung von visueller Verfolgung und Fixierung von objekten sowie die Verarbeitung dieser Reize</li>
-								</ul>
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav { padding: 0 20px; }
+  .nav-mobile-toggle { display: flex; }
+  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--cream); border-bottom: 1.5px solid var(--ink); flex-direction: column; padding: 12px 0; gap: 0; }
+  .nav-links li { border-left: none; border-top: 1px solid var(--rule); }
+  .nav-links a { height: 44px; }
+  .mobile-nav-open .nav-links { display: flex; }
+  .container { padding: 0 20px; }
+  .page-hero-body { padding: 60px 20px 40px; }
+  #page-canvas { width: 100%; opacity: 0.3; }
+  .intro-strip { display: none; }
+  .service-inner { grid-template-columns: 1fr; }
+  .service-left { position: relative; top: auto; border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 32px; margin-bottom: 0; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 1rem 2rem; }
+  .price-badge { padding-top: 0; }
+  .service-right { padding-left: 0; padding-top: 32px; }
+  .detail-panel { padding: 24px 20px; }
+  .package-row { grid-template-columns: 1fr; }
+  .pkg { border-right: none; border-bottom: 1px solid var(--rule); }
+  .pkg:last-child { border-bottom: none; }
+  #cta { grid-template-columns: 1fr; }
+  .cta-left { padding: 60px 0; border-right: none; border-bottom: 1.5px solid var(--ink); align-items: flex-start; text-align: left; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-col { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); padding: 0 0 28px; margin: 0 0 28px; }
+  .footer-col:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .footer-bottom { flex-direction: column; }
+}
+</style>
+</head>
+<body>
 
-								Diese Tests sind in der neurologischen Praxis weit anerkannt und liefern wertvolle Einblicke in die Funktionsweise von Gehirn und Nervensystem. Sie helfen uns, selbst subtile Funktionsstörungen oder Ungleichgewichte zu erkennen – oft noch bevor sie sich im Alltag bemerkbar machen. Durch diese frühe Erkennung können wir gezielt gegensteuern, bevor sich Probleme verschlimmern. Auf Grundlage Ihrer Ergebnisse entwickeln wir einen individuellen, zielgerichteten Plan, der Ihnen hilft, sich effizienter zu bewegen, besser zu fühlen und Ihre Gesundheit und Leistungsfähigkeit wieder in die eigene Hand zu nehmen</p>
-							</div>
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Synapse<sup>2</sup>Move</a>
+  <button class="nav-mobile-toggle" id="mob-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#what"><span class="lang-en active">Neuroathletics</span><span class="lang-de">Neuroathletik</span></a></li>
+    <li><a href="services.html" style="color:var(--ink);font-weight:500;"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
+    <li><a href="index.html#workshops">Workshops</a></li>
+    <li><a href="index.html#about"><span class="lang-en active">About</span><span class="lang-de">Über</span></a></li>
+    <li>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
+      </div>
+    </li>
+    <li><a href="form.html" class="nav-cta-link"><span class="lang-en active">Book Call</span><span class="lang-de">Gespräch</span></a></li>
+  </ul>
+</nav>
 
-						
-						</div>
-								<div class="booking-note">
-									<button class="button booking-action" type="button" onclick="window.location.href='form.html'">
-										<span class="lang-en active"><strong style="font-size: 1.3em;">Investment in your health</strong></span>
-										<span class="lang-de"><strong style="font-size: 1.3em;">Investition in deine Gesundheit</strong></span>
-									</button>
-									<span class="lang-en active">- This comprehensive assessment gives you unprecedented insight into your nervous system function</span>
-									<span class="lang-de">- Diese umfassende Bewertung gibt dir beispiellose Einblicke in die Funtion deines Nervensystems</span>
-								</div>
-							</div>
-							<hr class="decorative">
-							<h2>
-								<span class="lang-en active"><strong>Personal Training</strong></span>
-								<span class="lang-de"><strong>Personal Training</strong></span>
-							</h2>
-							
-							<div class="lang-en active">
-								<h4>
-										What You'll Receive:
-									</h4>
-									<ul>
-										<li>
-											Goal-specific neurological assessment tailored to your needs</li>
-										
-										<li>
-											Integration of NAT principles into your existing routine</li>
-										<li>
-											Personalized exercise modifications and progressions</li>
-										<li>
-											Ongoing support and adjustments based on your progress</li>
-									</ul>
-									
-									<h4>
-										Perfect for:</h4>
-									<ul>
-										<li>
-											Athletes wanting to enhance performance through NAT</li>
-										<li>
-											Individuals with specific movement goals or limitations</li>
-										<li>
-											People seeking to integrate NAT into existing fitness routines</li>
-									</ul>
-								
-							</div>
-							
-							<div class="lang-de">
-								<h4>
-								Was Sie erhalten:
-								</h4>
-								<ul>
-								<li>
-									Zielorientierte neurologische Bewertung, abgestimmt auf Ihre individuellen Bedürfnisse
-								</li>
-								
-								<li>
-									Integration der NAT-Prinzipien in Ihre bestehende Routine
-								</li>
-								<li>
-									Individuelle Übungsanpassungen und -steigerungen
-								</li>
-								<li>
-									Laufende Unterstützung und Anpassungen basierend auf Ihrem Fortschritt
-								</li>
-								</ul>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <canvas id="page-canvas"></canvas>
+  <div class="page-hero-scrim"></div>
+  <div class="page-hero-body">
+    <div class="hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/ <span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></span>
+    </div>
+    <h1>
+      <span class="lang-en active"><span class="italic">What</span><br>We <span class="outlined">Offer</span></span>
+      <span class="lang-de"><span class="italic">Was</span><br>Wir <span class="outlined">Bieten</span></span>
+    </h1>
+    <p class="page-hero-sub">
+      <span class="lang-en active">Brain-first training for athletes, movers &amp; everyone in between.</span>
+      <span class="lang-de">Gehirn-orientiertes Training für Athleten und alle dazwischen.</span>
+    </p>
+  </div>
+</section>
 
-								<h4>
-								Perfekt für:
-								</h4>
-								<ul>
-								<li>
-									Athleten, die ihre Leistung durch NAT steigern möchten
-								</li>
-								<li>
-									Personen mit spezifischen Bewegungszielen oder Einschränkungen
-								</li>
-								<li>
-									Menschen, die NAT in bestehende Fitnessroutinen integrieren möchten
-								</li>
-								</ul>
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-cell">
+    <span class="cell-label"><span class="lang-en active">Starting Point</span><span class="lang-de">Startpunkt</span></span>
+    <span class="cell-value"><span class="lang-en active">Free Discovery Call</span><span class="lang-de">Kostenloses Gespräch</span></span>
+  </div>
+  <div class="intro-cell">
+    <span class="cell-label"><span class="lang-en active">Deep Dive</span><span class="lang-de">Tiefenanalyse</span></span>
+    <span class="cell-value">Neuroassessment — €145</span>
+  </div>
+  <div class="intro-cell">
+    <span class="cell-label"><span class="lang-en active">Ongoing Work</span><span class="lang-de">Laufendes Training</span></span>
+    <span class="cell-value"><span class="lang-en active">Personal Training — €98/h</span><span class="lang-de">Personal Training — €98/h</span></span>
+  </div>
+</div>
 
-								
-							</div>
-							
-							<button class="details-btn" onclick="toggleSection('section3', this)">
-								<span class="lang-en active">More Details & Pricing</span>
-								<span class="lang-de">Mehr Details & Preise</span>
-							</button>
-							
-							<div class="expandable-content" id="section3">
-								<div class="price-info">
-									<div class="price-amount">€98/h</div>
-									<div class="price-description">
-										<span class="lang-en active">Individual sessions</span>
-										<span class="lang-de">Einzelsessions</span>
-									</div>
-								</div>
-								
-								<div class="additional-info">
-									<div class="lang-en active">
-												<p>
-									Unlike the Neuroassessment, your first session focuses on a goal-specific evaluation that begins with an in-depth discussion of your history and training or rehabilitation goals. Based on this, we perform only the tests most relevant to your individual needs. What sets this session apart is that we don't just assess—we start right away. You'll begin with targeted exercises and immediate adjustments to your current training or rehab plan. Together, we'll review your existing program and explore how a neurocentric approach can be integrated to enhance your performance and results. Whether we create a new personalized plan or build on what you're already doing, every exercise will be chosen to improve the input your brain receives from your body and senses—helping you move, perform, and recover more effectively. </p>
+<!-- SERVICES -->
+<div class="container">
 
-									</div>
+  <!-- SERVICE 01: Free Call -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-index"></span>
+        <h2 class="service-title">
+          <span class="lang-en active"><span class="italic">Free</span><br>Discovery<br>Call</span>
+          <span class="lang-de"><span class="italic">Kostenloses</span><br>Erstgespräch</span>
+        </h2>
+        <span class="service-tag green"><span class="lang-en active">No Commitment</span><span class="lang-de">Unverbindlich</span></span>
+        <div class="price-badge">
+          <div class="price-amount">€0</div>
+          <div class="price-note">20 <span class="lang-en active">min · Online</span><span class="lang-de">Min · Online</span></div>
+        </div>
+        <a href="form.html" class="service-cta-free">
+          <span class="lang-en active">Book Free Call →</span>
+          <span class="lang-de">Gespräch buchen →</span>
+        </a>
+      </div>
+      <div class="service-right">
+        <div class="lang-en active">
+          <p>Curious about how Neuroathletic Training can support your unique goals? Whether you're dealing with chronic pain, recovering from injury, seeking better movement, or looking to enhance performance — this call is your chance to connect directly.</p>
+          <p>We'll talk through your situation, I'll explain how NAT works in practice, and together we'll decide if it's the right fit. <strong>No pressure, no commitment.</strong></p>
+        </div>
+        <div class="lang-de">
+          <p>Neugierig, wie Neuroathletiktraining deine Ziele unterstützen kann? Egal, ob chronische Schmerzen, Verletzungsrehabilitation oder Leistungssteigerung — dieser Anruf ist deine Chance, direkt in Kontakt zu treten.</p>
+          <p>Wir sprechen über deine Situation, ich erkläre NAT in der Praxis, und gemeinsam entscheiden wir, ob es das Richtige für dich ist. <strong>Kein Druck, kein Commitment.</strong></p>
+        </div>
 
-									<div class="lang-de">
-										<p>
-											Im Gegensatz zum Neuroassessment steht in deiner ersten Sitzung dein persönliches Ziel im Mittelpunkt. Wir starten mit einem ausführlichen Gespräch über deine Vorgeschichte und deine Trainings- oder Reha-Ziele. Danach machen wir nur die Tests, die für dich wirklich relevant sind.
+        <p class="list-head"><span class="lang-en active">Perfect For</span><span class="lang-de">Perfekt für</span></p>
+        <ul class="check-list">
+          <li><span class="lang-en active">Anyone curious about neurological approaches to pain and performance</span><span class="lang-de">Alle, die neugierig auf neurologische Ansätze sind</span></li>
+          <li><span class="lang-en active">People who want to understand their options before committing</span><span class="lang-de">Menschen, die erst verstehen möchten, bevor sie buchen</span></li>
+          <li><span class="lang-en active">Those seeking a second opinion on their current training approach</span><span class="lang-de">Wer eine zweite Meinung zum aktuellen Ansatz sucht</span></li>
+          <li><span class="lang-en active">Anyone starting from zero — beginners welcome</span><span class="lang-de">Alle, die ganz am Anfang stehen</span></li>
+        </ul>
 
-											 Du bekommst gezielte Übungen und sofortige Anpassungen für dein aktuelles Training oder deinen Rehaplan. Gemeinsam schauen wir uns an, was du bisher machst, und überlegen, wie wir mit einem neurozentrierten Ansatz deine Leistung und Ergebnisse noch weiter steigern können.
+        <div class="detail-panel" style="margin-top:36px;">
+          <span class="detail-panel-label"><span class="lang-en active">Format</span><span class="lang-de">Format</span></span>
+          <p><span class="lang-en active">All sessions are held online via Google Meet. Once you submit the form you'll receive a calendar link to pick a slot that works for you.</span><span class="lang-de">Alle Sessions finden online über Google Meet statt. Nach dem Absenden erhältst du einen Kalenderlink für die Terminwahl.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-											Ob wir dafür einen komplett neuen Plan erstellen oder dein bestehendes Programm optimieren – jede Übung ist so gewählt, dass dein Gehirn den best möglichen Input bekommt. So kannst du dich leichter bewegen, mehr leisten und schneller regenerieren.</p>
-									
-									</div>
+  <!-- SERVICE 02: Neuroassessment -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-index"></span>
+        <h2 class="service-title">
+          <span class="lang-en active">Neuro<span class="italic">assess</span><br>ment</span>
+          <span class="lang-de">Neuro<span class="italic">assess</span><br>ment</span>
+        </h2>
+        <span class="service-tag plum"><span class="lang-en active">Functional Analysis</span><span class="lang-de">Funktionale Analyse</span></span>
+        <div class="price-badge">
+          <div class="price-amount">€145</div>
+          <div class="price-note">90 <span class="lang-en active">min · In Person</span><span class="lang-de">Min · Vor Ort</span></div>
+        </div>
+        <a href="form.html" class="service-cta-link">
+          <span class="lang-en active">Book Assessment →</span>
+          <span class="lang-de">Assessment buchen →</span>
+        </a>
+      </div>
+      <div class="service-right">
+        <div class="lang-en active">
+          <p>A detailed, science-based evaluation that uncovers how your nervous system is functioning — and where it needs support. This session combines well-established tests from clinical neurology to give a clear picture of your brain-body connection.</p>
+          <p>By detecting subtle dysfunctions or imbalances — often <strong>before they become noticeable in daily life</strong> — we can take proactive steps and build a targeted plan.</p>
+        </div>
+        <div class="lang-de">
+          <p>Eine detaillierte, wissenschaftlich fundierte Untersuchung, die zeigt, wie dein Nervensystem arbeitet. Diese Session kombiniert bewährte Tests aus der klinischen Neurologie für ein klares Bild deiner Gehirn-Körper-Verbindung.</p>
+          <p>Durch frühzeitige Erkennung subtiler Dysfunktionen — oft <strong>bevor sie sich im Alltag bemerkbar machen</strong> — können wir gezielt gegensteuern.</p>
+        </div>
 
-									<h4>
-										<span class="lang-en active">Session Duration & Format:</span>
-										<span class="lang-de">Session-Dauer & Format:</span>
-									</h4>
-									<ul>
-										<li>
-											<span class="lang-en active">Sessions are individually timed and can take place either online or at a location that best suits the goals and content of the session</span>
-											<span class="lang-de">Sessions sind individuell getaktet und können entweder online oder an einem Ort stattfinden, der den Zielen und dem Inhalt der Session am besten entspricht</span>
-										</li>
-										<li>
-											<span class="lang-en active">For long-term collaboration, feel free to reach out for a personalized offer</span>
-											<span class="lang-de">Für langfristige Zusammenarbeit melde dich gerne für ein personalisiertes Angebot</span>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="booking-note">
-									<span class="lang-en active"><strong>Package Options:</strong> Single sessions available, or save with 4-session packages (€350) or 8-session packages (€650).</span>
-									<span class="lang-de"><strong>Paket-Optionen:</strong> Einzelsessions verfügbar, oder spare mit 4-Session-Paketen (€350) oder 8-Session-Paketen (€650).</span>
-								</div>
-							</div>
+        <p class="list-head"><span class="lang-en active">What's Assessed</span><span class="lang-de">Was untersucht wird</span></p>
+        <ul class="check-list">
+          <li><span class="lang-en active"><strong>Vital signs</strong> — blood pressure, heart rate, baseline indicators</span><span class="lang-de"><strong>Vitalzeichen</strong> — Blutdruck, Herzfrequenz, Basisindikatoren</span></li>
+          <li><span class="lang-en active"><strong>Breathing patterns</strong> — regulation, rhythm, nervous system tone</span><span class="lang-de"><strong>Atemmuster</strong> — Regulation, Rhythmus, Nervensystemzustand</span></li>
+          <li><span class="lang-en active"><strong>Gait analysis</strong> — walking reveals key brain function insights</span><span class="lang-de"><strong>Ganganalyse</strong> — Gehen liefert wichtige Gehirnfunktionseinblicke</span></li>
+          <li><span class="lang-en active"><strong>Sensory testing</strong> — touch, temperature, proprioception processing</span><span class="lang-de"><strong>Sensorische Tests</strong> — Berührung, Temperatur, Propriozeption</span></li>
+          <li><span class="lang-en active"><strong>Cerebellar tests</strong> — balance, motor control, coordination</span><span class="lang-de"><strong>Kleinhirntests</strong> — Gleichgewicht, motorische Kontrolle, Koordination</span></li>
+          <li><span class="lang-en active"><strong>All 12 cranial nerves</strong> — eye movement, facial sensation, hearing</span><span class="lang-de"><strong>Alle 12 Hirnnerven</strong> — Augenbewegung, Gesichtsempfindung, Hören</span></li>
+          <li><span class="lang-en active"><strong>Visual testing</strong> — tracking, fixation, visual processing</span><span class="lang-de"><strong>Visueller Test</strong> — Verfolgung, Fixierung, Verarbeitung</span></li>
+        </ul>
 
-						</section>
+        <div class="detail-panel">
+          <span class="detail-panel-label"><span class="lang-en active">Ideal For</span><span class="lang-de">Ideal für</span></span>
+          <ul>
+            <li><span class="lang-en active">Athletes establishing a neurological baseline across seasons</span><span class="lang-de">Athleten, die eine neurologische Basislinie erstellen möchten</span></li>
+            <li><span class="lang-en active">Individuals with chronic pain seeking root cause analysis</span><span class="lang-de">Personen mit chronischen Schmerzen auf der Suche nach Ursachen</span></li>
+            <li><span class="lang-en active">People in rehabilitation who want comprehensive evaluation</span><span class="lang-de">Personen in der Rehabilitation</span></li>
+            <li><span class="lang-en active">Anyone interested in preventive health and early intervention</span><span class="lang-de">Alle, die an Prävention und Frühintervention interessiert sind</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-					</div>
+  <!-- SERVICE 03: Personal Training -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-left">
+        <span class="service-index"></span>
+        <h2 class="service-title">
+          <span class="lang-en active">Personal<br><span class="italic">&amp; Athletic</span><br>Training</span>
+          <span class="lang-de">Personal<br><span class="italic">&amp; Athletik</span><br>Training</span>
+        </h2>
+        <span class="service-tag gold"><span class="lang-en active">Neurocentric · Ongoing</span><span class="lang-de">Neurozentriert · Laufend</span></span>
+        <div class="price-badge">
+          <div class="price-amount">€98<span style="font-size:1.1rem;font-family:var(--fm);font-weight:300;">/h</span></div>
+          <div class="price-note"><span class="lang-en active">Individual sessions</span><span class="lang-de">Einzelsessions</span></div>
+        </div>
+        <a href="form.html" class="service-cta-link">
+          <span class="lang-en active">Start Training →</span>
+          <span class="lang-de">Training starten →</span>
+        </a>
+      </div>
+      <div class="service-right">
+        <div class="lang-en active">
+          <p>Unlike the Neuroassessment, your first session focuses on a goal-specific evaluation — starting with an in-depth discussion of your history and training or rehabilitation goals. We perform only the tests most relevant to your individual needs.</p>
+          <p>What sets this apart: <strong>we don't just assess, we start right away.</strong> You'll leave with targeted exercises and immediate adjustments to your current program.</p>
+        </div>
+        <div class="lang-de">
+          <p>Im Gegensatz zum Neuroassessment steht dein persönliches Ziel im Mittelpunkt — beginnend mit einem ausführlichen Gespräch über Vorgeschichte und Trainingsziele. Wir machen nur die Tests, die für dich wirklich relevant sind.</p>
+          <p>Was es besonders macht: <strong>Wir fangen sofort an.</strong> Du gehst mit gezielten Übungen und Anpassungen für dein aktuelles Programm nach Hause.</p>
+        </div>
 
-				<!-- Footer -->
-					<footer id="footer">
-				<section>
-					<h1 style="font-size: 1.8em;">
-						<strong>
-							<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
-							<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
-						</strong>
-					</h1>
-					<p><strong>
-						<span class="lang-en active">Book your session and let's make it happen.</span>
-						<span class="lang-de">Buche deine Session und lass es uns angehen</span>
-					</strong></p>
-					<ul class="actions">
-						<li><a href="form.html" class="button"><strong>
-							<span class="lang-en active">Get Started!</span>
-							<span class="lang-de">Jetzt starten!</span>
-						</strong></a></li>
-					</ul>
-				</section>
-				<section>
-					<h2>
-						<span class="lang-en active">Contact</span>
-						<span class="lang-de">Kontakt</span>
-					</h2>
-					<dl class="alt">
-						<dt>
-							<span class="lang-en active">Address</span>
-							<span class="lang-de">Adresse</span>
-						</dt>
-						<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-						<dt>
-							<span class="lang-en active">Phone</span>
-							<span class="lang-de">Telefon</span>
-						</dt>
-						<dd>+49 152 21319336</dd>
-						<dt>Email</dt>
-						<dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
-					</dl>
-					<ul class="icons" style="justify-content: center; align-items: center;">
-						<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-					</ul>
-					<style>
-					@media (max-width: 600px) {
-						#footer .icons {
-							display: flex !important;
-							justify-content: center !important;
-							align-items: center !important;
-							padding-left: 0 !important;
-						}
-					}
-					</style>
-				</section>
-				<p class="copyright"> 
-					<a href="index.html"><strong>HOME</strong></a> <br> 
-					&copy; Stamatios Papavasiliou 2025<br> 
-					<a href="impressum.html">Impressum</a> <br> 
-					<a href="datenschutz.html">
-						<span class="lang-en active">Privacy Policy</span>
-						<span class="lang-de">Datenschutzerklärung</span>
-					</a> <br>   
-					Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
-				</p>
-			</footer>
-			</div>
+        <p class="list-head"><span class="lang-en active">What You'll Receive</span><span class="lang-de">Was du erhältst</span></p>
+        <ul class="check-list">
+          <li><span class="lang-en active">Goal-specific neurological assessment tailored to your needs</span><span class="lang-de">Zielorientierte neurologische Bewertung, abgestimmt auf dich</span></li>
+          <li><span class="lang-en active">Integration of NAT principles into your existing routine</span><span class="lang-de">Integration der NAT-Prinzipien in deine bestehende Routine</span></li>
+          <li><span class="lang-en active">Personalized exercise modifications and progressions</span><span class="lang-de">Individuelle Übungsanpassungen und -steigerungen</span></li>
+          <li><span class="lang-en active">Ongoing support and adjustments based on your progress</span><span class="lang-de">Laufende Unterstützung basierend auf deinem Fortschritt</span></li>
+        </ul>
 
-		<!-- Scripts -->
-		<script>
-			// Toggle expandable sections
-			function toggleSection(sectionId, button) {
-				const section = document.getElementById(sectionId);
-				const isExpanded = section.classList.contains('expanded');
-				
-				if (isExpanded) {
-					section.classList.remove('expanded');
-					button.classList.remove('active');
-				} else {
-					section.classList.add('expanded');
-					button.classList.add('active');
-				}
-			}
+        <div class="detail-panel">
+          <span class="detail-panel-label"><span class="lang-en active">Package Options</span><span class="lang-de">Paket-Optionen</span></span>
+          <div class="package-row">
+            <div class="pkg">
+              <div class="pkg-name"><span class="lang-en active">Single</span><span class="lang-de">Einzeln</span></div>
+              <div class="pkg-price">€98</div>
+              <div class="pkg-detail">/ <span class="lang-en active">session</span><span class="lang-de">Session</span></div>
+            </div>
+            <div class="pkg">
+              <div class="pkg-name">4 <span class="lang-en active">Sessions</span><span class="lang-de">Sessions</span></div>
+              <div class="pkg-price">€350</div>
+              <div class="pkg-detail">€87.50 / <span class="lang-en active">session</span><span class="lang-de">Session</span></div>
+            </div>
+            <div class="pkg">
+              <div class="pkg-name">8 <span class="lang-en active">Sessions</span><span class="lang-de">Sessions</span></div>
+              <div class="pkg-price">€650</div>
+              <div class="pkg-detail">€81.25 / <span class="lang-en active">session</span><span class="lang-de">Session</span></div>
+            </div>
+          </div>
+          <p style="margin-top:16px;font-size:12px;">
+            <span class="lang-en active">Sessions are individually timed and can take place in person or online. For long-term collaboration, reach out for a personalized offer.</span>
+            <span class="lang-de">Sessions sind individuell getaktet — vor Ort oder online. Für langfristige Zusammenarbeit melde dich für ein personalisiertes Angebot.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-			// Session Storage Language Management System
-			let currentLanguage = 'en';
+</div><!-- /container -->
 
-			function switchLanguage(lang) {
-				if (currentLanguage === lang) return;
-				
-				currentLanguage = lang;
-				
-				// Update button states
-				document.querySelectorAll('.lang-btn').forEach(btn => {
-					btn.classList.remove('active');
-					if (btn.dataset.lang === lang) {
-						btn.classList.add('active');
-					}
-				});
-				
-				// Hide all language content
-				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-					element.classList.remove('active');
-				});
-				
-				// Show selected language content
-				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-					element.classList.add('active');
-				});
-				
-				// Update page title and meta
-				updatePageMeta(lang);
-				
-				// Save preference to session storage (clears when browser closes)
-				sessionStorage.setItem('preferred-language', lang);
-			}
+<!-- CTA -->
+<section id="cta">
+  <div class="container" style="display:contents;">
+    <div class="cta-left container">
+      <h2>
+        <span class="lang-en active">Your Goals<br>Are <span class="italic">Within</span><br>Reach</span>
+        <span class="lang-de">Deine Ziele<br>Sind <span class="italic">In</span><br>Reichweite</span>
+      </h2>
+      <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
+      <a href="form.html" class="btn-ink" style="display:inline-block;">
+        <span class="lang-en active">Book Free Call &#8594;</span>
+        <span class="lang-de">Gespräch buchen &#8594;</span>
+      </a>
+    </div>
+    <div class="cta-right">
+      <canvas id="cta-canvas"></canvas>
+      <p class="cta-kicker"><span class="lang-en active">Ready to start?</span><span class="lang-de">Bereit anzufangen?</span></p>
+      <h2>
+        <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
+        <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
+      </h2>
+      <a href="form.html" class="btn-cream">
+        <span class="lang-en active">Book Free 20 Min Call</span>
+        <span class="lang-de">Kostenloses Gespräch buchen</span>
+      </a>
+      <p class="cta-right-note">
+        <span class="lang-en active">Munich · In Person + Online</span>
+        <span class="lang-de">München · Persönlich + Online</span>
+      </p>
+    </div>
+  </div>
+</section>
 
-			function updatePageMeta(lang) {
-				const translations = {
-					en: {
-						title: "Synapse²Move | Services"
-					},
-					de: {
-						title: "Synapse²Move | Leistungen"
-					}
-				};
-				
-				document.title = translations[lang].title;
-			}
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">Synapse<sup>2</sup>Move</a>
+        <p class="footer-desc"><span class="lang-en active">Neuroathletic training in Munich. Creating connections — vibrantly alive.</span><span class="lang-de">Neuroathletiktraining in München. Wo Denken bewegt.</span></p>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Navigation</span><span class="lang-de">Navigation</span></h4>
+        <ul>
+          <li><a href="Neuro.html"><span class="lang-en active">Neuroathletic Training</span><span class="lang-de">Neuroathletiktraining</span></a></li>
+          <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
+          <li><a href="openworkshps.html"><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></a></li>
+          <li><a href="workshops.html"><span class="lang-en active">Neuro Workshops</span><span class="lang-de">Neuro Workshops</span></a></li>
+          <li><a href="divingarts.html">Diving into Arts</a></li>
+          <li><a href="form.html"><span class="lang-en active">Get Started</span><span class="lang-de">Jetzt starten</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Contact</span><span class="lang-de">Kontakt</span></h4>
+        <dl>
+          <dt><span class="lang-en active">Address</span><span class="lang-de">Adresse</span></dt>
+          <dd>Ganghoferstraße 17<br>80339 München</dd>
+          <dt><span class="lang-en active">Phone</span><span class="lang-de">Telefon</span></dt>
+          <dd><a href="tel:+4915221319336">+49 152 21319336</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stamatios Papavasiliou</span>
+      <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html"><span class="lang-en active">Privacy Policy</span><span class="lang-de">Datenschutz</span></a></span>
+    </div>
+  </div>
+</footer>
 
-			function initializeLanguage() {
-				// Load saved language preference from session storage
-				const savedLang = sessionStorage.getItem('preferred-language');
-				if (savedLang && savedLang !== currentLanguage) {
-					switchLanguage(savedLang);
-				}
-			}
+<script>
+/* ── LANGUAGE ── */
+let currentLang = 'en';
+function switchLanguage(lang) {
+  if (currentLang === lang) return;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
+  sessionStorage.setItem('preferred-language', lang);
+}
+const saved = sessionStorage.getItem('preferred-language');
+if (saved && saved !== 'en') switchLanguage(saved);
 
-			// Initialize on page load
-			document.addEventListener('DOMContentLoaded', function() {
-				initializeLanguage();
-			});
-		</script>
+/* ── MOBILE NAV ── */
+document.getElementById('mob-toggle').addEventListener('click', () => {
+  document.getElementById('main-nav').classList.toggle('mobile-nav-open');
+});
 
-	</body>
+/* ── NEURAL CANVAS ── */
+function makeNeuralCanvas(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    W = canvas.width  = Math.max(rect.width  || canvas.offsetWidth,  100);
+    H = canvas.height = Math.max(rect.height || canvas.offsetHeight, 100);
+    nodes = Array.from({length: 55}, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.65, vy: (Math.random() - 0.5) * 0.45,
+      pulse: Math.random() * Math.PI * 2,
+      kind: Math.random() < 0.2 ? 'b' : 'a'
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+      n.pulse += 0.1;
+    });
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 140) {
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(61,107,79,' + ((1 - d/140) * 0.3) + ')';
+          ctx.lineWidth = 0.6; ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n => {
+      const g = (Math.sin(n.pulse) + 1) * 0.5;
+      ctx.beginPath(); ctx.arc(n.x, n.y, 1 + g * 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = n.kind === 'b'
+        ? 'rgba(92,45,110,' + (0.4 + g * 0.35) + ')'
+        : 'rgba(61,107,79,' + (0.35 + g * 0.3) + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  requestAnimationFrame(() => { resize(); draw(); });
+  window.addEventListener('resize', resize, { passive: true });
+}
+
+makeNeuralCanvas('page-canvas');
+makeNeuralCanvas('cta-canvas');
+</script>
+</body>
 </html>

@@ -1,440 +1,728 @@
 <!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Thank You - Neuroathletictraining</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-			/* Language Switch Styles */
-			.language-switch {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				z-index: 10000;
-				background: linear-gradient(135deg, #edbf797c, #60bca381);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 25px;
-				padding: 3px;
-				display: flex;
-				align-items: center;
-				gap: 2px;
-				transition: all 0.3s ease;
-				opacity: 0.7;
-			}
-
-			.language-switch:hover {
-				opacity: 1;
-				background: linear-gradient(135deg, #edbf79, #60bca3);
-			}
-
-			.lang-btn {
-				background: transparent;
-				border: none;
-				color: rgba(255, 255, 255, 0.8);
-				padding: 0px 0px;
-				cursor: pointer;
-				border-radius: 20px;
-				transition: all 0.3s ease;
-				font-size: 0.50em;
-				font-weight: 800;
-				letter-spacing: 0.5px;
-			}
-
-			.lang-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-			}
-
-			.lang-btn.active {
-				background: #edbf79;
-				color: white;
-				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
-			}
-
-			/* Hide inactive language content */
-			.lang-content {
-				display: none;
-			}
-
-			.lang-content.active {
-				display: block;
-			}
-
-			/* Inline language spans */
-			.lang-en, .lang-de {
-				display: none;
-			}
-
-			.lang-en.active, .lang-de.active {
-				display: inline;
-			}
-
-			@media (max-width: 600px) {
-				.language-switch {
-					top: 5px;
-					right: 1px;
-					scale: 0.85;
-					padding: 2px;
-					flex-direction: column;
-					gap: 1px;
-				}
-				
-				.lang-btn {
-					padding: 0px 7px;
-					font-size: 0.65em;
-					border-radius: 15px;
-				}
-			}
-
-			/* Thank you page specific styles */
-			.thank-you-container {
-				text-align: center;
-				padding: 40px 20px;
-				max-width: 800px;
-				margin: 0 auto;
-			}
-
-			.success-icon {
-				font-size: 4em;
-				color: #fbfcfb;
-				margin-bottom: 20px;
-				animation: fadeInScale 0.8s ease-out;
-			}
-
-			.thank-you-message {
-				background: rgba(255, 255, 255, 0.1);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				border-radius: 15px;
-				padding: 30px;
-				margin: 30px 0;
-				animation: fadeInUp 1s ease-out 0.2s both;
-			}
-
-			.info-box {
-				background: transparent;
-				border: 2px solid rgba(214, 209, 202, 0.3);
-				border-radius: 10px;
-				padding: 20px;
-				margin: 20px 0;
-				animation: fadeInUp 1s ease-out 0.4s both;
-			}
-
-			.next-steps {
-				background: rgba(96, 188, 164, 0.2);
-				border: 1px solid rgba(96, 188, 164, 0.3);
-				border-radius: 10px;
-				padding: 20px;
-				margin: 20px 0;
-				text-align: left;
-				animation: fadeInUp 1s ease-out 0.6s both;
-			}
-
-			.contact-info {
-				background: rgba(255, 255, 255, 0.05);
-				border-radius: 10px;
-				padding: 20px;
-				margin: 20px 0;
-				animation: fadeInUp 1s ease-out 0.8s both;
-			}
-
-			.action-buttons {
-				margin: 30px 0;
-				animation: fadeInUp 1s ease-out 1s both;
-			}
-
-			.action-buttons .button {
-				margin: 0 10px 10px 10px;
-				display: inline-block;
-			}
-
-			@keyframes fadeInScale {
-				from {
-					opacity: 0;
-					transform: scale(0.5);
-				}
-				to {
-					opacity: 1;
-					transform: scale(1);
-				}
-			}
-
-			@keyframes fadeInUp {
-				from {
-					opacity: 0;
-					transform: translateY(30px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			/* Mobile adjustments */
-			@media (max-width: 600px) {
-				.thank-you-container {
-					padding: 20px 10px;
-				}
-				
-				.success-icon {
-					font-size: 4em;
-				}
-				
-				.thank-you-message,
-				.info-box,
-				.next-steps,
-				.contact-info {
-					padding: 20px 15px;
-					margin: 15px 0;
-				}
-				
-				.action-buttons .button {
-					display: block;
-					margin: 10px 0;
-					width: 100%;
-				}
-			}
-		</style>
-	</head>
-	<body class="is-preload">
-
-		<!-- Language Switch -->
-		<div class="language-switch">
-			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
-			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
-		</div>
-
-		<!-- Wrapper -->
-		<div id="wrapper">
-
-			<!-- Header -->
-			<header id="header">
-		<h1 id="thank-you" style="font-size: 120px;">
-    <span class="lang-en active">Thank You!</span>
-    <span class="lang-de">Vielen Dank!</span>
-</h1>
-
-<style>
-    @media (max-width: 600px) {
-        #thank-you {
-            font-size: 32px !important;
-        }
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+  <title>Synapse²Move | Thank You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --paper: #ede8dc;
+      --ink: #1a1a14;
+      --ink-muted: #5a5850;
+      --ink-faint: #9a9488;
+      --rule: rgba(26,26,20,0.12);
+      --green: #3d6b4f;
+      --green-light: #e2ede7;
+      --plum: #5c2d6e;
+      --plum-light: #ede4f2;
+      --gold: #c49a2a;
+      --fd: 'Playfair Display', Georgia, serif;
+      --fb: 'Space Grotesk', system-ui, sans-serif;
+      --fm: 'Space Mono', monospace;
     }
-</style>
-			</header>
 
-			<!-- Main -->
-			<div id="main" style="background: transparent;">
-				<section class="main">
-					<div class="thank-you-container">
-						
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-						<!-- Main Thank You Message -->
-						<div class="thank-you-message">
-							<h2 style="color: white; margin-bottom: 15px;">
-								<span class="lang-en active">Your appointment request has been successfully submitted!</span>
-								<span class="lang-de">Deine Terminanfrage wurde erfolgreich übermittelt!</span>
-							</h2>
-							<p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
-								<span class="lang-en active">We have received your booking request and will get back to you shortly.</span>
-								<span class="lang-de">Wir haben deine Buchungsanfrage erhalten und werden uns bald bei dir melden.</span>
-							</p>
-						</div>
+    body {
+      font-family: var(--fb);
+      background: #141009;
+      color: var(--cream);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-						<!-- What Happens Next -->
-						<div class="info-box">
-							<h3 style="color: white; margin-bottom: 15px;">
-								<span class="lang-en active">What happens next?</span>
-								<span class="lang-de">Was passiert als nächstes?</span>
-							</h3>
-							<p style="color: rgba(255, 255, 255, 0.9);">
-								<span class="lang-en active">  We’ll review your request and get back to you within 24 hours to confirm your booking details.
-																Your confirmation will include all payment information.
+    /* LANG */
+    .lang-en, .lang-de { display: none; }
+    .lang-en.active, .lang-de.active { display: block; }
+    span.lang-en, span.lang-de { display: none; }
+    span.lang-en.active, span.lang-de.active { display: inline; }
 
-																</span>
-								<span class="lang-de"> Wir prüfen deine Anfrage und melden uns innerhalb von 24 Stunden, um die Buchungsdetails zu bestätigen.
-														In deiner Bestätigung erhältst du alle Zahlungsinformationen.
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(20,16,9,0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+    }
+    .nav-logo {
+      font-family: var(--fd);
+      font-weight: 900;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo sup { font-size: 10px; vertical-align: super; font-family: var(--fm); opacity: 0.7; }
+    .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+    .nav-links li { border-left: 1px solid rgba(255,255,255,0.08); }
+    .nav-links li:first-child { border-left: none; }
+    .nav-links a {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      padding: 0 16px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta-link {
+      background: rgba(255,255,255,0.08) !important;
+      color: rgba(255,255,255,0.75) !important;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .nav-cta-link:hover { background: rgba(255,255,255,0.15) !important; color: #fff !important; }
+    .lang-switch { display: flex; padding: 0 8px; }
+    .lang-btn {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.3);
+      padding: 0 8px;
+      height: 36px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .lang-btn.active { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.4); }
 
-														</span>
-							</p>
-						</div>
+    /* HERO-STYLE BG */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 15% 65%, #1e0f2a 0%, transparent 60%),
+        radial-gradient(ellipse 55% 70% at 85% 35%, #0e2218 0%, transparent 60%),
+        linear-gradient(155deg, #141009 0%, #1c1510 100%);
+      pointer-events: none;
+    }
+    .page-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(to bottom, rgba(20,16,9,0.3) 0%, rgba(20,16,9,0.05) 50%, rgba(20,16,9,0.7) 100%);
+      pointer-events: none;
+    }
+    #bg-canvas {
+      position: fixed;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45%;
+      height: 65%;
+      z-index: 0;
+      opacity: 0.5;
+      pointer-events: none;
+    }
 
-						<!-- Next Steps -->
-						<div class="next-steps">
-							<h3 style="color: white; margin-bottom: 15px;">
-								<span class="lang-en active">Important Information</span>
-								<span class="lang-de">Wichtige Informationen</span>
-							</h3>
-							<ul style="color: rgba(255, 255, 255, 0.9); text-align: left; padding-left: 20px;">
-								<li class="lang-en active"><br>&bull; Check your email (including spam folder) for confirmation</li>
-								<li class="lang-en active"><br>&bull; Prepare any relevant medical history or questions</li>
-								<li class="lang-en active"><br>&bull; If possible, wear clothing that is comfortable to move in and fits closely</li>
-								<li class="lang-en active"><br>&bull; Arrive 5-10 minutes early for your appointment</li>
-								
-								<li class="lang-de"><br>&bull; Überprüfe deine E-Mails (auch den Spam-Ordner) für die Bestätigung</li>
-								<li class="lang-de"><br>&bull; Bereite relevante Krankengeschichte oder Fragen vor</li>
-								<li class="lang-de"><br>&bull; Trage wenn möglich Kleidung, in der du dich gut bewegen kannst und eng anliegt</li>
-								<li class="lang-de"><br>&bull; Komme 5-10 Minuten früher zu deinem Termin</li>
-							</ul>
-						</div>
+    /* MAIN LAYOUT */
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-						
+    /* STATUS HEADER SECTION */
+    .status-section {
+      padding: calc(56px + 72px) 48px 0;
+      max-width: 1100px;
+    }
+    .status-eyebrow {
+      font-family: var(--fm);
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: slideUp 0.8s 0.2s forwards;
+    }
+    .status-eyebrow::before { content: ''; width: 40px; height: 1px; background: rgba(255,255,255,0.2); display: block; }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(61,107,79,0.15);
+      border: 1px solid rgba(61,107,79,0.35);
+      border-radius: 2px;
+      padding: 4px 12px;
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6ec9a4;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: slideUp 0.8s 0.35s forwards;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #6ec9a4;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
 
-						<!-- Action Buttons -->
-						<div class="action-buttons">
-							<a href="index.html" class="button primary">
-								<span class="lang-en active">Back to Home</span>
-								<span class="lang-de">Zurück zur Startseite</span>
-							</a>
-							<a href="form.html" class="button">
-								<span class="lang-en active">Book Another Appointment</span>
-								<span class="lang-de">Weiteren Termin buchen</span>
-							</a>
-						</div>
+    .hero-title {
+      font-family: var(--fd);
+      font-weight: 900;
+      font-size: clamp(64px, 8vw, 108px);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      animation: slideUp 1s 0.5s forwards;
+    }
+    .hero-title .italic { font-style: italic; color: rgba(255,255,255,0.5); }
+    .hero-title .outlined {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1.2px rgba(255,255,255,0.6);
+    }
+    .hero-tagline {
+      font-family: var(--fd);
+      font-style: italic;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0;
+      opacity: 0;
+      animation: slideUp 0.8s 0.75s forwards;
+    }
 
-					</div>
-				</section>
-			</div>
+    /* DIVIDER RULE */
+    .rule {
+      border: none;
+      border-top: 1.5px solid rgba(245,240,232,0.1);
+      margin: 56px 0;
+      opacity: 0;
+      animation: fadeIn 0.6s 1s forwards;
+    }
 
-			<!-- Footer -->
-			<footer id="footer">
-                <h1 style="font-size: 1.8em;">
-								<strong>
-									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
-									<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
-								</strong>
-								</h1>
-				<section style="text-align: center;">
-					<h2>
-						<span class="lang-en active">Follow Us</span>
-						<span class="lang-de">Folge uns</span>
-					</h2>
-					<ul class="icons" style="justify-content: center; align-items: center; display: flex; padding-left: 0;">
-						<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-					</ul>
-				</section>
-				<p class="copyright"> 
-					<a href="index.html"><strong>HOME</strong></a> <br> 
-					&copy; Stamatios Papavasiliou 2025<br> 
-					<a href="impressum.html">Impressum</a> <br> 
-					<a href="datenschutz.html">
-						<span class="lang-en active">Privacy Policy</span>
-						<span class="lang-de">Datenschutzerklärung</span>
-					</a> <br>   
-					Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
-				</p>
-			</footer>
+    /* CONTENT GRID */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1.5px solid rgba(245,240,232,0.1);
+      opacity: 0;
+      animation: slideUp 0.8s 1.1s forwards;
+    }
+    .content-cell {
+      padding: 2.8rem 0;
+      border-right: 1px solid rgba(245,240,232,0.08);
+      padding-right: 2.5rem;
+      margin-right: 0;
+    }
+    .content-cell:not(:first-child) { padding-left: 2.5rem; }
+    .content-cell:last-child { border-right: none; }
 
-		</div>
+    .cell-label {
+      font-family: var(--fm);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 10px;
+    }
+    .cell-title {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .cell-body {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      font-weight: 300;
+    }
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+    /* NEXT STEPS STRIP */
+    .steps-section {
+      border-top: 1.5px solid rgba(245,240,232,0.1);
+      padding: 56px 0;
+      opacity: 0;
+      animation: slideUp 0.8s 1.3s forwards;
+    }
+    .steps-label {
+      font-family: var(--fm);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(92,45,110,0.85);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .steps-label::after { content: ''; flex: 0 0 28px; height: 1px; background: rgba(92,45,110,0.5); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .step-item {
+      display: grid;
+      grid-template-columns: 1px 1fr;
+      gap: 0 1.5rem;
+      padding-right: 2rem;
+    }
+    .step-line {
+      width: 1px;
+      background: rgba(245,240,232,0.1);
+      position: relative;
+      align-self: stretch;
+    }
+    .step-line::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -3px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(92,45,110,0.9);
+    }
+    .step-num {
+      font-family: var(--fm);
+      font-size: 10px;
+      color: rgba(92,45,110,0.7);
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .step-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      font-weight: 300;
+    }
 
-		<script>
-			// Language Management System
-			let currentLanguage = 'en';
+    /* CTA ROW */
+    .cta-row {
+      border-top: 1.5px solid rgba(245,240,232,0.1);
+      padding: 56px 0 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      animation: slideUp 0.8s 1.5s forwards;
+    }
+    .cta-left-text h3 {
+      font-family: var(--fd);
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(28px, 3vw, 40px);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .cta-left-text p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .cta-btns { display: flex; gap: 0; }
+    .btn-ink {
+      font-family: var(--fm);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      background: var(--plum);
+      color: #fff;
+      border: 1.5px solid var(--plum);
+      transition: background 0.2s, border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-ink:hover { background: #431f52; border-color: #431f52; }
+    .btn-ghost {
+      font-family: var(--fm);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      background: transparent;
+      color: rgba(255,255,255,0.55);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      border-left: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 
-			function switchLanguage(lang) {
-				if (currentLanguage === lang) return;
-				
-				currentLanguage = lang;
-				
-				// Update button states
-				document.querySelectorAll('.lang-btn').forEach(btn => {
-					btn.classList.remove('active');
-					if (btn.dataset.lang === lang) {
-						btn.classList.add('active');
-					}
-				});
-				
-				// Hide all language content
-				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-					element.classList.remove('active');
-				});
-				
-				// Show selected language content
-				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-					element.classList.add('active');
-				});
-				
-				// Update page title
-				const titles = {
-					en: "Synapse²Move | Thank You",
-					de: "Synapse²Move | Vielen Dank"
-				};
-				document.title = titles[lang];
-				
-				// Store preference
-				window.preferredLanguage = lang;
-			}
+    /* FOOTER */
+    footer {
+      background: rgba(0,0,0,0.4);
+      border-top: 1.5px solid rgba(245,240,232,0.07);
+      padding: 32px 0;
+    }
+    .footer-inner {
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo {
+      font-family: var(--fd);
+      font-weight: 900;
+      font-size: 16px;
+      color: rgba(245,240,232,0.5);
+      text-decoration: none;
+    }
+    .footer-logo sup { font-size: 9px; color: #6ec9a4; font-family: var(--fm); }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.2);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: #6ec9a4; }
+    .footer-copy {
+      font-family: var(--fm);
+      font-size: 9px;
+      color: rgba(245,240,232,0.15);
+      letter-spacing: 0.04em;
+    }
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .insta-link:hover { color: #fff; }
 
-			function detectLanguage() {
-				// Check URL parameters first
-				const urlParams = new URLSearchParams(window.location.search);
-				const langFromUrl = urlParams.get('lang');
-				
-				if (langFromUrl && (langFromUrl === 'en' || langFromUrl === 'de')) {
-					return langFromUrl;
-				}
-				
-				// Check stored preference
-				const storedLang = window.preferredLanguage;
-				if (storedLang && (storedLang === 'en' || storedLang === 'de')) {
-					return storedLang;
-				}
-				
-				// Check browser language
-				const browserLang = navigator.language || navigator.userLanguage;
-				if (browserLang.startsWith('de')) {
-					return 'de';
-				}
-				
-				// Default to English
-				return 'en';
-			}
+    /* ANIMATIONS */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
 
-			function initializeLanguage() {
-				const detectedLang = detectLanguage();
-				switchLanguage(detectedLang);
-			}
+    /* CONTAINER */
+    .container { width: 100%; padding: 0 48px; }
 
-			// Initialize when page loads
-			document.addEventListener('DOMContentLoaded', () => {
-				initializeLanguage();
-			});
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      /* keep language switch visible on mobile, hide other nav items */
+      .nav-links { display: flex; }
+      .nav-links li { display: none; }
+      .nav-links li:first-child { display: list-item; }
+      .container { padding: 0 20px; }
+      .status-section { padding: calc(56px + 48px) 20px 0; }
+      .content-grid { grid-template-columns: 1fr; }
+      .content-cell { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); padding: 2rem 0; }
+      .content-cell:last-child { border-bottom: none; }
+      .content-cell:not(:first-child) { padding-left: 0; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .cta-row { flex-direction: column; align-items: flex-start; gap: 28px; }
+      #bg-canvas { width: 100%; right: 0; opacity: 0.3; }
+      .footer-inner { padding: 0 20px; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 52px; }
+    }
+  </style>
+</head>
+<body>
 
-			// Add smooth scroll effect for better UX
-			document.addEventListener('DOMContentLoaded', function() {
-				// Fade in animations
-				const elements = document.querySelectorAll('.thank-you-message, .info-box, .next-steps, .contact-info, .action-buttons');
-				elements.forEach((element, index) => {
-					element.style.opacity = '0';
-					element.style.transform = 'translateY(30px)';
-					
-					setTimeout(() => {
-						element.style.transition = 'all 0.8s ease-out';
-						element.style.opacity = '1';
-						element.style.transform = 'translateY(0)';
-					}, 200 + (index * 200));
-				});
-			});
-		</script>
+<div class="page-bg"></div>
+<div class="page-scrim"></div>
+<canvas id="bg-canvas"></canvas>
 
-	</body>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Synapse<sup>2</sup>Move</a>
+  <ul class="nav-links">
+        <li>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
+      </div>
+    </li>
+   
+  </ul>
+</nav>
+
+<!-- PAGE CONTENT -->
+<div class="page-wrap">
+  <div class="status-section container">
+
+    
+
+   
+
+    <!-- Hero title -->
+    <h1 class="hero-title">
+      <span class="lang-en active">
+		<br>
+        <span class="italic">Thank</span><br>
+        <span class="outlined">You.</span>
+      </span>
+      <span class="lang-de">
+        <span class="italic">Vielen</span><br>
+        <span class="outlined">Dank.</span>
+      </span>
+    </h1>
+
+    <p class="hero-tagline">
+      <span class="lang-en active">We'll be in touch within 24 hours.</span>
+      <span class="lang-de">Wir melden uns innerhalb von 24 Stunden.</span>
+    </p>
+  </div>
+
+  <!-- INFO CELLS -->
+  <div class="container" style="margin-top: 64px;">
+    <div class="content-grid">
+      <div class="content-cell">
+        <div class="cell-label"><span class="lang-en active">What happens next</span><span class="lang-de">Was als nächstes passiert</span></div>
+        <div class="cell-title">
+          <span class="lang-en active">Confirmation within 24h</span>
+          <span class="lang-de">Bestätigung in 24h</span>
+        </div>
+        <p class="cell-body">
+          <span class="lang-en active">We'll review your request and confirm all booking details by email, including payment information.</span>
+          <span class="lang-de">Wir prüfen deine Anfrage und bestätigen alle Buchungsdetails per E-Mail, einschließlich der Zahlungsinformationen.</span>
+        </p>
+      </div>
+      
+      <div class="content-cell">
+        <div class="cell-label"><span class="lang-en active">Direct contact</span><span class="lang-de">Direkter Kontakt</span></div>
+        <div class="cell-title">
+          <span class="lang-en active">Questions?</span>
+          <span class="lang-de">Fragen?</span>
+        </div>
+        <p class="cell-body">
+          <a href="tel:+4915221319336" style="color:#6ec9a4; text-decoration:none;">+49 152 21319336</a><br>
+          <a href="mailto:s2m@ionio.de" style="color:#6ec9a4; text-decoration:none;">s2m@ionio.de</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="container">
+    <div class="steps-section">
+      <p class="steps-label">
+        <span class="lang-en active">Prepare for your session</span>
+        <span class="lang-de">Vorbereitung auf deine Session</span>
+      </p>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-line"></div>
+          <div>
+            <div class="step-num">01</div>
+            <p class="step-text">
+              <span class="lang-en active">Prepare any relevant medical history or questions you'd like to discuss.</span>
+              <span class="lang-de">Bereite relevante Krankengeschichte oder Fragen vor, die du besprechen möchtest.</span>
+            </p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-line"></div>
+          <div>
+            <div class="step-num">02</div>
+            <p class="step-text">
+              <span class="lang-en active">Wear clothing that fits closely and lets you move freely.</span>
+              <span class="lang-de">Trage eng anliegende Kleidung, in der du dich gut bewegen kannst.</span>
+            </p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-line"></div>
+          <div>
+            <div class="step-num">03</div>
+            <p class="step-text">
+              <span class="lang-en active">Arrive 5–10 minutes early so we can start on time.</span>
+              <span class="lang-de">Komme 5–10 Minuten früher, damit wir pünktlich beginnen können.</span>
+            </p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-line"></div>
+          <div>
+            <div class="step-num">04</div>
+            <p class="step-text">
+              <span class="lang-en active">Stay hydrated and avoid heavy meals directly before your session.</span>
+              <span class="lang-de">Bleibe gut hydratisiert und vermeide schwere Mahlzeiten direkt vor der Session.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA ROW -->
+  <div class="container">
+    <div class="cta-row">
+      <div class="cta-left-text">
+        <h3>
+          <span class="lang-en active">Your goals are within reach.</span>
+          <span class="lang-de">Deine Ziele sind in Reichweite.</span>
+        </h3>
+        <p>Stamatios Papavasiliou · Synapse²Move Munich</p>
+      </div>
+      <div class="cta-btns">
+        <a href="index.html" class="btn-ink">
+          <span class="lang-en active">Back to Home</span>
+          <span class="lang-de">Zur Startseite</span>
+        </a>
+        <a href="form.html" class="btn-ghost">
+          <span class="lang-en active">Book Another</span>
+          <span class="lang-de">Weiteren Termin</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Synapse<sup>2</sup>Move</a>
+      <a href="https://www.instagram.com/synapse2move/" target="_blank" class="insta-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        @synapse2move
+      </a>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">
+          <span class="lang-en active">Privacy Policy</span>
+          <span class="lang-de">Datenschutz</span>
+        </a>
+      </div>
+      <span class="footer-copy">&copy; 2025 Stamatios Papavasiliou</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+let currentLang = 'en';
+
+function switchLanguage(lang) {
+  if (currentLang === lang) return;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
+  const titles = { en: 'Synapse²Move | Thank You', de: 'Synapse²Move | Vielen Dank' };
+  document.title = titles[lang];
+  sessionStorage.setItem('preferred-language', lang);
+}
+
+(function initLang() {
+  const urlParam = new URLSearchParams(window.location.search).get('lang');
+  const stored = sessionStorage.getItem('preferred-language');
+  const browser = (navigator.language || '').slice(0,2);
+  const lang = (urlParam === 'en' || urlParam === 'de') ? urlParam
+             : (stored === 'en' || stored === 'de') ? stored
+             : browser === 'de' ? 'de' : 'en';
+  switchLanguage(lang);
+})();
+
+/* NEURAL CANVAS */
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    W = canvas.width  = Math.max(rect.width  || canvas.offsetWidth, 100);
+    H = canvas.height = Math.max(rect.height || canvas.offsetHeight, 100);
+    nodes = Array.from({length: 65}, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.65, vy: (Math.random() - 0.5) * 0.5,
+      pulse: Math.random() * Math.PI * 2,
+      kind: Math.random() < 0.22 ? 'b' : 'a'
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+      n.pulse += 0.08;
+    });
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 140) {
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(61,107,79,' + ((1 - d/140) * 0.32) + ')';
+          ctx.lineWidth = 0.6; ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n => {
+      const g = (Math.sin(n.pulse) + 1) * 0.5;
+      ctx.beginPath(); ctx.arc(n.x, n.y, 1 + g * 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = n.kind === 'b'
+        ? 'rgba(92,45,110,' + (0.4 + g * 0.35) + ')'
+        : 'rgba(61,107,79,' + (0.35 + g * 0.3) + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  requestAnimationFrame(() => { resize(); draw(); });
+  window.addEventListener('resize', resize, { passive: true });
+})();
+</script>
+</body>
 </html>

@@ -1,1402 +1,1727 @@
-<!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Neuroathletictraining</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-			/* Language Switch Styles */
-			.language-switch {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				z-index: 10000;
-				background:  linear-gradient(135deg, #edbf797c, #60bca381);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 25px;
-				padding: 3px;
-				display: flex;
-				align-items: center;
-				gap: 2px;
-				transition: all 0.3s ease;
-				opacity: 0.7;
-			}
-
-			.language-switch:hover {
-				opacity: 1;
-				background: linear-gradient(135deg, #edbf79, #60bca3);
-			}
-
-			.lang-btn {
-				background: transparent;
-				border: none;
-				color: rgba(255, 255, 255, 0.8);
-				padding: 0px 0px;
-				cursor: pointer;
-				border-radius: 20px;
-				transition: all 0.3s ease;
-				font-size: 0.50em;
-				font-weight: 800;
-				letter-spacing: 0.5px;
-			}
-
-			.lang-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-			}
-
-			.lang-btn.active {
-				background: #edbf79;
-				color: white;
-				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
-			}
-
-			/* Hide inactive language content */
-			.lang-content {
-				display: none;
-			}
-
-			.lang-content.active {
-				display: block;
-			}
-
-			/* Inline language spans */
-			.lang-en, .lang-de {
-				display: none;
-			}
-
-			.lang-en.active, .lang-de.active {
-				display: inline;
-			}
-
-			@media (max-width: 600px) {
-				.language-switch {
-					top: 5px;
-					right: 1px;
-					scale: 0.85;
-					padding: 2px;
-					flex-direction: column;
-					gap: 1px;
-				}
-				
-				.lang-btn {
-					padding: 0px 7px;
-					font-size: 0.65em;
-					border-radius: 15px;
-				}
-			}
-
-			/* Calendar Styles */
-			.calendar-container {
-				max-width: 400px;
-				margin: 20px 0;
-				border: 1px solid #ccc;
-				border-radius: 8px;
-				overflow: hidden;
-				background: #fff;
-			}
-			
-			.calendar-header {
-				background: #274b41;
-				color: white;
-				padding: 15px;
-				text-align: center;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-			
-			.calendar-nav {
-				background: none;
-				border: none;
-				color: white;
-				font-size: 14px;
-				cursor: pointer;
-				padding: 8px;
-				border-radius: 4px;
-				width: 32px;
-				height: 32px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-			
-			.calendar-nav:hover {
-				background: rgba(255,255,255,0.1);
-			}
-
-			/* Mobile adjustments */
-			@media screen and (max-width: 736px) {
-				.calendar-nav {
-					width: 40px;
-					height: 40px;
-					font-size: 16px;
-					padding: 10px;
-				}
-			}
-			
-			.calendar-grid {
-				display: grid;
-				grid-template-columns: repeat(7, 1fr);
-			}
-			
-			.calendar-day-header {
-				background: #274b41;
-				color: white;
-				padding: 10px 5px;
-				text-align: center;
-				font-weight: bold;
-				font-size: 12px;
-			}
-			
-			.calendar-day {
-				aspect-ratio: 1;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				border: 1px solid #eee;
-				cursor: pointer;
-				transition: all 0.2s;
-				background: #fff;
-			}
-			
-			.calendar-day:hover {
-				background: #edbf793a;
-			}
-			
-			.calendar-day.other-month {
-				color: #ccc;
-				background: #f8f9fa;
-			}
-			
-			.calendar-day.unavailable {
-				background: #e9ecef;
-				color: #6c757d;
-				cursor: not-allowed;
-			}
-			
-			.calendar-day.selected {
-				background: #60bca4;
-				color: white;
-			}
-			
-			.calendar-day.today {
-				background: #edbf79;
-				color: white;
-			}
-			
-			.time-slots {
-				margin-top: 20px;
-				display: none;
-			}
-			
-			.time-slot-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-				gap: 10px;
-				margin-top: 10px;
-			}
-			
-			.time-slot {
-				padding: 8px 12px;
-				border: 2px solid #ddd;
-				background: #fff;
-				cursor: pointer;
-				text-align: center;
-				transition: all 0.2s;
-				border-radius: 4px;
-			}
-			
-			.time-slot:hover {
-				border-color: #edbf79;
-			}
-			
-			.time-slot.selected {
-				background: #60bca4;
-				color: white;
-				border-color: #60bca4;
-			}
-			
-			.time-slot.unavailable {
-				background: #e9ecef;
-				color: #6c757d;
-				cursor: not-allowed;
-				border-color: #e9ecef;
-			}
-			
-			.booking-summary {
-				margin-top: 20px;
-				padding: 15px;
-				background: #f8f9fa;
-				border-radius: 4px;
-				display: none;
-			}
-			
-			.form-section {
-				margin-bottom: 30px;
-				padding: 20px;
-				border: 1px solid #eee;
-				border-radius: 8px;
-			}
-			
-			.section-title {
-				margin-bottom: 15px;
-				color: #2c3e50;
-				border-bottom: 2px solid #eee;
-				padding-bottom: 10px;
-			}
-
-			/* Policy checkbox styles */
-			.policy-checks {
-				margin: 18px 0 10px 0;
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-			}
-
-			.policy-check-item {
-				display: flex;
-				align-items: flex-start;
-				gap: 10px;
-			}
-
-			.policy-check-item input[type="checkbox"] {
-				margin-top: 3px;
-				flex-shrink: 0;
-				width: 17px;
-				height: 17px;
-				accent-color: #60bca4;
-				cursor: pointer;
-			}
-
-			.policy-check-item label {
-				color: white;
-				font-size: 0.9em;
-				line-height: 1.4;
-				cursor: pointer;
-			}
-
-			.policy-link {
-				color: white;
-				text-decoration: underline;
-				cursor: pointer;
-			}
-
-			.policy-link:hover {
-				color: rgba(255,255,255,0.7);
-			}
-
-			/* Modal styles */
-			.policy-modal-overlay {
-				display: none;
-				position: fixed;
-				inset: 0;
-				background: rgba(0, 0, 0, 0.7);
-				z-index: 99999;
-				align-items: center;
-				justify-content: center;
-				padding: 20px;
-			}
-
-			.policy-modal-overlay.open {
-				display: flex;
-			}
-
-			.policy-modal {
-				background: #1a2e28;
-				border: 1px solid rgba(96, 188, 164, 0.3);
-				border-radius: 12px;
-				max-width: 600px;
-				width: 100%;
-				max-height: 80vh;
-				display: flex;
-				flex-direction: column;
-				box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-				animation: modalIn 0.25s ease;
-			}
-
-			@keyframes modalIn {
-				from { opacity: 0; transform: translateY(-20px) scale(0.97); }
-				to   { opacity: 1; transform: translateY(0) scale(1); }
-			}
-
-			.policy-modal-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 18px 22px;
-				border-bottom: 1px solid rgba(96, 188, 164, 0.2);
-				flex-shrink: 0;
-			}
-
-			.policy-modal-header h3 {
-				color: #edbf79;
-				margin: 0;
-				font-size: 1.1em;
-			}
-
-			.policy-modal-close {
-				all: unset;
-				color: rgba(255,255,255,0.6);
-				font-size: 1.1em;
-				cursor: pointer;
-				line-height: 1;
-				padding: 0 4px;
-				transition: color 0.2s;
-			}
-
-			.policy-modal-close:hover {
-				color: #edbf79;
-			}
-
-			.policy-modal-body {
-				overflow-y: auto;
-				padding: 20px 22px;
-				color: rgba(255,255,255,0.85);
-				font-size: 0.88em;
-				line-height: 1.7;
-			}
-
-			.policy-modal-body h4 {
-				color: #60bca4;
-				margin: 1.2em 0 0.4em;
-				font-size: 0.95em;
-				text-transform: uppercase;
-				letter-spacing: 0.5px;
-			}
-
-			.policy-modal-body p {
-				margin: 0 0 0.8em;
-			}
-
-			.policy-modal-footer {
-				padding: 14px 22px;
-				border-top: 1px solid rgba(96, 188, 164, 0.2);
-				display: flex;
-				justify-content: flex-end;
-				flex-shrink: 0;
-			}
-
-			.policy-modal-accept {
-				background: #60bca4;
-				color: white;
-				border: none;
-				border-radius: 4px;
-				padding: 6px 14px;
-				cursor: pointer;
-				font-size: 0.78em;
-				font-weight: 600;
-				transition: background 0.2s;
-			}
-
-			.policy-modal-accept:hover {
-				background: #4da88f;
-			}
-
-			@media (max-width: 600px) {
-				.policy-modal {
-					max-height: 90vh;
-				}
-			}
-		</style>
-	</head>
-	<body class="is-preload">
-
-		<!-- Language Switch -->
-		<div class="language-switch">
-			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
-			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
-		</div>
-
-		<!-- Wrapper -->
-		<div id="wrapper">
-
-			<!-- Header -->
-			<header id="header">
-				<h1>
-					<span class="lang-en active">Contact Form</span>
-					<span class="lang-de">Kontaktformular</span>
-				</h1>
-				<p></p>
-			</header>
-			<!-- Main -->
-			<div id="main" style="background: transparent;">
-
-				<!-- Form -->
-				<section class="main">
-					<h2></h2>
-					<form action="https://formspree.io/f/mojarrgz" method="POST" />
-						<!--<input type="hidden" name="_next" value="https://www.synapse2move.de/thanks.html">-->
-						<!-- Personal Information Section -->
-						<div class="form-section">
-							<h3 class="section-title" style="color: white;">
-								<span class="lang-en active">Personal Information</span>
-								<span class="lang-de">Persönliche Informationen</span>
-							</h3>
-							<div class="row gtr-uniform">
-									<div class="col-12">
-										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name & Surname" required style="background-color: white;" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" required style="background-color: white;" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="email" name="demo-email-confirm" id="demo-email-confirm" value="" placeholder="Confirm Email" required style="background-color: white;" />
-									</div>
-									<div class="col-12">
-										<input type="text" name="demo-street" id="demo-street" value="" placeholder="Street Address" required style="background-color: white;" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="text" name="demo-city" id="demo-city" value="" placeholder="City" required style="background-color: white;" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="text" name="demo-zip" id="demo-zip" value="" placeholder="Zip Code" required style="background-color: white;" />
-									</div>
-								</div>
-						</div>
-						<div class="form-section">		
-								<div class="col-12">
-									<select name="demo-category" id="demo-category" style="color: white;" onchange="handleCategoryChange()">
-										<!-- Options will be populated by JavaScript -->
-									</select>
-								</div>
-							</div>
-						
-						<!-- Workshop Selection Section (Hidden by default) -->
-						<div class="form-section" id="workshopSection" style="display: none;">
-							<h3 class="section-title" style="color: white;">
-								<span class="lang-en active">Select Workshop Date</span>
-								<span class="lang-de">Workshop-Datum wählen</span>
-							</h3>
-							<div class="row gtr-uniform">
-								<div class="col-12">
-									<div class="time-slot-grid" id="workshopDatesGrid">
-										<!-- Workshop dates will be generated here -->
-									</div>
-								</div>
-							</div>
-							<input type="hidden" name="workshop-date" id="workshopDate" />
-						</div>
-
-						<!-- Payment Method Section (Hidden by default) -->
-						<div class="form-section" id="paymentSection" style="display: none;">
-							<h3 class="section-title" style="color: white;">
-								<span class="lang-en active">Select Payment Method</span>
-								<span class="lang-de">Zahlungsmethode wählen</span>
-							</h3>
-							<div class="row gtr-uniform">
-								<div class="col-12">
-									<select name="payment-method" id="paymentMethod" style="color: white;" required>
-										<!-- Options will be populated by JavaScript -->
-									</select>
-								</div>
-							</div>
-						</div>
-
-						<!-- Appointment Booking Section -->
-						<div class="form-section" id="appointmentSection" style="display: none;">
-							<h3 class="section-title" style="color: white;">
-								<span class="lang-en active">Select Date & Time</span>
-								<span class="lang-de">Datum & Uhrzeit wählen</span>
-							</h3>
-							<div class="row gtr-uniform">
-								<div class="col-6 col-12-medium">
-									<div class="calendar-container">
-										<div class="calendar-header">
-											<button type="button" class="calendar-nav" id="prevMonth">‹</button>
-											<span id="currentMonth"></span>
-											<button type="button" class="calendar-nav" id="nextMonth">›</button>
-										</div>
-										<div class="calendar-grid" id="calendarGrid">
-											<!-- Calendar will be generated here -->
-										</div>
-									</div>
-								</div>
-								<div class="col-6 col-12-medium">
-									<div class="time-slots" id="timeSlots">
-										<h4>
-											<span class="lang-en active">Available Times</span>
-											<span class="lang-de">Verfügbare Zeiten</span>
-										</h4>
-										<div class="time-slot-grid" id="timeSlotsGrid">
-											<!-- Time slots will be generated here -->
-										</div>
-									</div>
-									<div class="booking-summary" id="bookingSummary">
-										<h4>
-											<span class="lang-en active">Booking Summary</span>
-											<span class="lang-de">Buchungsübersicht</span>
-										</h4>
-										<p><strong>
-											<span class="lang-en active">Date:</span>
-											<span class="lang-de">Datum:</span>
-										</strong> <span id="selectedDate"></span></p>
-										<p><strong>
-											<span class="lang-en active">Time:</span>
-											<span class="lang-de">Uhrzeit:</span>
-										</strong> <span id="selectedTime"></span></p>
-									</div>
-								</div>
-							</div>
-							<input type="hidden" name="booking-date" id="bookingDate" />
-							<input type="hidden" name="booking-time" id="bookingTime" />
-							
-						</div>
-
-						<!-- Additional Options Section -->
-						<div class="form-section">
-							<h3 class="section-title" style="color: white;">
-								<span class="lang-en active">Further Questions / If Urgent Pain explain shortly your Problem</span>
-								<span class="lang-de">Weitere Fragen / Bei dringenden Schmerzen Problem kurz erklären</span>
-							</h3>
-								
-								<div class="col-12">
-									<textarea name="demo-message" id="demo-message" rows="4" style="background-color: white;"></textarea>
-								</div>
-
-								<!-- Policy Checkboxes -->
-								<div class="policy-checks">
-									<div class="policy-check-item">
-										<input type="checkbox" id="confirm-privacy" name="confirm-privacy" required />
-										<label for="confirm-privacy">
-											<span class="lang-en active">I have read and accept the <span class="policy-link" onclick="openModal('privacy')">Privacy Policy</span>.</span>
-											<span class="lang-de">Ich habe die <span class="policy-link" onclick="openModal('privacy')">Datenschutzerklärung</span> gelesen und akzeptiere sie.</span>
-										</label>
-									</div>
-									<div class="policy-check-item">
-										<input type="checkbox" id="confirm-cancellation" name="confirm-cancellation" required />
-										<label for="confirm-cancellation">
-											<span class="lang-en active">I have read and accept the <span class="policy-link" onclick="openModal('cancellation')">Cancellation Policy</span>.</span>
-											<span class="lang-de">Ich habe die <span class="policy-link" onclick="openModal('cancellation')">Stornierungsbedingungen</span> gelesen und akzeptiere sie.</span>
-										</label>
-									</div>
-								</div>
-
-								<!-- Privacy Policy Modal -->
-								<div class="policy-modal-overlay" id="modal-privacy" onclick="closeModalOnOverlay(event, 'privacy')">
-									<div class="policy-modal">
-										<div class="policy-modal-header">
-											<h3>
-												<span class="lang-en active">Privacy Policy</span>
-												<span class="lang-de">Datenschutzerklärung</span>
-											</h3>
-											<button type="button" class="policy-modal-close" onclick="closeModal('privacy')">&times;</button>
-										</div>
-										<div class="policy-modal-body">
-											<span class="lang-en active">
-												<h4>1. Controller</h4>
-												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
-
-												<h4>2. Collection and Storage of Personal Data</h4>
-												<p>Our website is a static website and generally does not collect personal data from visitors unless they actively contact us. No automatic storage or processing of personal data takes place through server-side applications.</p>
-
-												<h4>a) When Visiting the Website</h4>
-												<p>Our static website is hosted by a hosting provider. The hosting provider may automatically store certain technical information in server log files, including: date and time of access, name and URL of the retrieved file, referring website, browser and operating system used, and name of the internet service provider. This data is used solely for statistical purposes and to ensure technical operation of the website.</p>
-
-												<h4>b) When Using the Contact Form</h4>
-												<p>If you contact us via the contact form, the data you enter is processed via Formspree — your message is transmitted to and stored on Formspree's servers. Processing is based on Art. 6 para. 1 lit. b GDPR. For more information see: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" style="color:#60bca4;">formspree.io/legal/privacy-policy</a>.</p>
-
-												<h4>3. Sharing of Data</h4>
-												<p>As our website is static and offers no user accounts or personalised services, no personal data is passed on to third parties unless required to handle an inquiry or mandated by law.</p>
-
-												<h4>4. Cookies and Tracking</h4>
-												<p>Our static website does not use cookies or tracking technologies such as Google Analytics or Facebook Pixel.</p>
-
-												<h4>5. Your Rights</h4>
-												<p>You have the right to: request information about your processed personal data (Art. 15 GDPR); request correction or completion of stored data (Art. 16 GDPR); request deletion of your data (Art. 17 GDPR); request restriction of processing (Art. 18 GDPR); object to processing (Art. 21 GDPR); receive your data in a structured, machine-readable format (Art. 20 GDPR); and lodge a complaint with a supervisory authority (Art. 77 GDPR).</p>
-
-												<h4>6. Data Security</h4>
-												<p>Our static website uses modern security measures to protect your data. Since no data processing takes place on our website, there is no elevated risk of data misuse.</p>
-
-												<h4>7. Retention Period</h4>
-												<p>Technical data is stored only as long as necessary for the purposes described in this policy. After fulfilling the respective purpose, data is anonymised or deleted.</p>
-
-												<h4>8. Third-Party Content</h4>
-												<p>Third-party content (e.g. YouTube videos, Google Maps, Instagram) may be embedded in this website. Providers of such content require your IP address to deliver it to your browser. We strive to use only providers that use IP addresses solely for content delivery and have no influence over whether providers store IP addresses for statistical purposes.</p>
-
-												<h4>9. Changes to this Policy</h4>
-												<p>We reserve the right to update this privacy policy to reflect changes in legal requirements or new services. The current version is always available on our website.</p>
-
-												<h4>Contact</h4>
-												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
-											</span>
-											<span class="lang-de">
-												<h4>1. Verantwortlicher</h4>
-												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
-
-												<h4>2. Erhebung und Speicherung personenbezogener Daten</h4>
-												<p>Unsere Website ist eine statische Website und erhebt grundsätzlich keine personenbezogenen Daten von Besuchern, außer wenn sie aktiv Kontakt mit uns aufnehmen. Es findet keine automatische Speicherung oder Verarbeitung personenbezogener Daten durch serverseitige Anwendungen statt.</p>
-
-												<h4>a) Beim Besuch der Website</h4>
-												<p>Unsere statische Website wird von einem Hosting-Anbieter bereitgestellt. Dabei können durch den Hosting-Provider automatisch bestimmte technische Informationen in Server-Logfiles gespeichert werden: Datum und Uhrzeit des Zugriffs, Name und URL der abgerufenen Datei, verweisende Website, verwendeter Browser und Betriebssystem sowie Name des Internet-Service-Providers. Diese Daten werden lediglich für statistische Zwecke sowie zur Sicherstellung des technischen Betriebs verwendet.</p>
-
-												<h4>b) Bei Nutzung des Kontaktformulars</h4>
-												<p>Falls Sie uns über das Kontaktformular erreichen, werden die dort eingegebenen Daten über Formspree verarbeitet. Ihre Nachricht wird an die Server von Formspree übermittelt und dort gespeichert. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" style="color:#60bca4;">formspree.io/legal/privacy-policy</a>.</p>
-
-												<h4>3. Weitergabe von Daten</h4>
-												<p>Da unsere Website statisch ist und keine Benutzerkonten oder personalisierten Dienste anbietet, erfolgt keine Weitergabe personenbezogener Daten an Dritte, es sei denn, dies ist zur Bearbeitung einer Anfrage notwendig oder gesetzlich vorgeschrieben.</p>
-
-												<h4>4. Cookies und Tracking</h4>
-												<p>Unsere statische Website verwendet keine Cookies oder Tracking-Technologien wie Google Analytics oder Facebook Pixel.</p>
-
-												<h4>5. Rechte der betroffenen Personen</h4>
-												<p>Sie haben das Recht auf: Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Widerspruch (Art. 21 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO).</p>
-
-												<h4>6. Datensicherheit</h4>
-												<p>Unsere statische Website verwendet moderne Sicherheitsmaßnahmen zum Schutz Ihrer Daten. Da keine Datenverarbeitung auf unserer Website erfolgt, besteht kein erhöhtes Risiko für Datenmissbrauch.</p>
-
-												<h4>7. Dauer der Datenspeicherung</h4>
-												<p>Die erhobenen technischen Daten werden nur so lange gespeichert, wie dies zur Erreichung der genannten Zwecke notwendig ist. Nach Erfüllung des jeweiligen Zwecks werden die Daten anonymisiert oder gelöscht.</p>
-
-												<h4>8. Einbindung von Diensten Dritter</h4>
-												<p>Es können Inhalte Dritter (z. B. YouTube, Google Maps, Instagram) eingebunden sein. Dies setzt voraus, dass die Anbieter die IP-Adresse des Nutzers kennen. Wir bemühen uns, nur solche Inhalte zu verwenden, bei denen die IP-Adresse nur zur Auslieferung genutzt wird, haben jedoch keinen Einfluss auf eine etwaige statistische Speicherung durch Drittanbieter.</p>
-
-												<h4>9. Änderungen dieser Datenschutzerklärung</h4>
-												<p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, um sie an geänderte rechtliche Anforderungen oder neue Dienste anzupassen. Die jeweils aktuelle Version kann jederzeit auf unserer Website abgerufen werden.</p>
-
-												<h4>Kontakt</h4>
-												<p>Stamatios Papavasiliou · s2m@ionio.de</p>
-											</span>
-										</div>
-										<div class="policy-modal-footer">
-											<button type="button" class="policy-modal-accept" onclick="acceptAndClose('privacy', 'confirm-privacy')">
-												<span class="lang-en active">Accept &amp; Close</span>
-												<span class="lang-de">Akzeptieren &amp; Schließen</span>
-											</button>
-										</div>
-									</div>
-								</div>
-
-								<!-- Cancellation Policy Modal -->
-								<div class="policy-modal-overlay" id="modal-cancellation" onclick="closeModalOnOverlay(event, 'cancellation')">
-									<div class="policy-modal">
-										<div class="policy-modal-header">
-											<h3>
-												<span class="lang-en active">Cancellation Policy</span>
-												<span class="lang-de">Stornierungsbedingungen</span>
-											</h3>
-											<button type="button" class="policy-modal-close" onclick="closeModal('cancellation')">&times;</button>
-										</div>
-										<div class="policy-modal-body">
-											<span class="lang-en active">
-												<h4>Cancellation Deadline</h4>
-												<p>Appointments and workshop bookings may be cancelled free of charge up to <strong>48 hours</strong> before the scheduled start time.</p>
-
-												<h4>Late Cancellations</h4>
-												<p>Cancellations made less than 48 hours in advance will be charged at <strong>50% of the session fee</strong>.</p>
-
-												<h4>No-Shows</h4>
-												<p>Failure to attend without prior notice will be charged at <strong>100% of the session fee</strong>.</p>
-
-												<h4>How to Cancel</h4>
-												<p>Please cancel by email at s2m@ionio.de or by phone at +49 152 21319336. Cancellations are confirmed once you receive a written acknowledgement from us.</p>
-
-												<h4>Payment</h4>
-												<p>Payment is due within <strong>7 days</strong> of receiving your confirmation email. If you register for a workshop taking place within 7 days, payment is due within <strong>24 hours</strong> of your confirmation email.</p>
-											</span>
-											<span class="lang-de">
-												<h4>Stornierungsfrist</h4>
-												<p>Termine und Workshop-Buchungen können bis <strong>48 Stunden</strong> vor dem geplanten Beginn kostenlos storniert werden.</p>
-
-												<h4>Späte Stornierungen</h4>
-												<p>Stornierungen, die weniger als 48 Stunden im Voraus erfolgen, werden mit <strong>50 % der Sitzungsgebühr</strong> berechnet.</p>
-
-												<h4>Nichterscheinen</h4>
-												<p>Nichterscheinen ohne vorherige Benachrichtigung wird mit <strong>100 % der Sitzungsgebühr</strong> in Rechnung gestellt.</p>
-
-												<h4>So stornieren Sie</h4>
-												<p>Bitte stornieren Sie per E-Mail unter s2m@ionio.de oder telefonisch unter +49 152 21319336. Stornierungen gelten als bestätigt, sobald Sie eine schriftliche Bestätigung von uns erhalten.</p>
-
-												<h4>Zahlung</h4>
-												<p>Die Zahlung ist innerhalb von <strong>7 Tagen</strong> nach Erhalt Ihrer Bestätigungsmail fällig. Bei Anmeldung zu einem Workshop, der in weniger als 7 Tagen stattfindet, ist die Zahlung innerhalb von <strong>24 Stunden</strong> nach Ihrer Bestätigungsmail fällig.</p>
-											</span>
-										</div>
-										<div class="policy-modal-footer">
-											<button type="button" class="policy-modal-accept" onclick="acceptAndClose('cancellation', 'confirm-cancellation')">
-												<span class="lang-en active">Accept &amp; Close</span>
-												<span class="lang-de">Akzeptieren &amp; Schließen</span>
-											</button>
-										</div>
-									</div>
-								</div>
-
-								<br>
-								<div class="col-12">
-									<ul class="actions">
-										<li><input type="submit" value="" class="primary" id="submitBtn" /></li>
-									</ul>
-								*<span class="lang-en active">You will get a confirmation mail within 24h.</span>
-								<span class="lang-de">Du erhältst eine Bestätigungsmail innerhalb von 24 Stunden.</span>
-								</div>
-							</div>
-						</div>
-					</form>
-				</section>
-
-			</div>
-
-			<!-- Footer -->
-			<footer id="footer">
-						<section>
-							<h1 style="font-size: 1.8em;">
-								<strong>
-									<span class="lang-en active">Your goals are<br> <span style="font-size: 1.2em;">within reach</span></span>
-									<span class="lang-de">Deine Ziele sind <br><span style="font-size: 1.2em;">in Reichweite</span></span>
-								</strong>
-								</h1>
-							<p><strong>
-								<span class="lang-en active">Book your session and let's make it happen.</span>
-								<span class="lang-de">Buche deine Session und lass es uns angehen</span>
-							</strong></p>
-							<ul class="actions">
-								<li><a href="form.html" class="button"><strong>
-									<span class="lang-en active">Get Started!</span>
-									<span class="lang-de">Jetzt starten!</span>
-								</strong></a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>
-								<span class="lang-en active">Contact</span>
-								<span class="lang-de">Kontakt</span>
-							</h2>
-							<dl class="alt">
-								<dt>
-									<span class="lang-en active">Address</span>
-									<span class="lang-de">Adresse</span>
-								</dt>
-								<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-								<dt>
-									<span class="lang-en active">Phone</span>
-									<span class="lang-de">Telefon</span>
-								</dt>
-								<dd>+49 152 21319336</dd>
-								<dt>Email</dt>
-								<dd><a href="#">s2m@ionio.de</a></dd>
-							</dl>
-							<ul class="icons" style="justify-content: center; align-items: center;">
-								<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-							</ul>
-							<style>
-							@media (max-width: 600px) {
-								#footer .icons {
-									display: flex !important;
-									justify-content: center !important;
-									align-items: center !important;
-									padding-left: 0 !important;
-								}
-							}
-							</style>
-						</section>
-						<p class="copyright"> 
-							<a href="index.html"><strong>HOME</strong></a> <br> 
-							&copy; Stamatios Papavasiliou 2025<br> 
-							<a href="impressum.html">Impressum</a> <br> 
-							<a href="datenschutz.html">
-								<span class="lang-en active">Privacy Policy</span>
-								<span class="lang-de">Datenschutzerklärung</span>
-							</a> <br>   
-							Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
-						</p>
-					</footer>
-
-		</div>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-		<script>
-			// Language Management System
-			let currentLanguage = 'en';
-
-			// Service category options for each language
-			const serviceCategories = {
-				en: [
-					{ value: "", text: "- Service Category -" },
-					{ value: "1", text: "Free 20min Call" },
-					{ value: "2", text: "Neuroassessment" },
-					{ value: "3", text: "Personal Training" },
-					{ value: "4", text: "Urgent/Pain" },
-					{ value: "workshop", text: "Workshops" }
-				],
-				de: [
-					{ value: "", text: "- Servicekategorie -" },
-					{ value: "1", text: "Kostenloses 20-Min-Gespräch" },
-					{ value: "2", text: "Neuroassessment" },
-					{ value: "3", text: "Personaltraining" },
-					{ value: "4", text: "Dringend/Schmerzen" },
-					{ value: "workshop", text: "Workshops" }
-				]
-			};
-
-			// Payment method options for each language
-			const paymentMethods = {
-				en: [
-					{ value: "", text: "- Select Payment Method -" },
-					{ value: "paypal", text: "PayPal" },
-					{ value: "bank-transfer", text: "Bank Transfer" },
-					{ value: "credit-card", text: "Credit Card" }
-				],
-				de: [
-					{ value: "", text: "- Zahlungsmethode wählen -" },
-					{ value: "paypal", text: "PayPal" },
-					{ value: "bank-transfer", text: "Banküberweisung" },
-					{ value: "credit-card", text: "Kreditkarte" }
-				]
-			};
-
-			// Workshop dates configuration
-			const workshopDates = {
-				en: [
-					{ value: "2026-05-30", text: "Healthy Hips  30.05.2026 |15:00-16:30 | 30€ " }
-				],
-				de: [
-					{ value: "2026-05-30", text: "Healthy Hips 30.05.2026 |15:00-16:30 | 30€ " }
-				]
-			};
-
-			function handleCategoryChange() {
-				const categorySelect = document.getElementById('demo-category');
-				const selectedValue = categorySelect.value;
-				const appointmentSection = document.getElementById('appointmentSection');
-				const workshopSection = document.getElementById('workshopSection');
-				const paymentSection = document.getElementById('paymentSection');
-				
-				// Get hidden input fields
-				const bookingDate = document.getElementById('bookingDate');
-				const bookingTime = document.getElementById('bookingTime');
-				const workshopDate = document.getElementById('workshopDate');
-				const paymentMethod = document.getElementById('paymentMethod');
-				
-				// Hide all sections and disable their required fields
-				appointmentSection.style.display = 'none';
-				workshopSection.style.display = 'none';
-				paymentSection.style.display = 'none';
-				
-				// Remove required attribute from all conditional fields
-				bookingDate.removeAttribute('required');
-				bookingTime.removeAttribute('required');
-				workshopDate.removeAttribute('required');
-				paymentMethod.removeAttribute('required');
-				
-				// Reset values
-				bookingDate.value = '';
-				bookingTime.value = '';
-				workshopDate.value = '';
-				paymentMethod.value = '';
-				
-				// Show appropriate section based on selection
-				if (selectedValue === 'workshop') {
-					workshopSection.style.display = 'block';
-					renderWorkshopDates();
-					updatePaymentMethods(currentLanguage);
-					workshopDate.setAttribute('required', 'required');
-					paymentMethod.setAttribute('required', 'required');
-				} else if (selectedValue !== '') {
-					appointmentSection.style.display = 'block';
-					bookingDate.setAttribute('required', 'required');
-					bookingTime.setAttribute('required', 'required');
-				}
-			}
-
-			function renderWorkshopDates() {
-				const workshopGrid = document.getElementById('workshopDatesGrid');
-				workshopGrid.innerHTML = '';
-				workshopGrid.style.display = 'grid';
-				
-				// Adjust grid columns based on screen width
-				if (window.innerWidth <= 600) {
-					workshopGrid.style.gridTemplateColumns = '1fr'; // Single column for mobile
-					workshopGrid.style.maxWidth = '100%';
-					workshopGrid.style.margin = '0 auto';
-				} else {
-					workshopGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-				}
-				
-				workshopGrid.style.gap = '10px';
-				
-				const dates = workshopDates[currentLanguage];
-				
-				dates.forEach(workshop => {
-					const workshopSlot = document.createElement('div');
-					workshopSlot.className = 'time-slot';
-					workshopSlot.textContent = workshop.text;
-					workshopSlot.style.textAlign = 'left';
-					workshopSlot.style.padding = '12px 16px';
-					workshopSlot.style.height = '100%';
-					workshopSlot.style.width = '100%'; // Ensure full width
-					workshopSlot.style.boxSizing = 'border-box'; // Include padding in width calculation
-					
-					workshopSlot.addEventListener('click', () => selectWorkshopDate(workshop.value, workshop.text, workshopSlot));
-					workshopGrid.appendChild(workshopSlot);
-				});
-				
-				// Add resize listener to handle orientation changes
-				window.addEventListener('resize', () => {
-					if (window.innerWidth <= 600) {
-						workshopGrid.style.gridTemplateColumns = '1fr';
-					} else {
-						workshopGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-					}
-				});
-			}
-
-			function selectWorkshopDate(date, text, element) {
-				// Remove previous selection
-				document.querySelectorAll('#workshopDatesGrid .time-slot.selected').forEach(el => {
-					el.classList.remove('selected');
-				});
-				
-				// Add selection to clicked element
-				element.classList.add('selected');
-				
-				// Update hidden input
-				document.getElementById('workshopDate').value = `${text} (${date})`;
-				
-				// Show payment section
-				const paymentSection = document.getElementById('paymentSection');
-				paymentSection.style.display = 'block';
-			}
-
-			function updatePaymentMethods(lang) {
-				const selectElement = document.getElementById('paymentMethod');
-				const currentValue = selectElement.value; // Store current selection
-				
-				// Clear existing options
-				selectElement.innerHTML = '';
-				
-				// Add options for selected language
-				paymentMethods[lang].forEach(method => {
-					const option = document.createElement('option');
-					option.value = method.value;
-					option.textContent = method.text;
-					selectElement.appendChild(option);
-				});
-				
-				// Restore selection if the value still exists
-				if (currentValue && selectElement.querySelector(`option[value="${currentValue}"]`)) {
-					selectElement.value = currentValue;
-				}
-			}
-
-			function updateServiceCategories(lang) {
-				const selectElement = document.getElementById('demo-category');
-				const currentValue = selectElement.value; // Store current selection
-				
-				// Clear existing options
-				selectElement.innerHTML = '';
-				
-				// Add options for selected language
-				serviceCategories[lang].forEach(category => {
-					const option = document.createElement('option');
-					option.value = category.value;
-					option.textContent = category.text;
-					selectElement.appendChild(option);
-				});
-				
-				// Restore selection if the value still exists
-				if (currentValue && selectElement.querySelector(`option[value="${currentValue}"]`)) {
-					selectElement.value = currentValue;
-				}
-			}
-
-			function switchLanguage(lang) {
-				if (currentLanguage === lang) return;
-				
-				currentLanguage = lang;
-				
-				// Update button states
-				document.querySelectorAll('.lang-btn').forEach(btn => {
-					btn.classList.remove('active');
-					if (btn.dataset.lang === lang) {
-						btn.classList.add('active');
-					}
-				});
-				
-				// Hide all language content
-				document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-					element.classList.remove('active');
-				});
-				
-				// Show selected language content
-				document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-					element.classList.add('active');
-				});
-				
-				// Update dynamic content
-				updateDynamicContent(lang);
-				
-				// Update service categories
-				updateServiceCategories(lang);
-				
-				// Update payment methods
-				updatePaymentMethods(lang);
-				
-				// Re-render workshop dates if workshop section is visible
-				const workshopSection = document.getElementById('workshopSection');
-				if (workshopSection.style.display !== 'none') {
-					renderWorkshopDates();
-				}
-				
-				// Save preference to local storage (using variable instead of sessionStorage for Claude.ai compatibility)
-				window.preferredLanguage = lang;
-			}
-
-			function updateDynamicContent(lang) {
-				const translations = {
-					en: {
-						title: "Synapse²Move | Contact",
-						namePlaceholder: "Name & Surname",
-						messagePlaceholder: "",
-						submitBtn: "Book Appointment",
-						noTimesAvailable: "No available times for this day."
-					},
-					de: {
-						title: "Synapse²Move | Kontakt",
-						namePlaceholder: "Name & Nachname", 
-						messagePlaceholder: "",
-						submitBtn: "Termin buchen",
-						noTimesAvailable: "Keine verfügbaren Zeiten für diesen Tag."
-					}
-				};
-				
-				// Update page title
-				document.title = translations[lang].title;
-				
-				// Update placeholders
-				const nameInput = document.getElementById('demo-name');
-				if (nameInput) nameInput.placeholder = translations[lang].namePlaceholder;
-				
-				const messageInput = document.getElementById('demo-message');
-				if (messageInput) messageInput.placeholder = translations[lang].messagePlaceholder;
-				
-				// Update submit button
-				const submitBtn = document.getElementById('submitBtn');
-				if (submitBtn) submitBtn.value = translations[lang].submitBtn;
-				
-				// Store translation for calendar use
-				window.currentTranslations = translations[lang];
-			}
-
-			function initializeLanguage() {
-				// Load saved language preference
-				const savedLang = window.preferredLanguage;
-				if (savedLang && savedLang !== currentLanguage) {
-					switchLanguage(savedLang);
-				} else {
-					updateDynamicContent(currentLanguage);
-					updateServiceCategories(currentLanguage);
-				}
-			}
-
-			// CONFIGURATION: Edit these settings to customize availability
-			const BOOKING_CONFIG = {
-				// Available days of the week (0 = Sunday, 1 = Monday, etc.)
-				availableDays: [1, 2, 3, 4], // Monday to Thursday
-				
-				// Available time slots for each day
-				timeSlots: {
-					1: ['09:00', '10:30',  '14:00', '15:30'], // Monday
-					2: ['09:00', '10:30',  '14:00', '15:30'], // Tuesday
-					3: ['09:00', '10:30',  '14:00', '15:30'], // Wednesday
-					4: ['09:00', '10:30',  '14:00', '15:30'], // Thursday
-					5: ['09:00', '10:00', '11:00', '14:00', '15:00'], // Friday (shorter day)
-					6: ['10:00', '11:00', '12:00'], // Saturday (limited hours)
-					0: [] // Sunday (closed)
-				},
-				
-				// Blocked dates (format: 'YYYY-MM-DD')
-				blockedDates: [
-					'2025-08-15', // Example blocked date
-					
-				],
-				
-				// How many days in advance can bookings be made
-				maxAdvanceDays: 60
-			};
-
-			class BookingCalendar {
-				constructor() {
-					this.currentDate = new Date();
-					this.selectedDate = null;
-					this.selectedTime = null;
-					this.init();
-				}
-
-				init() {
-					this.renderCalendar();
-					this.bindEvents();
-				}
-
-				bindEvents() {
-					document.getElementById('prevMonth').addEventListener('click', () => {
-						this.currentDate.setMonth(this.currentDate.getMonth() - 1);
-						this.renderCalendar();
-					});
-
-					document.getElementById('nextMonth').addEventListener('click', () => {
-						this.currentDate.setMonth(this.currentDate.getMonth() + 1);
-						this.renderCalendar();
-					});
-
-					document.querySelector('form').addEventListener('submit', (e) => {
-						const categorySelect = document.getElementById('demo-category');
-						const selectedCategory = categorySelect.value;
-						
-						// If workshop is selected, check if a workshop date is selected
-						if (selectedCategory === 'workshop') {
-							const workshopDate = document.getElementById('workshopDate').value;
-							if (!workshopDate) {
-								e.preventDefault();
-								const message = currentLanguage === 'en' 
-									? 'Please select a workshop date.'
-									: 'Bitte wählen Sie ein Workshop-Datum.';
-								alert(message);
-								return;
-							}
-						} else if (selectedCategory !== '') {
-							// For other categories, check if date and time are selected
-							if (!this.selectedDate || !this.selectedTime) {
-								e.preventDefault();
-								const message = currentLanguage === 'en' 
-									? 'Please select both a date and time for your appointment.'
-									: 'Bitte wählen Sie sowohl ein Datum als auch eine Uhrzeit für Ihren Termin.';
-								alert(message);
-								return;
-							}
-						}
-					});
-				}
-
-				renderCalendar() {
-					const year = this.currentDate.getFullYear();
-					const month = this.currentDate.getMonth();
-					
-					// Update header with current language
-					const monthNames = currentLanguage === 'en' 
-						? ['January', 'February', 'March', 'April', 'May', 'June',
-							'July', 'August', 'September', 'October', 'November', 'December']
-						: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-							'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
-					document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
-
-					// Clear calendar
-					const grid = document.getElementById('calendarGrid');
-					grid.innerHTML = '';
-
-					// Add day headers with current language
-					const dayHeaders = currentLanguage === 'en'
-						? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-						: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
-					dayHeaders.forEach(day => {
-						const dayHeader = document.createElement('div');
-						dayHeader.className = 'calendar-day-header';
-						dayHeader.textContent = day;
-						grid.appendChild(dayHeader);
-					});
-
-					// Get first day of month and number of days
-					let firstDay = new Date(year, month, 1).getDay();
-					// Convert Sunday (0) to be last day (6), and shift others down by 1
-					firstDay = firstDay === 0 ? 6 : firstDay - 1;
-					const daysInMonth = new Date(year, month + 1, 0).getDate();
-					const today = new Date();
-
-					// Add empty cells for days before month starts
-					for (let i = 0; i < firstDay; i++) {
-						const emptyDay = document.createElement('div');
-						emptyDay.className = 'calendar-day other-month';
-						grid.appendChild(emptyDay);
-					}
-
-					// Add days of the month
-					for (let day = 1; day <= daysInMonth; day++) {
-						const dayElement = document.createElement('div');
-						dayElement.className = 'calendar-day';
-						dayElement.textContent = day;
-
-						const currentDay = new Date(year, month, day);
-						const dayOfWeek = currentDay.getDay();
-						const dateString = this.formatDate(currentDay);
-
-						// Check if day is today
-						if (this.isSameDate(currentDay, today)) {
-							dayElement.classList.add('today');
-						}
-
-						// Check if day is available
-						const isAvailable = this.isDayAvailable(currentDay, dayOfWeek, dateString);
-						if (!isAvailable) {
-							dayElement.classList.add('unavailable');
-						} else {
-							dayElement.addEventListener('click', () => this.selectDate(currentDay, dayElement));
-						}
-
-						// Check if day is selected
-						if (this.selectedDate && this.isSameDate(currentDay, this.selectedDate)) {
-							dayElement.classList.add('selected');
-						}
-
-						grid.appendChild(dayElement);
-					}
-				}
-
-				isDayAvailable(date, dayOfWeek, dateString) {
-					// Check if date is in the past
-					const today = new Date();
-					today.setHours(0, 0, 0, 0);
-					if (date < today) return false;
-
-					// Check if date is too far in the future
-					const maxDate = new Date();
-					maxDate.setDate(maxDate.getDate() + BOOKING_CONFIG.maxAdvanceDays);
-					if (date > maxDate) return false;
-
-					// Check if day of week is available
-					if (!BOOKING_CONFIG.availableDays.includes(dayOfWeek)) return false;
-
-					// Check if date is blocked
-					if (BOOKING_CONFIG.blockedDates.includes(dateString)) return false;
-
-					return true;
-				}
-
-				selectDate(date, element) {
-					// Remove previous selection
-					document.querySelectorAll('.calendar-day.selected').forEach(el => {
-						el.classList.remove('selected');
-					});
-
-					// Add selection to clicked element
-					element.classList.add('selected');
-					this.selectedDate = date;
-					this.selectedTime = null; // Reset time selection
-
-					// Update hidden input
-					document.getElementById('bookingDate').value = this.formatDate(date);
-
-					// Show time slots
-					this.renderTimeSlots(date.getDay());
-				}
-
-				renderTimeSlots(dayOfWeek) {
-					const timeSlotsContainer = document.getElementById('timeSlots');
-					const timeSlotsGrid = document.getElementById('timeSlotsGrid');
-					
-					timeSlotsContainer.style.display = 'block';
-					timeSlotsGrid.innerHTML = '';
-
-					const availableTimes = BOOKING_CONFIG.timeSlots[dayOfWeek] || [];
-
-					if (availableTimes.length === 0) {
-						const noTimesMessage = window.currentTranslations?.noTimesAvailable || 'No available times for this day.';
-						timeSlotsGrid.innerHTML = `<p>${noTimesMessage}</p>`;
-						return;
-					}
-
-					availableTimes.forEach(time => {
-						const timeSlot = document.createElement('div');
-						timeSlot.className = 'time-slot';
-						timeSlot.textContent = time;
-						timeSlot.addEventListener('click', () => this.selectTime(time, timeSlot));
-						timeSlotsGrid.appendChild(timeSlot);
-					});
-				}
-
-				selectTime(time, element) {
-					// Remove previous selection
-					document.querySelectorAll('.time-slot.selected').forEach(el => {
-						el.classList.remove('selected');
-					});
-
-					// Add selection to clicked element
-					element.classList.add('selected');
-					this.selectedTime = time;
-
-					// Update hidden input
-					document.getElementById('bookingTime').value = time;
-
-					// Show booking summary
-					this.showBookingSummary();
-				}
-
-				showBookingSummary() {
-					const summary = document.getElementById('bookingSummary');
-					const selectedDateSpan = document.getElementById('selectedDate');
-					const selectedTimeSpan = document.getElementById('selectedTime');
-
-					selectedDateSpan.textContent = this.formatDateForDisplay(this.selectedDate);
-					selectedTimeSpan.textContent = this.selectedTime;
-
-					summary.style.display = 'block';
-				}
-
-				formatDate(date) {
-					const year = date.getFullYear();
-					const month = String(date.getMonth() + 1).padStart(2, '0');
-					const day = String(date.getDate()).padStart(2, '0');
-					return `${year}-${month}-${day}`;
-				}
-
-				formatDateForDisplay(date) {
-					const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-					const locale = currentLanguage === 'en' ? 'en-US' : 'de-DE';
-					return date.toLocaleDateString(locale, options);
-				}
-
-				isSameDate(date1, date2) {
-					return date1.toDateString() === date2.toDateString();
-				}
-			}
-
-			// Modal functions
-			function openModal(type) {
-				document.getElementById('modal-' + type).classList.add('open');
-				document.body.style.overflow = 'hidden';
-			}
-
-			function closeModal(type) {
-				document.getElementById('modal-' + type).classList.remove('open');
-				document.body.style.overflow = '';
-			}
-
-			function closeModalOnOverlay(event, type) {
-				if (event.target === event.currentTarget) closeModal(type);
-			}
-
-			function acceptAndClose(type, checkboxId) {
-				document.getElementById(checkboxId).checked = true;
-				closeModal(type);
-			}
-
-			// Close modals on Escape key
-			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape') {
-					['privacy', 'cancellation'].forEach(closeModal);
-				}
-			});
-
-			// Initialize when page loads
-			document.addEventListener('DOMContentLoaded', () => {
-				initializeLanguage();
-				new BookingCalendar();
-			});
-		</script>
-
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Book a Session · Synapse²Move</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --cream: #f5f0e8;
+  --paper: #ede8dc;
+  --ink: #1a1a14;
+  --ink-muted: #5a5850;
+  --ink-faint: #9a9488;
+  --rule: rgba(26,26,20,0.12);
+  --green: #3d6b4f;
+  --green-light: #e2ede7;
+  --plum: #5c2d6e;
+  --plum-light: #ede4f2;
+  --gold: #c49a2a;
+  --gold-light: #f5edd8;
+  --r: 0px;
+  --fd: 'Playfair Display', Georgia, serif;
+  --fb: 'Space Grotesk', system-ui, sans-serif;
+  --fm: 'Space Mono', monospace;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--fb);
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── LANG ── */
+.lang-en, .lang-de { display: none; }
+.lang-en.active, .lang-de.active { display: block; }
+span.lang-en, span.lang-de { display: none; }
+span.lang-en.active, span.lang-de.active { display: inline; }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(245,240,232,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ink);
+}
+.nav-logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo sup { font-size: 10px; vertical-align: super; font-family: var(--fm); opacity: 0.5; }
+.nav-right { display: flex; align-items: center; gap: 0; }
+.nav-link {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--rule);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-link:hover { color: var(--ink); background: var(--paper); }
+.lang-switch { display: flex; align-items: center; border-left: 1px solid var(--rule); padding: 0 8px; }
+.lang-btn {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--ink-faint);
+  padding: 0 8px;
+  height: 36px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.lang-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+@media(max-width:680px) {
+  nav { padding: 0 20px; }
+  .nav-link.hide-mob { display: none; }
+}
+
+/* ── PAGE LAYOUT ── */
+.page-wrap {
+  min-height: 100vh;
+  padding-top: 56px;
+}
+
+/* ── RIGHT PANEL ── */
+.right-panel {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 48px 48px 80px;
+  display: flex;
+  flex-direction: column;
+}
+@media(max-width:680px) {
+  .right-panel { padding: 32px 20px 60px; }
+}
+
+/* ── PROGRESS TRACK ── */
+.progress-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 52px;
+}
+.prog-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  position: relative;
+}
+.prog-step::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 12px;
+}
+.prog-step:last-child::after { display: none; }
+.prog-num {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--rule);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+.prog-label {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.prog-step.active .prog-num {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+.prog-step.active .prog-label { color: var(--ink); }
+.prog-step.done .prog-num {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.prog-step.done .prog-label { color: var(--green); }
+@media(max-width:500px) {
+  .prog-label { display: none; }
+}
+
+/* ── FORM BLOCKS ── */
+.form-block {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  animation: fadeUp 0.35s ease both;
+}
+.form-block.active { display: flex; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.block-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+}
+.block-label {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+.block-title {
+  font-family: var(--fb);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  margin: 0;
+}
+.block-title .italic { font-style: italic; color: var(--green); }
+
+/* ── FIELD ROWS ── */
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 0; }
+.field-row.single { grid-template-columns: 1fr; }
+@media(max-width:500px) { .field-row { grid-template-columns: 1fr; } }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+  border-left: none;
+  border-top: none;
+  padding: 18px 0 0;
+  position: relative;
+  transition: background 0.15s;
+}
+.field:first-child { border-left: 1px solid var(--rule); }
+.field-row.single .field { border-left: 1px solid var(--rule); }
+.field-row + .field-row .field { border-top: none; }
+.field:focus-within { background: rgba(61,107,79,0.03); }
+
+.field label {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 0 18px;
+  margin-bottom: 6px;
+}
+.field.required label::after { content: ' *'; color: var(--plum); }
+.field input,
+.field textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  padding: 0 18px 16px;
+  width: 100%;
+  line-height: 1.4;
+  resize: none;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--ink-faint); font-weight: 300; }
+.field textarea { min-height: 100px; padding-top: 4px; }
+
+/* bordered bottom line for focus */
+.field::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 2px;
+  background: var(--green);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+.field:focus-within::after { transform: scaleX(1); }
+
+/* ── SERVICE CARDS ── */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1.5px solid var(--ink);
+  margin-bottom: 0;
+}
+.service-card {
+  padding: 24px 20px;
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  user-select: none;
+}
+.service-card:nth-child(2n) { border-right: none; }
+.service-card:nth-last-child(-n+2):nth-child(odd),
+.service-card:last-child { border-bottom: none; }
+@media(max-width:500px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .service-card { border-right: none; border-bottom: 1.5px solid var(--ink); }
+  .service-card:last-child { border-bottom: none; }
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.2s;
+}
+.service-card:hover { background: var(--plum-light); }
+.service-card.selected { background: var(--plum-light); }
+.service-card.selected::before { background: var(--plum); }
+.service-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.sc-index {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+.service-card.selected .sc-index { color: var(--plum); }
+.sc-title {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.sc-tag {
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  display: inline-block;
+  border-radius: 2px;
+  margin-top: auto;
+  width: fit-content;
+}
+.sc-tag.free { background: var(--green-light); color: var(--green); }
+.sc-tag.standard { background: var(--paper); color: var(--ink-muted); }
+.sc-tag.premium { background: var(--gold-light); color: var(--gold); }
+.sc-tag.urgent { background: #fde8e8; color: #a03030; }
+.sc-tag.group { background: var(--plum-light); color: var(--plum); }
+.sc-check {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--rule);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.service-card.selected .sc-check {
+  background: var(--plum);
+  border-color: var(--plum);
+}
+.sc-check-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.service-card.selected .sc-check-dot { opacity: 1; }
+
+/* ── CALENDAR ── */
+.calendar-wrap {
+  border: 1.5px solid var(--ink);
+  user-select: none;
+}
+.cal-header {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  border-bottom: 1.5px solid var(--ink);
+  height: 48px;
+}
+.cal-nav {
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--ink-muted);
+  transition: background 0.15s, color 0.15s;
+  border-right: 1.5px solid var(--ink);
+}
+.cal-nav:last-child { border-right: none; border-left: 1.5px solid var(--ink); }
+.cal-nav:hover { background: var(--paper); color: var(--ink); }
+.cal-month {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  color: var(--ink);
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.cal-day-hdr {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.cal-day:nth-child(7n) { border-right: none; }
+.cal-day:hover:not(.disabled):not(.other) { background: var(--green-light); color: var(--green); }
+.cal-day.today { color: var(--gold); font-weight: 600; }
+.cal-day.today::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.cal-day.selected { background: var(--ink); color: var(--cream) !important; }
+.cal-day.disabled, .cal-day.other { color: var(--rule); cursor: default; background: transparent; }
+.cal-day.disabled { background: #f8f6f2; }
+
+/* ── TIME SLOTS ── */
+/* ── PICKER GRID ── */
+.picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+@media(max-width:560px) {
+  .picker-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ── TIME LABEL ── */
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+.times-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--ink);
+}
+.time-slot {
+  padding: 12px 8px;
+  text-align: center;
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--ink-muted);
+  cursor: pointer;
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+.time-slot:nth-child(4n) { border-right: none; }
+.time-slot:nth-last-child(-n+4):nth-child(4n+1),
+.time-slot:nth-last-child(-n+3):nth-child(4n+2),
+.time-slot:nth-last-child(-n+2):nth-child(4n+3),
+.time-slot:last-child { border-bottom: none; }
+.time-slot:hover { background: var(--green-light); color: var(--green); }
+.time-slot.selected { background: var(--ink); color: var(--cream); }
+.time-slot.empty { color: var(--ink-faint); font-style: italic; font-size: 10px; grid-column: 1/-1; border-right: none; border-bottom: none; }
+
+/* ── BOOKING SUMMARY STRIP ── */
+.booking-summary {
+  display: none;
+  border: 1.5px solid var(--ink);
+  padding: 16px 20px;
+  margin-top: -1.5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--paper);
+  flex-wrap: wrap;
+}
+.bs-item { display: flex; flex-direction: column; gap: 2px; }
+.bs-label {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.bs-value { font-size: 13px; font-weight: 500; color: var(--ink); }
+
+/* ── WORKSHOP DATES ── */
+.workshop-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1.5px solid var(--ink);
+}
+.workshop-item {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+}
+.workshop-item:last-child { border-bottom: none; }
+.workshop-item:hover { background: var(--plum-light); }
+.workshop-item.selected { background: var(--plum-light); }
+.workshop-item.selected::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--plum);
+}
+.wi-dot {
+  width: 10px; height: 10px;
+  border: 1.5px solid var(--rule);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.workshop-item.selected .wi-dot { background: var(--plum); border-color: var(--plum); }
+.wi-body { display: flex; flex-direction: column; gap: 3px; }
+.wi-title { font-family: var(--fd); font-weight: 700; font-size: 16px; color: var(--ink); }
+.wi-meta { font-family: var(--fm); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.04em; }
+.wi-price {
+  font-family: var(--fd);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green);
+  text-align: right;
+}
+
+/* ── PAYMENT SELECTION ── */
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--ink);
+}
+@media(max-width:500px) { .payment-grid { grid-template-columns: 1fr; } }
+.payment-card {
+  padding: 20px 16px;
+  border-right: 1.5px solid var(--ink);
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center;
+  position: relative;
+  user-select: none;
+}
+.payment-card:last-child { border-right: none; }
+.payment-card:hover { background: var(--paper); }
+.payment-card.selected { background: var(--green-light); }
+.payment-card.selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--green);
+}
+.pc-icon { font-size: 22px; line-height: 1; color: var(--ink-muted); }
+.payment-card.selected .pc-icon { color: var(--green); }
+.pc-label {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.payment-card.selected .pc-label { color: var(--green); }
+.payment-card input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+
+/* ── POLICY CHECKS ── */
+.policy-checks { display: flex; flex-direction: column; gap: 14px; padding: 24px 0 8px; }
+.policy-check-item { display: flex; align-items: flex-start; gap: 12px; }
+.policy-check-item input[type="checkbox"] {
+  margin-top: 3px; flex-shrink: 0;
+  width: 16px; height: 16px;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+.policy-check-item label {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+  cursor: pointer;
+  font-weight: 300;
+}
+.policy-link {
+  color: var(--green);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 400;
+  background: none; border: none; font-size: inherit; font-family: inherit;
+  padding: 0;
+}
+.policy-link:hover { color: var(--plum); }
+
+/* ── NAVIGATION BUTTONS ── */
+.form-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 40px;
+  border-top: 1.5px solid var(--ink);
+  padding-top: 24px;
+}
+.btn-back {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: none;
+  border: 1.5px solid var(--rule);
+  color: var(--ink-muted);
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-back:hover { border-color: var(--ink); color: var(--ink); }
+.btn-next {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--ink);
+  border: 1.5px solid var(--ink);
+  color: var(--cream);
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-left: auto;
+}
+.btn-next:hover { background: var(--plum); border-color: var(--plum); }
+.btn-next:disabled { opacity: 0.35; cursor: default; }
+.btn-submit {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--plum);
+  border: 1.5px solid var(--plum);
+  color: #fff;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-left: auto;
+}
+.btn-submit:hover { background: #431f52; border-color: #431f52; }
+
+/* ── REVIEW BLOCK ── */
+.review-table { width: 100%; border-collapse: collapse; }
+.review-table tr { border-bottom: 1px solid var(--rule); }
+.review-table tr:last-child { border-bottom: none; }
+.review-table td { padding: 12px 0; font-size: 13px; }
+.review-table td:first-child {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  width: 140px;
+}
+.review-table td:last-child { color: var(--ink); font-weight: 500; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(26,26,20,0.7);
+  z-index: 9999;
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--cream);
+  border: 1.5px solid var(--ink);
+  max-width: 580px; width: 100%;
+  max-height: 80vh;
+  display: flex; flex-direction: column;
+  animation: fadeUp 0.25s ease;
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1.5px solid var(--ink);
+  flex-shrink: 0;
+}
+.modal-header h3 {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+}
+.modal-close {
+  all: unset;
+  font-size: 20px;
+  color: var(--ink-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-body {
+  overflow-y: auto;
+  padding: 24px;
+  color: var(--ink-muted);
+  font-size: 13px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+.modal-body h4 {
+  font-family: var(--fd);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.4em 0 0.4em;
+}
+.modal-body h4:first-child { margin-top: 0; }
+.modal-body a { color: var(--green); }
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1.5px solid var(--ink);
+  display: flex; justify-content: flex-end; gap: 12px;
+  flex-shrink: 0;
+}
+.btn-modal-accept {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-modal-accept:hover { background: #2d5038; }
+
+/* ── SUCCESS STATE ── */
+.success-block {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 60px 0;
+  animation: fadeUp 0.5s ease both;
+}
+.success-block.active { display: flex; }
+.success-icon {
+  width: 56px; height: 56px;
+  border: 1.5px solid var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green);
+  font-size: 22px;
+}
+.success-title {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.success-title .italic { font-style: italic; color: var(--green); }
+.success-body {
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.75;
+  max-width: 420px;
+  font-weight: 300;
+}
+.success-back {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 2px;
+  margin-top: 12px;
+}
+
+/* ── ERROR ── */
+.field-error { font-family: var(--fm); font-size: 9px; letter-spacing: 0.08em; color: #a03030; padding: 4px 18px 0; }
+.error-banner {
+  background: #fde8e8;
+  border-left: 3px solid #a03030;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #a03030;
+  margin-bottom: 16px;
+  display: none;
+}
+.error-banner.show { display: block; }
+
+/* ── SECTION SPACING ── */
+.form-section { margin-bottom: 36px; }
+.form-section:last-child { margin-bottom: 0; }
+.section-head {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Synapse<sup>2</sup>Move</a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link hide-mob">
+      <span class="lang-en active">← Back</span>
+      <span class="lang-de">← Zurück</span>
+    </a>
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+      <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page-wrap">
+
+  <!-- RIGHT PANEL -->
+  <main class="right-panel">
+
+    <!-- Progress -->
+    <div class="progress-track" id="progress-track">
+      <div class="prog-step active" data-step="1">
+        <div class="prog-num">1</div>
+        <span class="prog-label"><span class="lang-en active">You</span><span class="lang-de">Du</span></span>
+        <span class="prog-step-line"></span>
+      </div>
+      <div class="prog-step" data-step="2">
+        <div class="prog-num">2</div>
+        <span class="prog-label"><span class="lang-en active">Service</span><span class="lang-de">Service</span></span>
+      </div>
+      <div class="prog-step" data-step="3">
+        <div class="prog-num">3</div>
+        <span class="prog-label"><span class="lang-en active">Schedule</span><span class="lang-de">Termin</span></span>
+      </div>
+      <div class="prog-step" data-step="4">
+        <div class="prog-num">4</div>
+        <span class="prog-label"><span class="lang-en active">Confirm</span><span class="lang-de">Bestätigen</span></span>
+      </div>
+    </div>
+
+    <!-- ACTUAL FORM (posts to Formspree) -->
+    <form id="booking-form" action="https://formspree.io/f/mojarrgz" method="POST" novalidate>
+      <input type="hidden" name="booking-date" id="hBookingDate"/>
+      <input type="hidden" name="booking-time" id="hBookingTime"/>
+      <input type="hidden" name="workshop-date" id="hWorkshopDate"/>
+      <input type="hidden" name="service" id="hService"/>
+      <input type="hidden" name="payment-method" id="hPayment"/>
+
+      <!-- STEP 1 · Personal Info -->
+      <div class="form-block active" id="step-1">
+        <div class="block-header">
+          <span class="block-label"><span class="lang-en active">Step 1 of 4</span><span class="lang-de">Schritt 1 von 4</span></span>
+          <span class="block-title"><span class="lang-en active">Your details</span><span class="lang-de">Deine Angaben</span></span>
+        </div>
+
+        <div class="error-banner" id="err-1">
+          <span class="lang-en active">Please fill in all required fields.</span>
+          <span class="lang-de">Bitte alle Pflichtfelder ausfüllen.</span>
+        </div>
+
+        <div class="field-row single">
+          <div class="field required">
+            <label for="f-name"><span class="lang-en active">Full Name</span><span class="lang-de">Vollständiger Name</span></label>
+            <input type="text" id="f-name" name="name" autocomplete="name"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field required">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" autocomplete="email"/>
+          </div>
+          <div class="field required">
+            <label for="f-email2">
+              <span class="lang-en active">Confirm Email</span>
+              <span class="lang-de">E-Mail bestätigen</span>
+            </label>
+            <input type="email" id="f-email2" name="email-confirm"/>
+          </div>
+        </div>
+        <div class="field-row single">
+          <div class="field required">
+            <label for="f-street">
+              <span class="lang-en active">Street Address</span>
+              <span class="lang-de">Straße &amp; Hausnummer</span>
+            </label>
+            <input type="text" id="f-street" name="street" autocomplete="street-address"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field required">
+            <label for="f-city">
+              <span class="lang-en active">City</span>
+              <span class="lang-de">Stadt</span>
+            </label>
+            <input type="text" id="f-city" name="city" autocomplete="address-level2"/>
+          </div>
+          <div class="field required">
+            <label for="f-zip">
+              <span class="lang-en active">Postcode</span>
+              <span class="lang-de">Postleitzahl</span>
+            </label>
+            <input type="text" id="f-zip" name="zip" autocomplete="postal-code"/>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <a href="index.html" class="btn-back">
+            <span class="lang-en active">← Home</span>
+            <span class="lang-de">← Zurück</span>
+          </a>
+          <button type="button" class="btn-next" onclick="goToStep(2)">
+            <span class="lang-en active">Choose Service →</span>
+            <span class="lang-de">Service wählen →</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2 · Service -->
+      <div class="form-block" id="step-2">
+        <div class="block-header">
+          <span class="block-label"><span class="lang-en active">Step 2 of 4</span><span class="lang-de">Schritt 2 von 4</span></span>
+          <span class="block-title"><span class="lang-en active">Choose a service</span><span class="lang-de">Service wählen</span></span>
+        </div>
+
+        <div class="error-banner" id="err-2">
+          <span class="lang-en active">Please select a service to continue.</span>
+          <span class="lang-de">Bitte einen Service auswählen.</span>
+        </div>
+
+        <div class="service-grid">
+          <!-- Card: Free Call -->
+          <div class="service-card" data-value="free-call" onclick="selectService(this)">
+            <input type="radio" name="_service_ui" value="free-call"/>
+            <span class="sc-index">01</span>
+            <span class="sc-title">
+              <span class="lang-en active">Free 20-Min Call</span>
+              <span class="lang-de">Kostenloses Gespräch</span>
+            </span>
+            <span class="sc-tag free">
+              <span class="lang-en active">Free · No commitment</span>
+              <span class="lang-de">Kostenlos · Unverbindlich</span>
+            </span>
+            <div class="sc-check"><div class="sc-check-dot"></div></div>
+          </div>
+          <!-- Card: Neuroassessment -->
+          <div class="service-card" data-value="neuroassessment" onclick="selectService(this)">
+            <input type="radio" name="_service_ui" value="neuroassessment"/>
+            <span class="sc-index">02</span>
+            <span class="sc-title">Neuroassessment</span>
+            <span class="sc-tag premium">
+              <span class="lang-en active">Functional analysis</span>
+              <span class="lang-de">Funktionale Analyse</span>
+            </span>
+            <div class="sc-check"><div class="sc-check-dot"></div></div>
+          </div>
+          <!-- Card: Personal Training -->
+          <div class="service-card" data-value="personal-training" onclick="selectService(this)">
+            <input type="radio" name="_service_ui" value="personal-training"/>
+            <span class="sc-index">03</span>
+            <span class="sc-title">
+              <span class="lang-en active">Personal Training</span>
+              <span class="lang-de">Personaltraining</span>
+            </span>
+            <span class="sc-tag standard">
+              <span class="lang-en active">1-on-1 session</span>
+              <span class="lang-de">Einzelstunde</span>
+            </span>
+            <div class="sc-check"><div class="sc-check-dot"></div></div>
+          </div>
+
+          <!-- Card: Workshop -->
+          <div class="service-card" data-value="workshop" onclick="selectService(this)">
+            <input type="radio" name="_service_ui" value="workshop"/>
+            <span class="sc-index">04</span>
+            <span class="sc-title">Workshop</span>
+            <span class="sc-tag group">
+              <span class="lang-en active">Group · Open dates</span>
+              <span class="lang-de">Gruppe · Offene Termine</span>
+            </span>
+            <div class="sc-check"><div class="sc-check-dot"></div></div>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-back" onclick="goToStep(1)">← 
+            <span class="lang-en active">Back</span>
+            <span class="lang-de">Zurück</span>
+          </button>
+          <button type="button" class="btn-next" id="btn-step2-next" onclick="goToStep(3)">
+            <span class="lang-en active">Set Time →</span>
+            <span class="lang-de">Termin wählen →</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3 · Schedule / Workshop -->
+      <div class="form-block" id="step-3">
+        <div class="block-header">
+          <span class="block-label"><span class="lang-en active">Step 3 of 4</span><span class="lang-de">Schritt 3 von 4</span></span>
+          <span class="block-title" id="step3-title"><span class="lang-en active">Date &amp; time</span><span class="lang-de">Datum &amp; Uhrzeit</span></span>
+        </div>
+
+        <div class="error-banner" id="err-3">
+          <span class="lang-en active">Please select a date, time and payment method.</span>
+          <span class="lang-de">Bitte Datum, Uhrzeit und Zahlungsmethode wählen.</span>
+        </div>
+
+        <!-- APPOINTMENT PICKER (shown for non-workshop services) -->
+        <div id="appointment-picker" class="form-section">
+          <div class="picker-grid">
+            <div>
+              <p class="times-label" style="margin-bottom:12px;">
+                <span class="lang-en active">Date</span>
+                <span class="lang-de">Datum</span>
+              </p>
+              <div class="calendar-wrap">
+                <div class="cal-header">
+                  <button type="button" class="cal-nav" id="prevMonth">‹</button>
+                  <span class="cal-month" id="calMonth"></span>
+                  <button type="button" class="cal-nav" id="nextMonth">›</button>
+                </div>
+                <div class="cal-grid" id="calGrid"></div>
+              </div>
+            </div>
+            <div>
+              <p class="times-label">
+                <span class="lang-en active">Available times</span>
+                <span class="lang-de">Verfügbare Zeiten</span>
+              </p>
+              <div class="times-grid" id="timesGrid">
+                <div class="time-slot empty">
+                  <span class="lang-en active">← Pick a date first</span>
+                  <span class="lang-de">← Zuerst Datum wählen</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- booking summary -->
+          <div class="booking-summary" id="booking-summary" style="display:none;">
+            <div class="bs-item">
+              <span class="bs-label"><span class="lang-en active">Date</span><span class="lang-de">Datum</span></span>
+              <span class="bs-value" id="bs-date">—</span>
+            </div>
+            <div class="bs-item">
+              <span class="bs-label"><span class="lang-en active">Time</span><span class="lang-de">Uhrzeit</span></span>
+              <span class="bs-value" id="bs-time">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- WORKSHOP PICKER (shown for workshop service) -->
+        <div id="workshop-picker" class="form-section" style="display:none;">
+          <div class="workshop-grid" id="workshopGrid"></div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="form-section" id="payment-section" style="display:none;">
+          <p class="times-label" style="margin-bottom:12px;">
+            <span class="lang-en active">Payment method</span>
+            <span class="lang-de">Zahlungsmethode</span>
+          </p>
+          <div class="payment-grid">
+            <div class="payment-card" data-value="paypal" onclick="selectPayment(this)">
+              <input type="radio" name="_payment_ui" value="paypal"/>
+              <span class="pc-icon">🅿</span>
+              <span class="pc-label">PayPal</span>
+            </div>
+            <div class="payment-card" data-value="bank-transfer" onclick="selectPayment(this)">
+              <input type="radio" name="_payment_ui" value="bank-transfer"/>
+              <span class="pc-icon">🏦</span>
+              <span class="pc-label">
+                <span class="lang-en active">Bank Transfer</span>
+                <span class="lang-de">Überweisung</span>
+              </span>
+            </div>
+            <div class="payment-card" data-value="credit-card" onclick="selectPayment(this)">
+              <input type="radio" name="_payment_ui" value="credit-card"/>
+              <span class="pc-icon">💳</span>
+              <span class="pc-label">
+                <span class="lang-en active">Credit Card</span>
+                <span class="lang-de">Kreditkarte</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-back" onclick="goToStep(2)">← 
+            <span class="lang-en active">Back</span>
+            <span class="lang-de">Zurück</span>
+          </button>
+          <button type="button" class="btn-next" onclick="goToStep(4)">
+            <span class="lang-en active">Review →</span>
+            <span class="lang-de">Übersicht →</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4 · Review & Confirm -->
+      <div class="form-block" id="step-4">
+        <div class="block-header">
+          <span class="block-label"><span class="lang-en active">Step 4 of 4</span><span class="lang-de">Schritt 4 von 4</span></span>
+          <span class="block-title"><span class="lang-en active">Review &amp; confirm</span><span class="lang-de">Überprüfen &amp; bestätigen</span></span>
+        </div>
+
+        <div class="form-section">
+          <p class="section-head">
+            <span class="lang-en active">Your Details</span>
+            <span class="lang-de">Deine Angaben</span>
+          </p>
+          <table class="review-table" id="review-table">
+            <!-- populated by JS -->
+          </table>
+        </div>
+
+        <div class="form-section">
+          <p class="section-head">
+            <span class="lang-en active">Message / Notes (optional)</span>
+            <span class="lang-de">Nachricht / Anmerkungen (optional)</span>
+          </p>
+          <div class="field-row single" style="margin-top:0;">
+            <div class="field">
+              <label for="f-message">
+                <span class="lang-en active">Questions or describe your situation briefly</span>
+                <span class="lang-de">Fragen oder Situation kurz beschreiben</span>
+              </label>
+              <textarea id="f-message" name="message" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="policy-checks">
+            <div class="policy-check-item">
+              <input type="checkbox" id="confirm-privacy" name="confirm-privacy" required/>
+              <label for="confirm-privacy">
+                <span class="lang-en active">I have read and accept the <button type="button" class="policy-link" onclick="openModal('privacy')">Privacy Policy</button>.</span>
+                <span class="lang-de">Ich habe die <button type="button" class="policy-link" onclick="openModal('privacy')">Datenschutzerklärung</button> gelesen und akzeptiere sie.</span>
+              </label>
+            </div>
+            <div class="policy-check-item">
+              <input type="checkbox" id="confirm-cancellation" name="confirm-cancellation" required/>
+              <label for="confirm-cancellation">
+                <span class="lang-en active">I have read and accept the <button type="button" class="policy-link" onclick="openModal('cancellation')">Cancellation Policy</button>.</span>
+                <span class="lang-de">Ich habe die <button type="button" class="policy-link" onclick="openModal('cancellation')">Stornierungsbedingungen</button> gelesen und akzeptiere sie.</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="error-banner" id="err-4">
+          <span class="lang-en active">Please accept both policies to continue.</span>
+          <span class="lang-de">Bitte beide Richtlinien akzeptieren.</span>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-back" onclick="goToStep(3)">← 
+            <span class="lang-en active">Back</span>
+            <span class="lang-de">Zurück</span>
+          </button>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="lang-en active">Send Booking →</span>
+            <span class="lang-de">Buchung absenden →</span>
+          </button>
+        </div>
+
+        <p style="margin-top:16px; font-family:var(--fm); font-size:9px; letter-spacing:0.08em; color:var(--ink-faint);">
+          * <span class="lang-en active">You will receive a confirmation email within 24 hours.</span>
+          <span class="lang-de">Du erhältst eine Bestätigungsmail innerhalb von 24 Stunden.</span>
+        </p>
+      </div>
+    </form>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-block" id="success-block">
+      <div class="success-icon">✓</div>
+      <h2 class="success-title">
+        <span class="lang-en active">You're<br><span class="italic">booked.</span></span>
+        <span class="lang-de">Gebucht.<br><span class="italic">Danke.</span></span>
+      </h2>
+      <p class="success-body">
+        <span class="lang-en active">Your request has been sent. Stamatios will confirm your appointment within 24 hours by email.</span>
+        <span class="lang-de">Deine Anfrage wurde gesendet. Stamatios bestätigt deinen Termin innerhalb von 24 Stunden per E-Mail.</span>
+      </p>
+      <a href="index.html" class="success-back">
+        <span class="lang-en active">← Back to homepage</span>
+        <span class="lang-de">← Zurück zur Startseite</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- PRIVACY MODAL -->
+<div class="modal-overlay" id="modal-privacy" onclick="closeModalOverlay(event,'privacy')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3><span class="lang-en active">Privacy Policy</span><span class="lang-de">Datenschutzerklärung</span></h3>
+      <button type="button" class="modal-close" onclick="closeModal('privacy')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <span class="lang-en active">
+        <h4>1. Controller</h4>
+        <p>Stamatios Papavasiliou · s2m@ionio.de</p>
+        <h4>2. What data we collect</h4>
+        <p>Our website is static and collects personal data only when you actively contact us via this form. Submissions are processed by Formspree. See <a href="https://formspree.io/legal/privacy-policy/" target="_blank">formspree.io/legal/privacy-policy</a> for details.</p>
+        <h4>3. Hosting &amp; log data</h4>
+        <p>Our hosting provider may automatically store technical server log data (IP, timestamps, browser info) for operational purposes only.</p>
+        <h4>4. No cookies or tracking</h4>
+        <p>We do not use cookies, Google Analytics, or any tracking technologies.</p>
+        <h4>5. Your rights</h4>
+        <p>You have the right to access, correct, delete, or restrict processing of your personal data (GDPR Arts. 15–21). Contact us at s2m@ionio.de to exercise these rights or to lodge a complaint with a supervisory authority.</p>
+        <h4>6. Retention</h4>
+        <p>Data is retained only as long as necessary for the purpose it was collected and then anonymised or deleted.</p>
+      </span>
+      <span class="lang-de">
+        <h4>1. Verantwortlicher</h4>
+        <p>Stamatios Papavasiliou · s2m@ionio.de</p>
+        <h4>2. Erhobene Daten</h4>
+        <p>Personenbezogene Daten werden nur erhoben, wenn Sie aktiv Kontakt aufnehmen. Formulare werden über Formspree verarbeitet. Mehr: <a href="https://formspree.io/legal/privacy-policy/" target="_blank">formspree.io/legal/privacy-policy</a>.</p>
+        <h4>3. Hosting &amp; Protokolldaten</h4>
+        <p>Unser Hosting-Anbieter speichert technische Server-Protokolldaten (IP, Zeitstempel, Browser) ausschließlich für den Betrieb.</p>
+        <h4>4. Keine Cookies oder Tracking</h4>
+        <p>Wir verwenden keine Cookies, kein Google Analytics und keine Tracking-Technologien.</p>
+        <h4>5. Ihre Rechte</h4>
+        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung (DSGVO Art. 15–21). Kontakt: s2m@ionio.de.</p>
+        <h4>6. Speicherdauer</h4>
+        <p>Daten werden nur so lange gespeichert, wie für den jeweiligen Zweck notwendig, dann anonymisiert oder gelöscht.</p>
+      </span>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-modal-accept" onclick="acceptAndClose('privacy','confirm-privacy')">
+        <span class="lang-en active">Accept &amp; Close</span>
+        <span class="lang-de">Akzeptieren &amp; Schließen</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CANCELLATION MODAL -->
+<div class="modal-overlay" id="modal-cancellation" onclick="closeModalOverlay(event,'cancellation')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3><span class="lang-en active">Cancellation Policy</span><span class="lang-de">Stornierungsbedingungen</span></h3>
+      <button type="button" class="modal-close" onclick="closeModal('cancellation')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <span class="lang-en active">
+        <h4>Free cancellation window</h4>
+        <p>Appointments and workshop bookings may be cancelled free of charge up to <strong>48 hours</strong> before the scheduled start.</p>
+        <h4>Late cancellations</h4>
+        <p>Cancellations less than 48 hours in advance: <strong>50% of the session fee</strong>.</p>
+        <h4>No-shows</h4>
+        <p>Failure to attend without prior notice: <strong>100% of the session fee</strong>.</p>
+        <h4>How to cancel</h4>
+        <p>Email s2m@ionio.de or call +49 152 21319336. Cancellations are confirmed once you receive written acknowledgement.</p>
+        <h4>Payment</h4>
+        <p>Due within <strong>7 days</strong> of your confirmation email. For workshops within 7 days, payment is due within <strong>24 hours</strong>.</p>
+      </span>
+      <span class="lang-de">
+        <h4>Kostenlose Stornierungsfrist</h4>
+        <p>Termine können bis <strong>48 Stunden</strong> vor Beginn kostenlos storniert werden.</p>
+        <h4>Späte Stornierungen</h4>
+        <p>Weniger als 48 Stunden vorher: <strong>50 % der Sitzungsgebühr</strong>.</p>
+        <h4>Nichterscheinen</h4>
+        <p>Ohne vorherige Benachrichtigung: <strong>100 % der Sitzungsgebühr</strong>.</p>
+        <h4>So stornieren</h4>
+        <p>E-Mail an s2m@ionio.de oder Anruf unter +49 152 21319336. Bestätigt nach schriftlicher Rückmeldung.</p>
+        <h4>Zahlung</h4>
+        <p>Innerhalb von <strong>7 Tagen</strong> nach Bestätigungsmail. Bei Workshops innerhalb von 7 Tagen: innerhalb von <strong>24 Stunden</strong>.</p>
+      </span>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-modal-accept" onclick="acceptAndClose('cancellation','confirm-cancellation')">
+        <span class="lang-en active">Accept &amp; Close</span>
+        <span class="lang-de">Akzeptieren &amp; Schließen</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── LANG ── */
+let currentLang = 'en';
+function switchLanguage(lang) {
+  if (currentLang === lang) return;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
+  if (calendar) calendar.render();
+  renderWorkshopDates();
+}
+const saved = sessionStorage.getItem('preferred-language');
+if (saved && saved !== 'en') { currentLang = saved; }
+
+/* ── STATE ── */
+const state = {
+  name:'', email:'', emailConfirm:'', street:'', city:'', zip:'',
+  service: null,
+  bookingDate: null, bookingTime: null,
+  workshopDate: null, workshopText: null,
+  payment: null
+};
+
+/* ── STEP NAVIGATION ── */
+let currentStep = 1;
+function goToStep(n) {
+  if (n > currentStep && !validateStep(currentStep)) return;
+  currentStep = n;
+  document.querySelectorAll('.form-block').forEach(b => b.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  updateProgress();
+  if (n === 3) renderStep3();
+  if (n === 4) renderReview();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  document.querySelectorAll('.prog-step').forEach(s => {
+    const n = parseInt(s.dataset.step);
+    s.classList.remove('active','done');
+    if (n === currentStep) s.classList.add('active');
+    else if (n < currentStep) s.classList.add('done');
+    const dot = s.querySelector('.prog-num');
+    if (n < currentStep) dot.textContent = '✓';
+    else dot.textContent = n;
+  });
+}
+
+/* ── VALIDATION ── */
+function validateStep(n) {
+  document.querySelectorAll('.error-banner').forEach(e => e.classList.remove('show'));
+  if (n === 1) {
+    const fields = ['f-name','f-email','f-email2','f-street','f-city','f-zip'];
+    for (const id of fields) {
+      if (!document.getElementById(id).value.trim()) {
+        document.getElementById('err-1').classList.add('show');
+        document.getElementById(id).focus();
+        return false;
+      }
+    }
+    if (document.getElementById('f-email').value !== document.getElementById('f-email2').value) {
+      document.getElementById('err-1').querySelector('span.active').textContent =
+        currentLang === 'en' ? 'Email addresses do not match.' : 'E-Mail-Adressen stimmen nicht überein.';
+      document.getElementById('err-1').classList.add('show');
+      return false;
+    }
+    state.name = document.getElementById('f-name').value.trim();
+    state.email = document.getElementById('f-email').value.trim();
+    state.street = document.getElementById('f-street').value.trim();
+    state.city = document.getElementById('f-city').value.trim();
+    state.zip = document.getElementById('f-zip').value.trim();
+    return true;
+  }
+  if (n === 2) {
+    if (!state.service) {
+      document.getElementById('err-2').classList.add('show');
+      return false;
+    }
+    return true;
+  }
+  if (n === 3) {
+    if (state.service === 'workshop') {
+      if (!state.workshopDate || !state.payment) {
+        document.getElementById('err-3').classList.add('show');
+        return false;
+      }
+    } else {
+      if (!state.bookingDate || !state.bookingTime || !state.payment) {
+        document.getElementById('err-3').classList.add('show');
+        return false;
+      }
+    }
+    return true;
+  }
+  if (n === 4) {
+    const p = document.getElementById('confirm-privacy').checked;
+    const c = document.getElementById('confirm-cancellation').checked;
+    if (!p || !c) {
+      document.getElementById('err-4').classList.add('show');
+      return false;
+    }
+    return true;
+  }
+  return true;
+}
+
+/* ── SERVICE SELECTION ── */
+function selectService(card) {
+  document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.service = card.dataset.value;
+  document.getElementById('hService').value = state.service;
+}
+
+/* ── PAYMENT SELECTION ── */
+function selectPayment(card) {
+  document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.payment = card.dataset.value;
+  document.getElementById('hPayment').value = state.payment;
+}
+
+/* ── STEP 3 RENDER ── */
+function renderStep3() {
+  const isWorkshop = state.service === 'workshop';
+  document.getElementById('appointment-picker').style.display = isWorkshop ? 'none' : 'block';
+  document.getElementById('workshop-picker').style.display = isWorkshop ? 'block' : 'none';
+  document.getElementById('payment-section').style.display = 'block';
+  if (isWorkshop) renderWorkshopDates();
+  else if (calendar) calendar.render();
+}
+
+/* ── WORKSHOP DATES ── */
+const workshopDates = {
+  en: [{ value: '2026-05-30', title: 'Healthy Hips', meta: '30.05.2026  ·  15:00–16:30', price: '€30' }],
+  de: [{ value: '2026-05-30', title: 'Healthy Hips', meta: '30.05.2026  ·  15:00–16:30', price: '€30' }]
+};
+function renderWorkshopDates() {
+  const grid = document.getElementById('workshopGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const dates = workshopDates[currentLang];
+  dates.forEach(w => {
+    const el = document.createElement('div');
+    el.className = 'workshop-item' + (state.workshopDate === w.value ? ' selected' : '');
+    el.innerHTML = `<div class="wi-dot"></div>
+      <div class="wi-body"><div class="wi-title">${w.title}</div><div class="wi-meta">${w.meta}</div></div>
+      <div class="wi-price">${w.price}</div>`;
+    el.onclick = () => {
+      document.querySelectorAll('.workshop-item').forEach(i => i.classList.remove('selected'));
+      el.classList.add('selected');
+      state.workshopDate = w.value;
+      state.workshopText = `${w.title} · ${w.meta}`;
+      document.getElementById('hWorkshopDate').value = state.workshopText;
+      document.getElementById('payment-section').style.display = 'block';
+    };
+    grid.appendChild(el);
+  });
+}
+
+/* ── CALENDAR ── */
+const BOOKING_CONFIG = {
+  availableDays: [1,2,3,4],
+  timeSlots: {
+    1: ['09:00','10:30','14:00','15:30'],
+    2: ['09:00','10:30','14:00','15:30'],
+    3: ['09:00','10:30','14:00','15:30'],
+    4: ['09:00','10:30','14:00','15:30']
+  },
+  blockedDates: ['2025-08-15'],
+  maxAdvanceDays: 60
+};
+
+class BookingCalendar {
+  constructor() {
+    this.view = new Date();
+    this.selectedDate = null;
+    this.selectedTime = null;
+  }
+  render() {
+    const year = this.view.getFullYear();
+    const month = this.view.getMonth();
+    const monthNames = currentLang === 'en'
+      ? ['January','February','March','April','May','June','July','August','September','October','November','December']
+      : ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    const el = document.getElementById('calMonth');
+    if (el) el.textContent = `${monthNames[month]} ${year}`;
+    this.renderGrid(year, month);
+  }
+  renderGrid(year, month) {
+    const grid = document.getElementById('calGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    const dayHeaders = currentLang === 'en'
+      ? ['Mo','Tu','We','Th','Fr','Sa','Su']
+      : ['Mo','Di','Mi','Do','Fr','Sa','So'];
+    dayHeaders.forEach(d => {
+      const h = document.createElement('div');
+      h.className = 'cal-day-hdr';
+      h.textContent = d;
+      grid.appendChild(h);
+    });
+    let firstDay = new Date(year, month, 1).getDay();
+    firstDay = firstDay === 0 ? 6 : firstDay - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date(); today.setHours(0,0,0,0);
+    const maxDate = new Date(); maxDate.setDate(maxDate.getDate() + BOOKING_CONFIG.maxAdvanceDays);
+    for (let i = 0; i < firstDay; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'cal-day other';
+      grid.appendChild(empty);
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      const d = new Date(year, month, day);
+      const dow = d.getDay();
+      const ds = this.fmt(d);
+      const el = document.createElement('div');
+      el.textContent = day;
+      const isAvail = d >= today && d <= maxDate &&
+        BOOKING_CONFIG.availableDays.includes(dow) &&
+        !BOOKING_CONFIG.blockedDates.includes(ds);
+      el.className = 'cal-day' +
+        (this.isSame(d, today) ? ' today' : '') +
+        (this.selectedDate && this.isSame(d, this.selectedDate) ? ' selected' : '') +
+        (!isAvail ? ' disabled' : '');
+      if (isAvail) el.onclick = () => this.selectDate(d, ds, dow);
+      grid.appendChild(el);
+    }
+  }
+  selectDate(date, ds, dow) {
+    this.selectedDate = date;
+    this.selectedTime = null;
+    state.bookingDate = ds;
+    state.bookingTime = null;
+    document.getElementById('hBookingDate').value = ds;
+    document.getElementById('hBookingTime').value = '';
+    this.render();
+    this.renderTimes(dow, date);
+    document.getElementById('booking-summary').style.display = 'none';
+  }
+  renderTimes(dow, date) {
+    const grid = document.getElementById('timesGrid');
+    grid.innerHTML = '';
+    const slots = BOOKING_CONFIG.timeSlots[dow] || [];
+    if (!slots.length) {
+      const e = document.createElement('div');
+      e.className = 'time-slot empty';
+      e.textContent = currentLang === 'en' ? 'No availability this day.' : 'Keine Verfügbarkeit.';
+      grid.appendChild(e);
+      return;
+    }
+    slots.forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'time-slot' + (this.selectedTime === t ? ' selected' : '');
+      el.textContent = t;
+      el.onclick = () => {
+        this.selectedTime = t;
+        state.bookingTime = t;
+        document.getElementById('hBookingTime').value = t;
+        grid.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        el.classList.add('selected');
+        const summary = document.getElementById('booking-summary');
+        const [y,m,d] = calendar.fmt(date).split('-');
+        const displayDate = currentLang === 'de'
+          ? `${d}.${m}.${y}`
+          : `${parseInt(d)} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][parseInt(m)-1]} ${y}`;
+        document.getElementById('bs-date').textContent = displayDate;
+        document.getElementById('bs-time').textContent = t;
+        summary.style.display = 'flex';
+        state.bookingDate = this.fmt(date);
+      };
+      grid.appendChild(el);
+    });
+  }
+  fmt(d) {
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+  isSame(a, b) { return a.toDateString() === b.toDateString(); }
+}
+
+let calendar;
+document.getElementById('prevMonth').addEventListener('click', () => {
+  if (calendar) { calendar.view.setMonth(calendar.view.getMonth()-1); calendar.render(); }
+});
+document.getElementById('nextMonth').addEventListener('click', () => {
+  if (calendar) { calendar.view.setMonth(calendar.view.getMonth()+1); calendar.render(); }
+});
+calendar = new BookingCalendar();
+calendar.render();
+
+/* ── REVIEW RENDER ── */
+function formatDateForReview(isoDate) {
+  if (!isoDate) return '—';
+  const [y, m, d] = isoDate.split('-');
+  if (currentLang === 'de') return `${d}.${m}.${y}`;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+}
+
+function renderReview() {
+  const labels = {
+    en: { name:'Name', email:'Email', address:'Address', service:'Service', datetime:'Date & Time', payment:'Payment' },
+    de: { name:'Name', email:'E-Mail', address:'Adresse', service:'Service', datetime:'Datum & Zeit', payment:'Zahlung' }
+  };
+  const l = labels[currentLang];
+  const serviceLabels = {
+    en: {'free-call':'Free 20-Min Call','neuroassessment':'Neuroassessment','personal-training':'Personal Training','workshop':'Workshop'},
+    de: {'free-call':'Kostenloses Gespräch','neuroassessment':'Neuroassessment','personal-training':'Personaltraining','workshop':'Workshop'}
+  };
+  const payLabels = {
+    en: {'paypal':'PayPal','bank-transfer':'Bank Transfer','credit-card':'Credit Card'},
+    de: {'paypal':'PayPal','bank-transfer':'Überweisung','credit-card':'Kreditkarte'}
+  };
+  const formattedDate = formatDateForReview(state.bookingDate);
+  const rows = [
+    [l.name, state.name],
+    [l.email, state.email],
+    [l.address, `${state.street}, ${state.zip} ${state.city}`],
+    [l.service, serviceLabels[currentLang][state.service] || state.service],
+    [l.datetime, state.service === 'workshop'
+      ? (state.workshopText || '—')
+      : (state.bookingDate ? `${formattedDate}  ·  ${state.bookingTime||'—'}` : '—')],
+    [l.payment, payLabels[currentLang][state.payment] || state.payment || '—']
+  ];
+  const tbody = document.getElementById('review-table');
+  tbody.innerHTML = rows.map(([k,v]) =>
+    `<tr><td>${k}</td><td>${v}</td></tr>`
+  ).join('');
+}
+
+/* ── MODALS ── */
+function openModal(type) {
+  document.getElementById('modal-'+type).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(type) {
+  document.getElementById('modal-'+type).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOverlay(e, type) {
+  if (e.target === e.currentTarget) closeModal(type);
+}
+function acceptAndClose(type, checkboxId) {
+  document.getElementById(checkboxId).checked = true;
+  closeModal(type);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') ['privacy','cancellation'].forEach(closeModal);
+});
+
+/* ── FORM SUBMIT ── */
+document.getElementById('booking-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  if (!validateStep(4)) return;
+  document.getElementById('submitBtn').textContent = currentLang === 'en' ? 'Sending…' : 'Wird gesendet…';
+  document.getElementById('submitBtn').disabled = true;
+  const formData = new FormData(this);
+  try {
+    const res = await fetch(this.action, { method:'POST', body: formData, headers: { Accept: 'application/json' } });
+    if (res.ok) {
+      document.getElementById('booking-form').style.display = 'none';
+      document.getElementById('progress-track').style.display = 'none';
+      document.getElementById('success-block').classList.add('active');
+    } else {
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').textContent = currentLang === 'en' ? 'Try Again →' : 'Erneut versuchen →';
+      document.getElementById('err-4').textContent = currentLang === 'en'
+        ? 'Something went wrong. Please email s2m@ionio.de directly.'
+        : 'Fehler beim Senden. Bitte direkt an s2m@ionio.de schreiben.';
+      document.getElementById('err-4').classList.add('show');
+    }
+  } catch {
+    document.getElementById('submitBtn').disabled = false;
+  }
+});
+
+/* ── INIT LANG ── */
+if (saved && saved !== 'en') {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === saved));
+  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-' + saved).forEach(el => el.classList.add('active'));
+  if (calendar) calendar.render();
+}
+</script>
+</body>
 </html>

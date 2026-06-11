@@ -1,315 +1,995 @@
-<!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Neuroathletictraining</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
-		<style>
-			/* Language Switch Styles */
-			.language-switch {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				z-index: 10000;
-				background:  linear-gradient(135deg, #edbf797c, #60bca381);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 25px;
-				padding: 3px;
-				display: flex;
-				align-items: center;
-				gap: 2px;
-				transition: all 0.3s ease;
-				opacity: 0.7;
-			}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Neuroathletic Training — Synapse²Move Munich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --cream: #f5f0e8;
+  --paper: #ede8dc;
+  --ink: #1a1a14;
+  --ink-muted: #5a5850;
+  --ink-faint: #9a9488;
+  --rule: rgba(26,26,20,0.10);
+  --green: #3d6b4f;
+  --green-light: #e2ede7;
+  --plum: #5c2d6e;
+  --plum-light: #ede4f2;
+  --gold: #c49a2a;
+  --fd: 'Playfair Display', Georgia, serif;
+  --fb: 'Space Grotesk', system-ui, sans-serif;
+  --fm: 'Space Mono', monospace;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--fb); background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
-			.language-switch:hover {
-				opacity: 1;
-				background: linear-gradient(135deg, #edbf79, #60bca3);
-			}
+/* LANG */
+.lang-en,.lang-de { display: none; }
+.lang-en.active,.lang-de.active { display: block; }
+span.lang-en, span.lang-de { display: none; }
+span.lang-en.active, span.lang-de.active { display: inline; }
 
-			.lang-btn {
-				background: transparent;
-				border: none;
-				color: rgba(255, 255, 255, 0.8);
-				padding: 0px 0px;
-				cursor: pointer;
-				border-radius: 20px;
-				transition: all 0.3s ease;
-				font-size: 0.50em;
-				font-weight: 800;
-				letter-spacing: 0.5px;
-			}
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(245,240,232,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ink);
+}
+.nav-logo { font-family: var(--fd); font-weight: 900; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+.nav-logo sup { font-size: 10px; vertical-align: super; font-family: var(--fm); opacity: 0.7; }
+.nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+.nav-links li { border-left: 1px solid var(--rule); }
+.nav-links li:first-child { border-left: none; }
+.nav-links a {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-muted); text-decoration: none; padding: 0 16px; height: 56px;
+  display: flex; align-items: center; transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--ink); background: var(--paper); }
+.nav-active { color: var(--ink) !important; font-weight: 500 !important; }
+.nav-cta-link { background: var(--ink) !important; color: var(--cream) !important; }
+.nav-cta-link:hover { background: var(--plum) !important; color: #fff !important; }
+.lang-switch { display: flex; padding: 0 8px; }
+.lang-btn {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+  background: none; border: none; color: var(--ink-faint); padding: 0 8px; height: 36px;
+  cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s;
+}
+.lang-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+.nav-mobile-toggle {
+  display: none; background: none; border: 1px solid var(--rule); color: var(--ink);
+  padding: 7px 10px; cursor: pointer; flex-direction: column; gap: 4px;
+}
+.nav-mobile-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; }
 
-			.lang-btn:hover {
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-			}
+/* ─── HERO ─── */
+.page-hero {
+  position: relative;
+  padding-top: 56px;
+  min-height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 40%, #0e2218 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 10% 70%, #1e0f2a 0%, transparent 55%),
+    linear-gradient(155deg, #141009 0%, #1c1510 100%);
+}
+#page-canvas {
+  position: absolute; right: 0; top: 0; width: 55%; height: 100%;
+  z-index: 1; opacity: 0.6; pointer-events: none;
+}
+.page-hero-scrim {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to right, rgba(20,16,9,0.9) 0%, rgba(20,16,9,0.25) 65%, rgba(20,16,9,0.55) 100%);
+}
+.page-hero-body {
+  position: relative; z-index: 3;
+  padding: 88px 48px 80px;
+  max-width: 760px;
+}
+.hero-breadcrumb {
+  font-family: var(--fm); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.hero-breadcrumb::before { content: ''; width: 28px; height: 1px; background: rgba(255,255,255,0.2); display: block; }
+.hero-breadcrumb a { color: rgba(255,255,255,0.3); text-decoration: none; }
+.hero-breadcrumb a:hover { color: rgba(255,255,255,0.6); }
 
-			.lang-btn.active {
-				background: #edbf79;
-				color: white;
-				box-shadow: 0 2px 8px rgba(96, 188, 164, 0.2);
-			}
+.page-hero h1 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(44px, 6.5vw, 90px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: heroUp 0.9s 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.page-hero h1 .kicker {
+  display: block;
+  font-size: 0.38em;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 0.15em;
+  line-height: 1;
+}
+.page-hero h1 .outlined {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.65);
+}
+.hero-lede {
+  font-family: var(--fb); font-weight: 300;
+  font-size: clamp(14px, 1.5vw, 17px);
+  color: rgba(255,255,255,0.48);
+  line-height: 1.85;
+  max-width: 480px;
+  opacity: 0;
+  animation: heroUp 0.9s 0.5s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-			/* Hide inactive language content */
-			.lang-content {
-				display: none;
-			}
+/* ─── SECTION EYEBROW — replaces the chapter bar ─── */
+/*
+  One compact line: index number + label, no rules, no tags, no borders.
+  The large section heading below it supplies all the visual weight needed.
+*/
+.eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 1.1rem;
+}
+.eyebrow-num {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+}
+.eyebrow-label {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+/* Colour variants keyed to the section accent */
+.eyebrow.green .eyebrow-label { color: var(--green); }
+.eyebrow.plum  .eyebrow-label { color: var(--plum); }
+.eyebrow.gold  .eyebrow-label { color: var(--gold); }
 
-			.lang-content.active {
-				display: block;
-			}
+/* ─── SECTION HEADING ─── */
+.section-heading {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1.6rem;
+}
+.section-heading em { font-style: italic; color: var(--green); font-weight: 700; }
+.section-heading.plum em { color: var(--plum); }
 
-			/* Inline language spans */
-			.lang-en, .lang-de {
-				display: none;
-			}
+/* ─── LAYOUT WRAPPER ─── */
+/* A single max-width container handles all prose sections.
+   Sections are separated by whitespace — no borders between them. */
+.content-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-			.lang-en.active, .lang-de.active {
-				display: inline;
-			}
+/* ─── PROSE BLOCK ─── */
+.prose-block {
+  padding: 80px 48px;
+}
+.prose-block p {
+  font-size: 16px; color: var(--ink-muted);
+  line-height: 1.9; font-weight: 300;
+  margin-bottom: 20px;
+  max-width: 620px;
+}
+.prose-block p:last-child { margin-bottom: 0; }
+.prose-block p strong { color: var(--ink); font-weight: 500; }
 
-			@media (max-width: 600px) {
-				.language-switch {
-					top: 5px;
-					right: 1px;
-					scale: 0.85;
-					padding: 2px;
-					flex-direction: column;
-					gap: 1px;
-				}
-				
-				.lang-btn {
-					padding: 0px 7px;
-					font-size: 0.65em;
-					border-radius: 15px;
-				}
-			}
-		</style>
-	</head>
-	<body class="is-preload">
+/* ─── SECTION 01: prose left + cards right ─── */
+.section-01 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+.section-01-text {
+  padding: 80px 48px;
+}
+.section-01-text p {
+  font-size: 16px; color: var(--ink-muted);
+  line-height: 1.9; font-weight: 300;
+  margin-bottom: 20px; max-width: 520px;
+}
+.section-01-text p:last-child { margin-bottom: 0; }
+.section-01-text p strong { color: var(--ink); font-weight: 500; }
 
-		<!-- Language Switch -->
-		<div class="language-switch">
-			<button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">EN</button>
-			<button class="lang-btn" onclick="switchLanguage('de')" data-lang="de">DE</button>
-		</div>
+/* Cards stack vertically in the right column */
+.concept-strip {
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+.concept-card {
+  padding: 32px 36px;
+  border-bottom: 1px solid rgba(26,26,20,0.08);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.concept-card:last-child { border-bottom: none; }
+.concept-icon {
+  font-family: var(--fm); font-size: 16px;
+  color: var(--green); line-height: 1; margin-bottom: 4px;
+}
+.concept-label {
+  font-family: var(--fm); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.concept-title {
+  font-family: var(--fd); font-weight: 700;
+  font-size: 1.05rem; color: var(--ink); line-height: 1.25;
+}
+.concept-body {
+  font-size: 13px; color: var(--ink-muted);
+  font-weight: 300; line-height: 1.7;
+}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+/* Legacy: prose-block used in sections 02 and 03 */
 
-				<!-- Header -->
-					<header id="header">
-					<h1>
-						<span class="lang-en active">What is<br> Neuroathletic Training</span>
-						<span class="lang-de">Was ist<br> Neuroathletik-<br>training</span>
-					</h1>
-						<p>
-							<span class="lang-en active">Applied Neuroscience in Humanmovement and Sportscience</span>
-							<span class="lang-de">Angewandte Neurowissenschaft in Bewegungs- und Sportwissenschaften</span>
-						</p>
-					</header>
+/* ─── PULL QUOTE ─── */
+.pull-quote-wrap {
+  padding: 0 48px 72px;
+}
+.pull-quote {
+  font-family: var(--fd); font-style: italic;
+  font-size: clamp(19px, 2.2vw, 26px);
+  color: var(--ink);
+  line-height: 1.5;
+  padding-left: 28px;
+  border-left: 3px solid var(--green);
+  max-width: 640px;
+}
 
-				<!-- Main -->
-					<div id="main">
+/* ─── SPLIT SECTION ─── */
+/*
+  No top border. Left panel has a subtle right rule only.
+  Background shift on right panel creates visual separation.
+*/
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.split-text {
+  padding: 72px 48px;
+  border-right: 1px solid var(--rule);
+}
+.split-text p {
+  font-size: 15px; color: var(--ink-muted);
+  line-height: 1.9; font-weight: 300; margin-bottom: 18px;
+  max-width: 440px;
+}
+.split-text p strong { color: var(--ink); font-weight: 500; }
+.split-text p:last-child { margin-bottom: 0; }
 
-						<!-- Content -->
-							<section id="content" class="main">
-								
-								<h2>
-									<span class="lang-en active"><strong>What is applied Neuroscience</strong></span>
-									<span class="lang-de"><strong>Was sind angewandte Neurowissenschaften</strong></span>
-								</h2>
-								<div class="lang-en active">
-									<p>Applied neuroscience in sports and human movement science, also known as neuroathletic training (NAT), is the practice of using insights from the field of neuroscience to improve real-world outcomes in areas such as movement, pain relief, rehabilitation and performance. Rather than focusing solely on muscles, joints or biomechanics, NAT takes a 'brain-first' approach, emphasising that many physical limitations, chronic pain issues or performance plateaus are rooted in how the brain interprets and responds to sensory information. Retraining the nervous system can create rapid, measurable changes in movement efficiency, strength, and pain levels.</p>
-								</div>
-								<div class="lang-de">
-									<p>Angewandte Neurowissenschaften im Sport und in Bewegungswissenschaften – auch bekannt als Neuroathletiktraining (NAT) – nutzt Erkenntnisse aus der Neurowissenschaft, um Bewegungsabläufe, Schmerzlinderung, Rehabilitation und Leistungsfähigkeit gezielt zu verbessern. Anstatt sich ausschließlich auf Muskeln, Gelenke oder die Biomechanik zu konzentrieren, verfolgt NAT einen „Brain-First“-Ansatz. Im Mittelpunkt steht die Erkenntnis, dass viele körperliche Einschränkungen, chronische Schmerzen oder Leistungseinbußen ihren Ursprung darin haben, wie das Gehirn Sinnesinformationen verarbeitet und darauf reagiert. Durch gezieltes Training des Nervensystems lassen sich oft schnell spürbare und messbare Verbesserungen in Beweglichkeit, Kraft und Schmerzempfinden erzielen.</p>
-								</div>
+.split-aside {
+  padding: 72px 48px;
+  background: var(--paper);
+  display: flex; flex-direction: column;
+}
 
-								<h2>
-									<span class="lang-en active"><strong>The "Brain - First Approach"</strong></span>
-									<span class="lang-de"><strong>Der „Brain - First" Ansatz</strong></span>
-								</h2>
-								<div class="lang-en active">
-									<p>This method is based on the idea that the brain constantly processes sensory data—such as vision, balance, and touch—to determine whether a movement or the environment is safe or threatening. If the brain perceives a threat, it may reduce mobility, trigger pain, or restrict strength as a protective response. NAT coaches work directly with the nervous system using targeted sensory drills, nerve mobilisation, visual retraining and motor control exercises, which can be customised to each person's needs. These strategies aim to recalibrate the brain's threat perception and restore optimal movement patterns, often within minutes.</p>
-								</div>
-								<div class="lang-de">
-									<p>Diese Methode beruht auf der Erkenntnis, dass das Gehirn ständig Sinnesreize – wie Sehen, Gleichgewicht und Tastsinn – verarbeitet, um einzuschätzen, ob eine Bewegung oder die Umgebung sicher oder potenziell bedrohlich ist. Nimmt das Gehirn eine Gefahr wahr, kann es als Schutzreaktion Beweglichkeit einschränken, Schmerzen auslösen oder Kraft reduzieren. NAT-Coaches arbeiten gezielt mit dem Nervensystem, unter anderem durch spezielle Sinnesübungen, Nervenmobilisation, visuelles Training und Koordinationsübungen, die individuell auf die Bedürfnisse der jeweiligen Person abgestimmt werden. Ziel dieser Ansätze ist es, die Bedrohungswahrnehmung des Gehirns neu zu kalibrieren und optimale Bewegungsmuster wiederherzustellen – oft innerhalb weniger Minuten.</p>
-								</div>
-							</section>
+/* Technique rows — no borders; vertical gap supplies rhythm */
+.technique-row {
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,20,0.08);
+}
+.technique-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.technique-label {
+  font-family: var(--fm); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 6px;
+}
+.technique-title {
+  font-family: var(--fd); font-weight: 700;
+  font-size: 1.0rem; color: var(--ink);
+  margin-bottom: 6px; line-height: 1.25;
+}
+.technique-body {
+  font-size: 13px; color: var(--ink-muted);
+  font-weight: 300; line-height: 1.7;
+}
 
-							<section id="content" class="main">
-								<span class="image main"><img src="images/collage.webp" alt="" /></span>
+/* ─── FULL-BLEED IMAGE ─── */
+.full-bleed {
+  width: 100%; position: relative; overflow: hidden;
+}
+.full-bleed img { width: 100%; display: block; max-height: 480px; object-fit: cover; }
+.full-bleed-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 12px 48px;
+  background: linear-gradient(transparent, rgba(20,16,9,0.55));
+  font-family: var(--fm); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.42);
+}
 
-								<h2>
-									<span class="lang-en active"><strong>Rapid and Measurable Results</strong></span>
-									<span class="lang-de"><strong>Schnelle und messbare Ergebnisse</strong></span>
-								</h2>
-								<div class="lang-en active">
-									<p>One of the key strengths of NAT in this context is its ability to provide immediate, measurable feedback. Movement, vision, and sensory assessments can be used to swiftly determine the type of input to which the nervous system responds best, enabling highly personalised and adaptive training. This approach can help people of all abilities to move, feel and perform better, whether they are elite athletes, chronic pain patients or everyday individuals looking to regain function.</p>
-								</div>
-								<div class="lang-de">
-									<p>Eine der Hauptstärken von NAT in diesem Kontext ist die Fähigkeit, sofortiges, messbares Feedback zu liefern. Range of Motion-, visuelle- und sensorische Assessments können verwendet werden, um schnell die Art von Input zu bestimmen, auf die das Nervensystem am besten reagiert, was hochpersonalisiertes und adaptives Training ermöglicht. Dieser Ansatz kann Menschen aller Fähigkeiten dabei helfen, sich besser zu fühlen und zu bewegen, egal ob du Spitzensportler bist, unter chronischen Schmerzen leidest oder deine alltäglichen Aktivitäten wieder meistern möchtest.</p>
-								</div>
-							
-								<h2>
-									<span class="lang-en active"><strong>A Practical, Science Based System</strong></span>
-									<span class="lang-de"><strong>Das Nervensystem im Mittelpunkt</strong></span>
-								</h2>
-								<div class="lang-en active">
-									<p>In summary, applied neuroscience involves training the brain to alter outcomes, whether physical or mental. By shifting the focus from biomechanics to the nervous system, practitioners can achieve precise and rapid improvements in performance, pain relief and rehabilitation by utilising the brain's own adaptability as the most powerful tool in human health and movement.</p>
-								</div>
-								<div class="lang-de">
-									<p>Im Kern geht es bei NAT darum, das Gehirn gezielt zu trainieren, um körperliche wie auch mentale Veränderungen zu bewirken. Statt ausschließlich auf die Biomechanik zu schauen, rückt das Nervensystem in den Mittelpunkt. So lassen sich dank der enormen Anpassungsfähigkeit unseres Gehirns Leistung, Schmerzfreiheit und Regeneration oft deutlich schneller und gezielter verbessern.</p>
-								</div>
-							</section>
-					</div>
+/* ─── WHO SECTION ─── */
+.who-section {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+}
+.who-left {
+  padding: 72px 48px;
+  border-right: 1px solid var(--rule);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.who-left p {
+  font-size: 14px; color: var(--ink-muted);
+  font-weight: 300; line-height: 1.75;
+  margin-top: 20px; max-width: 260px;
+}
+.who-right { padding: 72px 48px; }
+.who-list { list-style: none; }
+.who-list li {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.who-list li:first-child { padding-top: 0; }
+.who-list li:last-child  { border-bottom: none; }
+.who-num {
+  font-family: var(--fm); font-size: 9px;
+  color: var(--ink-faint); letter-spacing: 0.06em;
+  padding-top: 4px; flex-shrink: 0;
+}
+.who-text { font-size: 15px; color: var(--ink-muted); font-weight: 300; line-height: 1.7; }
+.who-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 2px; }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h1 style="font-size: 1.8em;">
-								<strong>
-									<span class="lang-en active">Your goals are <span style="font-size: 1.2em;">within reach</span></span>
-									<span class="lang-de">Deine Ziele sind<br> <span style="font-size: 1.2em;">in Reichweite</span></span>
-								</strong>
-							</h1>
-							<p><strong>
-								<span class="lang-en active">Book your session and let's make it happen.</span>
-								<span class="lang-de">Buche deine Session und lass es uns angehen</span>
-							</strong></p>
-							<ul class="actions">
-								<li><a href="form.html" class="button"><strong>
-									<span class="lang-en active">Get Started!</span>
-									<span class="lang-de">Jetzt starten!</span>
-								</strong></a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>
-								<span class="lang-en active">Contact</span>
-								<span class="lang-de">Kontakt</span>
-							</h2>
-							<dl class="alt">
-								<dt>
-									<span class="lang-en active">Address</span>
-									<span class="lang-de">Adresse</span>
-								</dt>
-								<dd>Ganghoferstraße 17 &bull; München &bull; 80339 </dd>
-								<dt>
-									<span class="lang-en active">Phone</span>
-									<span class="lang-de">Telefon</span>
-								</dt>
-								<dd>+49 152 21319336</dd>
-								<dt>Email</dt>
-								<dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
-							</dl>
-							<ul class="icons" style="justify-content: center; align-items: center;">
-								<li><a href="https://www.instagram.com/synapse2move/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-							</ul>
-							<style>
-							@media (max-width: 600px) {
-								#footer .icons {
-									display: flex !important;
-									justify-content: center !important;
-									align-items: center !important;
-									padding-left: 0 !important;
-								}
-							}
-							</style>
-						</section>
-						<p class="copyright"> 
-							<a href="index.html"><strong>HOME</strong></a> <br> 
-							&copy; Stamatios Papavasiliou 2025<br> 
-							<a href="impressum.html">Impressum</a> <br> 
-							<a href="datenschutz.html">
-								<span class="lang-en active">Privacy Policy</span>
-								<span class="lang-de">Datenschutzerklärung</span>
-							</a> <br>   
-							Template Design: <a href="https://html5up.net">HTML5 UP</a> <br>
-						</p>
-					</footer>
-			</div>
+/* ─── CTA ─── */
+/* Single rule above the CTA block — this is the ONE strong divider on the page,
+   marking the clear transition from content to conversion. */
+#cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1.5px solid var(--ink);
+}
+.cta-left {
+  padding: 96px 60px 96px 48px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+}
+.cta-left h2 {
+  font-family: var(--fd); font-weight: 900;
+  font-size: clamp(44px, 5.5vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+}
+.cta-left h2 em { font-style: italic; color: var(--plum); }
+.cta-left .cta-sub {
+  font-family: var(--fd); font-style: italic;
+  font-size: 0.95rem; color: var(--ink-faint);
+  margin-bottom: 2.5rem;
+}
+.cta-right {
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 80px 48px; gap: 1.4rem;
+  position: relative; overflow: hidden;
+}
+#cta-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; opacity: 0.5; pointer-events: none;
+}
+.cta-kicker {
+  font-family: var(--fm); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+  position: relative; z-index: 1;
+}
+.cta-right h2 {
+  font-family: var(--fd); font-weight: 900;
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  text-align: center;
+  position: relative; z-index: 1;
+}
+.cta-right h2 .green { color: #6ec9a4; }
+.btn-ink {
+  font-family: var(--fm); font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; padding: 14px 28px;
+  background: var(--plum); color: #fff;
+  border: 1.5px solid var(--plum);
+  transition: background 0.2s; display: inline-block;
+}
+.btn-ink:hover { background: #431f52; }
+.btn-cream {
+  font-family: var(--fm); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; padding: 16px 36px;
+  background: var(--cream); color: var(--ink);
+  border: 1.5px solid var(--cream); display: inline-block;
+  transition: all 0.2s; position: relative; z-index: 1;
+}
+.btn-cream:hover { background: var(--plum-light); border-color: var(--plum-light); }
+.cta-right-note {
+  font-family: var(--fm); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.28); text-align: center;
+  position: relative; z-index: 1;
+}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  padding: 56px 0 40px;
+}
+.container { width: 100%; padding: 0 48px; }
+.footer-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0; margin-bottom: 48px;
+}
+.footer-col {
+  border-right: 1px solid rgba(245,240,232,0.07);
+  padding-right: 48px; margin-right: 48px;
+}
+.footer-col:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.footer-logo {
+  font-family: var(--fd); font-weight: 900;
+  font-size: 18px; color: var(--cream);
+  text-decoration: none; display: block; margin-bottom: 12px;
+}
+.footer-logo sup { font-size: 10px; color: #6ec9a4; font-family: var(--fm); }
+.footer-desc {
+  font-size: 13px; color: rgba(245,240,232,0.3);
+  line-height: 1.6; max-width: 200px; font-weight: 300;
+}
+footer h4 {
+  font-family: var(--fm); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,240,232,0.2); margin-bottom: 16px;
+}
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 10px; }
+footer ul a {
+  font-size: 13px; color: rgba(245,240,232,0.45);
+  text-decoration: none; transition: color 0.15s; font-weight: 300;
+}
+footer ul a:hover { color: #6ec9a4; }
+footer dl dt {
+  font-family: var(--fm); font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.2); margin-bottom: 2px; margin-top: 12px;
+}
+footer dl dd { font-size: 13px; color: rgba(245,240,232,0.45); font-weight: 300; }
+footer dl dd a { color: #6ec9a4; text-decoration: none; }
+.footer-bottom {
+  border-top: 1px solid rgba(245,240,232,0.07);
+  padding-top: 24px;
+  display: flex; justify-content: space-between;
+  font-family: var(--fm); font-size: 9px;
+  letter-spacing: 0.06em; color: rgba(245,240,232,0.18);
+  flex-wrap: wrap; gap: 8px;
+}
+.footer-bottom a { color: rgba(245,240,232,0.18); text-decoration: none; }
+.footer-bottom a:hover { color: #6ec9a4; }
 
-			<script>
-				// Session Storage Language Management System
-				let currentLanguage = 'en';
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px) {
+  nav { padding: 0 20px; }
+  .nav-mobile-toggle { display: flex; }
+  .nav-links {
+    display: none; position: absolute; top: 56px; left: 0; right: 0;
+    background: var(--cream); border-bottom: 1.5px solid var(--ink);
+    flex-direction: column; padding: 12px 0;
+  }
+  .nav-links li { border-left: none; border-top: 1px solid var(--rule); }
+  .nav-links a { height: 44px; }
+  .mobile-nav-open .nav-links { display: flex; }
+  .container { padding: 0 20px; }
 
-				function switchLanguage(lang) {
-					if (currentLanguage === lang) return;
-					
-					currentLanguage = lang;
-					
-					// Update button states
-					document.querySelectorAll('.lang-btn').forEach(btn => {
-						btn.classList.remove('active');
-						if (btn.dataset.lang === lang) {
-							btn.classList.add('active');
-						}
-					});
-					
-					// Hide all language content
-					document.querySelectorAll('.lang-de, .lang-en').forEach(element => {
-						element.classList.remove('active');
-					});
-					
-					// Show selected language content
-					document.querySelectorAll(`.lang-${lang}`).forEach(element => {
-						element.classList.add('active');
-					});
-					
-					// Update page title and meta
-					updatePageMeta(lang);
-					
-					// Save preference to session storage (clears when browser closes)
-					sessionStorage.setItem('preferred-language', lang);
-				}
+  .page-hero-body { padding: 48px 18px 48px; }
+  .hero-breadcrumb { margin-bottom: 1.2rem; }
+  .page-hero h1 { font-size: clamp(34px, 10vw, 56px); }
+  #page-canvas { width: 100%; opacity: 0.18; }
 
-				function updatePageMeta(lang) {
-					const translations = {
-						en: {
-							title: "Synapse²Move | Applied Neuroscience"
-						},
-						de: {
-							title: "Synapse²Move | Angewandte Neurowissenschaft"
-						}
-					};
-					
-					document.title = translations[lang].title;
-				}
+  .prose-block { padding: 42px 18px; }
+  .pull-quote-wrap { padding: 0 20px 56px; }
+  .full-bleed-caption { padding: 12px 20px; }
 
-				function initializeLanguage() {
-					// Load saved language preference from session storage
-					const savedLang = sessionStorage.getItem('preferred-language');
-					if (savedLang && savedLang !== currentLanguage) {
-						switchLanguage(savedLang);
-					}
-				}
+  .section-01 { grid-template-columns: 1fr; }
+  .section-01-text { padding: 56px 20px; }
+  .concept-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 20px 32px;
+  }
+  .concept-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(26,26,20,0.08);
+    padding: 28px 20px;
+    background: var(--paper);
+  }
+  .concept-card:last-child { border-bottom: none; }
 
-				// Initialize on page load
-				document.addEventListener('DOMContentLoaded', function() {
-					initializeLanguage();
-				});
-			</script>
-	</body>
+  .split-section { grid-template-columns: 1fr; }
+  .split-text { border-right: none; padding: 56px 20px; }
+  .split-text p { max-width: 100%; }
+  .split-aside { padding: 48px 20px; }
+
+  .who-section { grid-template-columns: 1fr; }
+  .who-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 56px 20px; }
+  .who-left p { max-width: 100%; }
+  .who-right { padding: 48px 20px; }
+
+  #cta { grid-template-columns: 1fr; }
+  .cta-left {
+    padding: 56px 20px;
+    align-items: center; text-align: center;
+    border-bottom: 1px solid rgba(26,26,20,0.15);
+  }
+  .cta-right { padding: 48px 20px; }
+
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-col {
+    border-right: none;
+    border-bottom: 1px solid rgba(245,240,232,0.07);
+    padding: 0 0 28px; margin: 0 0 28px;
+  }
+  .footer-col:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .footer-bottom { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Synapse<sup>2</sup>Move</a>
+  <button class="nav-mobile-toggle" id="mob-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="Neuro.html" class="nav-active">
+      <span class="lang-en active">Neuroathletics</span>
+      <span class="lang-de">Neuroathletik</span>
+    </a></li>
+    <li><a href="services.html">
+      <span class="lang-en active">Services</span>
+      <span class="lang-de">Leistungen</span>
+    </a></li>
+    <li><a href="openworkshps.html">Workshops</a></li>
+    <li><a href="index.html#about">
+      <span class="lang-en active">About</span>
+      <span class="lang-de">Über</span>
+    </a></li>
+    <li>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
+      </div>
+    </li>
+    <li><a href="form.html" class="nav-cta-link">
+      <span class="lang-en active">Book Call</span>
+      <span class="lang-de">Gespräch</span>
+    </a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <canvas id="page-canvas"></canvas>
+  <div class="page-hero-scrim"></div>
+  <div class="page-hero-body">
+    <div class="hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/ <span class="lang-en active">Neuroathletic Training</span><span class="lang-de">Neuroathletiktraining</span></span>
+    </div>
+    <h1>
+      <span class="lang-en active">
+        <span class="kicker">What is</span>
+        Neuro<span class="outlined">athletic</span><br>Training?
+      </span>
+      <span class="lang-de">
+        <span class="kicker">Was ist</span>
+        Neuro<span class="outlined">athletik</span><br>training?
+      </span>
+    </h1>
+    <p class="hero-lede">
+      <span class="lang-en active">Applied neuroscience in human movement and sport science — where the brain leads, the body follows.</span>
+      <span class="lang-de">Angewandte Neurowissenschaft in Bewegungs- und Sportwissenschaften — wo das Gehirn führt, folgt der Körper.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SECTION 01 — Foundation: prose left, cards right -->
+<div class="section-01">
+  <div class="section-01-text">
+    <div class="lang-en active">
+      <div class="eyebrow green">
+        <span class="eyebrow-num">01</span>
+        <span class="eyebrow-label">Foundation</span>
+      </div>
+      <h2 class="section-heading">The brain shapes<br>every <em>movement</em> you make.</h2>
+      <p>Applied neuroscience in sports and human movement science — also known as <strong>Neuroathletic Training (NAT)</strong> — is the practice of using insights from neuroscience to improve real-world outcomes in movement, pain relief, rehabilitation, and performance.</p>
+      <p>Rather than focusing solely on muscles, joints, or biomechanics, NAT takes a <strong>brain-first approach</strong>: many physical limitations, chronic pain issues, or performance plateaus are rooted in how the brain interprets and responds to sensory information. Retraining the nervous system creates rapid, measurable changes in movement efficiency, strength, and pain levels.</p>
+    </div>
+    <div class="lang-de">
+      <div class="eyebrow green">
+        <span class="eyebrow-num">01</span>
+        <span class="eyebrow-label">Grundlage</span>
+      </div>
+      <h2 class="section-heading">Das Gehirn formt<br>jede <em>Bewegung</em>, die du machst.</h2>
+      <p>Angewandte Neurowissenschaften im Sport und in Bewegungswissenschaften — auch bekannt als <strong>Neuroathletiktraining (NAT)</strong> — nutzt Erkenntnisse aus der Neurowissenschaft, um Bewegungsabläufe, Schmerzlinderung, Rehabilitation und Leistungsfähigkeit gezielt zu verbessern.</p>
+      <p>Anstatt sich ausschließlich auf Muskeln, Gelenke oder Biomechanik zu konzentrieren, verfolgt NAT einen <strong>„Brain-First"-Ansatz</strong>: Viele körperliche Einschränkungen, chronische Schmerzen oder Leistungseinbußen haben ihren Ursprung darin, wie das Gehirn Sinnesinformationen verarbeitet. Durch gezieltes Training des Nervensystems lassen sich schnell spürbare Verbesserungen erzielen.</p>
+    </div>
+  </div>
+
+  <!-- 4 CONCEPT CARDS stacked vertically in right column -->
+  <div class="concept-strip">
+    <div class="concept-card">
+    <div class="concept-icon">◎</div>
+    <div class="concept-label"><span class="lang-en active">Input</span><span class="lang-de">Input</span></div>
+    <div class="concept-title"><span class="lang-en active">Sensory Data</span><span class="lang-de">Sinnesreize</span></div>
+    <div class="concept-body"><span class="lang-en active">Vision, balance, touch — the brain constantly reads the body's environment.</span><span class="lang-de">Sehen, Gleichgewicht, Tastsinn — das Gehirn liest ständig die Umgebung.</span></div>
+  </div>
+  <div class="concept-card">
+    <div class="concept-icon">⟳</div>
+    <div class="concept-label"><span class="lang-en active">Processing</span><span class="lang-de">Verarbeitung</span></div>
+    <div class="concept-title"><span class="lang-en active">Threat Assessment</span><span class="lang-de">Bedrohungsbewertung</span></div>
+    <div class="concept-body"><span class="lang-en active">Safe or threatening? The brain decides — and movement quality follows that decision.</span><span class="lang-de">Sicher oder bedrohlich? Das Gehirn entscheidet — und die Bewegungsqualität folgt.</span></div>
+  </div>
+  <div class="concept-card">
+    <div class="concept-icon">→</div>
+    <div class="concept-label"><span class="lang-en active">Output</span><span class="lang-de">Output</span></div>
+    <div class="concept-title"><span class="lang-en active">Movement &amp; Pain</span><span class="lang-de">Bewegung &amp; Schmerz</span></div>
+    <div class="concept-body"><span class="lang-en active">Mobility, strength, and pain levels are protective responses — not purely structural.</span><span class="lang-de">Beweglichkeit, Kraft und Schmerz sind Schutzreaktionen — keine rein strukturellen Phänomene.</span></div>
+  </div>
+  <div class="concept-card">
+    <div class="concept-icon">↺</div>
+    <div class="concept-label"><span class="lang-en active">Recalibration</span><span class="lang-de">Rekalibrierung</span></div>
+    <div class="concept-title"><span class="lang-en active">Neuroplasticity</span><span class="lang-de">Neuroplastizität</span></div>
+    <div class="concept-body"><span class="lang-en active">The brain can be retrained at any age — and NAT uses that adaptability directly.</span><span class="lang-de">Das Gehirn kann in jedem Alter neu trainiert werden — NAT nutzt genau diese Fähigkeit.</span></div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 02 — Methodology: pull quote then split -->
+<div class="prose-block" style="padding-bottom: 0;">
+  <div class="lang-en active">
+    <div class="eyebrow plum">
+      <span class="eyebrow-num">02</span>
+      <span class="eyebrow-label">Methodology</span>
+    </div>
+    <h2 class="section-heading plum">Recalibrate.<br>Don't just <em>repair.</em></h2>
+  </div>
+  <div class="lang-de">
+    <div class="eyebrow plum">
+      <span class="eyebrow-num">02</span>
+      <span class="eyebrow-label">Methodik</span>
+    </div>
+    <h2 class="section-heading plum">Neukalibrieren.<br>Nicht nur <em>reparieren.</em></h2>
+  </div>
+</div>
+
+<div class="pull-quote-wrap">
+  <blockquote class="pull-quote">
+    <span class="lang-en active">"If the brain perceives a threat, it may reduce mobility, trigger pain, or restrict strength — not because something is broken, but as a protective response."</span>
+    <span class="lang-de">„Nimmt das Gehirn eine Gefahr wahr, kann es Beweglichkeit einschränken, Schmerzen auslösen oder Kraft reduzieren — nicht weil etwas kaputt ist, sondern als Schutzreaktion."</span>
+  </blockquote>
+</div>
+
+<!-- SPLIT: body text left, techniques right (paper bg) -->
+<div class="split-section">
+  <div class="split-text">
+    <div class="lang-en active">
+      <p>This method is based on the idea that the brain constantly processes sensory data — vision, balance, proprioception, touch — to determine whether a movement or an environment is <strong>safe or threatening</strong>.</p>
+      <p>NAT coaches work directly with the nervous system using targeted sensory drills, nerve mobilisation, visual retraining, and motor control exercises — each customised to the individual. The goal: recalibrate the brain's threat perception and restore optimal movement patterns, <strong>often within a single session</strong>.</p>
+      <p>This stands in contrast to purely structural approaches that treat the body as a machine to be repaired. In NAT, the nervous system is both the diagnosis and the treatment.</p>
+    </div>
+    <div class="lang-de">
+      <p>Diese Methode beruht auf der Erkenntnis, dass das Gehirn ständig Sinnesreize verarbeitet — Sehen, Gleichgewicht, Propriozeption, Tastsinn — um zu beurteilen, ob eine Bewegung oder die Umgebung <strong>sicher oder bedrohlich</strong> ist.</p>
+      <p>NAT-Coaches arbeiten direkt mit dem Nervensystem: durch Sinnesübungen, Nervenmobilisation, visuelles Training und Koordinationsübungen — individuell abgestimmt. Das Ziel: die Bedrohungswahrnehmung neu kalibrieren und optimale Bewegungsmuster wiederherstellen, <strong>oft bereits in einer einzigen Session</strong>.</p>
+      <p>Dies steht im Gegensatz zu rein strukturellen Ansätzen. In NAT ist das Nervensystem sowohl Diagnose als auch Behandlung.</p>
+    </div>
+  </div>
+
+  <div class="split-aside">
+    <div class="technique-row">
+      <div class="technique-label"><span class="lang-en active">Technique 01</span><span class="lang-de">Technik 01</span></div>
+      <div class="technique-title"><span class="lang-en active">Sensory Drills</span><span class="lang-de">Sinnesübungen</span></div>
+      <div class="technique-body"><span class="lang-en active">Stimulate specific neural pathways to improve movement quality and range of motion.</span><span class="lang-de">Gezielte Stimulation neuraler Bahnen zur Verbesserung von Bewegungsqualität und -umfang.</span></div>
+    </div>
+    <div class="technique-row">
+      <div class="technique-label"><span class="lang-en active">Technique 02</span><span class="lang-de">Technik 02</span></div>
+      <div class="technique-title"><span class="lang-en active">Visual Retraining</span><span class="lang-de">Visuelles Training</span></div>
+      <div class="technique-body"><span class="lang-en active">The eyes are a direct extension of the brain. Training gaze control unlocks movement and reduces pain.</span><span class="lang-de">Die Augen sind eine direkte Verlängerung des Gehirns. Blickkontrolle verbessert Bewegung und reduziert Schmerz.</span></div>
+    </div>
+    <div class="technique-row">
+      <div class="technique-label"><span class="lang-en active">Technique 03</span><span class="lang-de">Technik 03</span></div>
+      <div class="technique-title"><span class="lang-en active">Nerve Mobilisation</span><span class="lang-de">Nervenmobilisation</span></div>
+      <div class="technique-body"><span class="lang-en active">Reduce neural tension and restore signal quality along compromised neural tracts.</span><span class="lang-de">Nervale Spannung reduzieren und Signalqualität entlang beeinträchtigter Bahnen wiederherstellen.</span></div>
+    </div>
+    <div class="technique-row">
+      <div class="technique-label"><span class="lang-en active">Technique 04</span><span class="lang-de">Technik 04</span></div>
+      <div class="technique-title"><span class="lang-en active">Motor Control</span><span class="lang-de">Motorische Kontrolle</span></div>
+      <div class="technique-body"><span class="lang-en active">Precise, intentional movement patterns that recalibrate the motor cortex over time.</span><span class="lang-de">Präzise Bewegungsmuster, die den Motorcortex schrittweise neu kalibrieren.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 03 — Outcomes: heading then image then prose -->
+<div class="prose-block" style="padding-bottom: 40px;">
+  <div class="lang-en active">
+    <div class="eyebrow gold">
+      <span class="eyebrow-num">03</span>
+      <span class="eyebrow-label">Outcomes</span>
+    </div>
+    <h2 class="section-heading">Results you can<br>see and <em>measure.</em></h2>
+  </div>
+  <div class="lang-de">
+    <div class="eyebrow gold">
+      <span class="eyebrow-num">03</span>
+      <span class="eyebrow-label">Ergebnisse</span>
+    </div>
+    <h2 class="section-heading">Ergebnisse, die man<br>sehen und <em>messen</em> kann.</h2>
+  </div>
+</div>
+
+<div class="full-bleed">
+  <img src="images/collage.webp" alt="Neuroathletic Training in practice"/>
+  <div class="full-bleed-caption">
+    <span class="lang-en active">Synapse²Move · Munich</span>
+    <span class="lang-de">Synapse²Move · München</span>
+  </div>
+</div>
+
+<div class="prose-block">
+  <div class="lang-en active">
+    <p>One of the key strengths of NAT is its ability to provide <strong>immediate, measurable feedback</strong>. Movement, vision, and sensory assessments can swiftly determine the type of input to which the nervous system responds best — enabling highly personalised and adaptive training from the very first session.</p>
+    <p>Applied neuroscience means training the brain to alter outcomes — physical and mental. By shifting focus from biomechanics to the nervous system, practitioners achieve precise improvements in performance, pain relief, and rehabilitation — using the brain's own adaptability as the most powerful tool in human health and movement.</p>
+  </div>
+  <div class="lang-de">
+    <p>Eine der Hauptstärken von NAT ist die Fähigkeit, <strong>sofortiges, messbares Feedback</strong> zu liefern. Range of Motion-, visuelle und sensorische Assessments bestimmen schnell, auf welchen Input das Nervensystem am besten reagiert — was hochpersonalisiertes Training bereits ab der ersten Session ermöglicht.</p>
+    <p>Angewandte Neurowissenschaft bedeutet, das Gehirn zu trainieren, um Ergebnisse zu verändern — körperlich und mental. Statt Biomechanik rückt das Nervensystem in den Fokus. Die Anpassungsfähigkeit des Gehirns ist das mächtigste Werkzeug in Gesundheit und Bewegung.</p>
+  </div>
+</div>
+
+<!-- WHO IT'S FOR — paper background, no top border -->
+<div class="who-section" style="background: var(--paper);">
+  <div class="who-left">
+    <div>
+      <div class="eyebrow green" style="margin-bottom: 1.4rem;">
+        <span class="eyebrow-num">—</span>
+        <span class="eyebrow-label"><span class="lang-en active">Who it's for</span><span class="lang-de">Für wen</span></span>
+      </div>
+      <div style="font-family: var(--fd); font-weight: 900; font-size: clamp(38px, 4vw, 58px); line-height: 1.0; letter-spacing: -0.02em; color: var(--ink);">
+        <span class="lang-en active">For<br><em style="font-style:italic;color:var(--green);">every</em><br>body.</span>
+        <span class="lang-de">Für<br><em style="font-style:italic;color:var(--green);">jeden</em><br>Körper.</span>
+      </div>
+      <p>
+        <span class="lang-en active">NAT is not reserved for elite athletes. The nervous system governs all human movement — which means everyone stands to benefit.</span>
+        <span class="lang-de">NAT ist nicht nur für Spitzensportler. Das Nervensystem steuert jede menschliche Bewegung — was bedeutet, dass alle davon profitieren können.</span>
+      </p>
+    </div>
+    <a href="services.html" class="btn-ink" style="margin-top: 36px; align-self: flex-start;">
+      <span class="lang-en active">View Services →</span>
+      <span class="lang-de">Leistungen →</span>
+    </a>
+  </div>
+  <div class="who-right">
+    <ul class="who-list">
+      <li>
+        <span class="who-num">01</span>
+        <span class="who-text">
+          <strong><span class="lang-en active">Elite &amp; recreational athletes</span><span class="lang-de">Spitzen- &amp; Freizeitsportler</span></strong>
+          <span class="lang-en active">Seeking a measurable performance edge through nervous system optimisation.</span>
+          <span class="lang-de">Auf der Suche nach einem messbaren Leistungsvorsprung durch Nervensystemoptimierung.</span>
+        </span>
+      </li>
+      <li>
+        <span class="who-num">02</span>
+        <span class="who-text">
+          <strong><span class="lang-en active">Chronic pain patients</span><span class="lang-de">Chronisch Schmerzgeplagte</span></strong>
+          <span class="lang-en active">Who haven't found lasting relief through structural approaches alone.</span>
+          <span class="lang-de">Die durch rein strukturelle Ansätze keine dauerhafte Linderung gefunden haben.</span>
+        </span>
+      </li>
+      <li>
+        <span class="who-num">03</span>
+        <span class="who-text">
+          <strong><span class="lang-en active">Rehabilitation patients</span><span class="lang-de">Rehabilitationspatienten</span></strong>
+          <span class="lang-en active">After injury or surgery, looking for comprehensive neurological support alongside physio.</span>
+          <span class="lang-de">Nach Verletzungen oder Operationen, die neurologische Unterstützung suchen.</span>
+        </span>
+      </li>
+      <li>
+        <span class="who-num">04</span>
+        <span class="who-text">
+          <strong><span class="lang-en active">Anyone wanting to move better</span><span class="lang-de">Alle, die sich besser bewegen möchten</span></strong>
+          <span class="lang-en active">Whether for sport, work, daily life, or simply ageing well.</span>
+          <span class="lang-de">Für Sport, Arbeit, Alltag oder einfach um gut zu altern.</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container" style="display:contents;">
+    <div class="cta-left container">
+      <h2>
+        <span class="lang-en active">Your Goals<br>Are <em>Within</em><br>Reach</span>
+        <span class="lang-de">Deine Ziele<br>Sind <em>In</em><br>Reichweite</span>
+      </h2>
+      <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
+      <a href="form.html" class="btn-ink">
+        <span class="lang-en active">Book Free Call →</span>
+        <span class="lang-de">Gespräch buchen →</span>
+      </a>
+    </div>
+    <div class="cta-right">
+      <canvas id="cta-canvas"></canvas>
+      <p class="cta-kicker"><span class="lang-en active">Ready to start?</span><span class="lang-de">Bereit anzufangen?</span></p>
+      <h2>
+        <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
+        <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
+      </h2>
+      <a href="form.html" class="btn-cream">
+        <span class="lang-en active">Book Free 20 Min Call</span>
+        <span class="lang-de">Kostenloses Gespräch buchen</span>
+      </a>
+      <p class="cta-right-note">
+        <span class="lang-en active">Munich · In Person + Online</span>
+        <span class="lang-de">München · Persönlich + Online</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">Synapse<sup>2</sup>Move</a>
+        <p class="footer-desc"><span class="lang-en active">Neuroathletic training in Munich. Creating connections — vibrantly alive.</span><span class="lang-de">Neuroathletiktraining in München. Wo Denken bewegt.</span></p>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Navigation</span><span class="lang-de">Navigation</span></h4>
+        <ul>
+          <li><a href="Neuro.html"><span class="lang-en active">Neuroathletic Training</span><span class="lang-de">Neuroathletiktraining</span></a></li>
+          <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
+          <li><a href="openworkshps.html"><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></a></li>
+          <li><a href="workshops.html"><span class="lang-en active">Neuro Workshops</span><span class="lang-de">Neuro Workshops</span></a></li>
+          <li><a href="divingarts.html">Diving into Arts</a></li>
+          <li><a href="form.html"><span class="lang-en active">Get Started</span><span class="lang-de">Jetzt starten</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="lang-en active">Contact</span><span class="lang-de">Kontakt</span></h4>
+        <dl>
+          <dt><span class="lang-en active">Address</span><span class="lang-de">Adresse</span></dt>
+          <dd>Ganghoferstraße 17<br>80339 München</dd>
+          <dt><span class="lang-en active">Phone</span><span class="lang-de">Telefon</span></dt>
+          <dd><a href="tel:+4915221319336">+49 152 21319336</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Stamatios Papavasiliou</span>
+      <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html"><span class="lang-en active">Privacy Policy</span><span class="lang-de">Datenschutz</span></a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+let currentLang = 'en';
+function switchLanguage(lang) {
+  if (currentLang === lang) return;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
+  sessionStorage.setItem('preferred-language', lang);
+}
+const saved = sessionStorage.getItem('preferred-language');
+if (saved && saved !== 'en') switchLanguage(saved);
+
+document.getElementById('mob-toggle').addEventListener('click', () => {
+  document.getElementById('main-nav').classList.toggle('mobile-nav-open');
+});
+
+function makeNeuralCanvas(id) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes;
+  function resize() {
+    const r = canvas.getBoundingClientRect();
+    W = canvas.width  = Math.max(r.width  || canvas.offsetWidth,  100);
+    H = canvas.height = Math.max(r.height || canvas.offsetHeight, 100);
+    nodes = Array.from({length: 55}, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.65,
+      vy: (Math.random() - 0.5) * 0.45,
+      pulse: Math.random() * Math.PI * 2,
+      kind: Math.random() < 0.2 ? 'b' : 'a'
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+      n.pulse += 0.1;
+    });
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 140) {
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(61,107,79,' + ((1 - d / 140) * 0.3) + ')';
+          ctx.lineWidth = 0.6; ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n => {
+      const g = (Math.sin(n.pulse) + 1) * 0.5;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 1 + g * 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = n.kind === 'b'
+        ? 'rgba(92,45,110,' + (0.4 + g * 0.35) + ')'
+        : 'rgba(61,107,79,' + (0.35 + g * 0.3) + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(() => { resize(); draw(); });
+  window.addEventListener('resize', resize, { passive: true });
+}
+makeNeuralCanvas('page-canvas');
+makeNeuralCanvas('cta-canvas');
+</script>
+</body>
 </html>
