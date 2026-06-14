@@ -136,7 +136,7 @@ nav {
 
 .nav-mobile-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; }
 
-/* ─── HERO ─── */
+/* ── HERO ── */
 
 .page-hero {
 
@@ -252,7 +252,239 @@ nav {
 
 @keyframes heroUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
 
-/* ─── EYEBROW ─── */
+/* ── SHARED SECTION STRUCTURE (from index #what) ── */
+
+.bbl-section {
+  padding: 80px 0;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.bbl-section .container { width: 100%; padding: 0 48px; }
+
+..section-head {
+  border-bottom: 1.5px solid var(--ink);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;  /* stack vertically */
+  gap: 12px;
+  margin-bottom: 64px;
+}
+
+
+.section-num {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+
+.section-label {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-label.green { color: var(--green); }
+.section-label.gold  { color: var(--gold); }
+.section-label.plum  { color: var(--plum); }
+
+.section-title {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.section-title .italic { font-style: italic; color: var(--green); }
+.section-title .italic-gold { font-style: italic; color: var(--gold); }
+
+/* ── TWO COLUMN GRID (mirrors index .what-grid) ── */
+
+.bbl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.bbl-left {
+  border-right: 1px solid var(--rule);
+  padding-right: 60px;
+}
+
+.bbl-right {
+  padding-left: 60px;
+}
+
+/* ── LEFT PROSE (mirrors index .what-left) ── */
+
+.bbl-left p {
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+
+.bbl-left strong { color: var(--ink); font-weight: 500; }
+
+.bbl-pullquote {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 18px 0;
+  margin: 28px 0;
+}
+
+.bbl-pullquote::before {
+  content: '\201C';
+  color: var(--green);
+  font-size: 1.8rem;
+  line-height: 0;
+  vertical-align: -0.4rem;
+  margin-right: 0.25rem;
+}
+
+.bbl-pullquote.plum::before { color: var(--plum); }
+.bbl-pullquote.gold::before { color: var(--gold); }
+
+/* ── PILLAR ROWS (mirrors index .pillar-row) ── */
+
+.pillar-row {
+  display: grid;
+  grid-template-columns: 1px 1fr;
+  gap: 0 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+
+.pillar-row:first-child { padding-top: 0; }
+.pillar-row:last-child  { border: none; }
+
+.pillar-line {
+  width: 1px;
+  background: var(--rule);
+  position: relative;
+  align-self: stretch;
+}
+
+.pillar-line::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.pillar-line.plum::before { background: var(--plum); }
+.pillar-line.gold::before  { background: var(--gold); }
+
+.pillar-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.pillar-index {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--green);
+  letter-spacing: 0.06em;
+}
+
+.pillar-index.plum { color: var(--plum); }
+.pillar-index.gold { color: var(--gold); }
+
+.pillar-title {
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.pillar-row p {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ── BUTTONS ── */
+
+.btn-ink {
+
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+
+  text-decoration: none; padding: 14px 28px; background: var(--plum); color: #fff;
+
+  border: 1.5px solid var(--plum); transition: background 0.2s; display: inline-block;
+
+}
+
+.btn-ink:hover { background: #431f52; }
+
+.btn-ghost-dark {
+
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+
+  text-decoration: none; padding: 14px 28px; background: transparent; color: var(--ink);
+
+  border: 1.5px solid var(--ink); transition: all 0.2s; display: inline-block;
+
+}
+
+.btn-ghost-dark:hover { background: var(--ink); color: var(--cream); }
+
+.btn-cream {
+
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+
+  text-decoration: none; padding: 16px 36px; background: var(--cream); color: var(--ink);
+
+  border: 1.5px solid var(--cream); display: inline-block; transition: all 0.2s;
+
+}
+
+.btn-cream:hover { background: var(--plum-light); border-color: var(--plum-light); }
+
+/* ── PULL QUOTE (remaining sections) ── */
+
+.pull-quote-wrap { padding: 0 48px 72px; }
+
+.pull-quote {
+
+  font-family: var(--fd); font-style: italic;
+
+  font-size: clamp(19px, 2.2vw, 26px); color: var(--ink); line-height: 1.5;
+
+  padding-left: 28px; border-left: 3px solid var(--green); max-width: 640px;
+
+}
+
+/* ── PROSE BLOCK (curriculum heading) ── */
+
+.prose-block { padding: 80px 48px; margin-bottom: 0; }
+
+.prose-block p {
+
+  font-size: 16px; color: var(--ink-muted); line-height: 1.9; font-weight: 300;
+
+  margin-bottom: 20px; max-width: 620px;
+
+}
+
+.prose-block p strong { color: var(--ink); font-weight: 500; }
+
+/* ── EYEBROW (for prose-block) ── */
 
 .eyebrow { display: flex; align-items: baseline; gap: 10px; margin-bottom: 1.1rem; }
 
@@ -265,8 +497,6 @@ nav {
 .eyebrow.plum  .eyebrow-label { color: var(--plum); }
 
 .eyebrow.gold  .eyebrow-label { color: var(--gold); }
-
-/* ─── SECTION HEADING ─── */
 
 .section-heading {
 
@@ -284,121 +514,7 @@ nav {
 
 .section-heading.gold em { color: var(--gold); }
 
-/* ─── SECTION 01 ─── */
-
-.section-01 { display: grid; grid-template-columns: 1fr 1fr; align-items: start; margin-bottom: 64px; }
-
-.section-01-text { padding: 80px 48px; }
-
-.section-01-text p {
-
-  font-size: 16px; color: var(--ink-muted); line-height: 1.9; font-weight: 300;
-
-  margin-bottom: 20px; max-width: 520px;
-
-}
-
-.section-01-text p:last-child { margin-bottom: 0; }
-
-.section-01-text p strong { color: var(--ink); font-weight: 500; }
-
-.concept-strip { background: var(--paper); display: flex; flex-direction: column; align-self: stretch; }
-
-.concept-card {
-
-  padding: 32px 36px; border-bottom: 1px solid rgba(26,26,20,0.08);
-
-  display: flex; flex-direction: column; gap: 10px;
-
-}
-
-.concept-card:last-child { border-bottom: none; }
-
-.concept-icon { font-family: var(--fm); font-size: 16px; color: var(--green); line-height: 1; margin-bottom: 4px; }
-
-.concept-label { font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
-
-.concept-title { font-family: var(--fd); font-weight: 700; font-size: 1.05rem; color: var(--ink); line-height: 1.25; }
-
-.concept-body { font-size: 13px; color: var(--ink-muted); font-weight: 300; line-height: 1.7; }
-
-/* ─── PULL QUOTE ─── */
-
-.pull-quote-wrap { padding: 0 48px 72px; }
-
-.pull-quote {
-
-  font-family: var(--fd); font-style: italic;
-
-  font-size: clamp(19px, 2.2vw, 26px); color: var(--ink); line-height: 1.5;
-
-  padding-left: 28px; border-left: 3px solid var(--green); max-width: 640px;
-
-}
-
-/* ─── PROSE BLOCK ─── */
-
-.prose-block { padding: 80px 48px; margin-bottom: 64px; }
-
-.prose-block p {
-
-  font-size: 16px; color: var(--ink-muted); line-height: 1.9; font-weight: 300;
-
-  margin-bottom: 20px; max-width: 620px;
-
-}
-
-.prose-block p:last-child { margin-bottom: 0; }
-
-.prose-block p strong { color: var(--ink); font-weight: 500; }
-
-/* ─── SPLIT SECTION ─── */
-
-.split-section { display: grid; grid-template-columns: 1fr 1fr; }
-
-.split-text { padding: 72px 48px; border-right: 1px solid var(--rule); }
-
-.split-text p {
-
-  font-size: 15px; color: var(--ink-muted); line-height: 1.9; font-weight: 300;
-
-  margin-bottom: 18px; max-width: 440px;
-
-}
-
-.split-text p strong { color: var(--ink); font-weight: 500; }
-
-.split-text p:last-child { margin-bottom: 0; }
-
-.split-aside { padding: 72px 48px; background: var(--paper); display: flex; flex-direction: column; }
-
-.technique-row {
-
-  padding-bottom: 32px; margin-bottom: 32px;
-
-  border-bottom: 1px solid rgba(26,26,20,0.08);
-
-}
-
-.technique-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-
-.technique-label {
-
-  font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
-
-  color: var(--green); margin-bottom: 6px;
-
-}
-
-.technique-label.plum { color: var(--plum); }
-
-.technique-label.gold { color: var(--gold); }
-
-.technique-title { font-family: var(--fd); font-weight: 700; font-size: 1.0rem; color: var(--ink); margin-bottom: 6px; line-height: 1.25; }
-
-.technique-body { font-size: 13px; color: var(--ink-muted); font-weight: 300; line-height: 1.7; }
-
-/* ─── FORMAT GRID ─── */
+/* ── FORMAT GRID (curriculum) ── */
 
 .format-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
 
@@ -425,8 +541,6 @@ nav {
 .format-card.c-ink::before   { background: var(--ink); }
 
 .format-card:nth-child(2n)   { border-right: none; }
-
-.format-card.full-row        { grid-column: 1 / -1; border-right: none; border-bottom: none; }
 
 .format-num { font-family: var(--fm); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
 
@@ -464,7 +578,7 @@ nav {
 
 .check-list li strong { color: var(--ink); font-weight: 500; }
 
-/* ─── WHO SECTION ─── */
+/* ── WHO SECTION ── */
 
 .who-section { display: grid; grid-template-columns: 360px 1fr; }
 
@@ -500,7 +614,7 @@ nav {
 
 .who-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 2px; }
 
-/* ─── OUTCOME STRIP (REFINED) ─── */
+/* ── OUTCOME STRIP ── */
 
 .outcome-strip {
   background: var(--ink);
@@ -535,10 +649,7 @@ nav {
   color: var(--cream);
 }
 
-.outcome-headline em {
-  font-style: italic;
-  color: var(--gold);
-}
+.outcome-headline em { font-style: italic; color: var(--gold); }
 
 .outcome-desc {
   font-size: 13px;
@@ -566,76 +677,15 @@ nav {
 
 .outcome-row:last-child { border-bottom: none; }
 
-.outcome-index {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: rgba(245,240,232,0.2);
-  padding-top: 3px;
-}
+.outcome-index { font-family: var(--fm); font-size: 10px; letter-spacing: 0.12em; color: rgba(245,240,232,0.2); padding-top: 3px; }
 
-.outcome-row-label {
-  font-family: var(--fd);
-  font-weight: 700;
-  font-size: clamp(16px, 1.6vw, 19px);
-  color: var(--cream);
-  line-height: 1.2;
-  margin-bottom: 5px;
-}
+.outcome-row-label { font-family: var(--fd); font-weight: 700; font-size: clamp(16px, 1.6vw, 19px); color: var(--cream); line-height: 1.2; margin-bottom: 5px; }
 
-.outcome-row-detail {
-  font-size: 13px;
-  color: rgba(245,240,232,0.42);
-  font-weight: 300;
-  line-height: 1.65;
-  max-width: 520px;
-}
+.outcome-row-detail { font-size: 13px; color: rgba(245,240,232,0.42); font-weight: 300; line-height: 1.65; max-width: 520px; }
 
-.outcome-row-tag {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.22);
-  white-space: nowrap;
-  padding-top: 3px;
-}
+.outcome-row-tag { font-family: var(--fm); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.22); white-space: nowrap; padding-top: 3px; }
 
-@media(max-width: 960px) {
-  .outcome-strip { padding: 56px 20px; }
-  .outcome-strip-header { grid-template-columns: 1fr; gap: 16px; }
-  .outcome-rows { grid-template-columns: 1fr; }
-  .outcome-row { grid-template-columns: 36px 1fr; }
-  .outcome-row-tag { display: none; }
-}
-
-/* ─── BUTTONS ─── */
-
-.btn-ink {
-
-  font-family: var(--fm); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-
-  text-decoration: none; padding: 14px 28px; background: var(--plum); color: #fff;
-
-  border: 1.5px solid var(--plum); transition: background 0.2s; display: inline-block;
-
-}
-
-.btn-ink:hover { background: #431f52; }
-
-.btn-cream {
-
-  font-family: var(--fm); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-
-  text-decoration: none; padding: 16px 36px; background: var(--cream); color: var(--ink);
-
-  border: 1.5px solid var(--cream); display: inline-block; transition: all 0.2s; position: relative; z-index: 1;
-
-}
-
-.btn-cream:hover { background: var(--plum-light); border-color: var(--plum-light); }
-
-/* ─── CTA ─── */
+/* ── CTA ── */
 
 #cta { display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid var(--ink); }
 
@@ -643,7 +693,7 @@ nav {
 
   padding: 96px 60px 96px 48px;
 
-  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
 
 }
 
@@ -701,7 +751,7 @@ nav {
 
 }
 
-/* ─── FOOTER ─── */
+/* ── FOOTER ── */
 
 footer { background: var(--ink); padding: 56px 0 40px; }
 
@@ -751,7 +801,7 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
 .footer-bottom a:hover { color: #6ec9a4; }
 
-/* ─── RESPONSIVE ─── */
+/* ── RESPONSIVE ── */
 
 @media(max-width:900px) {
 
@@ -781,33 +831,31 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
   #page-canvas { width: 100%; opacity: 0.18; }
 
-  .section-01 { grid-template-columns: 1fr; }
+  /* Brain-Body Link responsive */
 
-  .section-01-text { padding: 56px 20px; }
+  .bbl-section .container { padding: 0 20px; }
 
-  .section-01-text p { max-width: 100%; }
+  .bbl-grid { grid-template-columns: 1fr; }
+
+  .bbl-left { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 40px; margin-bottom: 40px; }
+
+  .bbl-right { padding-left: 0; }
+
+  .section-head { margin-bottom: 40px; }
+
+  /* Curriculum */
 
   .prose-block { padding: 56px 20px; }
 
   .pull-quote-wrap { padding: 0 20px 56px; }
 
-  .split-section { grid-template-columns: 1fr; }
-
-  .split-text { border-right: none; padding: 56px 20px; }
-
-  .split-text p { max-width: 100%; }
-
-  .split-aside { padding: 48px 20px; }
-
   .format-grid { grid-template-columns: 1fr; }
 
   .format-card, .format-card:nth-child(2n) { border-right: none; border-bottom: 1px solid var(--rule); }
 
-  .format-card.full-row { border-bottom: none; }
-
-  .format-card:last-child { border-bottom: none; }
-
   .format-card { padding: 40px 20px; }
+
+  /* Who */
 
   .who-section { grid-template-columns: 1fr; }
 
@@ -817,11 +865,27 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
   .who-right { padding: 48px 20px; }
 
+  /* Outcome */
+
+  .outcome-strip { padding: 56px 20px; }
+
+  .outcome-strip-header { grid-template-columns: 1fr; gap: 16px; }
+
+  .outcome-rows { grid-template-columns: 1fr; }
+
+  .outcome-row { grid-template-columns: 36px 1fr; }
+
+  .outcome-row-tag { display: none; }
+
+  /* CTA */
+
   #cta { grid-template-columns: 1fr; }
 
   .cta-left { padding: 56px 20px; align-items: center; text-align: center; border-bottom: 1px solid rgba(26,26,20,0.15); }
 
   .cta-right { padding: 48px 20px; }
+
+  /* Footer */
 
   .footer-grid { grid-template-columns: 1fr; }
 
@@ -925,118 +989,119 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
     <p class="hero-lede">
 
-      <span class="lang-en active">Science-led workshops on focus, stress, and performance — delivered directly to your team. BGM-eligible.</span>
+      <span class="lang-en active">Science-led workshops on focus, stress, and performance.</span>
 
-      <span class="lang-de">Wissenschaftlich fundierte Workshops zu Fokus, Stress und Leistung — direkt für Ihr Team. BGM-fähig.</span>
+      <span class="lang-de">Wissenschaftlich fundierte Workshops zu Fokus, Stress und Performance</span>
 
     </p>
 
-    
   </div>
 
 </section>
 
-<!-- SECTION 01 -->
 
-<div class="section-01">
+<!-- ══════════════════════════════════════════════════
+     SECTION 01 — THE PROBLEM
+     Redesigned to match index.html #what (Brain-Body Link)
+     ══════════════════════════════════════════════════ -->
 
-  <div class="section-01-text">
+<section class="bbl-section">
+  <div class="container">
 
-    <div class="lang-en active">
+    <div class="section-head">
+      <div style="display:flex; align-items:baseline; gap:24px;">
+      <span class="section-num">01</span>
+      <span class="section-label green"><span class="lang-en active">The Problem</span><span class="lang-de">Das Problem</span></span>
+      </div>
+      <h2 class="section-title">
+        <span class="lang-en active">Good intentions.<br><span class="italic">Limited</span> results.</span>
+        <span class="lang-de">Gute Absichten.<br><span class="italic">Geringe</span> Wirkung.</span>
+      </h2>
+    </div>
 
-      <div class="eyebrow green">
+    <div class="bbl-grid">
 
-        <span class="eyebrow-num">01</span>
+      <!-- LEFT: prose, mirrors index .what-left -->
+      <div class="bbl-left">
 
-        <span class="eyebrow-label">The Problem</span>
+        <div class="lang-en active">
+          <p>Most workplace wellbeing programs struggle to create lasting change. Employees sit through sessions, return to their desks and nothing shifts. The gap isn't motivation. It's neuroscience.</p>
+
+          <blockquote class="bbl-pullquote">Brain Health at Work is built differently — brain-first and immediately applicable.</blockquote>
+
+          <p>Every session connects how the brain actually functions to the daily challenges your team faces: distraction, cognitive overload, stress spikes, and the inability to switch off.</p>
+
+          <p>Participants don't just learn concepts — they leave each session with <strong>techniques they can use that afternoon</strong>: in a meeting, at their desk, or during a difficult conversation.</p>
+        </div>
+
+        <div class="lang-de">
+          <p>Die meisten Betriebsgesundheitsprogramme schaffen keine nachhaltige Veränderung. Mitarbeitende nehmen teil und danach ändert sich nichts. Das Problem liegt nicht in der Motivation. Es liegt in der Neurowissenschaft.</p>
+
+          <blockquote class="bbl-pullquote">Brain Health at Work ist anders aufgebaut — gehirnzentriert und sofort anwendbar.</blockquote>
+
+          <p>Jede Session verbindet, wie das Gehirn tatsächlich funktioniert, mit den konkreten Herausforderungen Ihres Teams: Ablenkung, kognitive Überlastung, Stress-Spitzen und die Unfähigkeit abzuschalten.</p>
+
+          <p>Teilnehmende lernen nicht nur Konzepte — sie verlassen jede Session mit <strong>Techniken, die sie noch am selben Nachmittag einsetzen können</strong>.</p>
+        </div>
 
       </div>
 
-      <h2 class="section-heading">Good intentions.<br><em>Limited</em> results.</h2>
+      <!-- RIGHT: pillar rows, mirrors index .what-right -->
+      <div class="bbl-right">
 
-      <p>Most workplace wellbeing programs struggle to create lasting change. Employees sit through sessions, return to their desks and nothing shifts. The gap isn't motivation. It's neuroscience.</p>
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div>
+            <div class="pillar-head">
+              <span class="pillar-index">◎</span>
+              <span class="pillar-title"><span class="lang-en active">Attention Management</span><span class="lang-de">Aufmerksamkeitssteuerung</span></span>
+            </div>
+            <div class="lang-en active"><p>The brain can't multitask. Learn how attention actually works and how to protect it in an open-plan world.</p></div>
+            <div class="lang-de"><p>Das Gehirn kann nicht multitasken. Lernen Sie, wie Aufmerksamkeit funktioniert — und wie man sie schützt.</p></div>
+          </div>
+        </div>
 
-      <p><strong>Brain Health at Work</strong> is built differently. Every session connects how the brain actually functions to the daily challenges your team faces: distraction, cognitive overload, stress spikes, and the inability to switch off.</p>
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div>
+            <div class="pillar-head">
+              <span class="pillar-index">⟳</span>
+              <span class="pillar-title"><span class="lang-en active">Regulation &amp; Reset</span><span class="lang-de">Regulation &amp; Reset</span></span>
+            </div>
+            <div class="lang-en active"><p>Stress is a neurological signal, not a personality trait. Practical tools to read, regulate, and recover from it.</p></div>
+            <div class="lang-de"><p>Stress ist ein neurologisches Signal, kein Charaktermerkmal. Praktische Werkzeuge zur Regulation.</p></div>
+          </div>
+        </div>
 
-      <p>The approach is brain-first and immediately applicable. Participants don't just learn concepts, they leave each session with techniques they can use that afternoon: in a meeting, at their desk, or during a difficult conversation.</p>
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div>
+            <div class="pillar-head">
+              <span class="pillar-index">⚡</span>
+              <span class="pillar-title"><span class="lang-en active">Mental Energy</span><span class="lang-de">Mentale Energie</span></span>
+            </div>
+            <div class="lang-en active"><p>Cognitive fatigue is real and measurable. Understand what drains it and how to restore it within the workday.</p></div>
+            <div class="lang-de"><p>Kognitive Erschöpfung ist real und messbar. Verstehen, was sie verbraucht — und wie man sie im Arbeitstag erholt.</p></div>
+          </div>
+        </div>
 
-    </div>
-
-    <div class="lang-de">
-
-      <div class="eyebrow green">
-
-        <span class="eyebrow-num">01</span>
-
-        <span class="eyebrow-label">Das Problem</span>
+        <div class="pillar-row">
+          <div class="pillar-line"></div>
+          <div>
+            <div class="pillar-head">
+              <span class="pillar-index">↺</span>
+              <span class="pillar-title"><span class="lang-en active">Sustainable Performance</span><span class="lang-de">Nachhaltige Leistung</span></span>
+            </div>
+            <div class="lang-en active"><p>Habits are neurological patterns. Build routines that stick — not willpower that fades by Wednesday.</p></div>
+            <div class="lang-de"><p>Gewohnheiten sind neurologische Muster. Routinen, die bleiben — statt Willenskraft, die bis Mittwoch verfliegt.</p></div>
+          </div>
+        </div>
 
       </div>
-
-      <h2 class="section-heading">Gute Absichten.<br><em>Geringe</em> Wirkung.</h2>
-
-      <p>Die meisten Betriebsgesundheitsprogramme schaffen keine nachhaltige Veränderung. Mitarbeitende nehmen teil und danach ändert sich nichts. Das Problem liegt nicht in der Motivation. Es liegt in der Neurowissenschaft.</p>
-
-      <p><strong>Brain Health at Work</strong> ist anders aufgebaut. Jede Session verbindet, wie das Gehirn tatsächlich funktioniert, mit den konkreten Herausforderungen Ihres Teams: Ablenkung, kognitive Überlastung, Stress-Spitzen und die Unfähigkeit abzuschalten.</p>
-
-      <p>Der Ansatz ist gehirnzentriert und sofort anwendbar. Teilnehmende lernen nicht nur Konzepte, sie verlassen jede Session mit Techniken, die sie noch am selben Nachmittag einsetzen können.</p>
-
     </div>
-
   </div>
+</section>
 
-  <div class="concept-strip">
-
-    <div class="concept-card">
-
-      <div class="concept-icon">◎</div>
-
-      <div class="concept-label"><span class="lang-en active">Focus</span><span class="lang-de">Fokus</span></div>
-
-      <div class="concept-title"><span class="lang-en active">Attention Management</span><span class="lang-de">Aufmerksamkeitssteuerung</span></div>
-
-      <div class="concept-body"><span class="lang-en active">The brain can't multitask. Learn how attention actually works and how to protect it in an open-plan world.</span><span class="lang-de">Das Gehirn kann nicht multitasken. Lernen Sie, wie Aufmerksamkeit funktioniert — und wie man sie schützt.</span></div>
-
-    </div>
-
-    <div class="concept-card">
-
-      <div class="concept-icon">⟳</div>
-
-      <div class="concept-label"><span class="lang-en active">Stress</span><span class="lang-de">Stress</span></div>
-
-      <div class="concept-title"><span class="lang-en active">Regulation &amp; Reset</span><span class="lang-de">Regulation &amp; Reset</span></div>
-
-      <div class="concept-body"><span class="lang-en active">Stress is a neurological signal, not a personality trait. Practical tools to read, regulate, and recover from it.</span><span class="lang-de">Stress ist ein neurologisches Signal, kein Charaktermerkmal. Praktische Werkzeuge zur Regulation.</span></div>
-
-    </div>
-
-    <div class="concept-card">
-
-      <div class="concept-icon">⚡</div>
-
-      <div class="concept-label"><span class="lang-en active">Energy</span><span class="lang-de">Energie</span></div>
-
-      <div class="concept-title"><span class="lang-en active">Mental Energy</span><span class="lang-de">Mentale Energie</span></div>
-
-      <div class="concept-body"><span class="lang-en active">Cognitive fatigue is real and measurable. Understand what drains it and how to restore it within the workday.</span><span class="lang-de">Kognitive Erschöpfung ist real und messbar. Verstehen, was sie verbraucht — und wie man sie im Arbeitstag erholt.</span></div>
-
-    </div>
-
-    <div class="concept-card">
-
-      <div class="concept-icon">↺</div>
-
-      <div class="concept-label"><span class="lang-en active">Habits</span><span class="lang-de">Gewohnheiten</span></div>
-
-      <div class="concept-title"><span class="lang-en active">Sustainable Performance</span><span class="lang-de">Nachhaltige Leistung</span></div>
-
-      <div class="concept-body"><span class="lang-en active">Habits are neurological patterns. Build routines that stick — not willpower that fades by Wednesday.</span><span class="lang-de">Gewohnheiten sind neurologische Muster. Routinen, die bleiben — statt Willenskraft, die bis Mittwoch verfliegt.</span></div>
-
-    </div>
-
-  </div>
-
-</div>
 
 <!-- SECTION 02 — Curriculum -->
 
@@ -1076,9 +1141,9 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
   <blockquote class="pull-quote">
 
-    <span class="lang-en active">"When employees understand how their brain manages attention, stress, and recovery they stop fighting themselves and start performing."</span>
+    <span class="lang-en active">"When employees understand how their brain manages attention, stress, and recovery clarity replaces the constant effort of just keeping up."</span>
 
-    <span class="lang-de">„Wenn Mitarbeitende verstehen, wie ihr Gehirn Aufmerksamkeit, Stress und Erholung steuert, hören sie auf, gegen sich selbst zu arbeiten."</span>
+    <span class="lang-de">„Sobald Mitarbeitende verstehen, wie ihr Gehirn Aufmerksamkeit, Stress und Erholung reguliert, löst sich das ständige Gefühl des Hinterherlaufens in Klarheit auf."</span>
 
   </blockquote>
 
@@ -1170,15 +1235,15 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
       <span class="lang-en active">Managing distraction, information overload, and context switching with simple strategies for sustained deep work.</span>
 
-      <span class="lang-de">Ablenkung, Informationsüberflutung und Kontextwechsel managen mit einfachen Techniken für anhaltende Tiefarbeit.</span>
+      <span class="lang-de">Ablenkung, Informationsüberflutung und Kontextwechsel managen mit einfachen Techniken für anhaltende Konzentration.</span>
 
     </div>
 
     <ul class="check-list">
 
-      <li><span class="lang-en active">Managing distraction and information overload</span><span class="lang-de">Ablenkung und Informationsüberflutung managen</span></li>
+      <li><span class="lang-en active">Managing distraction and information overload in a world of multiple taskswitching</span><span class="lang-de">Ablenkung und Informationsüberflutung managen in einer Welt ständiger Taskwechsels</span></li>
 
-      <li><span class="lang-en active">Simple strategies for sustained deep work</span><span class="lang-de">Einfache Techniken für anhaltende Konzentration</span></li>
+      <li><span class="lang-en active">Simple strategies for sustained deep work and how to make pauses meaningful</span><span class="lang-de">Einfache Techniken für anhaltende Konzentration und wie man Pausen sinnvoll nutzt</span></li>
 
       <li><span class="lang-en active">Energy management for the brain</span><span class="lang-de">Energiemanagement für das Gehirn</span></li>
 
@@ -1210,15 +1275,15 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
     <ul class="check-list">
 
-      <li><span class="lang-en active">Sensory sharpening and openness to new impressions </span><span class="lang-de">Sensoren schärfen und Offenheit für neue Eindrücke</span></li>
+      <li><span class="lang-en active">Sensory sharpening and openness to new impressions</span><span class="lang-de">Sensoren schärfen und Offenheit für neue Eindrücke bilden</span></li>
 
       <li><span class="lang-en active">Empathetic, nuanced perception for richer, more complex expression</span><span class="lang-de">Empathische, nuancierte Wahrnehmung für reicheren und komplexeren Ausdruck</span></li>
 
-      <li><span class="lang-en active">Altering the Brains usual patterns of thinking</span><span class="lang-de">Veränderung der üblichen Denkmuster</span></li>
+      <li><span class="lang-en active">Altering the brain's usual patterns of thinking</span><span class="lang-de">Veränderung der üblichen Denkmuster</span></li>
 
     </ul>
 
-    <div class="format-tagline" style="color:var(--ink-muted);"><span class="lang-en active">Upside down - rewiring the brain.</span><span class="lang-de">Upside down — das Gehirn neu verdrahtet.</span></div>
+    <div class="format-tagline" style="color:var(--ink-muted);"><span class="lang-en active">Upside down — rewiring the brain.</span><span class="lang-de">Upside down — das Gehirn neu verdrahtet.</span></div>
 
   </div>
 
@@ -1226,43 +1291,247 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
 <!-- SECTION 03A — Origin -->
 
-<div class="prose-block" style="padding-bottom: 0;">
+<style>
+/* ── ORIGIN SECTION ── */
+.origin-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
 
-  <div class="lang-en active">
+.origin-image-col {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  background: #141009;
+}
 
-    <div class="eyebrow gold">
+.origin-image-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
 
-      <span class="eyebrow-num">03</span>
 
-      <span class="eyebrow-label">Origin</span>
 
+.origin-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20,16,9,0.0) 50%, rgba(20,16,9,0.55) 100%);
+  pointer-events: none;
+}
+
+.origin-coord {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(245, 240, 232);
+  line-height: 1.8;
+}
+
+.origin-content-col {
+  padding: 72px 56px;Fcta
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--paper);
+}
+
+.origin-altitude {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.origin-altitude::after {
+  content: '';
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.origin-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.origin-stat-num {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(52px, 6vw, 80px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.origin-stat-unit {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1;
+}
+
+.origin-heading {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.origin-heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.origin-content-col p {
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 400px;
+  margin-bottom: 16px;
+}
+
+.origin-content-col p:last-of-type { margin-bottom: 0; }
+
+.origin-content-col p strong { color: var(--ink); font-weight: 500; }
+
+.origin-scene {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  padding: 20px 0;
+  margin: 4px 0 20px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* placeholder when no image is present */
+.origin-image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(245,240,232,0.15);
+}
+
+.origin-image-placeholder svg { opacity: 0.3; }
+
+.origin-image-placeholder span {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@media(max-width:900px) {
+  .origin-section { grid-template-columns: 1fr; }
+  .origin-image-col { min-height: 320px; }
+  .origin-content-col { padding: 48px 20px; }
+  .origin-content-col p { max-width: 100%; }
+}
+</style>
+
+<div class="origin-section">
+
+  <!-- IMAGE COLUMN -->
+  <div class="origin-image-col">
+    
+      
+      <img src="images/stmoritz.jpg" alt="St. Moritz — where Brain Health at Work was born" />
+
+      
+    
+    
+    <div class="origin-image-overlay"></div>
+    <div class="origin-coord">
+      46°29′ N, 09°50′ E<br>
+      St. Moritz, Graubünden
     </div>
-
-    <h2 class="section-heading gold">Created on the top<br><em>of the world.</em></h2>
-
-    <p>Designed in St. Moritz as part of Peter Linden’s creative storytelling course, this programme was built for peak performance and memorable team transformation. The alpine setting shaped a concept that combines neuroscience and the quiet power of summit-thinking.</p>
-
   </div>
 
-  <div class="lang-de">
+  <!-- CONTENT COLUMN -->
+  <div class="origin-content-col">
 
-    <div class="eyebrow gold">
+    <div class="lang-en active">
 
-      <span class="eyebrow-num">03</span>
+      <div class="origin-altitude">
+        <span class="lang-en active">03 — Origin</span>
+      </div>
 
-      <span class="eyebrow-label">Entstehung</span>
+      <div class="origin-stat">
+        <span class="origin-stat-num">1,856</span>
+        <div class="origin-stat-unit">metres<br>above sea<br>level</div>
+      </div>
+
+      <h2 class="origin-heading">Created on the<br> <em>top of the world.</em></h2>
+
+      <p class="origin-scene">A room above the clouds. A whiteboard. The question: what does the brain actually need?</p>
+
+      <p>Designed in St. Moritz as part of <strong>Peter Linden's creative storytelling course</strong>, this programme was built for peak performance and memorable team transformation.</p>
+
+      <p>The alpine setting shaped a concept that combines neuroscience and the quiet power of summit-thinking.</p>
 
     </div>
 
-    <h2 class="section-heading gold">Entwickelt am<br><em>Gipfel.</em></h2>
+    <div class="lang-de">
 
-    <p>Entstanden in St. Moritz im Rahmen des kreativen Storytelling-Kurses von Peter Linden, wurde dieses Programm für Spitzenleistung und nachhaltige Teamentwicklung konzipiert. Die alpine Umgebung formte einen Ansatz, der Neurowissenschaft und die stille Kraft von summit-thinking vereint.</p>
+      <div class="origin-altitude">
+        <span>03 — Entstehung</span>
+      </div>
+
+      <div class="origin-stat">
+        <span class="origin-stat-num">1.856</span>
+        <div class="origin-stat-unit">Meter<br>über dem<br>Meeresspiegel</div>
+      </div>
+
+      <h2 class="origin-heading">Entwickelt am<br><em>Gipfel der Welt.</em></h2>
+
+      <p class="origin-scene">Ein Raum über den Wolken. Ein Whiteboard. Die Frage: Was braucht das Gehirn wirklich?</p>
+
+      <p>Entstanden in St. Moritz im Rahmen des <strong>kreativen Storytelling-Kurses von Peter Linden</strong>, wurde dieses Programm für Spitzenleistung und nachhaltige Teamentwicklung konzipiert.</p>
+
+      <p>Die alpine Umgebung formte etwas Unerwartetes — einen Ansatz, der Neurowissenschaft und die stille Klarheit vereint, die nur mit Höhe und Stille entsteht.</p>
+
+    </div>
 
   </div>
 
 </div>
 
-<!-- SECTION 05 — Outcome Strip (refined) -->
+<!-- SECTION 05 — Outcome Strip -->
 
 <div class="outcome-strip">
 
@@ -1272,15 +1541,15 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
       <div class="outcome-eyebrow">
 
-        <span class="lang-en active">05 — Outcomes</span>
+        <span class="lang-en active">04 — Outcomes</span>
 
-        <span class="lang-de">05 — Ergebnisse</span>
+        <span class="lang-de">04 — Ergebnisse</span>
 
       </div>
 
       <div class="outcome-headline">
 
-        <span class="lang-en active">What<br>teams<br><em>gain.</em></span>
+        <span class="lang-en active">What teams <em>gain.</em></span>
 
         <span class="lang-de">Was<br>Teams<br><em>gewinnen.</em></span>
 
@@ -1290,9 +1559,9 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
     <p class="outcome-desc">
 
-      <span class="lang-en active">Observable outcomes organizations can expect across the program — from the first session onward.</span>
+      <span class="lang-en active">Observable outcomes organizations can expect across the program from the first session onward.</span>
 
-      <span class="lang-de">Beobachtbare Ergebnisse, die Unternehmen im Programm erwarten können — ab der ersten Session.</span>
+      <span class="lang-de">Beobachtbare Ergebnisse, die Unternehmen im Programm erwarten können ab der ersten Session.</span>
 
     </p>
 
@@ -1301,203 +1570,155 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
   <div class="outcome-rows">
 
     <div class="outcome-row">
-
       <span class="outcome-index">01</span>
-
       <div>
-
         <div class="outcome-row-label"><span class="lang-en active">Improved focus</span><span class="lang-de">Besserer Fokus</span></div>
-
         <div class="outcome-row-detail"><span class="lang-en active">Employees concentrate for longer and recover attention more quickly after interruption.</span><span class="lang-de">Mitarbeitende können länger konzentriert arbeiten und Aufmerksamkeit nach Unterbrechungen schneller wiederherstellen.</span></div>
-
       </div>
-
       <span class="outcome-row-tag"><span class="lang-en active">Attention</span><span class="lang-de">Aufmerksamkeit</span></span>
-
     </div>
 
     <div class="outcome-row">
-
       <span class="outcome-index">02</span>
-
       <div>
-
         <div class="outcome-row-label"><span class="lang-en active">Stress awareness</span><span class="lang-de">Stressbewusstsein</span></div>
-
         <div class="outcome-row-detail"><span class="lang-en active">Teams recognize stress earlier and apply reset techniques before it compounds into burnout.</span><span class="lang-de">Teams erkennen Stress früher und wenden Reset-Techniken an, bevor er sich zu Burnout aufschaukelt.</span></div>
-
       </div>
-
       <span class="outcome-row-tag"><span class="lang-en active">Resilience</span><span class="lang-de">Resilienz</span></span>
-
     </div>
 
     <div class="outcome-row">
-
       <span class="outcome-index">03</span>
-
       <div>
-
         <div class="outcome-row-label"><span class="lang-en active">Reduced cognitive overload</span><span class="lang-de">Weniger kognitive Überlastung</span></div>
-
         <div class="outcome-row-detail"><span class="lang-en active">Participants make smarter decisions about how they structure work and protect mental energy.</span><span class="lang-de">Teilnehmende treffen klügere Entscheidungen über Arbeitsstruktur und Schutz mentaler Energie.</span></div>
-
       </div>
-
       <span class="outcome-row-tag"><span class="lang-en active">Clarity</span><span class="lang-de">Klarheit</span></span>
-
     </div>
 
     <div class="outcome-row">
-
       <span class="outcome-index">04</span>
-
       <div>
-
         <div class="outcome-row-label"><span class="lang-en active">Stronger resilience habits</span><span class="lang-de">Stärkere Resilienzgewohnheiten</span></div>
-
         <div class="outcome-row-detail"><span class="lang-en active">Recovery becomes a built-in part of the working day — not something saved for the weekend.</span><span class="lang-de">Erholung wird Teil des Arbeitstags — nicht etwas, das auf das Wochenende verschoben wird.</span></div>
-
       </div>
-
       <span class="outcome-row-tag"><span class="lang-en active">Habits</span><span class="lang-de">Gewohnheiten</span></span>
-
     </div>
 
     <div class="outcome-row">
-
       <span class="outcome-index">05</span>
-
       <div>
-
         <div class="outcome-row-label"><span class="lang-en active">Sustainable performance</span><span class="lang-de">Nachhaltige Leistung</span></div>
-
         <div class="outcome-row-detail"><span class="lang-en active">Output quality improves without the cost of accelerated fatigue or high turnover.</span><span class="lang-de">Qualität der Arbeitsergebnisse verbessert sich — ohne beschleunigte Erschöpfung oder hohe Fluktuation.</span></div>
-
       </div>
-
       <span class="outcome-row-tag"><span class="lang-en active">Performance</span><span class="lang-de">Leistung</span></span>
-
     </div>
 
     <div class="outcome-row">
-
       <span class="outcome-index">06</span>
-
       <div>
-
         <div class="outcome-row-label"><span class="lang-en active">Healthier productivity culture</span><span class="lang-de">Gesündere Leistungskultur</span></div>
-
         <div class="outcome-row-detail"><span class="lang-en active">A shared vocabulary and practice that makes high performance and genuine wellbeing compatible.</span><span class="lang-de">Eine gemeinsame Sprache und Praxis, die hohe Leistung und Wohlbefinden vereinbar macht.</span></div>
+      </div>
+      <span class="outcome-row-tag"><span class="lang-en active">Culture</span><span class="lang-de">Kultur</span></span>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 03 — DELIVERY
+     Redesigned to match index.html #what (Brain-Body Link)
+     ══════════════════════════════════════════════════ -->
+
+<section class="bbl-section">
+  <div class="container">
+
+    <div class="section-head">
+      <div style="display:flex; align-items:baseline; gap:24px;">
+      <span class="section-num">05</span>
+      <span class="section-label gold"><span class="lang-en active">Delivery</span><span class="lang-de">Durchführung</span></span>
+      </div>
+      <h2 class="section-title">
+        <span class="lang-en active">Built around your <span class="italic-gold">team.</span></span>
+        <span class="lang-de">Um Ihr Team <span class="italic-gold">herum</span> gebaut.</span>
+      </h2>
+    </div>
+
+    <div class="bbl-grid">
+
+      <!-- LEFT: prose -->
+      <div class="bbl-left">
+
+        <div class="lang-en active">
+          <p>Every organization runs differently. <strong>Formats are designed to fit into your existing calendar</strong> — whether that's a lunch slot, a half-day offsite, or your annual health day.</p>
+
+          <blockquote class="bbl-pullquote gold">No specialist equipment required. Content is adapted to your team's specific challenges in a brief pre-session call.</blockquote>
+
+          <p>All sessions can be delivered on-site in Munich or remotely. The program is also designed to complement existing <strong>Betriebliches Gesundheitsmanagement (BGM)</strong> frameworks — with documentation suitable for health management reporting.</p>
+        </div>
+
+        <div class="lang-de">
+          <p>Jedes Unternehmen funktioniert anders. <strong>Die Formate passen sich Ihrem Kalender an</strong> — ob Mittagspause, halbtägiges Offsite oder Gesundheitstag.</p>
+
+          <blockquote class="bbl-pullquote gold">Keine spezielle Ausstattung notwendig. Die Inhalte werden in einem kurzen Vorgespräch auf Ihre Herausforderungen abgestimmt.</blockquote>
+
+          <p>Alle Sessions können vor Ort in München oder remote stattfinden. Das Programm ist außerdem darauf ausgelegt, bestehende <strong>BGM-Strukturen</strong> zu ergänzen — mit Dokumentation für die Gesundheitsberichterstattung.</p>
+        </div>
 
       </div>
 
-      <span class="outcome-row-tag"><span class="lang-en active">Culture</span><span class="lang-de">Kultur</span></span>
+      <!-- RIGHT: pillar rows for the three formats -->
+      <div class="bbl-right">
 
+        <div class="pillar-row">
+          <div class="pillar-line gold"></div>
+          <div>
+            <div class="pillar-head">
+              <span class="pillar-index gold"><span class="lang-en active">Format 01</span><span class="lang-de">Format 01</span></span>
+            </div>
+            <p class="pillar-title" style="font-family:var(--fd);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;">
+              <span class="lang-en active">Workshop Session — 60–90 min</span><span class="lang-de">Workshop-Session — 60–90 Min.</span>
+            </p>
+            <div class="lang-en active"><p>Ideal for lunch-and-learns or standalone modules. High impact in compact time — participants leave with tools they can use immediately.</p></div>
+            <div class="lang-de"><p>Ideal für Mittagspausen-Formate oder einzelne Module. Hohe Wirkung in kompakter Zeit — mit sofort anwendbaren Tools.</p></div>
+          </div>
+        </div>
+
+        <div class="pillar-row">
+          <div class="pillar-line gold"></div>
+          <div>
+            <div class="pillar-head">
+              <span class="pillar-index gold"><span class="lang-en active">Format 02</span><span class="lang-de">Format 02</span></span>
+            </div>
+            <p class="pillar-title" style="font-family:var(--fd);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;">
+              <span class="lang-en active">Half-Day Training</span><span class="lang-de">Halbtages-Training</span>
+            </p>
+            <div class="lang-en active"><p>Deeper learning with interactive exercises and structured implementation planning. Time to practice, not just absorb. Best for two combined modules.</p></div>
+            <div class="lang-de"><p>Tieferes Lernen mit interaktiven Übungen und Umsetzungsplanung. Üben statt nur zuhören. Ideal für zwei kombinierte Module.</p></div>
+          </div>
+        </div>
+
+        <div class="pillar-row">
+          <div class="pillar-line gold"></div>
+          <div>
+            <div class="pillar-head">
+              <span class="pillar-index gold"><span class="lang-en active">Format 03</span><span class="lang-de">Format 03</span></span>
+            </div>
+            <p class="pillar-title" style="font-family:var(--fd);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;">
+              <span class="lang-en active">Company Health Day</span><span class="lang-de">Betrieblicher Gesundheitstag</span>
+            </p>
+            <div class="lang-en active"><p>Engaging sessions as part of your wider health or culture initiatives. Designed to work alongside other providers on the day.</p></div>
+            <div class="lang-de"><p>Zugängliche Sessions als Teil Ihrer Gesundheits- oder Kulturinitiativen. Konzipiert für die Integration neben anderen Anbietern.</p></div>
+          </div>
+        </div>
+
+      </div>
     </div>
-
   </div>
-
-</div>
-
-<!-- SECTION 03 — Delivery -->
-
-<div class="prose-block" style="padding-bottom: 0;">
-
-  <div class="lang-en active">
-
-    <div class="eyebrow gold">
-
-      <span class="eyebrow-num">03</span>
-
-      <span class="eyebrow-label">Delivery</span>
-
-    </div>
-
-    <h2 class="section-heading gold">Built around<br>your <em>team.</em></h2>
-
-  </div>
-
-  <div class="lang-de">
-
-    <div class="eyebrow gold">
-
-      <span class="eyebrow-num">03</span>
-
-      <span class="eyebrow-label">Durchführung</span>
-
-    </div>
-
-    <h2 class="section-heading gold">Um Ihr Team<br><em>herum</em> gebaut.</h2>
-
-  </div>
-
-</div>
-
-<div class="split-section">
-
-  <div class="split-text">
-
-    <div class="lang-en active">
-
-      <p>Every organization runs differently. <strong>Formats are designed to fit into your existing calendar</strong> — whether that's a lunch slot, a half-day offsite, or your annual health day.</p>
-
-      <p>All sessions can be delivered on-site in Munich or remotely. No specialist equipment required. Content is adapted to your team's specific challenges and industry context in a brief pre-session call.</p>
-
-      <p>The program is also designed to complement existing <strong>Betriebliches Gesundheitsmanagement (BGM)</strong> frameworks — with documentation suitable for health management reporting.</p>
-
-    </div>
-
-    <div class="lang-de">
-
-      <p>Jedes Unternehmen funktioniert anders. <strong>Die Formate passen sich Ihrem Kalender an</strong> — ob Mittagspause, halbtägiges Offsite oder Gesundheitstag.</p>
-
-      <p>Alle Sessions können vor Ort in München oder remote stattfinden. Keine spezielle Ausstattung notwendig. Die Inhalte werden in einem kurzen Vorgespräch auf Ihre spezifischen Herausforderungen und den Branchenkontext abgestimmt.</p>
-
-      <p>Das Programm ist außerdem darauf ausgelegt, bestehende <strong>BGM-Strukturen</strong> zu ergänzen — mit Dokumentation für die Gesundheitsberichterstattung.</p>
-
-    </div>
-
-  </div>
-
-  <div class="split-aside">
-
-    <div class="technique-row">
-
-      <div class="technique-label"><span class="lang-en active">Format 01</span><span class="lang-de">Format 01</span></div>
-
-      <div class="technique-title"><span class="lang-en active">Workshop Session — 60–90 min</span><span class="lang-de">Workshop-Session — 60–90 Min.</span></div>
-
-      <div class="technique-body"><span class="lang-en active">Ideal for lunch-and-learns or standalone modules. High impact in compact time — participants leave with tools they can use immediately.</span><span class="lang-de">Ideal für Mittagspausen-Formate oder einzelne Module. Hohe Wirkung in kompakter Zeit — mit sofort anwendbaren Tools.</span></div>
-
-    </div>
-
-    <div class="technique-row">
-
-      <div class="technique-label"><span class="lang-en active">Format 02</span><span class="lang-de">Format 02</span></div>
-
-      <div class="technique-title"><span class="lang-en active">Half-Day Training</span><span class="lang-de">Halbtages-Training</span></div>
-
-      <div class="technique-body"><span class="lang-en active">Deeper learning with interactive exercises and structured implementation planning. Time to practice, not just absorb. Best for two combined modules.</span><span class="lang-de">Tieferes Lernen mit interaktiven Übungen und Umsetzungsplanung. Üben statt nur zuhören. Ideal für zwei kombinierte Module.</span></div>
-
-    </div>
-
-    <div class="technique-row">
-
-      <div class="technique-label"><span class="lang-en active">Format 03</span><span class="lang-de">Format 03</span></div>
-
-      <div class="technique-title"><span class="lang-en active">Company Health Day</span><span class="lang-de">Betrieblicher Gesundheitstag</span></div>
-
-      <div class="technique-body"><span class="lang-en active">Engaging sessions as part of your wider health or culture initiatives. Designed to work alongside other providers on the day.</span><span class="lang-de">Zugängliche Sessions als Teil Ihrer Gesundheits- oder Kulturinitiativen. Konzipiert für die Integration neben anderen Anbietern.</span></div>
-
-    </div>
-
-    
-
-  </div>
-
-</div>
-
+</section>
 
 
 <!-- SECTION 04 — Who it's for -->
@@ -1510,7 +1731,7 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
       <div class="eyebrow green" style="margin-bottom: 1.4rem;">
 
-        <span class="eyebrow-num">04</span>
+        <span class="eyebrow-num">06</span>
 
         <span class="eyebrow-label"><span class="lang-en active">Who it's for</span><span class="lang-de">Für wen</span></span>
 
@@ -1617,7 +1838,6 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
   </div>
 
 </div>
-
 
 
 <!-- CTA -->
