@@ -247,7 +247,8 @@ nav {
   padding-right: 56px;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  align-items: flex-start;
+  gap: 0.9rem;
   position: sticky;
   top: 72px;
   align-self: start;
@@ -262,9 +263,10 @@ nav {
   font-family: var(--fd);
   font-weight: 900;
   font-size: clamp(28px, 3vw, 40px);
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--ink);
+  margin: 0;
 }
 .service-title .italic { font-style: italic; color: var(--green); }
 .service-tag {
@@ -282,8 +284,11 @@ nav {
 .service-tag.gold  { background: #f5edd8; color: var(--gold); }
 
 .price-badge {
-  margin-top: auto;
-  padding-top: 2rem;
+  margin-top: 1.2rem;
+  padding-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .price-amount {
   font-family: var(--fd);
@@ -314,7 +319,7 @@ nav {
   display: inline-block;
   transition: background 0.2s;
   align-self: flex-start;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 .service-cta-link:hover { background: #431f52; }
 .service-cta-free {
@@ -330,7 +335,7 @@ nav {
   display: inline-block;
   transition: all 0.2s;
   align-self: flex-start;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 .service-cta-free:hover { background: var(--ink); color: var(--cream); }
 
@@ -677,9 +682,25 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
   #page-canvas { width: 100%; opacity: 0.3; }
   .intro-strip { display: none; }
   .service-inner { grid-template-columns: 1fr; }
-  .service-left { position: relative; top: auto; border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 32px; margin-bottom: 0; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 1rem 2rem; }
-  .price-badge { padding-top: 0; }
-  .service-right { padding-left: 0; padding-top: 32px; }
+  .service-left {
+    position: relative;
+    top: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    padding-right: 0;
+    padding-bottom: 24px;
+    margin-bottom: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .service-title {
+    max-width: 100%;
+    font-size: clamp(40px, 7vw, 40px);
+  }
+  .price-badge { margin-top: 0.4rem; padding-top: 0; }
+  .service-cta-link, .service-cta-free { margin-top: 0.2rem; }
+  .service-right { padding-left: 0; padding-top: 24px; }
   .detail-panel { padding: 24px 20px; }
   .package-row { grid-template-columns: 1fr; }
   .pkg { border-right: none; border-bottom: 1px solid var(--rule); }
