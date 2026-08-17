@@ -1017,7 +1017,18 @@ nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
         <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
       </div>
     </li>
-    <li><a href="form.html" class="nav-cta-link"><span class="lang-en active">Book Call</span><span class="lang-de">Gespräch</span></a></li>
+    <li>
+      <a 
+        href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="nav-cta-link"
+      >
+        <span class="lang-en active">Book Call</span>
+        <span class="lang-de">Gespräch</span>
+      </a>
+    </li>
   </ul>
 </nav>
 
@@ -1036,8 +1047,17 @@ nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
       <span class="lang-en active">creating connections, vibrantly alive.</span>
       <span class="lang-de">Wo Denken bewegt </span>
     </p>
-    <div class="hero-actions">
-      <a href="form.html" class="btn-ink"><span class="lang-en active">Book Free Call</span><span class="lang-de">Gespräch buchen</span></a>
+    <div class="hero-actions">  
+      <a 
+        href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-ink"
+      >
+        <span class="lang-en active">Book Free Call</span>
+        <span class="lang-de">Gespräch buchen</span>
+      </a>
       <a href="#what" class="btn-ghost"><span class="lang-en active">Learn More</span><span class="lang-de">Mehr erfahren</span></a>
     </div>
   </div>
@@ -1151,7 +1171,7 @@ nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
       </h2>
     </div>
     <table class="services-table">
-      <tr onclick="window.location='form.html'" style="cursor:pointer;">
+      <tr onclick="window.location='services.html'" style="cursor:pointer;">
         <td class="svc-num">01</td>
         <td class="svc-body">
           <div class="svc-title"><span class="lang-en active">Free 20-Minute Discovery Call</span><span class="lang-de">Kostenloses Erstgespräch</span></div>
@@ -1159,7 +1179,7 @@ nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
           <div class="lang-en active"><p>We'll discuss your goals, current challenges, and physical state. And find a roadmap to help you reach your full potential.</p></div>
           <div class="lang-de"><p>Wir besprechen deine Ziele und körperliche Verfassung. Und erstellen einen Plan, um dein volles Potenzial zu erreichen.</p></div>
         </td>
-        <td class="svc-arrow"><a href="form.html">&#8594;</a></td>
+        <td class="svc-arrow"><a href="services.html">&#8594;</a></td>
       </tr>
       <tr onclick="window.location='services.html'" style="cursor:pointer;">
         <td class="svc-num">02</td>
@@ -1293,10 +1313,10 @@ nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
 <section id="locations">
   <div class="container">
     <div class="locations-inner">
-      <!--<div class="loc-item">
+      <div class="loc-item">
         <div class="loc-label"><span class="lang-en active">Location</span><span class="lang-de">Standort</span></div>
-        <div class="loc-value"><br></div>
-      </div>-->
+        <div class="loc-value">My Private Gyms<br>Neuhausen | Bogenhausen | Obersendling</div>
+      </div>
       <div class="loc-item">
         <div class="loc-label"><span class="lang-en active">Format</span><span class="lang-de">Format</span></div>
         <div class="loc-value"><span class="lang-en active">In Person + Online</span><span class="lang-de">Persönlich + Online</span></div>
@@ -1322,7 +1342,13 @@ nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
         <span class="lang-de">Deine Ziele<br>Sind <span class="italic">In</span><br><span class="outlined">Reichweite</span></span>
       </h2>
       <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
-      <a href="form.html" class="btn-ink" style="display:inline-block;">
+       <a 
+        href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-ink"
+      >
         <span class="lang-en active">Book Free Call &#8594;</span>
         <span class="lang-de">Gespräch buchen &#8594;</span>
       </a>
@@ -1335,7 +1361,13 @@ nav.solid .nav-mobile-toggle { border-color: var(--rule); color: var(--ink); }
         <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
         <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
       </h2>
-      <a href="form.html" class="btn-cream">
+      <a 
+            href="javascript:void(0)"
+            data-cal-link="synapse2move/20-min-free-call"
+            data-cal-namespace="20-min-free-call"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            class="btn-cream"
+          >
         <span class="lang-en active">Book Free 20 Min Call</span>
         <span class="lang-de">Kostenloses Gespräch buchen</span>
       </a>
@@ -1476,5 +1508,21 @@ function makeNeuralCanvas(canvasId) {
 makeNeuralCanvas('neural-canvas');
 makeNeuralCanvas('cta-canvas');
 </script>
+<!-- Cal element-click embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "20-min-free-call", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+
+  
+  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+  // `data-cal-link="synapse2move/20-min-free-call"`
+  // data-cal-namespace="20-min-free-call"
+  // `data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'`
+
+  Cal.ns["20-min-free-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+  <!-- Cal element-click embed code ends -->
 </body>
 </html>
