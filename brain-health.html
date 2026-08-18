@@ -36,9 +36,9 @@
 
   --green-light: #e2ede7;
 
-  --plum: #5c2d6e;
+  --plum: #b7791f;
 
-  --plum-light: #ede4f2;
+  --plum-light: #f5edd8;
 
   --gold: #c49a2a;
 
@@ -162,9 +162,9 @@ nav {
 
 #page-canvas {
 
-  position: absolute; right: 0; top: 0; width: 55%; height: 100%;
+  position: absolute; right: 200px; top: 50%; transform: translateY(-50%); width: 40%; height: 55%;
 
-  z-index: 1; opacity: 0.6; pointer-events: none;
+  z-index: 1; opacity: 0.7; pointer-events: none;
 
 }
 
@@ -261,7 +261,7 @@ nav {
 
 .bbl-section .container { width: 100%; padding: 0 48px; }
 
-..section-head {
+.section-head {
   border-bottom: 1.5px solid var(--ink);
   padding: 20px 0;
   display: flex;
@@ -430,7 +430,7 @@ nav {
 
 }
 
-.btn-ink:hover { background: #431f52; }
+.btn-ink:hover { background: #8f5b12; }
 
 .btn-ghost-dark {
 
@@ -829,7 +829,7 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
   .page-hero-body { padding: 60px 20px 56px; }
 
-  #page-canvas { width: 100%; opacity: 0.18; }
+  #page-canvas { right: auto; left: 50%; top: 40%; transform: translate(-50%, -50%); width: 94%; height: 65%; opacity: 0.7; }
 
   /* Brain-Body Link responsive */
 
@@ -901,6 +901,14 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
 </style>
 
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -940,8 +948,16 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
       </div>
 
     </li>
-
-    <li><a href="form.html" class="nav-cta-link"><span class="lang-en active">Book Call</span><span class="lang-de">Gespräch</span></a></li>
+    <li><a
+        href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="nav-cta-link"
+      >
+        <span class="lang-en active">Book Call</span>
+        <span class="lang-de">Gespräch</span>
+      </a></li>
 
   </ul>
 
@@ -1343,7 +1359,7 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 }
 
 .origin-content-col {
-  padding: 72px 56px;Fcta
+  padding: 72px 56px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1753,7 +1769,11 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
     </div>
 
-    <a href="mailto:s2m@ionio.de?subject=Brain-Health at Work%20Request" class="btn-ink" style="margin-top: 36px; align-self: flex-start;">
+     <a href="javascript:void(0)"
+       data-cal-link="synapse2move/20-min-free-call"
+       data-cal-namespace="20-min-free-call"
+       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+       class="btn-ink" style="margin-top: 36px; align-self: flex-start;">
     <span class="lang-en active">Request a Quote →</span>
     <span class="lang-de">Angebot anfragen →</span>
     </a>
@@ -1853,7 +1873,11 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
       <p class="cta-sub">Synapse²Move · Munich</p>
 
-      <a href="mailto:s2m@ionio.de?subject=Brain-Health at Work%20Request" class="btn-ink">
+      <a href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-ink">
 
         <span class="lang-en active">Request a Quote →</span>
 
@@ -1877,7 +1901,11 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
       </h2>
 
-      <a href="form.html" class="btn-cream">
+      <a href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-cream">
 
         <span class="lang-en active">Book a Discovery Call</span>
 
@@ -1929,9 +1957,7 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
 
           <li><a href="brainhealth.html"><span class="lang-en active">Brain Health at Work</span><span class="lang-de">Gehirn im Büro</span></a></li>
 
-          <li><a href="divingarts.html">Diving into Arts</a></li>
 
-          <li><a href="form.html"><span class="lang-en active">Get Started</span><span class="lang-de">Jetzt starten</span></a></li>
 
         </ul>
 
@@ -2110,6 +2136,16 @@ makeNeuralCanvas('page-canvas');
 makeNeuralCanvas('cta-canvas');
 
 </script>
+
+<!-- Cal element-click embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "20-min-free-call", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+Cal.ns["20-min-free-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<!-- Cal element-click embed code ends -->
 
 </body>
 

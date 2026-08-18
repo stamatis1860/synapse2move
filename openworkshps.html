@@ -17,8 +17,8 @@
   --rule: rgba(26,26,20,0.12);
   --green: #3d6b4f;
   --green-light: #e2ede7;
-  --plum: #5c2d6e;
-  --plum-light: #ede4f2;
+  --plum: #b7791f;
+  --plum-light: #f5edd8;
   --gold: #c49a2a;
   --r: 3px;
   --fd: 'Playfair Display', Georgia, serif;
@@ -134,10 +134,10 @@ nav {
 }
 #page-canvas {
   position: absolute;
-  right: 0; top: 0;
-  width: 55%; height: 100%;
+  right: 200px; top: 50%; transform: translateY(-50%);
+  width: 40%; height: 55%;
   z-index: 1;
-  opacity: 0.6;
+  opacity: 0.7;
   pointer-events: none;
 }
 .page-hero-scrim {
@@ -317,7 +317,7 @@ nav {
   margin-top: 0.5rem;
   cursor: pointer;
 }
-.workshop-cta-link:hover { background: #431f52; }
+.workshop-cta-link:hover { background: #8f5b12; }
 .workshop-cta-muted {
   font-family: var(--fm);
   font-size: 10px;
@@ -560,7 +560,7 @@ nav {
   transition: background 0.2s, border-color 0.2s;
   display: inline-block;
 }
-.btn-ink:hover { background: #431f52; border-color: #431f52; }
+.btn-ink:hover { background: #8f5b12; border-color: #8f5b12; }
 .btn-cream {
   font-family: var(--fm);
   font-size: 11px;
@@ -646,7 +646,7 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
   .mobile-nav-open .nav-links { display: flex; }
   .container { padding: 0 20px; }
   .page-hero-body { padding: 60px 20px 40px; }
-  #page-canvas { width: 100%; opacity: 0.3; }
+  #page-canvas { right: auto; left: 50%; top: 40%; transform: translate(-50%, -50%); width: 94%; height: 65%; opacity: 0.7; }
   .intro-strip { display: none; }
   .workshop-inner { grid-template-columns: 1fr; }
   .workshop-left { position: relative; top: auto; border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 32px; margin-bottom: 0; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
@@ -665,6 +665,14 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
   .cta-right { padding: 48px 20px; }
 }
 </style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 </head>
 <body>
 
@@ -685,7 +693,16 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
         <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
       </div>
     </li>
-    <li><a href="form.html" class="nav-cta-link"><span class="lang-en active">Book Call</span><span class="lang-de">Gespräch</span></a></li>
+    <li><a
+        href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="nav-cta-link"
+      >
+        <span class="lang-en active">Book Call</span>
+        <span class="lang-de">Gespräch</span>
+      </a></li>
   </ul>
 </nav>
 
@@ -949,7 +966,11 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
         <span class="lang-de">Deine Ziele<br>Sind <span class="italic">In</span><br>Reichweite</span>
       </h2>
       <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
-      <a href="form.html" class="btn-ink">
+      <a href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-ink">
         <span class="lang-en active">Book Free Call →</span>
         <span class="lang-de">Gespräch buchen →</span>
       </a>
@@ -961,7 +982,11 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
         <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
         <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
       </h2>
-      <a href="form.html" class="btn-cream">
+      <a href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-cream">
         <span class="lang-en active">Book Free 20 Min Call</span>
         <span class="lang-de">Kostenloses Gespräch buchen</span>
       </a>
@@ -988,8 +1013,6 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
           <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
           <li><a href="openworkshps.html"><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></a></li>
           <li><a href="workshops.html"><span class="lang-en active">Neuro Workshops</span><span class="lang-de">Neuro Workshops</span></a></li>
-          <li><a href="divingarts.html">Diving into Arts</a></li>
-          <li><a href="form.html"><span class="lang-en active">Get Started</span><span class="lang-de">Jetzt starten</span></a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1102,5 +1125,9 @@ Cal.config.forwardQueryParams = true;
   Cal.ns["healthy-hips"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
   </script>
   <!-- Cal element-click embed code ends -->
+  <script>
+    Cal("init", "20-min-free-call", {origin:"https://app.cal.com"});
+    Cal.ns["20-min-free-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
 </body>
 </html>

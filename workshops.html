@@ -17,8 +17,8 @@
   --rule: rgba(26,26,20,0.10);
   --green: #3d6b4f;
   --green-light: #e2ede7;
-  --plum: #5c2d6e;
-  --plum-light: #ede4f2;
+  --plum: #b7791f;
+  --plum-light: #f5edd8;
   --gold: #c49a2a;
   --fd: 'Playfair Display', Georgia, serif;
   --fb: 'Space Grotesk', system-ui, sans-serif;
@@ -86,8 +86,8 @@ nav {
     linear-gradient(155deg, #141009 0%, #1c1510 100%);
 }
 #page-canvas {
-  position: absolute; right: 0; top: 0; width: 55%; height: 100%;
-  z-index: 1; opacity: 0.6; pointer-events: none;
+  position: absolute; right: 200px; top: 50%; transform: translateY(-50%); width: 40%; height: 55%;
+  z-index: 1; opacity: 0.7; pointer-events: none;
 }
 .page-hero-scrim {
   position: absolute; inset: 0; z-index: 2;
@@ -340,7 +340,7 @@ nav {
   border: 1.5px solid var(--plum);
   transition: background 0.2s; display: inline-block;
 }
-.btn-ink:hover { background: #431f52; }
+.btn-ink:hover { background: #8f5b12; }
 .btn-cream {
   font-family: var(--fm); font-size: 11px;
   letter-spacing: 0.1em; text-transform: uppercase;
@@ -480,7 +480,7 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
   .container { padding: 0 20px; }
 
   .page-hero-body { padding: 60px 20px 56px; }
-  #page-canvas { width: 100%; opacity: 0.18; }
+  #page-canvas { right: auto; left: 50%; top: 40%; transform: translate(-50%, -50%); width: 94%; height: 65%; opacity: 0.7; }
 
   .prose-block { padding: 56px 20px; }
   .pull-quote-wrap { padding: 0 20px 56px; }
@@ -520,6 +520,14 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
   .audience-left .btn-ink { align-self: center; }
 }
 </style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 </head>
 <body>
 
@@ -549,10 +557,17 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
         <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
       </div>
     </li>
-    <li><a href="form.html" class="nav-cta-link">
-      <span class="lang-en active">Book Call</span>
-      <span class="lang-de">Gespräch</span>
-    </a></li>
+    </li>
+    <li><a
+        href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="nav-cta-link"
+      >
+        <span class="lang-en active">Book Call</span>
+        <span class="lang-de">Gespräch</span>
+      </a></li>
   </ul>
 </nav>
 
@@ -827,7 +842,11 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
         <span class="lang-de">Deine Gruppe.<br><em>Dein</em><br>Workshop.</span>
       </h2>
       <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
-      <a href="form.html" class="btn-ink">
+      <a href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-ink">
         <span class="lang-en active">Get in Touch →</span>
         <span class="lang-de">Kontakt aufnehmen →</span>
       </a>
@@ -839,7 +858,11 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
         <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
         <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
       </h2>
-      <a href="form.html" class="btn-cream">
+      <a href="javascript:void(0)"
+        data-cal-link="synapse2move/20-min-free-call"
+        data-cal-namespace="20-min-free-call"
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+        class="btn-cream">
         <span class="lang-en active">Book Free 20 Min Call</span>
         <span class="lang-de">Kostenloses Gespräch buchen</span>
       </a>
@@ -866,8 +889,6 @@ footer dl dd a { color: #6ec9a4; text-decoration: none; }
           <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
           <li><a href="openworkshps.html"><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></a></li>
           <li><a href="workshops.html"><span class="lang-en active">Neuro Workshops</span><span class="lang-de">Neuro Workshops</span></a></li>
-          <li><a href="divingarts.html">Diving into Arts</a></li>
-          <li><a href="form.html"><span class="lang-en active">Get Started</span><span class="lang-de">Jetzt starten</span></a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -959,6 +980,14 @@ function makeNeuralCanvas(id) {
 }
 makeNeuralCanvas('page-canvas');
 makeNeuralCanvas('cta-canvas');
+</script>
+<!-- Cal element-click embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "20-min-free-call", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+Cal.ns["20-min-free-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 </body>
 </html>
