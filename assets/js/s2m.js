@@ -9,6 +9,26 @@
     });
   }
 
+  /* Campaign tags (utm_*): keep them in the address while the visitor moves through the site,
+     so Cal.com can store them with a booking. Nothing is saved on the visitor's device. */
+  var params = new URLSearchParams(window.location.search);
+  var tags = [];
+  params.forEach(function (v, k) { if (k.indexOf('utm_') === 0) tags.push([k, v]); });
+  if (tags.length) {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (!href || href.charAt(0) === '#' || /^(mailto:|tel:)/.test(href)) return;
+      var url;
+      try { url = new URL(href, window.location.href); } catch (e) { return; }
+      var internal = url.origin === window.location.origin && /(\.html$|\/$)/.test(url.pathname);
+      var booking = url.hostname === 'cal.com';
+      if (!internal && !booking) return;
+      tags.forEach(function (t) { if (!url.searchParams.has(t[0])) url.searchParams.set(t[0], t[1]); });
+      a.setAttribute('href', internal && url.origin === window.location.origin && window.location.protocol !== 'file:'
+        ? url.pathname + url.search + url.hash : url.href);
+    });
+  }
+
   /* Cal.com embed: loaded once, one namespace per event used on the page */
   var buttons = document.querySelectorAll('[data-cal-link]');
   if (!buttons.length) return;
