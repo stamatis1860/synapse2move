@@ -1,1177 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="de">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Services — Synapse²Move Neuroathletic Training Munich</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
-<style>
-:root {
-  --cream: #f5f0e8;
-  --paper: #ede8dc;
-  --ink: #1a1a14;
-  --ink-muted: #5a5850;
-  --ink-faint: #9a9488;
-  --rule: rgba(26,26,20,0.12);
-  --green: #3d6b4f;
-  --green-light: #e2ede7;
-  --plum: #b7791f;
-  --plum-light: #f5edd8;
-  --gold: #c49a2a;
-  --r: 3px;
-  --fd: 'Playfair Display', Georgia, serif;
-  --fb: 'Space Grotesk', system-ui, sans-serif;
-  --fm: 'Space Mono', monospace;
-}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-
-body {
-  font-family: var(--fb);
-  background: var(--cream);
-  color: var(--ink);
-  overflow-x: hidden;
-}
-
-/* ── LANG ── */
-.lang-en,.lang-de{display:none}
-.lang-en.active,.lang-de.active{display:block}
-span.lang-en,span.lang-de{display:none}
-span.lang-en.active,span.lang-de.active{display:inline}
-
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 56px;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 48px;
-  background: rgba(245,240,232,0.96);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--ink);
-}
-.nav-logo {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: 17px;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  text-decoration: none;
-}
-.nav-logo sup { font-size: 10px; vertical-align: super; font-family: var(--fm); opacity: 0.7; }
-.nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
-.nav-links li { border-left: 1px solid var(--rule); }
-.nav-links li:first-child { border-left: none; }
-.nav-links a {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  text-decoration: none;
-  padding: 0 16px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s, background 0.2s;
-}
-.nav-links a:hover { color: var(--ink); background: var(--paper); }
-.nav-cta-link {
-  background: var(--ink) !important;
-  color: var(--cream) !important;
-}
-.nav-cta-link:hover { background: var(--plum) !important; color: #fff !important; }
-.lang-switch { display: flex; padding: 0 8px; }
-.lang-btn {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: none;
-  border: none;
-  color: var(--ink-faint);
-  padding: 0 8px;
-  height: 36px;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.15s;
-}
-.lang-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
-.nav-mobile-toggle {
-  display: none;
-  background: none;
-  border: 1px solid var(--rule);
-  color: var(--ink);
-  padding: 7px 10px;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 4px;
-}
-.nav-mobile-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; }
-
-/* ── PAGE HERO ── */
-.page-hero {
-  position: relative;
-  padding-top: 56px;
-  min-height: 340px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
-.page-hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 80% at 80% 40%, #0e2218 0%, transparent 65%),
-    radial-gradient(ellipse 50% 60% at 10% 70%, #1e0f2a 0%, transparent 55%),
-    linear-gradient(155deg, #141009 0%, #1c1510 100%);
-}
-#page-canvas {
-  position: absolute;
-  right: 200px; top: 50%; transform: translateY(-50%);
-  width: 40%; height: 55%;
-  z-index: 1;
-  opacity: 0.7;
-  pointer-events: none;
-}
-.page-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(20,16,9,0.85) 0%, rgba(20,16,9,0.2) 70%, rgba(20,16,9,0.5) 100%);
-  z-index: 2;
-}
-.page-hero-body {
-  position: relative;
-  z-index: 3;
-  padding: 80px 48px 56px;
-  max-width: 700px;
-}
-.hero-breadcrumb {
-  font-family: var(--fm);
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.hero-breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; }
-.hero-breadcrumb a:hover { color: rgba(255,255,255,0.65); }
-.hero-breadcrumb::before { content: ''; width: 32px; height: 1px; background: rgba(255,255,255,0.25); display: block; }
-.page-hero h1 {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: clamp(52px, 7vw, 96px);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin-bottom: 1.2rem;
-  opacity: 0;
-  animation: up 1s 0.3s forwards;
-}
-.page-hero h1 .italic { font-style: italic; color: rgba(255,255,255,0.5); }
-.page-hero h1 .outlined {
-  -webkit-text-fill-color: rgba(255,255,255,0.94);
-  -webkit-text-stroke: 0.8px rgba(255,255,255,0.8);
-  text-shadow: 0 0 12px rgba(255,255,255,0.15);
-}
-.page-hero-sub {
-  font-family: var(--fd);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.4);
-  opacity: 0;
-  animation: up 0.9s 0.55s forwards;
-}
-
-@keyframes up {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── CONTAINER ── */
-.container { width: 100%; padding: 0 48px; }
-
-/* ── S-LABEL ── */
-.s-label {
-  font-family: var(--fm);
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--plum);
-  margin-bottom: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-.s-label::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--plum); opacity: 0.5; }
-
-/* ── SECTION HEAD ── */
-.section-num-row {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  border-bottom: 1.5px solid var(--ink);
-  padding-bottom: 16px;
-  margin-bottom: 0;
-}
-.section-num {
-  font-family: var(--fm);
-  font-size: 11px;
-  color: var(--ink-faint);
-  letter-spacing: 0.06em;
-}
-
-/* ── SERVICE BLOCKS ── */
-.service-block {
-  border-bottom: 1.5px solid var(--ink);
-}
-.service-block:last-child { border-bottom: none; }
-
-.service-inner {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 0;
-  padding: 72px 0;
-}
-.service-left {
-  border-right: 1px solid var(--rule);
-  padding-right: 56px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.9rem;
-  position: sticky;
-  top: 72px;
-  align-self: start;
-}
-.service-index {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: var(--ink-faint);
-}
-.service-title {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: clamp(28px, 3vw, 40px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin: 0;
-}
-.service-title .italic { font-style: italic; color: var(--green); }
-.service-tag {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 2px;
-  align-self: flex-start;
-}
-.service-tag.green { background: var(--green-light); color: var(--green); }
-.service-tag.plum  { background: var(--plum-light); color: var(--plum); }
-.service-tag.gold  { background: #f5edd8; color: var(--gold); }
-
-.price-badge {
-  margin-top: 1.2rem;
-  padding-top: 0.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.price-amount {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: 2.4rem;
-  color: var(--ink);
-  line-height: 1;
-}
-.price-note {
-  font-family: var(--fm);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-top: 4px;
-}
-
-.service-cta-link {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 13px 24px;
-  background: var(--plum);
-  color: #fff;
-  border: 1.5px solid var(--plum);
-  display: inline-block;
-  transition: background 0.2s;
-  align-self: flex-start;
-  margin-top: 0.4rem;
-}
-.service-cta-link:hover { background: #8f5b12; }
-.service-cta-free {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 13px 24px;
-  background: transparent;
-  color: var(--ink);
-  border: 1.5px solid var(--ink);
-  display: inline-block;
-  transition: all 0.2s;
-  align-self: flex-start;
-  margin-top: 0.4rem;
-}
-.service-cta-free:hover { background: var(--ink); color: var(--cream); }
-
-.service-right {
-  padding-left: 56px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.service-right p {
-  font-size: 15px;
-  color: var(--ink-muted);
-  line-height: 1.85;
-  margin-bottom: 18px;
-  font-weight: 300;
-}
-.service-right p strong { color: var(--ink); font-weight: 500; }
-
-/* lists */
-.service-right .list-head {
-  font-family: var(--fm);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin: 24px 0 12px;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.service-right .list-head::after { content:''; flex: 0 0 20px; height: 1px; background: var(--green); opacity: 0.5; }
-
-.check-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
-.check-list li {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 0 10px;
-  font-size: 14px;
-  color: var(--ink-muted);
-  font-weight: 300;
-  line-height: 1.65;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--rule);
-}
-.check-list li:last-child { border: none; }
-.check-list li::before {
-  content: '→';
-  font-family: var(--fm);
-  font-size: 11px;
-  color: var(--green);
-  padding-top: 2px;
-}
-
-/* detail panel — replaces the expandable toggle */
-.detail-panel {
-  margin-top: 36px;
-  border: 1.5px solid var(--ink);
-  padding: 36px;
-  position: relative;
-}
-.detail-panel-label {
-  position: absolute;
-  top: -10px; left: 24px;
-  background: var(--cream);
-  padding: 0 8px;
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-.detail-panel p { font-size: 13px; color: var(--ink-muted); line-height: 1.75; margin-bottom: 14px; font-weight: 300; }
-.detail-panel p:last-child { margin-bottom: 0; }
-.detail-panel ul { list-style: none; margin: 10px 0 14px; }
-.detail-panel ul li {
-  font-size: 13px;
-  color: var(--ink-muted);
-  font-weight: 300;
-  line-height: 1.6;
-  padding: 7px 0 7px 18px;
-  border-bottom: 1px solid var(--rule);
-  position: relative;
-}
-.detail-panel ul li:last-child { border: none; }
-.detail-panel ul li::before { content: '—'; position: absolute; left: 0; color: var(--plum); font-family: var(--fm); font-size: 11px; }
-.detail-panel ul li strong { color: var(--ink); font-weight: 500; }
-
-.package-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border: 1px solid var(--rule);
-  margin-top: 20px;
-}
-.pkg {
-  padding: 20px;
-  border-right: 1px solid var(--rule);
-  text-align: center;
-}
-.pkg:last-child { border-right: none; }
-.pkg-name {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 8px;
-}
-.pkg-price {
-  font-family: var(--fd);
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--ink);
-  line-height: 1;
-}
-.pkg-detail {
-  font-size: 11px;
-  color: var(--ink-faint);
-  margin-top: 4px;
-  font-family: var(--fm);
-}
-
-/* ── INTRO STRIP ── */
-.intro-strip {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border-bottom: 1.5px solid var(--ink);
-  border-top: 1.5px solid var(--ink);
-}
-.intro-cell {
-  padding: 2rem 2.5rem;
-  border-right: 1.5px solid var(--ink);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.intro-cell:last-child { border-right: none; }
-.cell-label {
-  font-family: var(--fm);
-  font-size: 0.62rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-.cell-value {
-  font-family: var(--fd);
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: var(--ink);
-  line-height: 1.2;
-}
-
-.btn-ink {
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 14px 28px;
-  background: var(--plum);
-  color: #fff;
-  border: 1.5px solid var(--plum);
-  transition: background 0.2s, border-color 0.2s;
-  display: inline-block;
-}
-.btn-ink:hover { background: #8f5b12; border-color: #8f5b12; }
-
-/* ── CTA (mirrors index) ── */
-#cta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1.5px solid var(--ink);
-  border-bottom: 1.5px solid var(--ink);
-}
-.cta-left {
-  padding: 100px 60px 100px 0;
-  border-right: 1px solid var(--rule);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.cta-left h2 {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: clamp(52px, 6vw, 88px);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 1rem;
-}
-.cta-left h2 .italic { font-style: italic; color: var(--plum); }
-.cta-left .cta-sub {
-  font-family: var(--fd);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--ink-muted);
-  margin-bottom: 2.5rem;
-}
-.cta-right {
-  background: var(--ink);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 48px;
-  gap: 1.4rem;
-  position: relative;
-  overflow: hidden;
-}
-#cta-canvas {
-  position: absolute;
-  right: 100px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 70%;
-  height: 55%;
-  z-index: 2;
-  opacity: 0.7;
-  pointer-events: none;
-}
-@media (max-width: 700px) {
-  #cta-canvas {
-    right: auto;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: min(420px, 80vw);
-    height: min(420px, 80vw);
-    opacity: 0.45;
-    z-index: 1;
-  }
-  .cta-right { padding: 48px 20px; }
-}
-.cta-kicker {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.35);
-  position: relative;
-  z-index: 1;
-}
-.cta-right h2 {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: clamp(40px, 5vw, 72px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  color: var(--cream);
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-.cta-right h2 .green { color: #6ec9a4; }
-.btn-cream {
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 16px 36px;
-  background: var(--cream);
-  color: var(--ink);
-  border: 1.5px solid var(--cream);
-  display: inline-block;
-  transition: all 0.2s;
-  position: relative;
-  z-index: 1;
-}
-.btn-cream:hover { background: var(--plum-light); border-color: var(--plum-light); }
-.cta-right-note {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.3);
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--ink);
-  border-top: 1.5px solid rgba(245,240,232,0.1);
-  padding: 56px 0 40px;
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;
-  margin-bottom: 48px;
-}
-.footer-col { border-right: 1px solid rgba(245,240,232,0.08); padding-right: 48px; margin-right: 48px; }
-.footer-col:last-child { border-right: none; padding-right: 0; margin-right: 0; }
-.footer-logo {
-  font-family: var(--fd);
-  font-weight: 900;
-  font-size: 18px;
-  color: var(--cream);
-  text-decoration: none;
-  display: block;
-  margin-bottom: 12px;
-}
-.footer-logo sup { font-size: 10px; color: #6ec9a4; font-family: var(--fm); }
-.footer-desc { font-size: 13px; color: rgba(245,240,232,0.3); line-height: 1.6; max-width: 200px; font-weight: 300; }
-footer h4 { font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 16px; }
-footer ul { list-style: none; }
-footer ul li { margin-bottom: 10px; }
-footer ul a { font-size: 13px; color: rgba(245,240,232,0.45); text-decoration: none; transition: color 0.15s; font-weight: 300; }
-footer ul a:hover { color: #6ec9a4; }
-footer dl dt { font-family: var(--fm); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-bottom: 2px; margin-top: 12px; }
-footer dl dd { font-size: 13px; color: rgba(245,240,232,0.45); font-weight: 300; }
-footer dl dd a { color: #6ec9a4; text-decoration: none; }
-.footer-bottom {
-  border-top: 1px solid rgba(245,240,232,0.08);
-  padding-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: 0.06em;
-  color: rgba(245,240,232,0.18);
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.footer-bottom a { color: rgba(245,240,232,0.18); text-decoration: none; }
-.footer-bottom a:hover { color: #6ec9a4; }
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav { padding: 0 20px; }
-  .nav-mobile-toggle { display: flex; }
-  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--cream); border-bottom: 1.5px solid var(--ink); flex-direction: column; padding: 12px 0; gap: 0; }
-  .nav-links li { border-left: none; border-top: 1px solid var(--rule); }
-  .nav-links a { height: 44px; }
-  .mobile-nav-open .nav-links { display: flex; }
-  .container { padding: 0 20px; }
-  .page-hero-body { padding: 60px 20px 40px; }
-  #page-canvas { right: auto; left: 50%; top: 40%; transform: translate(-50%, -50%); width: 94%; height: 65%; opacity: 0.7; }
-  .intro-strip { display: none; }
-  .service-inner { grid-template-columns: 1fr; }
-  .service-left {
-    position: relative;
-    top: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--rule);
-    padding-right: 0;
-    padding-bottom: 24px;
-    margin-bottom: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-  .service-title {
-    max-width: 100%;
-    font-size: clamp(40px, 7vw, 40px);
-  }
-  .price-badge { margin-top: 0.4rem; padding-top: 0; }
-  .service-cta-link, .service-cta-free { margin-top: 0.2rem; }
-  .service-right { padding-left: 0; padding-top: 24px; }
-  .detail-panel { padding: 24px 20px; }
-  .package-row { grid-template-columns: 1fr; }
-  .pkg { border-right: none; border-bottom: 1px solid var(--rule); }
-  .pkg:last-child { border-bottom: none; }
-  #cta { grid-template-columns: 1fr; }
-  .cta-left { padding: 60px 0; border-right: none; border-bottom: 1.5px solid var(--ink); align-items: flex-start; text-align: left; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-col { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); padding: 0 0 28px; margin: 0 0 28px; }
-  .footer-col:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-  .footer-bottom { flex-direction: column; }
-}
-</style>
-<link rel="icon" href="favicon.ico" sizes="any">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Einzeltraining &amp; Preise München | synapse2move</title>
+<meta name="description" content="Neurozentriertes Einzeltraining in München oder online: die ersten 2 Sessions je 50 €, danach 98 € pro Stunde. Pakete, Neuroassessment, Erstgespräch.">
+<link rel="canonical" href="https://www.synapse2move.de/services.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="synapse2move">
+<meta property="og:title" content="Einzeltraining &amp; Preise München | synapse2move">
+<meta property="og:description" content="Neurozentriertes Einzeltraining in München oder online: die ersten 2 Sessions je 50 €, danach 98 € pro Stunde. Pakete, Neuroassessment, Erstgespräch.">
+<meta property="og:url" content="https://www.synapse2move.de/services.html">
+<meta property="og:image" content="https://www.synapse2move.de/images/og-image.jpg">
+<link rel="icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
 <link rel="manifest" href="manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+<link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/s2m.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Seid ihr Physiotherapeuten oder Osteopathen?", "acceptedAnswer": {"@type": "Answer", "text": "Nein, wir sind Trainer und keine Therapeuten. Wir schauen uns genau an, wie Gehirn und Körper bei dir zusammenspielen, und setzen dein Training genau dort an. Deshalb verstehen wir uns als Ergänzung zu Physiotherapie und Osteopathie, nicht als Ersatz."}}, {"@type": "Question", "name": "Muss ich meine Physiotherapie dafür abbrechen?", "acceptedAnswer": {"@type": "Answer", "text": "Nein, du musst nichts abbrechen. Wir trainieren parallel dazu auf dein Ziel hin."}}, {"@type": "Question", "name": "Zahlt das die Krankenkasse?", "acceptedAnswer": {"@type": "Answer", "text": "Nein, das Training zahlst du selbst. Genau deshalb kosten die ersten zwei Sessions nur je 50 €, damit du ohne großes Risiko herausfinden kannst, ob es zu dir passt."}}, {"@type": "Question", "name": "Ich brauche doch eher mehr Technik, oder?", "acceptedAnswer": {"@type": "Answer", "text": "Vielleicht. Manchmal hängt es aber nicht an der Technik, sondern an dem, worauf sie aufbaut: wie deine Augen, dein Gleichgewicht und deine Körperwahrnehmung zusammenspielen. Das finden wir in den ersten Sessions heraus. Für Sportler:innen &amp; Tänzer:innen →"}}, {"@type": "Question", "name": "Wo findet das Training statt?", "acceptedAnswer": {"@type": "Answer", "text": "Im My Private Gym in Neuhausen, Bogenhausen und Obersendling, im Vertical Ballerina in der Hohenzollernstraße oder online. Weil wir den Raum passend zu deinem Termin buchen, bestätigen wir jede Anfrage persönlich."}}, {"@type": "Question", "name": "Geht das auch online?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, auch schon die ersten Sessions. Online kostet eine Session 78 €. Für die erste Session empfehlen wir dir trotzdem, wenn es passt, vor Ort zu kommen, weil wir dir dort mehr direkt zeigen können."}}, {"@type": "Question", "name": "Was brauche ich?", "acceptedAnswer": {"@type": "Answer", "text": "Bequeme Kleidung, in der du dich frei bewegen kannst, und etwas zu trinken. Online: etwas Platz und eine Kamera, die dich ganz zeigt."}}, {"@type": "Question", "name": "Was, wenn ich absagen muss?", "acceptedAnswer": {"@type": "Answer", "text": "Bis 48 Stunden vorher kannst du kostenlos absagen. Danach berechnen wir 50 % des Preises, bei Nichterscheinen 100 %. Die Zahlung ist innerhalb von 7 Tagen nach der Bestätigung fällig."}}]}</script>
 </head>
 <body>
-
-<!-- NAV -->
-<nav id="main-nav">
-  <a href="index.html" class="nav-logo">Synapse<sup>2</sup>Move</a>
-  <button class="nav-mobile-toggle" id="mob-toggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="index.html#what"><span class="lang-en active">Neuroathletics</span><span class="lang-de">Neuroathletik</span></a></li>
-    <li><a href="services.html" style="color:var(--ink);font-weight:500;"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
-    <li><a href="index.html#workshops">Workshops</a></li>
-    <li><a href="index.html#about"><span class="lang-en active">About</span><span class="lang-de">Über</span></a></li>
-    <li>
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
-        <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')">DE</button>
-      </div>
-    </li>
-    <li><a 
-  href="javascript:void(0)"
-  data-cal-link="synapse2move/20-min-free-call"
-  data-cal-namespace="20-min-free-call"
-  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-  class="nav-cta-link"
-><span class="lang-en active">Book Call</span><span class="lang-de">Gespräch</span></a></li>
-  </ul>
+<a class="skip" href="#main">Zum Inhalt</a>
+<nav class="nav" aria-label="Hauptnavigation">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="images/logo-mark.png" alt="" width="49" height="34"><span>synapse<sup class="two">2</sup>move</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="services.html" aria-current="page">Einzeltraining</a></li><li><a href="taenzer-sportler.html">Sportler:innen &amp; Tänzer:innen</a></li><li><a href="Neuro.html">So arbeiten wir</a></li><li><a href="openworkshps.html">Workshops</a></li><li><a href="workshops.html">Teams</a></li>
+      <li><a class="btn btn-primary" href="https://cal.com/synapse2move/erste-session" data-cal-link="synapse2move/erste-session" data-cal-namespace="erste-session" data-cal-config='{"layout":"month_view"}'>Erste Session 50 €</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  </div>
 </nav>
-
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-bg"></div>
-  <canvas id="page-canvas"></canvas>
-  <div class="page-hero-scrim"></div>
-  <div class="page-hero-body">
-    <div class="hero-breadcrumb">
-      <a href="index.html">Home</a>
-      <span>/ <span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></span>
+<main id="main">
+<header class="page-hero">
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">Start</a> / Einzeltraining</p>
+    <h1>Einzeltraining</h1>
+    <p class="sub">Für dein Ziel, nicht für den Durchschnitt. Vor Ort in München oder online.</p>
+    <div class="cells" style="margin-top:var(--s5)"><div class="cell"><div class="cell-label">Einstieg</div><div class="cell-value">Die ersten 2 Sessions je 50 €</div></div><div class="cell"><div class="cell-label">Laufend</div><div class="cell-value">98 € pro Session</div><div class="cell-note">online 78 €</div></div><div class="cell"><div class="cell-label">Ausführlich</div><div class="cell-value">Neuroassessment 140 €</div></div></div>
+  </div>
+</header>
+<section class="offer">
+  <div class="wrap offer-grid">
+    <div class="offer-head">
+      <p class="label">Angebot 01</p>
+      <h2>Start: <span class="accent">die ersten 2 Sessions</span></h2>
+      <div><span class="tag">Für Neukund:innen</span></div>
+      <div class="pricebox"><span class="price">50 €<span class="per"> / Session</span></span><span class="price-note">für deine ersten 2 Sessions · je 60 Min · vor Ort oder online</span></div>
+      <div><a class="btn btn-primary" href="https://cal.com/synapse2move/erste-session" data-cal-link="synapse2move/erste-session" data-cal-namespace="erste-session" data-cal-config='{"layout":"month_view"}'>Erste Session für 50 € anfragen</a></div>
     </div>
-    <h1>
-      <span class="lang-en active"><span class="italic">Services</span><br><span class="outlined"></span></span>
-      <span class="lang-de"><span class="italic">Leistungen</span><br><span class="outlined"></span></span>
-    </h1>
-    <p class="page-hero-sub">
-      <span class="lang-en active">Brain-first training for athletes, movers &amp; everyone in between.</span>
-      <span class="lang-de">Gehirn-orientiertes Training für Athleten und alle dazwischen.</span>
-    </p>
+    <div><p class="lead">In der ersten Session sprechen wir über dein Ziel und deine Vorgeschichte und testen, wie Sehen, Gleichgewicht, Körperwahrnehmung und Bewegung bei dir zusammenspielen.</p>
+      <p>Du gehst mit ersten Übungen nach Hause, und in der zweiten Session schauen wir gemeinsam, was sich seitdem verändert hat, und passen deine Übungen daran an. Danach weißt du, ob diese Art zu trainieren zu dir passt, ohne dafür ein Paket buchen zu müssen.</p>
+      <p class="list-head">Du bekommst</p>
+      <ul class="arrow-list"><li>ein ausführliches Gespräch über dein Ziel</li><li>kurze Tests mit direktem Feedback</li><li>erste Übungen für dein Training und deinen Alltag</li><li>einen Vorschlag, wie es weitergehen kann</li></ul>
+      <div class="framed"><span class="framed-label">So läuft die Anfrage</span><p>Du wählst einen Wunschtermin und sagst uns, wo es dir am besten passt: im My Private Gym in Neuhausen, Bogenhausen oder Obersendling, im Vertical Ballerina in der Hohenzollernstraße oder online. Wir prüfen den Raum und bestätigen dir den Termin so schnell wie möglich oder schlagen dir eine Alternative vor. Den zweiten Termin planen wir dann in der ersten Session gemeinsam.</p></div></div>
   </div>
 </section>
-
-<!-- INTRO STRIP -->
-<div class="intro-strip">
-  <div class="intro-cell">
-    <span class="cell-label"><span class="lang-en active">Starting Point</span><span class="lang-de">Startpunkt</span></span>
-    <span class="cell-value"><span class="lang-en active">Free Discovery Call</span><span class="lang-de">Kostenloses Gespräch</span></span>
-  </div>
-  <div class="intro-cell">
-    <span class="cell-label"><span class="lang-en active">Deep Dive</span><span class="lang-de">Tiefenanalyse</span></span>
-    <span class="cell-value">Neuroassessment</span>
-  </div>
-  <div class="intro-cell">
-    <span class="cell-label"><span class="lang-en active">Ongoing Work</span><span class="lang-de">Laufendes Training</span></span>
-    <span class="cell-value"><span class="lang-en active">Personal Training</span><span class="lang-de">Personal Training</span></span>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<div class="container">
-
-  <!-- SERVICE 01: Free Call -->
-  <div class="service-block">
-    <div class="service-inner">
-      <div class="service-left">
-        <span class="service-index"></span>
-        <h2 class="service-title">
-          <span class="lang-en active"><span class="italic">Free</span><br>Discovery<br>Call</span>
-          <span class="lang-de"><span class="italic">Kostenloses</span><br>Erstgespräch</span>
-        </h2>
-        <span class="service-tag green"><span class="lang-en active">No Commitment</span><span class="lang-de">Unverbindlich</span></span>
-        <div class="price-badge">
-          <div class="price-amount">€0</div>
-          <div class="price-note">20 <span class="lang-en active">min · Online</span><span class="lang-de">Min · Online</span></div>
-        </div>
-        <a 
-        href="javascript:void(0)"
-        data-cal-link="synapse2move/20-min-free-call"
-        data-cal-namespace="20-min-free-call"
-        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-        class="service-cta-free"
-      > 
-          <span class="lang-en active">Book Free Call →</span>
-          <span class="lang-de">Gespräch buchen →</span>
-        </a>
-      </div>
-      <div class="service-right">
-        <div class="lang-en active">
-          <p>Curious about how Neuroathletic Training can support your unique goals? Whether you're dealing with chronic pain, recovering from injury, seeking better movement, or looking to enhance performance — this call is your chance to connect directly.</p>
-          <p>We'll talk through your situation, I'll explain how NAT works in practice, and together we'll decide if it's the right fit. <strong>No pressure, no commitment.</strong></p>
-        </div>
-        <div class="lang-de">
-          <p>Neugierig, wie Neuroathletiktraining deine Ziele unterstützen kann? Egal, ob chronische Schmerzen, Verletzungsrehabilitation oder Leistungssteigerung — dieser Anruf ist deine Chance, direkt in Kontakt zu treten.</p>
-          <p>Wir sprechen über deine Situation, ich erkläre NAT in der Praxis, und gemeinsam entscheiden wir, ob es das Richtige für dich ist. <strong>Kein Druck, kein Commitment.</strong></p>
-        </div>
-
-        <p class="list-head"><span class="lang-en active">Perfect For</span><span class="lang-de">Perfekt für</span></p>
-        <ul class="check-list">
-          <li><span class="lang-en active">Anyone curious about neurological approaches to pain and performance</span><span class="lang-de">Alle, die neugierig auf neurologische Ansätze sind</span></li>
-          <li><span class="lang-en active">People who want to understand their options before committing</span><span class="lang-de">Menschen, die erst verstehen möchten, bevor sie buchen</span></li>
-          <li><span class="lang-en active">Those seeking a second opinion on their current training approach</span><span class="lang-de">Wer eine zweite Meinung zum aktuellen Ansatz sucht</span></li>
-          <li><span class="lang-en active">Anyone starting from zero — beginners welcome</span><span class="lang-de">Alle, die ganz am Anfang stehen</span></li>
-        </ul>
-
-        <div class="detail-panel" style="margin-top:36px;">
-          <span class="detail-panel-label"><span class="lang-en active">Format</span><span class="lang-de">Format</span></span>
-          <p><span class="lang-en active">All sessions are held online via Google Meet. Once you submit the form you'll receive a calendar link to pick a slot that works for you.</span><span class="lang-de">Alle Sessions finden online über Google Meet statt. Nach dem Absenden erhältst du einen Kalenderlink für die Terminwahl.</span></p>
-        </div>
-      </div>
+<section class="offer section alt">
+  <div class="wrap offer-grid">
+    <div class="offer-head">
+      <p class="label">Angebot 02</p>
+      <h2>Einzelsessions &amp; <span class="accent">Pakete</span></h2>
+      <div><span class="tag">Laufend · 60 Min</span></div>
+      <div class="pricebox"><span class="price">98 €<span class="per"> / Session</span></span><span class="price-note">60 Min vor Ort · online 78 €</span></div>
+      <div><a class="btn btn-outline" href="https://cal.com/synapse2move/einzeltraining" data-cal-link="synapse2move/einzeltraining" data-cal-namespace="einzeltraining" data-cal-config='{"layout":"month_view"}'>Termin anfragen</a></div>
     </div>
-  </div>
-
-  <!-- SERVICE 02: Neuroassessment -->
-  <div class="service-block">
-    <div class="service-inner">
-      <div class="service-left">
-        <span class="service-index"></span>
-        <h2 class="service-title">
-          <span class="lang-en active">Neuro<br><span class="italic">assessment</span></span>
-          <span class="lang-de">Neuro<span class="italic">assess</span><br>ment</span>
-        </h2>
-        <span class="service-tag plum"><span class="lang-en active">Functional Analysis</span><span class="lang-de">Funktionale Analyse</span></span>
-        <div class="price-badge">
-          <div class="price-amount"></div>
-          <div class="price-note">90 <span class="lang-en active">min · In Person</span><span class="lang-de">Min · Vor Ort</span></div>
-        </div>
-        <a 
-        href="javascript:void(0)"
-        data-cal-link="synapse2move/neuroassessment"
-        data-cal-namespace="neuroassessment"
-        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-        class="service-cta-link">
-          <span class="lang-en active">Book Assessment →</span>
-          <span class="lang-de">Assessment buchen →</span>
-        </a>
+    <div><p class="lead">Nach dem Start trainieren wir gezielt auf dein Ziel hin. Jede Session baut auf der letzten auf, und wir testen immer wieder, was dich weiterbringt.</p>
+      <p>Du nimmst Übungen mit, die in dein Training und deinen Alltag passen.</p>
+      <div class="framed"><span class="framed-label">Pakete</span>
+        <div class="pkg"><div><div class="pkg-name">Einzeln</div><div class="pkg-val">98 €</div><div class="small">online 78 €</div></div><div><div class="pkg-name">4 Sessions</div><div class="pkg-val">−10 %</div></div><div><div class="pkg-name">8 Sessions</div><div class="pkg-val">−17 %</div></div></div>
+        <p class="small">Die Rabatte gelten vor Ort und online. Online ist jede Session 20 € günstiger, weil kein Raum anfällt.</p>
       </div>
-      <div class="service-right">
-        <div class="lang-en active">
-          <p>A detailed, science-based evaluation that uncovers how your nervous system is functioning — and where it needs support. This session combines well-established tests from clinical neurology to give a clear picture of your brain-body connection.</p>
-          <p>By detecting subtle dysfunctions or imbalances — often <strong>before they become noticeable in daily life</strong> — we can take proactive steps and build a targeted plan.</p>
-        </div>
-        <div class="lang-de">
-          <p>Eine detaillierte, wissenschaftlich fundierte Untersuchung, die zeigt, wie dein Nervensystem arbeitet. Diese Session kombiniert bewährte Tests aus der klinischen Neurologie für ein klares Bild deiner Gehirn-Körper-Verbindung.</p>
-          <p>Durch frühzeitige Erkennung subtiler Dysfunktionen — oft <strong>bevor sie sich im Alltag bemerkbar machen</strong> — können wir gezielt gegensteuern.</p>
-        </div>
-
-        <p class="list-head"><span class="lang-en active">What's Assessed</span><span class="lang-de">Was untersucht wird</span></p>
-        <ul class="check-list">
-          <li><span class="lang-en active"><strong>Vital signs</strong> — blood pressure, heart rate, baseline indicators</span><span class="lang-de"><strong>Vitalzeichen</strong> — Blutdruck, Herzfrequenz, Basisindikatoren</span></li>
-          <li><span class="lang-en active"><strong>Breathing patterns</strong> — regulation, rhythm, nervous system tone</span><span class="lang-de"><strong>Atemmuster</strong> — Regulation, Rhythmus, Nervensystemzustand</span></li>
-          <li><span class="lang-en active"><strong>Gait analysis</strong> — walking reveals key brain function insights</span><span class="lang-de"><strong>Ganganalyse</strong> — Gehen liefert wichtige Gehirnfunktionseinblicke</span></li>
-          <li><span class="lang-en active"><strong>Sensory testing</strong> — touch, temperature, proprioception processing</span><span class="lang-de"><strong>Sensorische Tests</strong> — Berührung, Temperatur, Propriozeption</span></li>
-          <li><span class="lang-en active"><strong>Cerebellar tests</strong> — balance, motor control, coordination</span><span class="lang-de"><strong>Kleinhirntests</strong> — Gleichgewicht, motorische Kontrolle, Koordination</span></li>
-          <li><span class="lang-en active"><strong>All 12 cranial nerves</strong> — eye movement, facial sensation, hearing</span><span class="lang-de"><strong>Alle 12 Hirnnerven</strong> — Augenbewegung, Gesichtsempfindung, Hören</span></li>
-          <li><span class="lang-en active"><strong>Visual testing</strong> — tracking, fixation, visual processing</span><span class="lang-de"><strong>Visueller Test</strong> — Verfolgung, Fixierung, Verarbeitung</span></li>
-        </ul>
-
-        <div class="detail-panel">
-          <span class="detail-panel-label"><span class="lang-en active">Ideal For</span><span class="lang-de">Ideal für</span></span>
-          <ul>
-            <li><span class="lang-en active">Athletes establishing a neurological baseline across seasons</span><span class="lang-de">Athleten, die eine neurologische Basislinie erstellen möchten</span></li>
-            <li><span class="lang-en active">Individuals with chronic pain seeking root cause analysis</span><span class="lang-de">Personen mit chronischen Schmerzen auf der Suche nach Ursachen</span></li>
-            <li><span class="lang-en active">People in rehabilitation who want comprehensive evaluation</span><span class="lang-de">Personen in der Rehabilitation</span></li>
-            <li><span class="lang-en active">Anyone interested in preventive health and early intervention</span><span class="lang-de">Alle, die an Prävention und Frühintervention interessiert sind</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SERVICE 03: Personal Training -->
-  <div class="service-block">
-    <div class="service-inner">
-      <div class="service-left">
-        <span class="service-index"></span>
-        <h2 class="service-title">
-          <span class="lang-en active">Personal<br><span class="italic">&amp; Athletic</span><br>Training</span>
-          <span class="lang-de">Personal<br><span class="italic">&amp; Athletik</span><br>Training</span>
-        </h2>
-        <span class="service-tag gold"><span class="lang-en active">Neurocentric · Ongoing</span><span class="lang-de">Neurozentriert · Laufend</span></span>
-        <div class="price-badge">
-          <div class="price-amount"><span style="font-size:1.1rem;font-family:var(--fm);font-weight:300;"></span></div>
-          <div class="price-note"><span class="lang-en active">Individual sessions</span><span class="lang-de">Einzelsessions</span></div>
-        </div>
-        <a 
-        href="javascript:void(0)"
-        data-cal-link="synapse2move/personal-training-therapie"
-        data-cal-namespace="personal-training-therapie"
-        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-        class="service-cta-link"> 
-          <span class="lang-en active">Start Training →</span>
-          <span class="lang-de">Training starten →</span>
-        </a>
-      </div>
-      <div class="service-right">
-        <div class="lang-en active">
-          <p>Unlike the Neuroassessment, your first session focuses on a goal-specific evaluation — starting with an in-depth discussion of your history and training or rehabilitation goals. We perform only the tests most relevant to your individual needs.</p>
-          <p>What sets this apart: <strong>we don't just assess, we start right away.</strong> You'll leave with targeted exercises and immediate adjustments to your current program.</p>
-        </div>
-        <div class="lang-de">
-          <p>Im Gegensatz zum Neuroassessment steht dein persönliches Ziel im Mittelpunkt — beginnend mit einem ausführlichen Gespräch über Vorgeschichte und Trainingsziele. Wir machen nur die Tests, die für dich wirklich relevant sind.</p>
-          <p>Was es besonders macht: <strong>Wir fangen sofort an.</strong> Du gehst mit gezielten Übungen und Anpassungen für dein aktuelles Programm nach Hause.</p>
-        </div>
-
-        <p class="list-head"><span class="lang-en active">What You'll Receive</span><span class="lang-de">Was du erhältst</span></p>
-        <ul class="check-list">
-          <li><span class="lang-en active">Goal-specific neurological assessment tailored to your needs</span><span class="lang-de">Zielorientierte neurologische Bewertung, abgestimmt auf dich</span></li>
-          <li><span class="lang-en active">Integration of NAT principles into your existing routine</span><span class="lang-de">Integration der NAT-Prinzipien in deine bestehende Routine</span></li>
-          <li><span class="lang-en active">Personalized exercise modifications and progressions</span><span class="lang-de">Individuelle Übungsanpassungen und -steigerungen</span></li>
-          <li><span class="lang-en active">Ongoing support and adjustments based on your progress</span><span class="lang-de">Laufende Unterstützung basierend auf deinem Fortschritt</span></li>
-        </ul>
-
-        <div class="detail-panel">
-          <span class="detail-panel-label"><span class="lang-en active">Package Options</span><span class="lang-de">Paket-Optionen</span></span>
-          <div class="package-row">
-            <div class="pkg">
-              <div class="pkg-name"><span class="lang-en active">Single</span><span class="lang-de">Einzeln</span></div>
-              <div class="pkg-price"><span class="lang-en active">on request</span><span class="lang-de">auf Anfrage</span></div>
-              <div class="pkg-detail"> <span class="lang-en active"></span><span class="lang-de"></span></div>
-            </div>
-            <div class="pkg">
-              <div class="pkg-name">4 <span class="lang-en active">Sessions</span><span class="lang-de">Sessions</span></div>
-              <div class="pkg-price">10%</div>
-              <div class="pkg-detail"> <span class="lang-en active">discount</span><span class="lang-de">discount</span></div>
-            </div>
-            <div class="pkg">
-              <div class="pkg-name">8 <span class="lang-en active">Sessions</span><span class="lang-de">Sessions</span></div>
-              <div class="pkg-price">17%</div>
-              <div class="pkg-detail"><span class="lang-en active">discount</span><span class="lang-de">discount</span></div>
-            </div>
-          </div>
-          <p style="margin-top:16px;font-size:12px;">
-            <span class="lang-en active">Sessions are individually timed and can take place in person or online. For long-term collaboration, reach out for a personalized offer.</span>
-            <span class="lang-de">Sessions sind individuell getaktet — vor Ort oder online. Für langfristige Zusammenarbeit melde dich für ein personalisiertes Angebot.</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /container -->
-
-<!-- CTA -->
-<section id="cta">
-  <div class="container" style="display:contents;">
-    <div class="cta-left container">
-      <h2>
-        <span class="lang-en active">Your Goals<br>Are <span class="italic">Within</span><br>Reach</span>
-        <span class="lang-de">Deine Ziele<br>Sind <span class="italic">In</span><br>Reichweite</span>
-      </h2>
-      <p class="cta-sub">Stamatios Papavasiliou · Synapse²Move Munich</p>
-      <a 
-        href="javascript:void(0)"
-        data-cal-link="synapse2move/20-min-free-call"
-        data-cal-namespace="20-min-free-call"
-        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-        class="btn-ink"
-       style="display:inline-block;">
-        <span class="lang-en active">Book Free Call &#8594;</span>
-        <span class="lang-de">Gespräch buchen &#8594;</span>
-      </a>
-    </div>
-    <div class="cta-right">
-      <canvas id="cta-canvas"></canvas>
-      <p class="cta-kicker"><span class="lang-en active">Ready to start?</span><span class="lang-de">Bereit anzufangen?</span></p>
-      <h2>
-        <span class="lang-en active">Train<br>Your <span class="green">Brain.</span><br>Move<br>Better.</span>
-        <span class="lang-de">Dein<br><span class="green">Gehirn.</span><br>Deine<br>Bewegung.</span>
-      </h2>
-      <a 
-            href="javascript:void(0)"
-            data-cal-link="synapse2move/20-min-free-call"
-            data-cal-namespace="20-min-free-call"
-            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-            class="btn-cream"
-          >
-        <span class="lang-en active">Book Free 20 Min Call</span>
-        <span class="lang-de">Kostenloses Gespräch buchen</span>
-      </a>
-      <p class="cta-right-note">
-        <span class="lang-en active">Munich · In Person + Online</span>
-        <span class="lang-de">München · Persönlich + Online</span>
-      </p>
-    </div>
+      <p style="margin-top:var(--s3)">Wenn der Preis für dich gerade nicht passt, sprich uns einfach an.</p></div>
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
+<section class="offer">
+  <div class="wrap offer-grid">
+    <div class="offer-head">
+      <p class="label">Angebot 03</p>
+      <h2>Neuro&shy;assessment</h2>
+      <div><span class="tag">Ausführlicher Check · vor Ort</span></div>
+      <div class="pricebox"><span class="price">140 €</span><span class="price-note">90 Min · vor Ort</span></div>
+      <div><a class="btn btn-outline" href="https://cal.com/synapse2move/neuroassessment" data-cal-link="synapse2move/neuroassessment" data-cal-namespace="neuroassessment" data-cal-config='{"layout":"month_view"}'>Neuroassessment anfragen</a></div>
+    </div>
+    <div><p class="lead">Für alle, die es genau wissen wollen, zum Beispiel Sportler:innen, die zu Saisonbeginn einen Ausgangswert festhalten und ihn später vergleichen möchten.</p>
+      <p>In 90 Minuten schauen wir uns in Ruhe an, wie deine Augen, dein Gleichgewicht, deine Körperwahrnehmung, deine Koordination und deine Atmung zusammenarbeiten. Daraus leiten wir ab, wo dein Training ansetzen sollte. Danach bekommst du eine schriftliche Zusammenfassung mit Empfehlungen für dein Training.</p>
+      <p class="list-head">Was wir uns anschauen</p>
+      <ul class="arrow-list"><li>Augen: Blicksteuerung, Fixieren, Folgebewegungen</li><li>Gleichgewicht im Stand und in Bewegung</li><li>Körperwahrnehmung und Koordination</li><li>Bewegungsabläufe, zum Beispiel dein Gang</li><li>Atmung</li><li>Ausgangswerte wie Puls und Blutdruck, damit wir sicher trainieren</li></ul>
+      <div class="framed"><span class="framed-label">Hinweis</span><p>Das Neuroassessment ist ein Trainings-Check und keine medizinische Untersuchung oder Diagnose.</p></div></div>
+  </div>
+</section>
+<section class="offer section alt">
+  <div class="wrap offer-grid">
+    <div class="offer-head">
+      <p class="label">Angebot 04</p>
+      <h2>Kennenlern&shy;gespräch</h2>
+      <div><span class="tag">Unverbindlich</span></div>
+      <div class="pricebox"><span class="price">kostenlos</span><span class="price-note">20 Min · online</span></div>
+      <div><a class="btn btn-outline" href="https://cal.com/synapse2move/20-min-free-call" data-cal-link="synapse2move/20-min-free-call" data-cal-namespace="20-min-free-call" data-cal-config='{"layout":"month_view"}'>Erst kurz sprechen</a></div>
+    </div>
+    <div><p class="lead">Du bist dir noch nicht sicher, ob das für dich passt?</p>
+      <p>Dann lass uns 20 Minuten sprechen, ganz ohne Druck: über dein Ziel, darüber, wie wir arbeiten, und ob wir zusammenpassen.</p>
+      <div class="framed" id="abklaerung"><span class="framed-label">Wichtig</span><h3 style="margin-bottom:.75rem">Ärztliche Abklärung vor dem Start</h3><p>Wir sind Trainer, keine Ärzte und keine Therapeuten. Deshalb bitten wir dich, vor dem Start mit deiner Ärztin oder deinem Arzt abzuklären, ob Training für dich passt. Bring vorhandene Befunde gern mit, denn je mehr wir wissen, desto gezielter können wir trainieren. Und wenn etwas in ärztliche Hände gehört, sagen wir dir das offen.</p></div></div>
+  </div>
+</section>
+<section class="section" id="fragen">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">?</span><h2>Häufige <span class="accent">Fragen</span></h2></div>
+    <div class="faq"><details open><summary>Seid ihr Physiotherapeuten oder Osteopathen?</summary><p>Nein, wir sind Trainer und keine Therapeuten. Wir schauen uns genau an, wie Gehirn und Körper bei dir zusammenspielen, und setzen dein Training genau dort an. Deshalb verstehen wir uns als Ergänzung zu Physiotherapie und Osteopathie, nicht als Ersatz.</p></details><details><summary>Muss ich meine Physiotherapie dafür abbrechen?</summary><p>Nein, du musst nichts abbrechen. Wir trainieren parallel dazu auf dein Ziel hin.</p></details><details><summary>Zahlt das die Krankenkasse?</summary><p>Nein, das Training zahlst du selbst. Genau deshalb kosten die ersten zwei Sessions nur je 50 €, damit du ohne großes Risiko herausfinden kannst, ob es zu dir passt.</p></details><details><summary>Ich brauche doch eher mehr Technik, oder?</summary><p>Vielleicht. Manchmal hängt es aber nicht an der Technik, sondern an dem, worauf sie aufbaut: wie deine Augen, dein Gleichgewicht und deine Körperwahrnehmung zusammenspielen. Das finden wir in den ersten Sessions heraus. <a href="taenzer-sportler.html">Für Sportler:innen &amp; Tänzer:innen →</a></p></details><details><summary>Wo findet das Training statt?</summary><p>Im My Private Gym in Neuhausen, Bogenhausen und Obersendling, im Vertical Ballerina in der Hohenzollernstraße oder online. Weil wir den Raum passend zu deinem Termin buchen, bestätigen wir jede Anfrage persönlich.</p></details><details><summary>Geht das auch online?</summary><p>Ja, auch schon die ersten Sessions. Online kostet eine Session 78 €. Für die erste Session empfehlen wir dir trotzdem, wenn es passt, vor Ort zu kommen, weil wir dir dort mehr direkt zeigen können.</p></details><details><summary>Was brauche ich?</summary><p>Bequeme Kleidung, in der du dich frei bewegen kannst, und etwas zu trinken. Online: etwas Platz und eine Kamera, die dich ganz zeigt.</p></details><details><summary>Was, wenn ich absagen muss?</summary><p>Bis 48 Stunden vorher kannst du kostenlos absagen. Danach berechnen wir 50 % des Preises, bei Nichterscheinen 100 %. Die Zahlung ist innerhalb von 7 Tagen nach der Bestätigung fällig.</p></details></div>
+  </div>
+</section>
+<section class="cta-light">
+  <div class="wrap">
+    <p class="label">Dein Start</p>
+    <h2>Deine ersten zwei Sessions: <span class="accent">je 50 €.</span></h2>
+    <p>In zwei Sessions schauen wir genau hin und geben dir deine ersten Übungen mit. Danach weißt du, ob diese Art zu trainieren zu dir passt, ganz gleich ob vor Ort in München oder online.</p>
+    <a class="btn btn-primary" href="https://cal.com/synapse2move/erste-session" data-cal-link="synapse2move/erste-session" data-cal-namespace="erste-session" data-cal-config='{"layout":"month_view"}'>Erste Session für 50 € anfragen</a>
+    <p class="micro">Du wählst einen Wunschtermin, wir prüfen den Raum und bestätigen dir so schnell wie möglich. Ist der Raum schon belegt, schlagen wir dir einen anderen Termin vor.</p>
+  </div>
+</section>
+<section class="cta-dark on-green">
+  <div class="wrap">
+    <p class="label">Noch unsicher?</p>
+    <h2>Lass uns kurz sprechen.</h2>
+    <p>In 20 kostenlosen Minuten online sprechen wir über dein Ziel, darüber, wie wir arbeiten, und ob wir zusammenpassen.</p>
+    <a class="btn btn-outline" href="https://cal.com/synapse2move/20-min-free-call" data-cal-link="synapse2move/20-min-free-call" data-cal-namespace="20-min-free-call" data-cal-config='{"layout":"month_view"}'>Erst kurz sprechen</a>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-col">
-        <a href="index.html" class="footer-logo">Synapse<sup>2</sup>Move</a>
-        <p class="footer-desc"><span class="lang-en active">Neuroathletic training in Munich. Creating connections — vibrantly alive.</span><span class="lang-de">Neuroathletiktraining in München. Wo Denken bewegt.</span></p>
+      <div>
+        <a class="brand" href="index.html"><img src="images/logo-mark-cream.png" alt="" width="49" height="34"><span>synapse<sup class="two">2</sup>move</span></a>
+        <p style="margin-top:1rem">Neurozentriertes Training in München.<br>Erst checken. Dann trainieren.</p>
       </div>
-      <div class="footer-col">
-        <h4><span class="lang-en active">Navigation</span><span class="lang-de">Navigation</span></h4>
-        <ul>
-          <li><a href="Neuro.html"><span class="lang-en active">Neuroathletic Training</span><span class="lang-de">Neuroathletiktraining</span></a></li>
-          <li><a href="services.html"><span class="lang-en active">Services</span><span class="lang-de">Leistungen</span></a></li>
-          <li><a href="openworkshps.html"><span class="lang-en active">Open Workshops</span><span class="lang-de">Offene Workshops</span></a></li>
-          <li><a href="workshops.html"><span class="lang-en active">Neuro Workshops</span><span class="lang-de">Neuro Workshops</span></a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4><span class="lang-en active">Contact</span><span class="lang-de">Kontakt</span></h4>
-        <dl>
-          <dt><span class="lang-en active">Address</span><span class="lang-de">Adresse</span></dt>
-          <dd>Ganghoferstraße 17<br>80339 München</dd>
-          <dt><span class="lang-en active">Phone</span><span class="lang-de">Telefon</span></dt>
-          <dd><a href="tel:+4915221319336">+49 152 21319336</a></dd>
-          <dt>Email</dt>
-          <dd><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></dd>
-        </dl>
-      </div>
+      <div><h4>Seiten</h4><ul>
+        <li><a href="services.html">Einzeltraining &amp; Preise</a></li>
+        <li><a href="taenzer-sportler.html">Sportler:innen &amp; Tänzer:innen</a></li>
+        <li><a href="Neuro.html">So arbeiten wir</a></li>
+        <li><a href="openworkshps.html">Workshops</a></li>
+        <li><a href="workshops.html">Teams &amp; Vereine</a></li>
+        <li><a href="brain-health.html">Brain Health at Work</a></li>
+        <li><a href="en.html" hreflang="en">English</a></li>
+      </ul></div>
+      <div><h4>Kontakt</h4><ul>
+        <li><a href="tel:+4915221319336">+49 152 21319336</a></li>
+        <li><a href="mailto:s2m@ionio.de">s2m@ionio.de</a></li>
+        <li><a href="https://www.instagram.com/synapse2move/">Instagram @synapse2move</a></li>
+      </ul></div>
+      <div><h4>Wo</h4><p>Training im My Private Gym (Neuhausen, Bogenhausen, Obersendling) und im Vertical Ballerina (Hohenzollernstraße). Wir buchen den Raum passend zu deinem Termin. Online geht es natürlich auch.</p></div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Stamatios Papavasiliou</span>
-      <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html"><span class="lang-en active">Privacy Policy</span><span class="lang-de">Datenschutz</span></a></span>
-    </div>
+    <div class="footer-bottom">© 2026 Stamatios Papavasiliou · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </div>
 </footer>
-
-<script>
-/* ── LANGUAGE ── */
-let currentLang = 'en';
-function switchLanguage(lang) {
-  if (currentLang === lang) return;
-  currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-  document.querySelectorAll('.lang-en,.lang-de').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
-  sessionStorage.setItem('preferred-language', lang);
-}
-const saved = sessionStorage.getItem('preferred-language');
-if (saved && saved !== 'en') switchLanguage(saved);
-
-/* ── MOBILE NAV ── */
-document.getElementById('mob-toggle').addEventListener('click', () => {
-  document.getElementById('main-nav').classList.toggle('mobile-nav-open');
-});
-
-/* ── NEURAL CANVAS ── */
-function makeNeuralCanvas(canvasId) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes;
-
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    W = canvas.width  = Math.max(rect.width  || canvas.offsetWidth,  100);
-    H = canvas.height = Math.max(rect.height || canvas.offsetHeight, 100);
-    nodes = Array.from({length: 55}, () => ({
-      x: Math.random() * W, y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.65, vy: (Math.random() - 0.5) * 0.45,
-      pulse: Math.random() * Math.PI * 2,
-      kind: Math.random() < 0.2 ? 'b' : 'a'
-    }));
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    nodes.forEach(n => {
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
-      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
-      n.pulse += 0.1;
-    });
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i], b = nodes[j];
-        const dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx*dx + dy*dy);
-        if (d < 140) {
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = 'rgba(61,107,79,' + ((1 - d/140) * 0.3) + ')';
-          ctx.lineWidth = 0.6; ctx.stroke();
-        }
-      }
-    }
-    nodes.forEach(n => {
-      const g = (Math.sin(n.pulse) + 1) * 0.5;
-      ctx.beginPath(); ctx.arc(n.x, n.y, 1 + g * 1.4, 0, Math.PI * 2);
-      ctx.fillStyle = n.kind === 'b'
-        ? 'rgba(92,45,110,' + (0.4 + g * 0.35) + ')'
-        : 'rgba(61,107,79,' + (0.35 + g * 0.3) + ')';
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-
-  requestAnimationFrame(() => { resize(); draw(); });
-  window.addEventListener('resize', resize, { passive: true });
-}
-
-makeNeuralCanvas('page-canvas');
-makeNeuralCanvas('cta-canvas');
-</script>
-<!-- Cal element-click embed code begins -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "20-min-free-call", {origin:"https://app.cal.com"});
-Cal.config = Cal.config || {};
-Cal.config.forwardQueryParams = true;
-
-  
-  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-  // `data-cal-link="synapse2move/20-min-free-call"`
-  // data-cal-namespace="20-min-free-call"
-  // `data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'`
-
-  Cal.ns["20-min-free-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-  </script>
-  
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "neuroassessment", {origin:"https://app.cal.com"});
-Cal.config = Cal.config || {};
-Cal.config.forwardQueryParams = true;
-
-  
-  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-  // `data-cal-link="synapse2move/neuroassessment"`
-  // data-cal-namespace="neuroassessment"
-  // `data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'`
-
-  Cal.ns.neuroassessment("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-  </script>
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "personal-training-therapie", {origin:"https://app.cal.com"});
-Cal.config = Cal.config || {};
-Cal.config.forwardQueryParams = true;
-
-  
-  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-  // `data-cal-link="synapse2move/personal-training-therapie"`
-  // data-cal-namespace="personal-training-therapie"
-  // `data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'`
-
-  Cal.ns["personal-training-therapie"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-  </script>
-  <!-- Cal element-click embed code ends -->
+<div class="sticky"><a class="btn btn-primary" href="https://cal.com/synapse2move/erste-session" data-cal-link="synapse2move/erste-session" data-cal-namespace="erste-session" data-cal-config='{"layout":"month_view"}'>Erste Session 50 €</a><a class="link" href="https://cal.com/synapse2move/20-min-free-call" data-cal-link="synapse2move/20-min-free-call" data-cal-namespace="20-min-free-call" data-cal-config='{"layout":"month_view"}'>Erst kurz sprechen</a></div>
+<script src="assets/js/s2m.js" defer></script>
 </body>
 </html>
